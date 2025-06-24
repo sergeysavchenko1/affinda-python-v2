@@ -1,0 +1,64 @@
+# macOS
+._*
+.DS_Store
+.LSOverride
+# Icon must end with two carriage returns (\r)
+Icon
+
+# Windows
+[Dd]esktop.ini
+ehthumbs.db
+ehthumbs_vista.db
+[Tt]humbs.db
+
+# Backups
+*.bak
+
+# Logs
+*.log
+log/
+logs/
+
+# Temporary
+*~
+*.tmp
+*.temp
+tmp/
+temp/
+
+# Build
+*.egg
+*.egg-info/
+.eggs/
+build/
+dist/
+pip-wheel-metadata/
+
+# Python
+*.py[cod]
+__pycache__/
+venv/
+
+# Testing
+.coverage
+.pytest_cache/
+.tox/
+htmlcov/
+
+# Tooling
+.mypy_cache/
+.ropeproject/
+
+# Vim
+.netrwhist
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]*.un~
+[._]s[a-rt-v][a-z]
+[._]ss[a-gi-z]
+[._]sw[a-p]
+
+# Pycharm project
+.idea/
+
+build_state.json
