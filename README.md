@@ -1,4 +1,5 @@
 # Python Client Library for Affinda Document Parser API
+# Fork library v2 from commit: cb34a0723ef749231f56c98cd0328f7ab15ccaf1, committed on May 3, 2024
 
 ![affinda logo](https://api.affinda.com/static/documentation/affinda_logo_light.png)
 
@@ -22,7 +23,7 @@ latest revision._
 ## Installation
 
 ```shell
-pip install affinda
+pip install affinda_v2
 ```
 
 ## API Version Compatibility
@@ -40,7 +41,7 @@ Please see below for which versions are compatible with which API version.
 If you don't have an API token, obtain one from [affinda.com](https://affinda.com/resume-parser/free-api-key/).
 
 ```python
-from affinda import AffindaAPI, TokenCredential
+from affinda_v2 import AffindaAPI, TokenCredential
 
 credential = TokenCredential(token="YOUR_API_TOKEN")
 client = AffindaAPI(credential=credential)

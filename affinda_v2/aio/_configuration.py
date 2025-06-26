@@ -25,7 +25,7 @@ class AffindaAPIConfiguration(Configuration):  # pylint: disable=too-many-instan
     :param credential: Credential needed for the client to connect to Azure.
     :type credential: ~azure.core.credentials_async.AsyncTokenCredential
     :param region: region - server parameter. Default value is "api".
-    :type region: str or ~affinda.models.Region
+    :type region: str or ~affinda_v2.models.Region
     """
 
     def __init__(

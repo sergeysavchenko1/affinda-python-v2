@@ -6,7 +6,7 @@ Resume Parser
 ### getAllResumes - Get list of all resumes
 
 ```python
-from affinda import AffindaAPI, TokenCredential
+from affinda_v2 import AffindaAPI, TokenCredential
 
 token = "REPLACE_TOKEN"
 
@@ -23,8 +23,8 @@ print(all_resumes.as_dict())
 from pathlib import Path
 import json
 
-from affinda import AffindaAPI, TokenCredential
-from affinda.models import ResumeData
+from affinda_v2 import AffindaAPI, TokenCredential
+from affinda_v2.models import ResumeData
 
 token = "REPLACE_TOKEN"
 credential = TokenCredential(token=token)
@@ -55,7 +55,7 @@ print(res.as_dict())
 ### getResume - Get parse results for a specific resume
 
 ```python
-from affinda import AffindaAPI, TokenCredential
+from affinda_v2 import AffindaAPI, TokenCredential
 
 token = "REPLACE_TOKEN"
 identifier = "REPLACE_IDENTIFIER"
@@ -70,8 +70,8 @@ print(resume.as_dict())
 ### updateResumeData - Update a resume's data
 
 ```python
-from affinda import AffindaAPI, TokenCredential
-from affinda.models import ResumeData, ResumeDataSkillsItem
+from affinda_v2 import AffindaAPI, TokenCredential
+from affinda_v2.models import ResumeData, ResumeDataSkillsItem
 
 token = "REPLACE_TOKEN"
 identifier = "REPLACE_IDENTIFIER"
@@ -96,7 +96,7 @@ print(resp.as_dict())
 ### deleteResume - Delete a resume
 
 ```python
-from affinda import AffindaAPI, TokenCredential
+from affinda_v2 import AffindaAPI, TokenCredential
 
 token = "REPLACE_TOKEN"
 identifier = "REPLACE_IDENTIFIER"
@@ -114,7 +114,7 @@ Resume Redactor
 ### getAllRedactedResumes - Get list of all redacted resumes
 
 ```python
-from affinda import AffindaAPI, TokenCredential
+from affinda_v2 import AffindaAPI, TokenCredential
 
 token = "REPLACE_TOKEN"
 
@@ -130,7 +130,7 @@ print(all_redacted_resumes.as_dict())
 ```python
 from pathlib import Path
 
-from affinda import AffindaAPI, TokenCredential
+from affinda_v2 import AffindaAPI, TokenCredential
 
 token = "REPLACE_TOKEN"
 file_pth = Path("path_to_file.pdf")
@@ -147,7 +147,7 @@ print(redacted_resume.as_dict())
 ### getRedactedResume - Get redaction results for a specific resume
 
 ```python
-from affinda import AffindaAPI, TokenCredential
+from affinda_v2 import AffindaAPI, TokenCredential
 
 token = "REPLACE_TOKEN"
 identifier = "REPLACE_IDENTIFIER"
@@ -162,7 +162,7 @@ print(redacted_resume.as_dict())
 ### deleteRedactedResume - Delete a redacted resume
 
 ```python
-from affinda import AffindaAPI, TokenCredential
+from affinda_v2 import AffindaAPI, TokenCredential
 
 token = "REPLACE_TOKEN"
 identifier = "REPLACE_IDENTIFIER"
@@ -180,7 +180,7 @@ Invoice Extractor
 ### getAllInvoices - Get list of all invoices
 
 ```python
-from affinda import AffindaAPI, TokenCredential
+from affinda_v2 import AffindaAPI, TokenCredential
 
 token = "REPLACE_TOKEN"
 
@@ -196,7 +196,7 @@ print(all_invoices.as_dict())
 ```python
 from pathlib import Path
 
-from affinda import AffindaAPI, TokenCredential
+from affinda_v2 import AffindaAPI, TokenCredential
 
 token = "REPLACE_TOKEN"
 file_pth = Path("path_to_file.pdf")
@@ -213,7 +213,7 @@ print(invoice.as_dict())
 ### getInvoice - Get parse results for a specific invoice
 
 ```python
-from affinda import AffindaAPI, TokenCredential
+from affinda_v2 import AffindaAPI, TokenCredential
 
 token = "REPLACE_TOKEN"
 identifier = "REPLACE_IDENTIFIER"
@@ -228,7 +228,7 @@ print(invoice.as_dict())
 ### deleteInvoice - Delete an invoice
 
 ```python
-from affinda import AffindaAPI, TokenCredential
+from affinda_v2 import AffindaAPI, TokenCredential
 
 token = "REPLACE_TOKEN"
 identifier = "REPLACE_IDENTIFIER"
@@ -246,7 +246,7 @@ Job Description Parser
 ### getAllJobDescriptions - Get list of all job descriptions
 
 ```python
-from affinda import AffindaAPI, TokenCredential
+from affinda_v2 import AffindaAPI, TokenCredential
 
 token = "REPLACE_TOKEN"
 
@@ -263,7 +263,7 @@ print(all_job_descriptions.as_dict())
 import json
 from pathlib import Path
 
-from affinda import AffindaAPI, TokenCredential
+from affinda_v2 import AffindaAPI, TokenCredential
 
 token = "REPLACE_TOKEN"
 file_pth = Path("path_to_file.pdf")
@@ -276,7 +276,6 @@ with open(file_pth, "rb") as f:
 
 print(job_description.as_dict())
 
-
 # Or create a job description from data
 data = {"job_title": {"raw": "General Manager"}, "contact_email": {"parsed": "admin@example.com"}}
 job_description = client.create_job_description(data=json.dumps(data))
@@ -287,7 +286,7 @@ print(job_description.as_dict())
 ### getJobDescription - Get job description results for a specific job description file
 
 ```python
-from affinda import AffindaAPI, TokenCredential
+from affinda_v2 import AffindaAPI, TokenCredential
 
 token = "REPLACE_TOKEN"
 identifier = "REPLACE_IDENTIFIER"
@@ -302,7 +301,7 @@ print(job_description.as_dict())
 ### deleteJobDescription - Delete a job description
 
 ```python
-from affinda import AffindaAPI, TokenCredential
+from affinda_v2 import AffindaAPI, TokenCredential
 
 token = "REPLACE_TOKEN"
 identifier = "REPLACE_IDENTIFIER"
@@ -320,8 +319,8 @@ Search & Match - Searching
 ### createJobDescriptionSearch - Search through parsed job descriptions
 
 ```python
-from affinda import AffindaAPI, TokenCredential
-from affinda.models import JobDescriptionSearchParameters
+from affinda_v2 import AffindaAPI, TokenCredential
+from affinda_v2.models import JobDescriptionSearchParameters
 
 token = "REPLACE_TOKEN"
 
@@ -354,8 +353,8 @@ print(resp.as_dict())
 ### getJobDescriptionSearchDetail - Get search result of specific job description
 
 ```python
-from affinda import AffindaAPI, TokenCredential
-from affinda.models import JobDescriptionSearchParameters
+from affinda_v2 import AffindaAPI, TokenCredential
+from affinda_v2.models import JobDescriptionSearchParameters
 
 token = "REPLACE_TOKEN"
 job_description_identifier = "REPLACE_IDENTIFIER"
@@ -377,8 +376,8 @@ print(resp.as_dict())
 ### createResumeSearch - Search through parsed resumes
 
 ```python
-from affinda import AffindaAPI, TokenCredential
-from affinda.models import ResumeSearchParameters
+from affinda_v2 import AffindaAPI, TokenCredential
+from affinda_v2.models import ResumeSearchParameters
 
 token = "REPLACE_TOKEN"
 
@@ -417,8 +416,8 @@ print(resp.as_dict())
 ### getResumeSearchDetail - Get search result of specific resume
 
 ```python
-from affinda import AffindaAPI, TokenCredential
-from affinda.models import ResumeSearchParameters
+from affinda_v2 import AffindaAPI, TokenCredential
+from affinda_v2.models import ResumeSearchParameters
 
 token = "REPLACE_TOKEN"
 resume_identifier = "REPLACE_IDENTIFIER"
@@ -440,7 +439,7 @@ print(resp.as_dict())
 ### getResumeSearchMatch - Match a single resume and job description
 
 ```python
-from affinda import AffindaAPI, TokenCredential
+from affinda_v2 import AffindaAPI, TokenCredential
 
 token = "REPLACE_TOKEN"
 
@@ -458,7 +457,7 @@ print(result.score)
 ### getResumeSearchSuggestionJobTitle - Get job title suggestions based on provided job title(s)
 
 ```python
-from affinda import AffindaAPI, TokenCredential
+from affinda_v2 import AffindaAPI, TokenCredential
 
 token = "REPLACE_TOKEN"
 credential = TokenCredential(token=token)
@@ -471,7 +470,7 @@ print(suggested_job_titles)
 ### getResumeSearchSuggestionSkill - Get skill suggestions based on provided skill(s)
 
 ```python
-from affinda import AffindaAPI, TokenCredential
+from affinda_v2 import AffindaAPI, TokenCredential
 
 token = "REPLACE_TOKEN"
 credential = TokenCredential(token=token)
@@ -487,7 +486,7 @@ Search & Match - Embedding
 ### getResumeSearchConfig - Get the config for the logged in user's embeddable resume search tool
 
 ```python
-from affinda import AffindaAPI, TokenCredential
+from affinda_v2 import AffindaAPI, TokenCredential
 
 token = "REPLACE_TOKEN"
 
@@ -501,8 +500,8 @@ print(result.as_dict())
 ### updateResumeSearchConfig - Update the config for the logged in user's embeddable resume search tool
 
 ```python
-from affinda import AffindaAPI, TokenCredential
-from affinda.models import ResumeSearchConfig
+from affinda_v2 import AffindaAPI, TokenCredential
+from affinda_v2.models import ResumeSearchConfig
 
 token = "REPLACE_TOKEN"
 
@@ -524,8 +523,8 @@ print(result.as_dict())
 ### createResumeSearchEmbedUrl - Create a signed URL for the embeddable resume search tool
 
 ```python
-from affinda import AffindaAPI, TokenCredential
-from affinda.models import ResumeSearchConfig
+from affinda_v2 import AffindaAPI, TokenCredential
+from affinda_v2.models import ResumeSearchConfig
 
 token = "REPLACE_TOKEN"
 
@@ -553,7 +552,7 @@ Search & Match - Indexing
 ### getAllIndexes - Get list of all indexes
 
 ```python
-from affinda import AffindaAPI, TokenCredential
+from affinda_v2 import AffindaAPI, TokenCredential
 
 token = "REPLACE_TOKEN"
 
@@ -568,7 +567,7 @@ print(all_indexes.as_dict())
 ### createIndex - Create a new index
 
 ```python
-from affinda import AffindaAPI, TokenCredential
+from affinda_v2 import AffindaAPI, TokenCredential
 
 token = "REPLACE_TOKEN"
 index_name = "REPLACE_INDEX_NAME"
@@ -584,7 +583,7 @@ print(response.as_dict())
 ### updateIndex - Update an index
 
 ```python
-from affinda import AffindaAPI, TokenCredential
+from affinda_v2 import AffindaAPI, TokenCredential
 
 token = "REPLACE_TOKEN"
 old_index = "REPLACE_INDEX_NAME"
@@ -605,7 +604,7 @@ print(resp.as_dict())
 ### deleteIndex - Delete an index
 
 ```python
-from affinda import AffindaAPI, TokenCredential
+from affinda_v2 import AffindaAPI, TokenCredential
 
 token = "REPLACE_TOKEN"
 index_name = "REPLACE_INDEX_NAME"
@@ -619,7 +618,7 @@ client.delete_index(name=index_name)
 ### createIndexDocument - Index a new document
 
 ```python
-from affinda import AffindaAPI, TokenCredential
+from affinda_v2 import AffindaAPI, TokenCredential
 
 token = "REPLACE_TOKEN"
 index_name = "REPLACE_INDEX_NAME"
@@ -640,7 +639,7 @@ print(resp.as_dict())
 ### deleteIndexDocument - Delete an indexed document
 
 ```python
-from affinda import AffindaAPI, TokenCredential
+from affinda_v2 import AffindaAPI, TokenCredential
 
 token = "REPLACE_TOKEN"
 index_name = "REPLACE_INDEX_NAME"
@@ -658,7 +657,7 @@ Webhook API
 ### getAllResthookSubscriptions - Get list of all resthook subscriptions
 
 ```python
-from affinda import AffindaAPI, TokenCredential
+from affinda_v2 import AffindaAPI, TokenCredential
 
 token = "REPLACE_TOKEN"
 
@@ -672,7 +671,7 @@ print(response.as_dict())
 ### createResthookSubscription - Create a resthook subscription
 
 ```python
-from affinda import AffindaAPI, TokenCredential
+from affinda_v2 import AffindaAPI, TokenCredential
 
 token = "REPLACE_TOKEN"
 
@@ -690,7 +689,7 @@ print(response.as_dict())
 ### getResthookSubscription - Get specific resthook subscription
 
 ```python
-from affinda import AffindaAPI, TokenCredential
+from affinda_v2 import AffindaAPI, TokenCredential
 
 token = "REPLACE_TOKEN"
 id = "REPLACE_ID"
@@ -705,7 +704,7 @@ print(response.as_dict())
 ### deleteResthookSubscription - Delete a resthook subscription
 
 ```python
-from affinda import AffindaAPI, TokenCredential
+from affinda_v2 import AffindaAPI, TokenCredential
 
 token = "REPLACE_TOKEN"
 id = "REPLACE_ID"

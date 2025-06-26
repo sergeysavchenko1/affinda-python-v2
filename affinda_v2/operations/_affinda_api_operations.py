@@ -1387,7 +1387,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: Paths14VxierV2ResumesGetResponses200ContentApplicationJsonSchema, or the result of
          cls(response)
-        :rtype: ~affinda.models.Paths14VxierV2ResumesGetResponses200ContentApplicationJsonSchema
+        :rtype: ~affinda_v2.models.Paths14VxierV2ResumesGetResponses200ContentApplicationJsonSchema
         :raises: ~azure.core.exceptions.HttpResponseError
         """
         error_map = {
@@ -1474,7 +1474,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :param url: URL to download the resume. Default value is None.
         :type url: str
         :param data:  Default value is None.
-        :type data: ~affinda.models.ResumeData
+        :type data: ~affinda_v2.models.ResumeData
         :param identifier: Deprecated in favor of ``customIdentifier``. Default value is None.
         :type identifier: str
         :param custom_identifier: Specify a custom identifier for the document if you need one, not
@@ -1496,7 +1496,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :type low_priority: bool
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: Resume, or the result of cls(response)
-        :rtype: ~affinda.models.Resume
+        :rtype: ~affinda_v2.models.Resume
         :raises: ~azure.core.exceptions.HttpResponseError
         """
         error_map = {
@@ -1586,10 +1586,10 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :type identifier: str
         :param format: Set this to "hr-xml" to get the response in HR-XML format. Currently the only
          supported value for this parameter is "hr-xml". Default value is None.
-        :type format: str or ~affinda.models.Enum2
+        :type format: str or ~affinda_v2.models.Enum2
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: Resume, or the result of cls(response)
-        :rtype: ~affinda.models.Resume
+        :rtype: ~affinda_v2.models.Resume
         :raises: ~azure.core.exceptions.HttpResponseError
         """
         error_map = {
@@ -1678,10 +1678,10 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :param identifier: Resume identifier.
         :type identifier: str
         :param body: Resume data to update.
-        :type body: ~affinda.models.ResumeData
+        :type body: ~affinda_v2.models.ResumeData
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: ResumeData or None, or the result of cls(response)
-        :rtype: ~affinda.models.ResumeData or None
+        :rtype: ~affinda_v2.models.ResumeData or None
         :raises: ~azure.core.exceptions.HttpResponseError
         """
         error_map = {
@@ -1822,7 +1822,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :return: Paths1D957B5V2RedactedResumesGetResponses200ContentApplicationJsonSchema, or the
          result of cls(response)
         :rtype:
-         ~affinda.models.Paths1D957B5V2RedactedResumesGetResponses200ContentApplicationJsonSchema
+         ~affinda_v2.models.Paths1D957B5V2RedactedResumesGetResponses200ContentApplicationJsonSchema
         :raises: ~azure.core.exceptions.HttpResponseError
         """
         error_map = {
@@ -1944,7 +1944,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :type expiry_time: ~datetime.datetime
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: RedactedResume, or the result of cls(response)
-        :rtype: ~affinda.models.RedactedResume
+        :rtype: ~affinda_v2.models.RedactedResume
         :raises: ~azure.core.exceptions.HttpResponseError
         """
         error_map = {
@@ -2038,7 +2038,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :type identifier: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: RedactedResume, or the result of cls(response)
-        :rtype: ~affinda.models.RedactedResume
+        :rtype: ~affinda_v2.models.RedactedResume
         :raises: ~azure.core.exceptions.HttpResponseError
         """
         error_map = {
@@ -2173,7 +2173,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: PathsGfm23QV2InvoicesGetResponses200ContentApplicationJsonSchema, or the result of
          cls(response)
-        :rtype: ~affinda.models.PathsGfm23QV2InvoicesGetResponses200ContentApplicationJsonSchema
+        :rtype: ~affinda_v2.models.PathsGfm23QV2InvoicesGetResponses200ContentApplicationJsonSchema
         :raises: ~azure.core.exceptions.HttpResponseError
         """
         error_map = {
@@ -2276,7 +2276,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :type low_priority: bool
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: Invoice, or the result of cls(response)
-        :rtype: ~affinda.models.Invoice
+        :rtype: ~affinda_v2.models.Invoice
         :raises: ~azure.core.exceptions.HttpResponseError
         """
         error_map = {
@@ -2364,7 +2364,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :type identifier: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: Invoice, or the result of cls(response)
-        :rtype: ~affinda.models.Invoice
+        :rtype: ~affinda_v2.models.Invoice
         :raises: ~azure.core.exceptions.HttpResponseError
         """
         error_map = {
@@ -2500,7 +2500,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: PathsChbpqfV2JobDescriptionsGetResponses200ContentApplicationJsonSchema, or the result
          of cls(response)
-        :rtype: ~affinda.models.PathsChbpqfV2JobDescriptionsGetResponses200ContentApplicationJsonSchema
+        :rtype: ~affinda_v2.models.PathsChbpqfV2JobDescriptionsGetResponses200ContentApplicationJsonSchema
         :raises: ~azure.core.exceptions.HttpResponseError
         """
         error_map = {
@@ -2589,7 +2589,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :param url: URL to download the job description. Default value is None.
         :type url: str
         :param data:  Default value is None.
-        :type data: ~affinda.models.JobDescriptionDataUpdate
+        :type data: ~affinda_v2.models.JobDescriptionDataUpdate
         :param identifier: Deprecated in favor of ``customIdentifier``. Default value is None.
         :type identifier: str
         :param custom_identifier: Specify a custom identifier for the document if you need one, not
@@ -2611,7 +2611,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :type low_priority: bool
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: JobDescription, or the result of cls(response)
-        :rtype: ~affinda.models.JobDescription
+        :rtype: ~affinda_v2.models.JobDescription
         :raises: ~azure.core.exceptions.HttpResponseError
         """
         error_map = {
@@ -2700,7 +2700,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :type identifier: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: JobDescription, or the result of cls(response)
-        :rtype: ~affinda.models.JobDescription
+        :rtype: ~affinda_v2.models.JobDescription
         :raises: ~azure.core.exceptions.HttpResponseError
         """
         error_map = {
@@ -2767,10 +2767,10 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :param identifier: Job description identifier.
         :type identifier: str
         :param body: Job description data to update.
-        :type body: ~affinda.models.JobDescriptionDataUpdate
+        :type body: ~affinda_v2.models.JobDescriptionDataUpdate
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: JobDescriptionData or None, or the result of cls(response)
-        :rtype: ~affinda.models.JobDescriptionData or None
+        :rtype: ~affinda_v2.models.JobDescriptionData or None
         :raises: ~azure.core.exceptions.HttpResponseError
         """
         error_map = {
@@ -2900,7 +2900,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         Searches through parsed job descriptions. You can search with custom criterias or a resume.
 
         :param body: Search parameters.
-        :type body: ~affinda.models.JobDescriptionSearchParameters
+        :type body: ~affinda_v2.models.JobDescriptionSearchParameters
         :param offset: The number of documents to skip before starting to collect the result set.
          Default value is None.
         :type offset: int
@@ -2908,7 +2908,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :type limit: int
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: JobDescriptionSearch, or the result of cls(response)
-        :rtype: ~affinda.models.JobDescriptionSearch
+        :rtype: ~affinda_v2.models.JobDescriptionSearch
         :raises: ~azure.core.exceptions.HttpResponseError
         """
         error_map = {
@@ -2982,10 +2982,10 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :param identifier: Job Description identifier.
         :type identifier: str
         :param body: Search parameters.
-        :type body: ~affinda.models.JobDescriptionSearchParameters
+        :type body: ~affinda_v2.models.JobDescriptionSearchParameters
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: JobDescriptionSearchDetail, or the result of cls(response)
-        :rtype: ~affinda.models.JobDescriptionSearchDetail
+        :rtype: ~affinda_v2.models.JobDescriptionSearchDetail
         :raises: ~azure.core.exceptions.HttpResponseError
         """
         error_map = {
@@ -3056,7 +3056,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
 
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: JobDescriptionSearchConfig, or the result of cls(response)
-        :rtype: ~affinda.models.JobDescriptionSearchConfig
+        :rtype: ~affinda_v2.models.JobDescriptionSearchConfig
         :raises: ~azure.core.exceptions.HttpResponseError
         """
         error_map = {
@@ -3116,10 +3116,10 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         can be returned, etc.
 
         :param body:
-        :type body: ~affinda.models.JobDescriptionSearchConfig
+        :type body: ~affinda_v2.models.JobDescriptionSearchConfig
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: JobDescriptionSearchConfig, or the result of cls(response)
-        :rtype: ~affinda.models.JobDescriptionSearchConfig
+        :rtype: ~affinda_v2.models.JobDescriptionSearchConfig
         :raises: ~azure.core.exceptions.HttpResponseError
         """
         error_map = {
@@ -3188,10 +3188,10 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
 
         :param body:  Default value is None.
         :type body:
-         ~affinda.models.Paths15O3Zn5V2JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema
+         ~affinda_v2.models.Paths15O3Zn5V2JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: JobDescriptionSearchEmbed, or the result of cls(response)
-        :rtype: ~affinda.models.JobDescriptionSearchEmbed
+        :rtype: ~affinda_v2.models.JobDescriptionSearchEmbed
         :raises: ~azure.core.exceptions.HttpResponseError
         """
         error_map = {
@@ -3267,7 +3267,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         the custom criteria.
 
         :param body: Search parameters.
-        :type body: ~affinda.models.ResumeSearchParameters
+        :type body: ~affinda_v2.models.ResumeSearchParameters
         :param offset: The number of documents to skip before starting to collect the result set.
          Default value is None.
         :type offset: int
@@ -3275,7 +3275,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :type limit: int
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: ResumeSearch, or the result of cls(response)
-        :rtype: ~affinda.models.ResumeSearch
+        :rtype: ~affinda_v2.models.ResumeSearch
         :raises: ~azure.core.exceptions.HttpResponseError
         """
         error_map = {
@@ -3349,10 +3349,10 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :param identifier: Resume identifier.
         :type identifier: str
         :param body: Search parameters.
-        :type body: ~affinda.models.ResumeSearchParameters
+        :type body: ~affinda_v2.models.ResumeSearchParameters
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: ResumeSearchDetail, or the result of cls(response)
-        :rtype: ~affinda.models.ResumeSearchDetail
+        :rtype: ~affinda_v2.models.ResumeSearchDetail
         :raises: ~azure.core.exceptions.HttpResponseError
         """
         error_map = {
@@ -3471,7 +3471,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :type management_level_weight: float
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: ResumeSearchMatch, or the result of cls(response)
-        :rtype: ~affinda.models.ResumeSearchMatch
+        :rtype: ~affinda_v2.models.ResumeSearchMatch
         :raises: ~azure.core.exceptions.HttpResponseError
         """
         error_map = {
@@ -3547,7 +3547,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
 
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: ResumeSearchConfig, or the result of cls(response)
-        :rtype: ~affinda.models.ResumeSearchConfig
+        :rtype: ~affinda_v2.models.ResumeSearchConfig
         :raises: ~azure.core.exceptions.HttpResponseError
         """
         error_map = {
@@ -3607,10 +3607,10 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         returned, etc.
 
         :param body:
-        :type body: ~affinda.models.ResumeSearchConfig
+        :type body: ~affinda_v2.models.ResumeSearchConfig
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: ResumeSearchConfig, or the result of cls(response)
-        :rtype: ~affinda.models.ResumeSearchConfig
+        :rtype: ~affinda_v2.models.ResumeSearchConfig
         :raises: ~azure.core.exceptions.HttpResponseError
         """
         error_map = {
@@ -3679,10 +3679,10 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
 
         :param body:  Default value is None.
         :type body:
-         ~affinda.models.Paths23Ubd8V2ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema
+         ~affinda_v2.models.Paths23Ubd8V2ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: ResumeSearchEmbed, or the result of cls(response)
-        :rtype: ~affinda.models.ResumeSearchEmbed
+        :rtype: ~affinda_v2.models.ResumeSearchEmbed
         :raises: ~azure.core.exceptions.HttpResponseError
         """
         error_map = {
@@ -3889,11 +3889,11 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :param limit: The numbers of results to return. Default value is None.
         :type limit: int
         :param document_type: Filter indices by a document type. Default value is None.
-        :type document_type: str or ~affinda.models.Enum7
+        :type document_type: str or ~affinda_v2.models.Enum7
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: Paths18Iqsr4V2IndexGetResponses200ContentApplicationJsonSchema, or the result of
          cls(response)
-        :rtype: ~affinda.models.Paths18Iqsr4V2IndexGetResponses200ContentApplicationJsonSchema
+        :rtype: ~affinda_v2.models.Paths18Iqsr4V2IndexGetResponses200ContentApplicationJsonSchema
         :raises: ~azure.core.exceptions.HttpResponseError
         """
         error_map = {
@@ -3959,10 +3959,10 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         Create an index for the search tool.
 
         :param body: Index to create.
-        :type body: ~affinda.models.IndexCreate
+        :type body: ~affinda_v2.models.IndexCreate
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: Index, or the result of cls(response)
-        :rtype: ~affinda.models.Index
+        :rtype: ~affinda_v2.models.Index
         :raises: ~azure.core.exceptions.HttpResponseError
         """
         error_map = {
@@ -4031,10 +4031,10 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :param name: Index name.
         :type name: str
         :param body: Index data to update.
-        :type body: ~affinda.models.IndexUpdate
+        :type body: ~affinda_v2.models.IndexUpdate
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: Index, or the result of cls(response)
-        :rtype: ~affinda.models.Index
+        :rtype: ~affinda_v2.models.Index
         :raises: ~azure.core.exceptions.HttpResponseError
         """
         error_map = {
@@ -4167,7 +4167,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :return: PathsAf7Nd4V2IndexNameDocumentsGetResponses200ContentApplicationJsonSchema, or the
          result of cls(response)
         :rtype:
-         ~affinda.models.PathsAf7Nd4V2IndexNameDocumentsGetResponses200ContentApplicationJsonSchema
+         ~affinda_v2.models.PathsAf7Nd4V2IndexNameDocumentsGetResponses200ContentApplicationJsonSchema
         :raises: ~azure.core.exceptions.HttpResponseError
         """
         error_map = {
@@ -4236,12 +4236,12 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :type name: str
         :param body: Document to index.
         :type body:
-         ~affinda.models.PathsYg099PV2IndexNameDocumentsPostRequestbodyContentApplicationJsonSchema
+         ~affinda_v2.models.PathsYg099PV2IndexNameDocumentsPostRequestbodyContentApplicationJsonSchema
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: Paths14R8PdgV2IndexNameDocumentsPostResponses201ContentApplicationJsonSchema, or the
          result of cls(response)
         :rtype:
-         ~affinda.models.Paths14R8PdgV2IndexNameDocumentsPostResponses201ContentApplicationJsonSchema
+         ~affinda_v2.models.Paths14R8PdgV2IndexNameDocumentsPostResponses201ContentApplicationJsonSchema
         :raises: ~azure.core.exceptions.HttpResponseError
         """
         error_map = {
@@ -4378,7 +4378,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
 
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: list of OccupationGroup, or the result of cls(response)
-        :rtype: list[~affinda.models.OccupationGroup]
+        :rtype: list[~affinda_v2.models.OccupationGroup]
         :raises: ~azure.core.exceptions.HttpResponseError
         """
         error_map = {
@@ -4448,7 +4448,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :return: PathsMda0LlV2ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema, or the
          result of cls(response)
         :rtype:
-         ~affinda.models.PathsMda0LlV2ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema
+         ~affinda_v2.models.PathsMda0LlV2ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema
         :raises: ~azure.core.exceptions.HttpResponseError
         """
         error_map = {
@@ -4522,10 +4522,10 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         <https://docs.affinda.com/docs/webhooks>`_.
 
         :param body:
-        :type body: ~affinda.models.ResthookSubscriptionCreate
+        :type body: ~affinda_v2.models.ResthookSubscriptionCreate
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: ResthookSubscription, or the result of cls(response)
-        :rtype: ~affinda.models.ResthookSubscription
+        :rtype: ~affinda_v2.models.ResthookSubscription
         :raises: ~azure.core.exceptions.HttpResponseError
         """
         error_map = {
@@ -4594,7 +4594,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :type id: int
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: ResthookSubscription, or the result of cls(response)
-        :rtype: ~affinda.models.ResthookSubscription
+        :rtype: ~affinda_v2.models.ResthookSubscription
         :raises: ~azure.core.exceptions.HttpResponseError
         """
         error_map = {
@@ -4659,10 +4659,10 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :param id: ResthookSubscription's ID.
         :type id: int
         :param body: ResthookSubscription data to update.
-        :type body: ~affinda.models.ResthookSubscriptionUpdate
+        :type body: ~affinda_v2.models.ResthookSubscriptionUpdate
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: ResthookSubscription, or the result of cls(response)
-        :rtype: ~affinda.models.ResthookSubscription
+        :rtype: ~affinda_v2.models.ResthookSubscription
         :raises: ~azure.core.exceptions.HttpResponseError
         """
         error_map = {
@@ -4796,7 +4796,7 @@ class AffindaAPIOperationsMixin(object):  # pylint: disable=too-many-public-meth
         :type x_hook_secret: str
         :keyword callable cls: A custom type or function that will be passed the direct response
         :return: ResthookSubscription, or the result of cls(response)
-        :rtype: ~affinda.models.ResthookSubscription
+        :rtype: ~affinda_v2.models.ResthookSubscription
         :raises: ~azure.core.exceptions.HttpResponseError
         """
         error_map = {

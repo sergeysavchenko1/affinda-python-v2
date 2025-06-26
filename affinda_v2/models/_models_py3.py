@@ -4,8 +4,15 @@
 # Changes may cause incorrect behavior and will be lost if the code is regenerated.
 # --------------------------------------------------------------------------
 
+import datetime
+from typing import Any, Dict, IO, List, Optional, TYPE_CHECKING, Union
+
 from azure.core.exceptions import HttpResponseError
 import msrest.serialization
+
+if TYPE_CHECKING:
+    # pylint: disable=unused-import,ungrouped-imports
+    import __init__ as _models
 
 
 class Accreditation(msrest.serialization.Model):
@@ -36,13 +43,13 @@ class Accreditation(msrest.serialization.Model):
         "education_level": {"key": "educationLevel", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(self, *, education: Optional[str] = None, **kwargs):
         """
         :keyword education:
         :paramtype education: str
         """
         super(Accreditation, self).__init__(**kwargs)
-        self.education = kwargs.get("education", None)
+        self.education = education
         self.input_str = None
         self.match_str = None
         self.education_level = None
@@ -59,9 +66,9 @@ class Annotation(msrest.serialization.Model):
     :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
-    :vartype rectangle: ~affinda.models.Rectangle
+    :vartype rectangle: ~affinda_v2.models.Rectangle
     :ivar rectangles: Required.
-    :vartype rectangles: list[~affinda.models.Rectangle]
+    :vartype rectangles: list[~affinda_v2.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
     :ivar raw: Required.
@@ -118,7 +125,25 @@ class Annotation(msrest.serialization.Model):
         "content_type": {"key": "contentType", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        id: int,
+        rectangle: "_models.Rectangle",
+        rectangles: List["_models.Rectangle"],
+        page_index: int,
+        raw: str,
+        confidence: float,
+        classification_confidence: float,
+        text_extraction_confidence: float,
+        is_verified: bool,
+        is_client_verified: bool,
+        is_auto_verified: bool,
+        content_type: str,
+        additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
+        **kwargs,
+    ):
         """
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
@@ -126,9 +151,9 @@ class Annotation(msrest.serialization.Model):
         :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
-        :paramtype rectangle: ~affinda.models.Rectangle
+        :paramtype rectangle: ~affinda_v2.models.Rectangle
         :keyword rectangles: Required.
-        :paramtype rectangles: list[~affinda.models.Rectangle]
+        :paramtype rectangles: list[~affinda_v2.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
         :keyword raw: Required.
@@ -153,20 +178,20 @@ class Annotation(msrest.serialization.Model):
         :paramtype content_type: str
         """
         super(Annotation, self).__init__(**kwargs)
-        self.additional_properties = kwargs.get("additional_properties", None)
-        self.id = kwargs["id"]
-        self.rectangle = kwargs["rectangle"]
-        self.rectangles = kwargs["rectangles"]
-        self.page_index = kwargs["page_index"]
-        self.raw = kwargs["raw"]
-        self.confidence = kwargs["confidence"]
-        self.classification_confidence = kwargs["classification_confidence"]
-        self.text_extraction_confidence = kwargs["text_extraction_confidence"]
-        self.is_verified = kwargs["is_verified"]
-        self.is_client_verified = kwargs["is_client_verified"]
-        self.is_auto_verified = kwargs["is_auto_verified"]
-        self.data_point = kwargs.get("data_point", None)
-        self.content_type = kwargs["content_type"]
+        self.additional_properties = additional_properties
+        self.id = id
+        self.rectangle = rectangle
+        self.rectangles = rectangles
+        self.page_index = page_index
+        self.raw = raw
+        self.confidence = confidence
+        self.classification_confidence = classification_confidence
+        self.text_extraction_confidence = text_extraction_confidence
+        self.is_verified = is_verified
+        self.is_client_verified = is_client_verified
+        self.is_auto_verified = is_auto_verified
+        self.data_point = data_point
+        self.content_type = content_type
 
 
 class AnnotationV2Base(msrest.serialization.Model):
@@ -180,9 +205,9 @@ class AnnotationV2Base(msrest.serialization.Model):
     :ivar id:
     :vartype id: int
     :ivar rectangle:
-    :vartype rectangle: ~affinda.models.Rectangle
+    :vartype rectangle: ~affinda_v2.models.Rectangle
     :ivar rectangles:
-    :vartype rectangles: list[~affinda.models.Rectangle]
+    :vartype rectangles: list[~affinda_v2.models.Rectangle]
     :ivar page_index:
     :vartype page_index: int
     :ivar raw:
@@ -230,7 +255,24 @@ class AnnotationV2Base(msrest.serialization.Model):
         "content_type": {"key": "contentType", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        additional_properties: Optional[Dict[str, Any]] = None,
+        id: Optional[int] = None,
+        rectangle: Optional["_models.Rectangle"] = None,
+        page_index: Optional[int] = None,
+        raw: Optional[str] = None,
+        confidence: Optional[float] = None,
+        classification_confidence: Optional[float] = None,
+        text_extraction_confidence: Optional[float] = None,
+        is_verified: Optional[bool] = None,
+        is_client_verified: Optional[bool] = None,
+        is_auto_verified: Optional[bool] = None,
+        data_point: Optional[str] = None,
+        content_type: Optional[str] = None,
+        **kwargs,
+    ):
         """
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
@@ -238,7 +280,7 @@ class AnnotationV2Base(msrest.serialization.Model):
         :keyword id:
         :paramtype id: int
         :keyword rectangle:
-        :paramtype rectangle: ~affinda.models.Rectangle
+        :paramtype rectangle: ~affinda_v2.models.Rectangle
         :keyword page_index:
         :paramtype page_index: int
         :keyword raw:
@@ -263,20 +305,20 @@ class AnnotationV2Base(msrest.serialization.Model):
         :paramtype content_type: str
         """
         super(AnnotationV2Base, self).__init__(**kwargs)
-        self.additional_properties = kwargs.get("additional_properties", None)
-        self.id = kwargs.get("id", None)
-        self.rectangle = kwargs.get("rectangle", None)
+        self.additional_properties = additional_properties
+        self.id = id
+        self.rectangle = rectangle
         self.rectangles = None
-        self.page_index = kwargs.get("page_index", None)
-        self.raw = kwargs.get("raw", None)
-        self.confidence = kwargs.get("confidence", None)
-        self.classification_confidence = kwargs.get("classification_confidence", None)
-        self.text_extraction_confidence = kwargs.get("text_extraction_confidence", None)
-        self.is_verified = kwargs.get("is_verified", None)
-        self.is_client_verified = kwargs.get("is_client_verified", None)
-        self.is_auto_verified = kwargs.get("is_auto_verified", None)
-        self.data_point = kwargs.get("data_point", None)
-        self.content_type = kwargs.get("content_type", None)
+        self.page_index = page_index
+        self.raw = raw
+        self.confidence = confidence
+        self.classification_confidence = classification_confidence
+        self.text_extraction_confidence = text_extraction_confidence
+        self.is_verified = is_verified
+        self.is_client_verified = is_client_verified
+        self.is_auto_verified = is_auto_verified
+        self.data_point = data_point
+        self.content_type = content_type
 
 
 class Components105Abr3SchemasInvoicedataPropertiesCustomernumberAllof1(
@@ -295,7 +337,7 @@ class Components105Abr3SchemasInvoicedataPropertiesCustomernumberAllof1(
         "parsed": {"key": "parsed", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(self, *, raw: Optional[str] = None, parsed: Optional[str] = None, **kwargs):
         """
         :keyword raw:
         :paramtype raw: str
@@ -305,8 +347,8 @@ class Components105Abr3SchemasInvoicedataPropertiesCustomernumberAllof1(
         super(Components105Abr3SchemasInvoicedataPropertiesCustomernumberAllof1, self).__init__(
             **kwargs
         )
-        self.raw = kwargs.get("raw", None)
-        self.parsed = kwargs.get("parsed", None)
+        self.raw = raw
+        self.parsed = parsed
 
 
 class Components10Thcs2SchemasInvoicedataPropertiesSupplieremailAllof1(msrest.serialization.Model):
@@ -323,7 +365,7 @@ class Components10Thcs2SchemasInvoicedataPropertiesSupplieremailAllof1(msrest.se
         "parsed": {"key": "parsed", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(self, *, raw: Optional[str] = None, parsed: Optional[str] = None, **kwargs):
         """
         :keyword raw:
         :paramtype raw: str
@@ -333,8 +375,8 @@ class Components10Thcs2SchemasInvoicedataPropertiesSupplieremailAllof1(msrest.se
         super(Components10Thcs2SchemasInvoicedataPropertiesSupplieremailAllof1, self).__init__(
             **kwargs
         )
-        self.raw = kwargs.get("raw", None)
-        self.parsed = kwargs.get("parsed", None)
+        self.raw = raw
+        self.parsed = parsed
 
 
 class Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1(msrest.serialization.Model):
@@ -351,7 +393,7 @@ class Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1(msrest.seriali
         "parsed": {"key": "parsed", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(self, *, raw: Optional[str] = None, parsed: Optional[str] = None, **kwargs):
         """
         :keyword raw:
         :paramtype raw: str
@@ -359,8 +401,8 @@ class Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1(msrest.seriali
         :paramtype parsed: str
         """
         super(Components1127QwqSchemasInvoicedataPropertiesBankibanAllof1, self).__init__(**kwargs)
-        self.raw = kwargs.get("raw", None)
-        self.parsed = kwargs.get("parsed", None)
+        self.raw = raw
+        self.parsed = parsed
 
 
 class Components158Lya5SchemasInvoicedataPropertiesCustomerbusinessnumberAllof1(
@@ -379,7 +421,7 @@ class Components158Lya5SchemasInvoicedataPropertiesCustomerbusinessnumberAllof1(
         "parsed": {"key": "parsed", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(self, *, raw: Optional[str] = None, parsed: Optional[str] = None, **kwargs):
         """
         :keyword raw:
         :paramtype raw: str
@@ -389,8 +431,8 @@ class Components158Lya5SchemasInvoicedataPropertiesCustomerbusinessnumberAllof1(
         super(
             Components158Lya5SchemasInvoicedataPropertiesCustomerbusinessnumberAllof1, self
         ).__init__(**kwargs)
-        self.raw = kwargs.get("raw", None)
-        self.parsed = kwargs.get("parsed", None)
+        self.raw = raw
+        self.parsed = parsed
 
 
 class Components159Ji55SchemasResumesearchdetailPropertiesLanguagesPropertiesValueItemsAllof1(
@@ -406,7 +448,7 @@ class Components159Ji55SchemasResumesearchdetailPropertiesLanguagesPropertiesVal
         "match": {"key": "match", "type": "bool"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(self, *, match: Optional[bool] = None, **kwargs):
         """
         :keyword match:
         :paramtype match: bool
@@ -415,7 +457,7 @@ class Components159Ji55SchemasResumesearchdetailPropertiesLanguagesPropertiesVal
             Components159Ji55SchemasResumesearchdetailPropertiesLanguagesPropertiesValueItemsAllof1,
             self,
         ).__init__(**kwargs)
-        self.match = kwargs.get("match", None)
+        self.match = match
 
 
 class Components17JmwpjSchemasInvoicedataPropertiesSupplierwebsiteAllof1(
@@ -434,7 +476,7 @@ class Components17JmwpjSchemasInvoicedataPropertiesSupplierwebsiteAllof1(
         "parsed": {"key": "parsed", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(self, *, raw: Optional[str] = None, parsed: Optional[str] = None, **kwargs):
         """
         :keyword raw:
         :paramtype raw: str
@@ -444,8 +486,8 @@ class Components17JmwpjSchemasInvoicedataPropertiesSupplierwebsiteAllof1(
         super(Components17JmwpjSchemasInvoicedataPropertiesSupplierwebsiteAllof1, self).__init__(
             **kwargs
         )
-        self.raw = kwargs.get("raw", None)
-        self.parsed = kwargs.get("parsed", None)
+        self.raw = raw
+        self.parsed = parsed
 
 
 class Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1(msrest.serialization.Model):
@@ -462,7 +504,7 @@ class Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1(msrest.seri
         "parsed": {"key": "parsed", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(self, *, raw: Optional[str] = None, parsed: Optional[str] = None, **kwargs):
         """
         :keyword raw:
         :paramtype raw: str
@@ -472,8 +514,8 @@ class Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1(msrest.seri
         super(Components1Fe3VqtSchemasInvoicedataPropertiesSupplierfaxAllof1, self).__init__(
             **kwargs
         )
-        self.raw = kwargs.get("raw", None)
-        self.parsed = kwargs.get("parsed", None)
+        self.raw = raw
+        self.parsed = parsed
 
 
 class Components1Hr2XldSchemasInvoicedataPropertiesSupplierphonenumberAllof1(
@@ -492,7 +534,7 @@ class Components1Hr2XldSchemasInvoicedataPropertiesSupplierphonenumberAllof1(
         "parsed": {"key": "parsed", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(self, *, raw: Optional[str] = None, parsed: Optional[str] = None, **kwargs):
         """
         :keyword raw:
         :paramtype raw: str
@@ -502,8 +544,8 @@ class Components1Hr2XldSchemasInvoicedataPropertiesSupplierphonenumberAllof1(
         super(
             Components1Hr2XldSchemasInvoicedataPropertiesSupplierphonenumberAllof1, self
         ).__init__(**kwargs)
-        self.raw = kwargs.get("raw", None)
-        self.parsed = kwargs.get("parsed", None)
+        self.raw = raw
+        self.parsed = parsed
 
 
 class Components1O8OpknSchemasInvoicedataPropertiesCustomercompanynameAllof1(
@@ -522,7 +564,7 @@ class Components1O8OpknSchemasInvoicedataPropertiesCustomercompanynameAllof1(
         "parsed": {"key": "parsed", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(self, *, raw: Optional[str] = None, parsed: Optional[str] = None, **kwargs):
         """
         :keyword raw:
         :paramtype raw: str
@@ -532,8 +574,8 @@ class Components1O8OpknSchemasInvoicedataPropertiesCustomercompanynameAllof1(
         super(
             Components1O8OpknSchemasInvoicedataPropertiesCustomercompanynameAllof1, self
         ).__init__(**kwargs)
-        self.raw = kwargs.get("raw", None)
-        self.parsed = kwargs.get("parsed", None)
+        self.raw = raw
+        self.parsed = parsed
 
 
 class Components1P4Fl61SchemasInvoicedataPropertiesSuppliercompanynameAllof1(
@@ -552,7 +594,7 @@ class Components1P4Fl61SchemasInvoicedataPropertiesSuppliercompanynameAllof1(
         "parsed": {"key": "parsed", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(self, *, raw: Optional[str] = None, parsed: Optional[str] = None, **kwargs):
         """
         :keyword raw:
         :paramtype raw: str
@@ -562,8 +604,8 @@ class Components1P4Fl61SchemasInvoicedataPropertiesSuppliercompanynameAllof1(
         super(
             Components1P4Fl61SchemasInvoicedataPropertiesSuppliercompanynameAllof1, self
         ).__init__(**kwargs)
-        self.raw = kwargs.get("raw", None)
-        self.parsed = kwargs.get("parsed", None)
+        self.raw = raw
+        self.parsed = parsed
 
 
 class Components1QdassaSchemasInvoicedataPropertiesBanksortcodeAllof1(msrest.serialization.Model):
@@ -580,7 +622,7 @@ class Components1QdassaSchemasInvoicedataPropertiesBanksortcodeAllof1(msrest.ser
         "parsed": {"key": "parsed", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(self, *, raw: Optional[str] = None, parsed: Optional[str] = None, **kwargs):
         """
         :keyword raw:
         :paramtype raw: str
@@ -590,8 +632,8 @@ class Components1QdassaSchemasInvoicedataPropertiesBanksortcodeAllof1(msrest.ser
         super(Components1QdassaSchemasInvoicedataPropertiesBanksortcodeAllof1, self).__init__(
             **kwargs
         )
-        self.raw = kwargs.get("raw", None)
-        self.parsed = kwargs.get("parsed", None)
+        self.raw = raw
+        self.parsed = parsed
 
 
 class Components1Roa72HSchemasInvoicedataPropertiesBankswiftAllof1(msrest.serialization.Model):
@@ -608,7 +650,7 @@ class Components1Roa72HSchemasInvoicedataPropertiesBankswiftAllof1(msrest.serial
         "parsed": {"key": "parsed", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(self, *, raw: Optional[str] = None, parsed: Optional[str] = None, **kwargs):
         """
         :keyword raw:
         :paramtype raw: str
@@ -618,8 +660,8 @@ class Components1Roa72HSchemasInvoicedataPropertiesBankswiftAllof1(msrest.serial
         super(Components1Roa72HSchemasInvoicedataPropertiesBankswiftAllof1, self).__init__(
             **kwargs
         )
-        self.raw = kwargs.get("raw", None)
-        self.parsed = kwargs.get("parsed", None)
+        self.raw = raw
+        self.parsed = parsed
 
 
 class Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1(msrest.serialization.Model):
@@ -636,7 +678,7 @@ class Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1(msrest.serializ
         "parsed": {"key": "parsed", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(self, *, raw: Optional[str] = None, parsed: Optional[str] = None, **kwargs):
         """
         :keyword raw:
         :paramtype raw: str
@@ -644,8 +686,8 @@ class Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1(msrest.serializ
         :paramtype parsed: str
         """
         super(Components1RrxgkvSchemasInvoicedataPropertiesBankbsbAllof1, self).__init__(**kwargs)
-        self.raw = kwargs.get("raw", None)
-        self.parsed = kwargs.get("parsed", None)
+        self.raw = raw
+        self.parsed = parsed
 
 
 class Components1TlnsonSchemasJobdescriptionsearchdetailPropertiesLocationPropertiesValueAllof1(
@@ -661,7 +703,7 @@ class Components1TlnsonSchemasJobdescriptionsearchdetailPropertiesLocationProper
         "match": {"key": "match", "type": "bool"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(self, *, match: Optional[bool] = None, **kwargs):
         """
         :keyword match:
         :paramtype match: bool
@@ -670,7 +712,7 @@ class Components1TlnsonSchemasJobdescriptionsearchdetailPropertiesLocationProper
             Components1TlnsonSchemasJobdescriptionsearchdetailPropertiesLocationPropertiesValueAllof1,
             self,
         ).__init__(**kwargs)
-        self.match = kwargs.get("match", None)
+        self.match = match
 
 
 class Components1TryetgSchemasResumedataPropertiesWorkexperienceItemsPropertiesOccupationPropertiesClassification(
@@ -717,7 +759,19 @@ class Components1TryetgSchemasResumedataPropertiesWorkexperienceItemsPropertiesO
         "major_group_code": {"key": "majorGroupCode", "type": "int"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        title: Optional[str] = None,
+        minor_group: Optional[str] = None,
+        sub_major_group: Optional[str] = None,
+        major_group: Optional[str] = None,
+        soc_code: Optional[int] = None,
+        minor_group_code: Optional[int] = None,
+        sub_major_group_code: Optional[int] = None,
+        major_group_code: Optional[int] = None,
+        **kwargs,
+    ):
         """
         :keyword title: SOC2020 classification for this job title.
         :paramtype title: str
@@ -743,14 +797,14 @@ class Components1TryetgSchemasResumedataPropertiesWorkexperienceItemsPropertiesO
             Components1TryetgSchemasResumedataPropertiesWorkexperienceItemsPropertiesOccupationPropertiesClassification,
             self,
         ).__init__(**kwargs)
-        self.title = kwargs.get("title", None)
-        self.minor_group = kwargs.get("minor_group", None)
-        self.sub_major_group = kwargs.get("sub_major_group", None)
-        self.major_group = kwargs.get("major_group", None)
-        self.soc_code = kwargs.get("soc_code", None)
-        self.minor_group_code = kwargs.get("minor_group_code", None)
-        self.sub_major_group_code = kwargs.get("sub_major_group_code", None)
-        self.major_group_code = kwargs.get("major_group_code", None)
+        self.title = title
+        self.minor_group = minor_group
+        self.sub_major_group = sub_major_group
+        self.major_group = major_group
+        self.soc_code = soc_code
+        self.minor_group_code = minor_group_code
+        self.sub_major_group_code = sub_major_group_code
+        self.major_group_code = major_group_code
 
 
 class Components1Vvtu5NSchemasInvoicedataPropertiesPaymentamountpaidAllof1(
@@ -769,7 +823,7 @@ class Components1Vvtu5NSchemasInvoicedataPropertiesPaymentamountpaidAllof1(
         "parsed": {"key": "parsed", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(self, *, raw: Optional[str] = None, parsed: Optional[str] = None, **kwargs):
         """
         :keyword raw:
         :paramtype raw: str
@@ -779,8 +833,8 @@ class Components1Vvtu5NSchemasInvoicedataPropertiesPaymentamountpaidAllof1(
         super(Components1Vvtu5NSchemasInvoicedataPropertiesPaymentamountpaidAllof1, self).__init__(
             **kwargs
         )
-        self.raw = kwargs.get("raw", None)
-        self.parsed = kwargs.get("parsed", None)
+        self.raw = raw
+        self.parsed = parsed
 
 
 class Components1W3SqeuSchemasInvoicedataPropertiesPaymentamountbaseAllof1(
@@ -799,7 +853,7 @@ class Components1W3SqeuSchemasInvoicedataPropertiesPaymentamountbaseAllof1(
         "parsed": {"key": "parsed", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(self, *, raw: Optional[str] = None, parsed: Optional[str] = None, **kwargs):
         """
         :keyword raw:
         :paramtype raw: str
@@ -809,8 +863,8 @@ class Components1W3SqeuSchemasInvoicedataPropertiesPaymentamountbaseAllof1(
         super(Components1W3SqeuSchemasInvoicedataPropertiesPaymentamountbaseAllof1, self).__init__(
             **kwargs
         )
-        self.raw = kwargs.get("raw", None)
-        self.parsed = kwargs.get("parsed", None)
+        self.raw = raw
+        self.parsed = parsed
 
 
 class Components1Y7HcurSchemasInvoicedataPropertiesCustomeremailAllof1(msrest.serialization.Model):
@@ -827,7 +881,7 @@ class Components1Y7HcurSchemasInvoicedataPropertiesCustomeremailAllof1(msrest.se
         "parsed": {"key": "parsed", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(self, *, raw: Optional[str] = None, parsed: Optional[str] = None, **kwargs):
         """
         :keyword raw:
         :paramtype raw: str
@@ -837,8 +891,8 @@ class Components1Y7HcurSchemasInvoicedataPropertiesCustomeremailAllof1(msrest.se
         super(Components1Y7HcurSchemasInvoicedataPropertiesCustomeremailAllof1, self).__init__(
             **kwargs
         )
-        self.raw = kwargs.get("raw", None)
-        self.parsed = kwargs.get("parsed", None)
+        self.raw = raw
+        self.parsed = parsed
 
 
 class Components1YsiqwnSchemasInvoicedataPropertiesCustomerphonenumberAllof1(
@@ -857,7 +911,7 @@ class Components1YsiqwnSchemasInvoicedataPropertiesCustomerphonenumberAllof1(
         "parsed": {"key": "parsed", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(self, *, raw: Optional[str] = None, parsed: Optional[str] = None, **kwargs):
         """
         :keyword raw:
         :paramtype raw: str
@@ -867,8 +921,8 @@ class Components1YsiqwnSchemasInvoicedataPropertiesCustomerphonenumberAllof1(
         super(
             Components1YsiqwnSchemasInvoicedataPropertiesCustomerphonenumberAllof1, self
         ).__init__(**kwargs)
-        self.raw = kwargs.get("raw", None)
-        self.parsed = kwargs.get("parsed", None)
+        self.raw = raw
+        self.parsed = parsed
 
 
 class Components2XnshtSchemasInvoicedataPropertiesPaymentreferenceAllof1(
@@ -887,7 +941,7 @@ class Components2XnshtSchemasInvoicedataPropertiesPaymentreferenceAllof1(
         "parsed": {"key": "parsed", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(self, *, raw: Optional[str] = None, parsed: Optional[str] = None, **kwargs):
         """
         :keyword raw:
         :paramtype raw: str
@@ -897,8 +951,8 @@ class Components2XnshtSchemasInvoicedataPropertiesPaymentreferenceAllof1(
         super(Components2XnshtSchemasInvoicedataPropertiesPaymentreferenceAllof1, self).__init__(
             **kwargs
         )
-        self.raw = kwargs.get("raw", None)
-        self.parsed = kwargs.get("parsed", None)
+        self.raw = raw
+        self.parsed = parsed
 
 
 class Components4A2PzvSchemasInvoicedataPropertiesPaymentamounttotalAllof1(
@@ -917,7 +971,7 @@ class Components4A2PzvSchemasInvoicedataPropertiesPaymentamounttotalAllof1(
         "parsed": {"key": "parsed", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(self, *, raw: Optional[str] = None, parsed: Optional[str] = None, **kwargs):
         """
         :keyword raw:
         :paramtype raw: str
@@ -927,8 +981,8 @@ class Components4A2PzvSchemasInvoicedataPropertiesPaymentamounttotalAllof1(
         super(Components4A2PzvSchemasInvoicedataPropertiesPaymentamounttotalAllof1, self).__init__(
             **kwargs
         )
-        self.raw = kwargs.get("raw", None)
-        self.parsed = kwargs.get("parsed", None)
+        self.raw = raw
+        self.parsed = parsed
 
 
 class Components5D6NjySchemasInvoicedataPropertiesSupplierbusinessnumberAllof1(
@@ -947,7 +1001,7 @@ class Components5D6NjySchemasInvoicedataPropertiesSupplierbusinessnumberAllof1(
         "parsed": {"key": "parsed", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(self, *, raw: Optional[str] = None, parsed: Optional[str] = None, **kwargs):
         """
         :keyword raw:
         :paramtype raw: str
@@ -957,8 +1011,8 @@ class Components5D6NjySchemasInvoicedataPropertiesSupplierbusinessnumberAllof1(
         super(
             Components5D6NjySchemasInvoicedataPropertiesSupplierbusinessnumberAllof1, self
         ).__init__(**kwargs)
-        self.raw = kwargs.get("raw", None)
-        self.parsed = kwargs.get("parsed", None)
+        self.raw = raw
+        self.parsed = parsed
 
 
 class Components5Rnu7ESchemasInvoicedataPropertiesInvoicenumberAllof1(msrest.serialization.Model):
@@ -975,7 +1029,7 @@ class Components5Rnu7ESchemasInvoicedataPropertiesInvoicenumberAllof1(msrest.ser
         "parsed": {"key": "parsed", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(self, *, raw: Optional[str] = None, parsed: Optional[str] = None, **kwargs):
         """
         :keyword raw:
         :paramtype raw: str
@@ -985,8 +1039,8 @@ class Components5Rnu7ESchemasInvoicedataPropertiesInvoicenumberAllof1(msrest.ser
         super(Components5Rnu7ESchemasInvoicedataPropertiesInvoicenumberAllof1, self).__init__(
             **kwargs
         )
-        self.raw = kwargs.get("raw", None)
-        self.parsed = kwargs.get("parsed", None)
+        self.raw = raw
+        self.parsed = parsed
 
 
 class Components6Zm20BSchemasInvoicedataPropertiesPaymentamounttaxAllof1(
@@ -1005,7 +1059,7 @@ class Components6Zm20BSchemasInvoicedataPropertiesPaymentamounttaxAllof1(
         "parsed": {"key": "parsed", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(self, *, raw: Optional[str] = None, parsed: Optional[str] = None, **kwargs):
         """
         :keyword raw:
         :paramtype raw: str
@@ -1015,8 +1069,8 @@ class Components6Zm20BSchemasInvoicedataPropertiesPaymentamounttaxAllof1(
         super(Components6Zm20BSchemasInvoicedataPropertiesPaymentamounttaxAllof1, self).__init__(
             **kwargs
         )
-        self.raw = kwargs.get("raw", None)
-        self.parsed = kwargs.get("parsed", None)
+        self.raw = raw
+        self.parsed = parsed
 
 
 class Components74A7C1SchemasInvoicedataPropertiesBankaccountnumberAllof1(
@@ -1035,7 +1089,7 @@ class Components74A7C1SchemasInvoicedataPropertiesBankaccountnumberAllof1(
         "parsed": {"key": "parsed", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(self, *, raw: Optional[str] = None, parsed: Optional[str] = None, **kwargs):
         """
         :keyword raw:
         :paramtype raw: str
@@ -1045,8 +1099,8 @@ class Components74A7C1SchemasInvoicedataPropertiesBankaccountnumberAllof1(
         super(Components74A7C1SchemasInvoicedataPropertiesBankaccountnumberAllof1, self).__init__(
             **kwargs
         )
-        self.raw = kwargs.get("raw", None)
-        self.parsed = kwargs.get("parsed", None)
+        self.raw = raw
+        self.parsed = parsed
 
 
 class ComponentsA69Bd0SchemasInvoicedataPropertiesBpaybillercodeAllof1(msrest.serialization.Model):
@@ -1063,7 +1117,7 @@ class ComponentsA69Bd0SchemasInvoicedataPropertiesBpaybillercodeAllof1(msrest.se
         "parsed": {"key": "parsed", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(self, *, raw: Optional[str] = None, parsed: Optional[str] = None, **kwargs):
         """
         :keyword raw:
         :paramtype raw: str
@@ -1073,8 +1127,8 @@ class ComponentsA69Bd0SchemasInvoicedataPropertiesBpaybillercodeAllof1(msrest.se
         super(ComponentsA69Bd0SchemasInvoicedataPropertiesBpaybillercodeAllof1, self).__init__(
             **kwargs
         )
-        self.raw = kwargs.get("raw", None)
-        self.parsed = kwargs.get("parsed", None)
+        self.raw = raw
+        self.parsed = parsed
 
 
 class ComponentsAq75Z8SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllof1(
@@ -1093,7 +1147,7 @@ class ComponentsAq75Z8SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllo
         "parsed": {"key": "parsed", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(self, *, raw: Optional[str] = None, parsed: Optional[str] = None, **kwargs):
         """
         :keyword raw:
         :paramtype raw: str
@@ -1103,8 +1157,8 @@ class ComponentsAq75Z8SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllo
         super(
             ComponentsAq75Z8SchemasInvoicedataPropertiesInvoicepurchaseordernumberAllof1, self
         ).__init__(**kwargs)
-        self.raw = kwargs.get("raw", None)
-        self.parsed = kwargs.get("parsed", None)
+        self.raw = raw
+        self.parsed = parsed
 
 
 class ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1(msrest.serialization.Model):
@@ -1121,7 +1175,7 @@ class ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1(msrest.seria
         "parsed": {"key": "parsed", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(self, *, raw: Optional[str] = None, parsed: Optional[str] = None, **kwargs):
         """
         :keyword raw:
         :paramtype raw: str
@@ -1131,8 +1185,8 @@ class ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1(msrest.seria
         super(ComponentsB3U7OaSchemasInvoicedataPropertiesSuppliervatAllof1, self).__init__(
             **kwargs
         )
-        self.raw = kwargs.get("raw", None)
-        self.parsed = kwargs.get("parsed", None)
+        self.raw = raw
+        self.parsed = parsed
 
 
 class ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1(msrest.serialization.Model):
@@ -1149,7 +1203,7 @@ class ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1(msrest.seria
         "parsed": {"key": "parsed", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(self, *, raw: Optional[str] = None, parsed: Optional[str] = None, **kwargs):
         """
         :keyword raw:
         :paramtype raw: str
@@ -1159,8 +1213,8 @@ class ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1(msrest.seria
         super(ComponentsBeazccSchemasInvoicedataPropertiesCustomervatAllof1, self).__init__(
             **kwargs
         )
-        self.raw = kwargs.get("raw", None)
-        self.parsed = kwargs.get("parsed", None)
+        self.raw = raw
+        self.parsed = parsed
 
 
 class ComponentsEtsq6MSchemasInvoicedataPropertiesPaymentamountdueAllof1(
@@ -1179,7 +1233,7 @@ class ComponentsEtsq6MSchemasInvoicedataPropertiesPaymentamountdueAllof1(
         "parsed": {"key": "parsed", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(self, *, raw: Optional[str] = None, parsed: Optional[str] = None, **kwargs):
         """
         :keyword raw:
         :paramtype raw: str
@@ -1189,8 +1243,8 @@ class ComponentsEtsq6MSchemasInvoicedataPropertiesPaymentamountdueAllof1(
         super(ComponentsEtsq6MSchemasInvoicedataPropertiesPaymentamountdueAllof1, self).__init__(
             **kwargs
         )
-        self.raw = kwargs.get("raw", None)
-        self.parsed = kwargs.get("parsed", None)
+        self.raw = raw
+        self.parsed = parsed
 
 
 class ComponentsH65QjbSchemasResumesearchdetailPropertiesSkillsPropertiesValueItemsAllof1(
@@ -1206,7 +1260,7 @@ class ComponentsH65QjbSchemasResumesearchdetailPropertiesSkillsPropertiesValueIt
         "match": {"key": "match", "type": "bool"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(self, *, match: Optional[bool] = None, **kwargs):
         """
         :keyword match:
         :paramtype match: bool
@@ -1215,7 +1269,7 @@ class ComponentsH65QjbSchemasResumesearchdetailPropertiesSkillsPropertiesValueIt
             ComponentsH65QjbSchemasResumesearchdetailPropertiesSkillsPropertiesValueItemsAllof1,
             self,
         ).__init__(**kwargs)
-        self.match = kwargs.get("match", None)
+        self.match = match
 
 
 class ComponentsN9ShogSchemasResumesearchdetailPropertiesLocationPropertiesValueAllof1(
@@ -1231,7 +1285,7 @@ class ComponentsN9ShogSchemasResumesearchdetailPropertiesLocationPropertiesValue
         "match": {"key": "match", "type": "bool"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(self, *, match: Optional[bool] = None, **kwargs):
         """
         :keyword match:
         :paramtype match: bool
@@ -1239,7 +1293,7 @@ class ComponentsN9ShogSchemasResumesearchdetailPropertiesLocationPropertiesValue
         super(
             ComponentsN9ShogSchemasResumesearchdetailPropertiesLocationPropertiesValueAllof1, self
         ).__init__(**kwargs)
-        self.match = kwargs.get("match", None)
+        self.match = match
 
 
 class ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties(
@@ -1267,7 +1321,9 @@ class ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties(
         "score": {"key": "score", "type": "float"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self, *, label: str, value: Optional[str] = None, score: Optional[float] = None, **kwargs
+    ):
         """
         :keyword value:
         :paramtype value: str
@@ -1279,9 +1335,9 @@ class ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties(
         super(
             ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties, self
         ).__init__(**kwargs)
-        self.value = kwargs.get("value", None)
-        self.label = kwargs["label"]
-        self.score = kwargs.get("score", None)
+        self.value = value
+        self.label = label
+        self.score = score
 
 
 class ComponentsRe6GnoSchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueAllof1(
@@ -1297,7 +1353,7 @@ class ComponentsRe6GnoSchemasJobdescriptionsearchdetailPropertiesOccupationgroup
         "match": {"key": "match", "type": "bool"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(self, *, match: Optional[bool] = None, **kwargs):
         """
         :keyword match:
         :paramtype match: bool
@@ -1306,7 +1362,7 @@ class ComponentsRe6GnoSchemasJobdescriptionsearchdetailPropertiesOccupationgroup
             ComponentsRe6GnoSchemasJobdescriptionsearchdetailPropertiesOccupationgroupPropertiesValueAllof1,
             self,
         ).__init__(**kwargs)
-        self.match = kwargs.get("match", None)
+        self.match = match
 
 
 class ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValueItemsAllof1(
@@ -1322,7 +1378,7 @@ class ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValu
         "match": {"key": "match", "type": "bool"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(self, *, match: Optional[bool] = None, **kwargs):
         """
         :keyword match:
         :paramtype match: bool
@@ -1331,7 +1387,7 @@ class ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValu
             ComponentsSxu0N3SchemasResumesearchdetailPropertiesEducationPropertiesValueItemsAllof1,
             self,
         ).__init__(**kwargs)
-        self.match = kwargs.get("match", None)
+        self.match = match
 
 
 class ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1(msrest.serialization.Model):
@@ -1348,7 +1404,7 @@ class ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1(msrest.ser
         "parsed": {"key": "parsed", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(self, *, raw: Optional[str] = None, parsed: Optional[str] = None, **kwargs):
         """
         :keyword raw:
         :paramtype raw: str
@@ -1358,8 +1414,8 @@ class ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1(msrest.ser
         super(ComponentsW32SuaSchemasInvoicedataPropertiesBpayreferenceAllof1, self).__init__(
             **kwargs
         )
-        self.raw = kwargs.get("raw", None)
-        self.parsed = kwargs.get("parsed", None)
+        self.raw = raw
+        self.parsed = parsed
 
 
 class ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1(
@@ -1378,7 +1434,7 @@ class ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1(
         "parsed": {"key": "parsed", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(self, *, raw: Optional[str] = None, parsed: Optional[str] = None, **kwargs):
         """
         :keyword raw:
         :paramtype raw: str
@@ -1388,8 +1444,8 @@ class ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1(
         super(
             ComponentsWv2QrxSchemasInvoicedataPropertiesCustomercontactnameAllof1, self
         ).__init__(**kwargs)
-        self.raw = kwargs.get("raw", None)
-        self.parsed = kwargs.get("parsed", None)
+        self.raw = raw
+        self.parsed = parsed
 
 
 class CustomFieldConfig(msrest.serialization.Model):
@@ -1413,7 +1469,7 @@ class CustomFieldConfig(msrest.serialization.Model):
         "weight": {"key": "weight", "type": "float"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(self, *, data_point: str, weight: float = 0.5, **kwargs):
         """
         :keyword data_point: Required. Data point identifier.
         :paramtype data_point: str
@@ -1421,8 +1477,8 @@ class CustomFieldConfig(msrest.serialization.Model):
         :paramtype weight: float
         """
         super(CustomFieldConfig, self).__init__(**kwargs)
-        self.data_point = kwargs["data_point"]
-        self.weight = kwargs.get("weight", 0.5)
+        self.data_point = data_point
+        self.weight = weight
 
 
 class DateAnnotation(Annotation):
@@ -1436,9 +1492,9 @@ class DateAnnotation(Annotation):
     :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
-    :vartype rectangle: ~affinda.models.Rectangle
+    :vartype rectangle: ~affinda_v2.models.Rectangle
     :ivar rectangles: Required.
-    :vartype rectangles: list[~affinda.models.Rectangle]
+    :vartype rectangles: list[~affinda_v2.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
     :ivar raw: Required.
@@ -1498,7 +1554,26 @@ class DateAnnotation(Annotation):
         "parsed": {"key": "parsed", "type": "date"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        id: int,
+        rectangle: "_models.Rectangle",
+        rectangles: List["_models.Rectangle"],
+        page_index: int,
+        raw: str,
+        confidence: float,
+        classification_confidence: float,
+        text_extraction_confidence: float,
+        is_verified: bool,
+        is_client_verified: bool,
+        is_auto_verified: bool,
+        content_type: str,
+        additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
+        parsed: Optional[datetime.date] = None,
+        **kwargs,
+    ):
         """
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
@@ -1506,9 +1581,9 @@ class DateAnnotation(Annotation):
         :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
-        :paramtype rectangle: ~affinda.models.Rectangle
+        :paramtype rectangle: ~affinda_v2.models.Rectangle
         :keyword rectangles: Required.
-        :paramtype rectangles: list[~affinda.models.Rectangle]
+        :paramtype rectangles: list[~affinda_v2.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
         :keyword raw: Required.
@@ -1534,8 +1609,24 @@ class DateAnnotation(Annotation):
         :keyword parsed:
         :paramtype parsed: ~datetime.date
         """
-        super(DateAnnotation, self).__init__(**kwargs)
-        self.parsed = kwargs.get("parsed", None)
+        super(DateAnnotation, self).__init__(
+            additional_properties=additional_properties,
+            id=id,
+            rectangle=rectangle,
+            rectangles=rectangles,
+            page_index=page_index,
+            raw=raw,
+            confidence=confidence,
+            classification_confidence=classification_confidence,
+            text_extraction_confidence=text_extraction_confidence,
+            is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
+            data_point=data_point,
+            content_type=content_type,
+            **kwargs,
+        )
+        self.parsed = parsed
 
 
 class DateAnnotationV2Update(AnnotationV2Base):
@@ -1549,9 +1640,9 @@ class DateAnnotationV2Update(AnnotationV2Base):
     :ivar id:
     :vartype id: int
     :ivar rectangle:
-    :vartype rectangle: ~affinda.models.Rectangle
+    :vartype rectangle: ~affinda_v2.models.Rectangle
     :ivar rectangles:
-    :vartype rectangles: list[~affinda.models.Rectangle]
+    :vartype rectangles: list[~affinda_v2.models.Rectangle]
     :ivar page_index:
     :vartype page_index: int
     :ivar raw:
@@ -1602,7 +1693,25 @@ class DateAnnotationV2Update(AnnotationV2Base):
         "parsed": {"key": "parsed", "type": "date"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        additional_properties: Optional[Dict[str, Any]] = None,
+        id: Optional[int] = None,
+        rectangle: Optional["_models.Rectangle"] = None,
+        page_index: Optional[int] = None,
+        raw: Optional[str] = None,
+        confidence: Optional[float] = None,
+        classification_confidence: Optional[float] = None,
+        text_extraction_confidence: Optional[float] = None,
+        is_verified: Optional[bool] = None,
+        is_client_verified: Optional[bool] = None,
+        is_auto_verified: Optional[bool] = None,
+        data_point: Optional[str] = None,
+        content_type: Optional[str] = None,
+        parsed: Optional[datetime.date] = None,
+        **kwargs,
+    ):
         """
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
@@ -1610,7 +1719,7 @@ class DateAnnotationV2Update(AnnotationV2Base):
         :keyword id:
         :paramtype id: int
         :keyword rectangle:
-        :paramtype rectangle: ~affinda.models.Rectangle
+        :paramtype rectangle: ~affinda_v2.models.Rectangle
         :keyword page_index:
         :paramtype page_index: int
         :keyword raw:
@@ -1636,8 +1745,23 @@ class DateAnnotationV2Update(AnnotationV2Base):
         :keyword parsed:
         :paramtype parsed: ~datetime.date
         """
-        super(DateAnnotationV2Update, self).__init__(**kwargs)
-        self.parsed = kwargs.get("parsed", None)
+        super(DateAnnotationV2Update, self).__init__(
+            additional_properties=additional_properties,
+            id=id,
+            rectangle=rectangle,
+            page_index=page_index,
+            raw=raw,
+            confidence=confidence,
+            classification_confidence=classification_confidence,
+            text_extraction_confidence=text_extraction_confidence,
+            is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
+            data_point=data_point,
+            content_type=content_type,
+            **kwargs,
+        )
+        self.parsed = parsed
 
 
 class Education(msrest.serialization.Model):
@@ -1648,13 +1772,13 @@ class Education(msrest.serialization.Model):
     :ivar organization:
     :vartype organization: str
     :ivar accreditation:
-    :vartype accreditation: ~affinda.models.Accreditation
+    :vartype accreditation: ~affinda_v2.models.Accreditation
     :ivar grade:
-    :vartype grade: ~affinda.models.EducationGrade
+    :vartype grade: ~affinda_v2.models.EducationGrade
     :ivar location:
-    :vartype location: ~affinda.models.Location
+    :vartype location: ~affinda_v2.models.Location
     :ivar dates:
-    :vartype dates: ~affinda.models.EducationDates
+    :vartype dates: ~affinda_v2.models.EducationDates
     """
 
     _validation = {
@@ -1670,28 +1794,38 @@ class Education(msrest.serialization.Model):
         "dates": {"key": "dates", "type": "EducationDates"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        id: Optional[int] = None,
+        organization: Optional[str] = None,
+        accreditation: Optional["_models.Accreditation"] = None,
+        grade: Optional["_models.EducationGrade"] = None,
+        location: Optional["_models.Location"] = None,
+        dates: Optional["_models.EducationDates"] = None,
+        **kwargs,
+    ):
         """
         :keyword id:
         :paramtype id: int
         :keyword organization:
         :paramtype organization: str
         :keyword accreditation:
-        :paramtype accreditation: ~affinda.models.Accreditation
+        :paramtype accreditation: ~affinda_v2.models.Accreditation
         :keyword grade:
-        :paramtype grade: ~affinda.models.EducationGrade
+        :paramtype grade: ~affinda_v2.models.EducationGrade
         :keyword location:
-        :paramtype location: ~affinda.models.Location
+        :paramtype location: ~affinda_v2.models.Location
         :keyword dates:
-        :paramtype dates: ~affinda.models.EducationDates
+        :paramtype dates: ~affinda_v2.models.EducationDates
         """
         super(Education, self).__init__(**kwargs)
-        self.id = kwargs.get("id", None)
-        self.organization = kwargs.get("organization", None)
-        self.accreditation = kwargs.get("accreditation", None)
-        self.grade = kwargs.get("grade", None)
-        self.location = kwargs.get("location", None)
-        self.dates = kwargs.get("dates", None)
+        self.id = id
+        self.organization = organization
+        self.accreditation = accreditation
+        self.grade = grade
+        self.location = location
+        self.dates = dates
 
 
 class EducationDates(msrest.serialization.Model):
@@ -1714,7 +1848,15 @@ class EducationDates(msrest.serialization.Model):
         "raw_text": {"key": "rawText", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        completion_date: Optional[datetime.date] = None,
+        is_current: Optional[bool] = None,
+        start_date: Optional[datetime.date] = None,
+        raw_text: Optional[str] = None,
+        **kwargs,
+    ):
         """
         :keyword completion_date:
         :paramtype completion_date: ~datetime.date
@@ -1726,10 +1868,10 @@ class EducationDates(msrest.serialization.Model):
         :paramtype raw_text: str
         """
         super(EducationDates, self).__init__(**kwargs)
-        self.completion_date = kwargs.get("completion_date", None)
-        self.is_current = kwargs.get("is_current", None)
-        self.start_date = kwargs.get("start_date", None)
-        self.raw_text = kwargs.get("raw_text", None)
+        self.completion_date = completion_date
+        self.is_current = is_current
+        self.start_date = start_date
+        self.raw_text = raw_text
 
 
 class EducationGrade(msrest.serialization.Model):
@@ -1753,7 +1895,15 @@ class EducationGrade(msrest.serialization.Model):
         "value": {"key": "value", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        additional_properties: Optional[Dict[str, Any]] = None,
+        raw: Optional[str] = None,
+        metric: Optional[str] = None,
+        value: Optional[str] = None,
+        **kwargs,
+    ):
         """
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
@@ -1766,10 +1916,10 @@ class EducationGrade(msrest.serialization.Model):
         :paramtype value: str
         """
         super(EducationGrade, self).__init__(**kwargs)
-        self.additional_properties = kwargs.get("additional_properties", None)
-        self.raw = kwargs.get("raw", None)
-        self.metric = kwargs.get("metric", None)
-        self.value = kwargs.get("value", None)
+        self.additional_properties = additional_properties
+        self.raw = raw
+        self.metric = metric
+        self.value = value
 
 
 class EducationSearchScoreComponent(msrest.serialization.Model):
@@ -1795,7 +1945,9 @@ class EducationSearchScoreComponent(msrest.serialization.Model):
         "score": {"key": "score", "type": "float"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self, *, label: str, value: Optional[str] = None, score: Optional[float] = None, **kwargs
+    ):
         """
         :keyword value:
         :paramtype value: str
@@ -1805,9 +1957,9 @@ class EducationSearchScoreComponent(msrest.serialization.Model):
         :paramtype score: float
         """
         super(EducationSearchScoreComponent, self).__init__(**kwargs)
-        self.value = kwargs.get("value", None)
-        self.label = kwargs["label"]
-        self.score = kwargs.get("score", None)
+        self.value = value
+        self.label = label
+        self.score = score
 
 
 class Error(msrest.serialization.Model):
@@ -1824,7 +1976,9 @@ class Error(msrest.serialization.Model):
         "error_detail": {"key": "errorDetail", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self, *, error_code: Optional[str] = None, error_detail: Optional[str] = None, **kwargs
+    ):
         """
         :keyword error_code:
         :paramtype error_code: str
@@ -1832,8 +1986,8 @@ class Error(msrest.serialization.Model):
         :paramtype error_detail: str
         """
         super(Error, self).__init__(**kwargs)
-        self.error_code = kwargs.get("error_code", None)
-        self.error_detail = kwargs.get("error_detail", None)
+        self.error_code = error_code
+        self.error_detail = error_detail
 
 
 class ExpectedRemunerationAnnotation(Annotation):
@@ -1847,9 +2001,9 @@ class ExpectedRemunerationAnnotation(Annotation):
     :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
-    :vartype rectangle: ~affinda.models.Rectangle
+    :vartype rectangle: ~affinda_v2.models.Rectangle
     :ivar rectangles: Required.
-    :vartype rectangles: list[~affinda.models.Rectangle]
+    :vartype rectangles: list[~affinda_v2.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
     :ivar raw: Required.
@@ -1873,7 +2027,7 @@ class ExpectedRemunerationAnnotation(Annotation):
     :ivar content_type: Required.
     :vartype content_type: str
     :ivar parsed:
-    :vartype parsed: ~affinda.models.ExpectedRemunerationAnnotationParsed
+    :vartype parsed: ~affinda_v2.models.ExpectedRemunerationAnnotationParsed
     """
 
     _validation = {
@@ -1909,7 +2063,26 @@ class ExpectedRemunerationAnnotation(Annotation):
         "parsed": {"key": "parsed", "type": "ExpectedRemunerationAnnotationParsed"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        id: int,
+        rectangle: "_models.Rectangle",
+        rectangles: List["_models.Rectangle"],
+        page_index: int,
+        raw: str,
+        confidence: float,
+        classification_confidence: float,
+        text_extraction_confidence: float,
+        is_verified: bool,
+        is_client_verified: bool,
+        is_auto_verified: bool,
+        content_type: str,
+        additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
+        parsed: Optional["_models.ExpectedRemunerationAnnotationParsed"] = None,
+        **kwargs,
+    ):
         """
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
@@ -1917,9 +2090,9 @@ class ExpectedRemunerationAnnotation(Annotation):
         :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
-        :paramtype rectangle: ~affinda.models.Rectangle
+        :paramtype rectangle: ~affinda_v2.models.Rectangle
         :keyword rectangles: Required.
-        :paramtype rectangles: list[~affinda.models.Rectangle]
+        :paramtype rectangles: list[~affinda_v2.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
         :keyword raw: Required.
@@ -1943,10 +2116,26 @@ class ExpectedRemunerationAnnotation(Annotation):
         :keyword content_type: Required.
         :paramtype content_type: str
         :keyword parsed:
-        :paramtype parsed: ~affinda.models.ExpectedRemunerationAnnotationParsed
+        :paramtype parsed: ~affinda_v2.models.ExpectedRemunerationAnnotationParsed
         """
-        super(ExpectedRemunerationAnnotation, self).__init__(**kwargs)
-        self.parsed = kwargs.get("parsed", None)
+        super(ExpectedRemunerationAnnotation, self).__init__(
+            additional_properties=additional_properties,
+            id=id,
+            rectangle=rectangle,
+            rectangles=rectangles,
+            page_index=page_index,
+            raw=raw,
+            confidence=confidence,
+            classification_confidence=classification_confidence,
+            text_extraction_confidence=text_extraction_confidence,
+            is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
+            data_point=data_point,
+            content_type=content_type,
+            **kwargs,
+        )
+        self.parsed = parsed
 
 
 class ExpectedRemunerationAnnotationParsed(msrest.serialization.Model):
@@ -1969,7 +2158,15 @@ class ExpectedRemunerationAnnotationParsed(msrest.serialization.Model):
         "unit": {"key": "unit", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        minimum: Optional[float] = None,
+        maximum: Optional[float] = None,
+        currency: Optional[str] = None,
+        unit: Optional[str] = None,
+        **kwargs,
+    ):
         """
         :keyword minimum:
         :paramtype minimum: float
@@ -1981,10 +2178,10 @@ class ExpectedRemunerationAnnotationParsed(msrest.serialization.Model):
         :paramtype unit: str
         """
         super(ExpectedRemunerationAnnotationParsed, self).__init__(**kwargs)
-        self.minimum = kwargs.get("minimum", None)
-        self.maximum = kwargs.get("maximum", None)
-        self.currency = kwargs.get("currency", None)
-        self.unit = kwargs.get("unit", None)
+        self.minimum = minimum
+        self.maximum = maximum
+        self.currency = currency
+        self.unit = unit
 
 
 class ExpectedRemunerationAnnotationV2Update(AnnotationV2Base):
@@ -1998,9 +2195,9 @@ class ExpectedRemunerationAnnotationV2Update(AnnotationV2Base):
     :ivar id:
     :vartype id: int
     :ivar rectangle:
-    :vartype rectangle: ~affinda.models.Rectangle
+    :vartype rectangle: ~affinda_v2.models.Rectangle
     :ivar rectangles:
-    :vartype rectangles: list[~affinda.models.Rectangle]
+    :vartype rectangles: list[~affinda_v2.models.Rectangle]
     :ivar page_index:
     :vartype page_index: int
     :ivar raw:
@@ -2024,7 +2221,7 @@ class ExpectedRemunerationAnnotationV2Update(AnnotationV2Base):
     :ivar content_type:
     :vartype content_type: str
     :ivar parsed:
-    :vartype parsed: ~affinda.models.ExpectedRemunerationAnnotationV2UpdateParsed
+    :vartype parsed: ~affinda_v2.models.ExpectedRemunerationAnnotationV2UpdateParsed
     """
 
     _validation = {
@@ -2051,7 +2248,25 @@ class ExpectedRemunerationAnnotationV2Update(AnnotationV2Base):
         "parsed": {"key": "parsed", "type": "ExpectedRemunerationAnnotationV2UpdateParsed"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        additional_properties: Optional[Dict[str, Any]] = None,
+        id: Optional[int] = None,
+        rectangle: Optional["_models.Rectangle"] = None,
+        page_index: Optional[int] = None,
+        raw: Optional[str] = None,
+        confidence: Optional[float] = None,
+        classification_confidence: Optional[float] = None,
+        text_extraction_confidence: Optional[float] = None,
+        is_verified: Optional[bool] = None,
+        is_client_verified: Optional[bool] = None,
+        is_auto_verified: Optional[bool] = None,
+        data_point: Optional[str] = None,
+        content_type: Optional[str] = None,
+        parsed: Optional["_models.ExpectedRemunerationAnnotationV2UpdateParsed"] = None,
+        **kwargs,
+    ):
         """
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
@@ -2059,7 +2274,7 @@ class ExpectedRemunerationAnnotationV2Update(AnnotationV2Base):
         :keyword id:
         :paramtype id: int
         :keyword rectangle:
-        :paramtype rectangle: ~affinda.models.Rectangle
+        :paramtype rectangle: ~affinda_v2.models.Rectangle
         :keyword page_index:
         :paramtype page_index: int
         :keyword raw:
@@ -2083,10 +2298,25 @@ class ExpectedRemunerationAnnotationV2Update(AnnotationV2Base):
         :keyword content_type:
         :paramtype content_type: str
         :keyword parsed:
-        :paramtype parsed: ~affinda.models.ExpectedRemunerationAnnotationV2UpdateParsed
+        :paramtype parsed: ~affinda_v2.models.ExpectedRemunerationAnnotationV2UpdateParsed
         """
-        super(ExpectedRemunerationAnnotationV2Update, self).__init__(**kwargs)
-        self.parsed = kwargs.get("parsed", None)
+        super(ExpectedRemunerationAnnotationV2Update, self).__init__(
+            additional_properties=additional_properties,
+            id=id,
+            rectangle=rectangle,
+            page_index=page_index,
+            raw=raw,
+            confidence=confidence,
+            classification_confidence=classification_confidence,
+            text_extraction_confidence=text_extraction_confidence,
+            is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
+            data_point=data_point,
+            content_type=content_type,
+            **kwargs,
+        )
+        self.parsed = parsed
 
 
 class ExpectedRemunerationAnnotationV2UpdateParsed(msrest.serialization.Model):
@@ -2109,7 +2339,15 @@ class ExpectedRemunerationAnnotationV2UpdateParsed(msrest.serialization.Model):
         "unit": {"key": "unit", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        minimum: Optional[float] = None,
+        maximum: Optional[float] = None,
+        currency: Optional[str] = None,
+        unit: Optional[str] = None,
+        **kwargs,
+    ):
         """
         :keyword minimum:
         :paramtype minimum: float
@@ -2121,10 +2359,10 @@ class ExpectedRemunerationAnnotationV2UpdateParsed(msrest.serialization.Model):
         :paramtype unit: str
         """
         super(ExpectedRemunerationAnnotationV2UpdateParsed, self).__init__(**kwargs)
-        self.minimum = kwargs.get("minimum", None)
-        self.maximum = kwargs.get("maximum", None)
-        self.currency = kwargs.get("currency", None)
-        self.unit = kwargs.get("unit", None)
+        self.minimum = minimum
+        self.maximum = maximum
+        self.currency = currency
+        self.unit = unit
 
 
 class ExperienceSearchScoreComponent(msrest.serialization.Model):
@@ -2150,7 +2388,9 @@ class ExperienceSearchScoreComponent(msrest.serialization.Model):
         "score": {"key": "score", "type": "float"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self, *, label: str, value: Optional[str] = None, score: Optional[float] = None, **kwargs
+    ):
         """
         :keyword value:
         :paramtype value: str
@@ -2160,9 +2400,9 @@ class ExperienceSearchScoreComponent(msrest.serialization.Model):
         :paramtype score: float
         """
         super(ExperienceSearchScoreComponent, self).__init__(**kwargs)
-        self.value = kwargs.get("value", None)
-        self.label = kwargs["label"]
-        self.score = kwargs.get("score", None)
+        self.value = value
+        self.label = label
+        self.score = score
 
 
 class Get200ApplicationJsonPropertiesItemsItem(msrest.serialization.Model):
@@ -2176,13 +2416,13 @@ class Get200ApplicationJsonPropertiesItemsItem(msrest.serialization.Model):
         "document": {"key": "document", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(self, *, document: Optional[str] = None, **kwargs):
         """
         :keyword document:
         :paramtype document: str
         """
         super(Get200ApplicationJsonPropertiesItemsItem, self).__init__(**kwargs)
-        self.document = kwargs.get("document", None)
+        self.document = document
 
 
 class Index(msrest.serialization.Model):
@@ -2195,9 +2435,9 @@ class Index(msrest.serialization.Model):
     :ivar name: Required. Unique index name.
     :vartype name: str
     :ivar document_type: Required. Known values are: "resumes", "job_descriptions".
-    :vartype document_type: str or ~affinda.models.IndexDocumentType
+    :vartype document_type: str or ~affinda_v2.models.IndexDocumentType
     :ivar user: Required. The user who created this index.
-    :vartype user: ~affinda.models.IndexUser
+    :vartype user: ~affinda_v2.models.IndexUser
     """
 
     _validation = {
@@ -2212,16 +2452,18 @@ class Index(msrest.serialization.Model):
         "user": {"key": "user", "type": "IndexUser"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self, *, name: str, document_type: Union[str, "_models.IndexDocumentType"], **kwargs
+    ):
         """
         :keyword name: Required. Unique index name.
         :paramtype name: str
         :keyword document_type: Required. Known values are: "resumes", "job_descriptions".
-        :paramtype document_type: str or ~affinda.models.IndexDocumentType
+        :paramtype document_type: str or ~affinda_v2.models.IndexDocumentType
         """
         super(Index, self).__init__(**kwargs)
-        self.name = kwargs["name"]
-        self.document_type = kwargs["document_type"]
+        self.name = name
+        self.document_type = document_type
         self.user = None
 
 
@@ -2233,7 +2475,7 @@ class IndexCreate(msrest.serialization.Model):
     :ivar name: Required. Unique index name.
     :vartype name: str
     :ivar document_type: Known values are: "resumes", "job_descriptions".
-    :vartype document_type: str or ~affinda.models.DocumentType
+    :vartype document_type: str or ~affinda_v2.models.DocumentType
     """
 
     _validation = {
@@ -2245,16 +2487,22 @@ class IndexCreate(msrest.serialization.Model):
         "document_type": {"key": "documentType", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        name: str,
+        document_type: Optional[Union[str, "_models.DocumentType"]] = None,
+        **kwargs,
+    ):
         """
         :keyword name: Required. Unique index name.
         :paramtype name: str
         :keyword document_type: Known values are: "resumes", "job_descriptions".
-        :paramtype document_type: str or ~affinda.models.DocumentType
+        :paramtype document_type: str or ~affinda_v2.models.DocumentType
         """
         super(IndexCreate, self).__init__(**kwargs)
-        self.name = kwargs["name"]
-        self.document_type = kwargs.get("document_type", None)
+        self.name = name
+        self.document_type = document_type
 
 
 class IndexUpdate(msrest.serialization.Model):
@@ -2268,13 +2516,13 @@ class IndexUpdate(msrest.serialization.Model):
         "name": {"key": "name", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(self, *, name: Optional[str] = None, **kwargs):
         """
         :keyword name: Unique index name.
         :paramtype name: str
         """
         super(IndexUpdate, self).__init__(**kwargs)
-        self.name = kwargs.get("name", None)
+        self.name = name
 
 
 class IndexUser(msrest.serialization.Model):
@@ -2306,7 +2554,7 @@ class IndexUser(msrest.serialization.Model):
         "avatar": {"key": "avatar", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(self, *, id: int, name: str, email: str, avatar: str, **kwargs):
         """
         :keyword id: Required. Uniquely identify a user.
         :paramtype id: int
@@ -2318,10 +2566,10 @@ class IndexUser(msrest.serialization.Model):
         :paramtype avatar: str
         """
         super(IndexUser, self).__init__(**kwargs)
-        self.id = kwargs["id"]
-        self.name = kwargs["name"]
-        self.email = kwargs["email"]
-        self.avatar = kwargs["avatar"]
+        self.id = id
+        self.name = name
+        self.email = email
+        self.avatar = avatar
 
 
 class Invoice(msrest.serialization.Model):
@@ -2332,11 +2580,11 @@ class Invoice(msrest.serialization.Model):
     :ivar client_verified_dt: Required.
     :vartype client_verified_dt: str
     :ivar data: Required.
-    :vartype data: ~affinda.models.InvoiceData
+    :vartype data: ~affinda_v2.models.InvoiceData
     :ivar meta: Required.
-    :vartype meta: ~affinda.models.Meta
+    :vartype meta: ~affinda_v2.models.Meta
     :ivar error: Required.
-    :vartype error: ~affinda.models.Error
+    :vartype error: ~affinda_v2.models.Error
     """
 
     _validation = {
@@ -2353,101 +2601,109 @@ class Invoice(msrest.serialization.Model):
         "error": {"key": "error", "type": "Error"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        client_verified_dt: str,
+        data: "_models.InvoiceData",
+        meta: "_models.Meta",
+        error: "_models.Error",
+        **kwargs,
+    ):
         """
         :keyword client_verified_dt: Required.
         :paramtype client_verified_dt: str
         :keyword data: Required.
-        :paramtype data: ~affinda.models.InvoiceData
+        :paramtype data: ~affinda_v2.models.InvoiceData
         :keyword meta: Required.
-        :paramtype meta: ~affinda.models.Meta
+        :paramtype meta: ~affinda_v2.models.Meta
         :keyword error: Required.
-        :paramtype error: ~affinda.models.Error
+        :paramtype error: ~affinda_v2.models.Error
         """
         super(Invoice, self).__init__(**kwargs)
-        self.client_verified_dt = kwargs["client_verified_dt"]
-        self.data = kwargs["data"]
-        self.meta = kwargs["meta"]
-        self.error = kwargs["error"]
+        self.client_verified_dt = client_verified_dt
+        self.data = data
+        self.meta = meta
+        self.error = error
 
 
 class InvoiceData(msrest.serialization.Model):
     """InvoiceData.
 
     :ivar tables:
-    :vartype tables: list[~affinda.models.InvoiceDataTablesItem]
+    :vartype tables: list[~affinda_v2.models.InvoiceDataTablesItem]
     :ivar invoice_date:
-    :vartype invoice_date: ~affinda.models.DateAnnotation
+    :vartype invoice_date: ~affinda_v2.models.DateAnnotation
     :ivar invoice_order_date:
-    :vartype invoice_order_date: ~affinda.models.DateAnnotation
+    :vartype invoice_order_date: ~affinda_v2.models.DateAnnotation
     :ivar payment_date_due:
-    :vartype payment_date_due: ~affinda.models.DateAnnotation
+    :vartype payment_date_due: ~affinda_v2.models.DateAnnotation
     :ivar payment_amount_base:
-    :vartype payment_amount_base: ~affinda.models.InvoiceDataPaymentAmountBase
+    :vartype payment_amount_base: ~affinda_v2.models.InvoiceDataPaymentAmountBase
     :ivar payment_amount_tax:
-    :vartype payment_amount_tax: ~affinda.models.InvoiceDataPaymentAmountTax
+    :vartype payment_amount_tax: ~affinda_v2.models.InvoiceDataPaymentAmountTax
     :ivar payment_amount_total:
-    :vartype payment_amount_total: ~affinda.models.InvoiceDataPaymentAmountTotal
+    :vartype payment_amount_total: ~affinda_v2.models.InvoiceDataPaymentAmountTotal
     :ivar payment_amount_paid:
-    :vartype payment_amount_paid: ~affinda.models.InvoiceDataPaymentAmountPaid
+    :vartype payment_amount_paid: ~affinda_v2.models.InvoiceDataPaymentAmountPaid
     :ivar payment_amount_due:
-    :vartype payment_amount_due: ~affinda.models.InvoiceDataPaymentAmountDue
+    :vartype payment_amount_due: ~affinda_v2.models.InvoiceDataPaymentAmountDue
     :ivar invoice_number:
-    :vartype invoice_number: ~affinda.models.InvoiceDataInvoiceNumber
+    :vartype invoice_number: ~affinda_v2.models.InvoiceDataInvoiceNumber
     :ivar invoice_purchase_order_number:
-    :vartype invoice_purchase_order_number: ~affinda.models.InvoiceDataInvoicePurchaseOrderNumber
+    :vartype invoice_purchase_order_number: ~affinda_v2.models.InvoiceDataInvoicePurchaseOrderNumber
     :ivar supplier_business_number:
-    :vartype supplier_business_number: ~affinda.models.InvoiceDataSupplierBusinessNumber
+    :vartype supplier_business_number: ~affinda_v2.models.InvoiceDataSupplierBusinessNumber
     :ivar customer_number:
-    :vartype customer_number: ~affinda.models.InvoiceDataCustomerNumber
+    :vartype customer_number: ~affinda_v2.models.InvoiceDataCustomerNumber
     :ivar customer_business_number:
-    :vartype customer_business_number: ~affinda.models.InvoiceDataCustomerBusinessNumber
+    :vartype customer_business_number: ~affinda_v2.models.InvoiceDataCustomerBusinessNumber
     :ivar payment_reference:
-    :vartype payment_reference: ~affinda.models.InvoiceDataPaymentReference
+    :vartype payment_reference: ~affinda_v2.models.InvoiceDataPaymentReference
     :ivar bank_account_number:
-    :vartype bank_account_number: ~affinda.models.InvoiceDataBankAccountNumber
+    :vartype bank_account_number: ~affinda_v2.models.InvoiceDataBankAccountNumber
     :ivar supplier_vat:
-    :vartype supplier_vat: ~affinda.models.InvoiceDataSupplierVat
+    :vartype supplier_vat: ~affinda_v2.models.InvoiceDataSupplierVat
     :ivar customer_vat:
-    :vartype customer_vat: ~affinda.models.InvoiceDataCustomerVat
+    :vartype customer_vat: ~affinda_v2.models.InvoiceDataCustomerVat
     :ivar bpay_biller_code:
-    :vartype bpay_biller_code: ~affinda.models.InvoiceDataBpayBillerCode
+    :vartype bpay_biller_code: ~affinda_v2.models.InvoiceDataBpayBillerCode
     :ivar bpay_reference:
-    :vartype bpay_reference: ~affinda.models.InvoiceDataBpayReference
+    :vartype bpay_reference: ~affinda_v2.models.InvoiceDataBpayReference
     :ivar bank_sort_code:
-    :vartype bank_sort_code: ~affinda.models.InvoiceDataBankSortCode
+    :vartype bank_sort_code: ~affinda_v2.models.InvoiceDataBankSortCode
     :ivar bank_iban:
-    :vartype bank_iban: ~affinda.models.InvoiceDataBankIban
+    :vartype bank_iban: ~affinda_v2.models.InvoiceDataBankIban
     :ivar bank_swift:
-    :vartype bank_swift: ~affinda.models.InvoiceDataBankSwift
+    :vartype bank_swift: ~affinda_v2.models.InvoiceDataBankSwift
     :ivar bank_bsb:
-    :vartype bank_bsb: ~affinda.models.InvoiceDataBankBsb
+    :vartype bank_bsb: ~affinda_v2.models.InvoiceDataBankBsb
     :ivar customer_contact_name:
-    :vartype customer_contact_name: ~affinda.models.InvoiceDataCustomerContactName
+    :vartype customer_contact_name: ~affinda_v2.models.InvoiceDataCustomerContactName
     :ivar customer_company_name:
-    :vartype customer_company_name: ~affinda.models.InvoiceDataCustomerCompanyName
+    :vartype customer_company_name: ~affinda_v2.models.InvoiceDataCustomerCompanyName
     :ivar supplier_company_name:
-    :vartype supplier_company_name: ~affinda.models.InvoiceDataSupplierCompanyName
+    :vartype supplier_company_name: ~affinda_v2.models.InvoiceDataSupplierCompanyName
     :ivar customer_billing_address:
-    :vartype customer_billing_address: ~affinda.models.LocationAnnotation
+    :vartype customer_billing_address: ~affinda_v2.models.LocationAnnotation
     :ivar customer_delivery_address:
-    :vartype customer_delivery_address: ~affinda.models.LocationAnnotation
+    :vartype customer_delivery_address: ~affinda_v2.models.LocationAnnotation
     :ivar supplier_address:
-    :vartype supplier_address: ~affinda.models.LocationAnnotation
+    :vartype supplier_address: ~affinda_v2.models.LocationAnnotation
     :ivar customer_phone_number:
-    :vartype customer_phone_number: ~affinda.models.InvoiceDataCustomerPhoneNumber
+    :vartype customer_phone_number: ~affinda_v2.models.InvoiceDataCustomerPhoneNumber
     :ivar supplier_phone_number:
-    :vartype supplier_phone_number: ~affinda.models.InvoiceDataSupplierPhoneNumber
+    :vartype supplier_phone_number: ~affinda_v2.models.InvoiceDataSupplierPhoneNumber
     :ivar supplier_fax:
-    :vartype supplier_fax: ~affinda.models.InvoiceDataSupplierFax
+    :vartype supplier_fax: ~affinda_v2.models.InvoiceDataSupplierFax
     :ivar customer_email:
-    :vartype customer_email: ~affinda.models.InvoiceDataCustomerEmail
+    :vartype customer_email: ~affinda_v2.models.InvoiceDataCustomerEmail
     :ivar supplier_email:
-    :vartype supplier_email: ~affinda.models.InvoiceDataSupplierEmail
+    :vartype supplier_email: ~affinda_v2.models.InvoiceDataSupplierEmail
     :ivar supplier_website:
-    :vartype supplier_website: ~affinda.models.InvoiceDataSupplierWebsite
+    :vartype supplier_website: ~affinda_v2.models.InvoiceDataSupplierWebsite
     :ivar currency_code:
-    :vartype currency_code: ~affinda.models.TextAnnotation
+    :vartype currency_code: ~affinda_v2.models.TextAnnotation
     :ivar custom_fields: Dictionary of :code:`<any>`.
     :vartype custom_fields: dict[str, any]
     """
@@ -2535,124 +2791,168 @@ class InvoiceData(msrest.serialization.Model):
         "custom_fields": {"key": "customFields", "type": "{object}"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        tables: Optional[List["_models.InvoiceDataTablesItem"]] = None,
+        invoice_date: Optional["_models.DateAnnotation"] = None,
+        invoice_order_date: Optional["_models.DateAnnotation"] = None,
+        payment_date_due: Optional["_models.DateAnnotation"] = None,
+        payment_amount_base: Optional["_models.InvoiceDataPaymentAmountBase"] = None,
+        payment_amount_tax: Optional["_models.InvoiceDataPaymentAmountTax"] = None,
+        payment_amount_total: Optional["_models.InvoiceDataPaymentAmountTotal"] = None,
+        payment_amount_paid: Optional["_models.InvoiceDataPaymentAmountPaid"] = None,
+        payment_amount_due: Optional["_models.InvoiceDataPaymentAmountDue"] = None,
+        invoice_number: Optional["_models.InvoiceDataInvoiceNumber"] = None,
+        invoice_purchase_order_number: Optional[
+            "_models.InvoiceDataInvoicePurchaseOrderNumber"
+        ] = None,
+        supplier_business_number: Optional["_models.InvoiceDataSupplierBusinessNumber"] = None,
+        customer_number: Optional["_models.InvoiceDataCustomerNumber"] = None,
+        customer_business_number: Optional["_models.InvoiceDataCustomerBusinessNumber"] = None,
+        payment_reference: Optional["_models.InvoiceDataPaymentReference"] = None,
+        bank_account_number: Optional["_models.InvoiceDataBankAccountNumber"] = None,
+        supplier_vat: Optional["_models.InvoiceDataSupplierVat"] = None,
+        customer_vat: Optional["_models.InvoiceDataCustomerVat"] = None,
+        bpay_biller_code: Optional["_models.InvoiceDataBpayBillerCode"] = None,
+        bpay_reference: Optional["_models.InvoiceDataBpayReference"] = None,
+        bank_sort_code: Optional["_models.InvoiceDataBankSortCode"] = None,
+        bank_iban: Optional["_models.InvoiceDataBankIban"] = None,
+        bank_swift: Optional["_models.InvoiceDataBankSwift"] = None,
+        bank_bsb: Optional["_models.InvoiceDataBankBsb"] = None,
+        customer_contact_name: Optional["_models.InvoiceDataCustomerContactName"] = None,
+        customer_company_name: Optional["_models.InvoiceDataCustomerCompanyName"] = None,
+        supplier_company_name: Optional["_models.InvoiceDataSupplierCompanyName"] = None,
+        customer_billing_address: Optional["_models.LocationAnnotation"] = None,
+        customer_delivery_address: Optional["_models.LocationAnnotation"] = None,
+        supplier_address: Optional["_models.LocationAnnotation"] = None,
+        customer_phone_number: Optional["_models.InvoiceDataCustomerPhoneNumber"] = None,
+        supplier_phone_number: Optional["_models.InvoiceDataSupplierPhoneNumber"] = None,
+        supplier_fax: Optional["_models.InvoiceDataSupplierFax"] = None,
+        customer_email: Optional["_models.InvoiceDataCustomerEmail"] = None,
+        supplier_email: Optional["_models.InvoiceDataSupplierEmail"] = None,
+        supplier_website: Optional["_models.InvoiceDataSupplierWebsite"] = None,
+        currency_code: Optional["_models.TextAnnotation"] = None,
+        custom_fields: Optional[Dict[str, Any]] = None,
+        **kwargs,
+    ):
         """
         :keyword tables:
-        :paramtype tables: list[~affinda.models.InvoiceDataTablesItem]
+        :paramtype tables: list[~affinda_v2.models.InvoiceDataTablesItem]
         :keyword invoice_date:
-        :paramtype invoice_date: ~affinda.models.DateAnnotation
+        :paramtype invoice_date: ~affinda_v2.models.DateAnnotation
         :keyword invoice_order_date:
-        :paramtype invoice_order_date: ~affinda.models.DateAnnotation
+        :paramtype invoice_order_date: ~affinda_v2.models.DateAnnotation
         :keyword payment_date_due:
-        :paramtype payment_date_due: ~affinda.models.DateAnnotation
+        :paramtype payment_date_due: ~affinda_v2.models.DateAnnotation
         :keyword payment_amount_base:
-        :paramtype payment_amount_base: ~affinda.models.InvoiceDataPaymentAmountBase
+        :paramtype payment_amount_base: ~affinda_v2.models.InvoiceDataPaymentAmountBase
         :keyword payment_amount_tax:
-        :paramtype payment_amount_tax: ~affinda.models.InvoiceDataPaymentAmountTax
+        :paramtype payment_amount_tax: ~affinda_v2.models.InvoiceDataPaymentAmountTax
         :keyword payment_amount_total:
-        :paramtype payment_amount_total: ~affinda.models.InvoiceDataPaymentAmountTotal
+        :paramtype payment_amount_total: ~affinda_v2.models.InvoiceDataPaymentAmountTotal
         :keyword payment_amount_paid:
-        :paramtype payment_amount_paid: ~affinda.models.InvoiceDataPaymentAmountPaid
+        :paramtype payment_amount_paid: ~affinda_v2.models.InvoiceDataPaymentAmountPaid
         :keyword payment_amount_due:
-        :paramtype payment_amount_due: ~affinda.models.InvoiceDataPaymentAmountDue
+        :paramtype payment_amount_due: ~affinda_v2.models.InvoiceDataPaymentAmountDue
         :keyword invoice_number:
-        :paramtype invoice_number: ~affinda.models.InvoiceDataInvoiceNumber
+        :paramtype invoice_number: ~affinda_v2.models.InvoiceDataInvoiceNumber
         :keyword invoice_purchase_order_number:
-        :paramtype invoice_purchase_order_number: ~affinda.models.InvoiceDataInvoicePurchaseOrderNumber
+        :paramtype invoice_purchase_order_number: ~affinda_v2.models.InvoiceDataInvoicePurchaseOrderNumber
         :keyword supplier_business_number:
-        :paramtype supplier_business_number: ~affinda.models.InvoiceDataSupplierBusinessNumber
+        :paramtype supplier_business_number: ~affinda_v2.models.InvoiceDataSupplierBusinessNumber
         :keyword customer_number:
-        :paramtype customer_number: ~affinda.models.InvoiceDataCustomerNumber
+        :paramtype customer_number: ~affinda_v2.models.InvoiceDataCustomerNumber
         :keyword customer_business_number:
-        :paramtype customer_business_number: ~affinda.models.InvoiceDataCustomerBusinessNumber
+        :paramtype customer_business_number: ~affinda_v2.models.InvoiceDataCustomerBusinessNumber
         :keyword payment_reference:
-        :paramtype payment_reference: ~affinda.models.InvoiceDataPaymentReference
+        :paramtype payment_reference: ~affinda_v2.models.InvoiceDataPaymentReference
         :keyword bank_account_number:
-        :paramtype bank_account_number: ~affinda.models.InvoiceDataBankAccountNumber
+        :paramtype bank_account_number: ~affinda_v2.models.InvoiceDataBankAccountNumber
         :keyword supplier_vat:
-        :paramtype supplier_vat: ~affinda.models.InvoiceDataSupplierVat
+        :paramtype supplier_vat: ~affinda_v2.models.InvoiceDataSupplierVat
         :keyword customer_vat:
-        :paramtype customer_vat: ~affinda.models.InvoiceDataCustomerVat
+        :paramtype customer_vat: ~affinda_v2.models.InvoiceDataCustomerVat
         :keyword bpay_biller_code:
-        :paramtype bpay_biller_code: ~affinda.models.InvoiceDataBpayBillerCode
+        :paramtype bpay_biller_code: ~affinda_v2.models.InvoiceDataBpayBillerCode
         :keyword bpay_reference:
-        :paramtype bpay_reference: ~affinda.models.InvoiceDataBpayReference
+        :paramtype bpay_reference: ~affinda_v2.models.InvoiceDataBpayReference
         :keyword bank_sort_code:
-        :paramtype bank_sort_code: ~affinda.models.InvoiceDataBankSortCode
+        :paramtype bank_sort_code: ~affinda_v2.models.InvoiceDataBankSortCode
         :keyword bank_iban:
-        :paramtype bank_iban: ~affinda.models.InvoiceDataBankIban
+        :paramtype bank_iban: ~affinda_v2.models.InvoiceDataBankIban
         :keyword bank_swift:
-        :paramtype bank_swift: ~affinda.models.InvoiceDataBankSwift
+        :paramtype bank_swift: ~affinda_v2.models.InvoiceDataBankSwift
         :keyword bank_bsb:
-        :paramtype bank_bsb: ~affinda.models.InvoiceDataBankBsb
+        :paramtype bank_bsb: ~affinda_v2.models.InvoiceDataBankBsb
         :keyword customer_contact_name:
-        :paramtype customer_contact_name: ~affinda.models.InvoiceDataCustomerContactName
+        :paramtype customer_contact_name: ~affinda_v2.models.InvoiceDataCustomerContactName
         :keyword customer_company_name:
-        :paramtype customer_company_name: ~affinda.models.InvoiceDataCustomerCompanyName
+        :paramtype customer_company_name: ~affinda_v2.models.InvoiceDataCustomerCompanyName
         :keyword supplier_company_name:
-        :paramtype supplier_company_name: ~affinda.models.InvoiceDataSupplierCompanyName
+        :paramtype supplier_company_name: ~affinda_v2.models.InvoiceDataSupplierCompanyName
         :keyword customer_billing_address:
-        :paramtype customer_billing_address: ~affinda.models.LocationAnnotation
+        :paramtype customer_billing_address: ~affinda_v2.models.LocationAnnotation
         :keyword customer_delivery_address:
-        :paramtype customer_delivery_address: ~affinda.models.LocationAnnotation
+        :paramtype customer_delivery_address: ~affinda_v2.models.LocationAnnotation
         :keyword supplier_address:
-        :paramtype supplier_address: ~affinda.models.LocationAnnotation
+        :paramtype supplier_address: ~affinda_v2.models.LocationAnnotation
         :keyword customer_phone_number:
-        :paramtype customer_phone_number: ~affinda.models.InvoiceDataCustomerPhoneNumber
+        :paramtype customer_phone_number: ~affinda_v2.models.InvoiceDataCustomerPhoneNumber
         :keyword supplier_phone_number:
-        :paramtype supplier_phone_number: ~affinda.models.InvoiceDataSupplierPhoneNumber
+        :paramtype supplier_phone_number: ~affinda_v2.models.InvoiceDataSupplierPhoneNumber
         :keyword supplier_fax:
-        :paramtype supplier_fax: ~affinda.models.InvoiceDataSupplierFax
+        :paramtype supplier_fax: ~affinda_v2.models.InvoiceDataSupplierFax
         :keyword customer_email:
-        :paramtype customer_email: ~affinda.models.InvoiceDataCustomerEmail
+        :paramtype customer_email: ~affinda_v2.models.InvoiceDataCustomerEmail
         :keyword supplier_email:
-        :paramtype supplier_email: ~affinda.models.InvoiceDataSupplierEmail
+        :paramtype supplier_email: ~affinda_v2.models.InvoiceDataSupplierEmail
         :keyword supplier_website:
-        :paramtype supplier_website: ~affinda.models.InvoiceDataSupplierWebsite
+        :paramtype supplier_website: ~affinda_v2.models.InvoiceDataSupplierWebsite
         :keyword currency_code:
-        :paramtype currency_code: ~affinda.models.TextAnnotation
+        :paramtype currency_code: ~affinda_v2.models.TextAnnotation
         :keyword custom_fields: Dictionary of :code:`<any>`.
         :paramtype custom_fields: dict[str, any]
         """
         super(InvoiceData, self).__init__(**kwargs)
-        self.tables = kwargs.get("tables", None)
-        self.invoice_date = kwargs.get("invoice_date", None)
-        self.invoice_order_date = kwargs.get("invoice_order_date", None)
-        self.payment_date_due = kwargs.get("payment_date_due", None)
-        self.payment_amount_base = kwargs.get("payment_amount_base", None)
-        self.payment_amount_tax = kwargs.get("payment_amount_tax", None)
-        self.payment_amount_total = kwargs.get("payment_amount_total", None)
-        self.payment_amount_paid = kwargs.get("payment_amount_paid", None)
-        self.payment_amount_due = kwargs.get("payment_amount_due", None)
-        self.invoice_number = kwargs.get("invoice_number", None)
-        self.invoice_purchase_order_number = kwargs.get("invoice_purchase_order_number", None)
-        self.supplier_business_number = kwargs.get("supplier_business_number", None)
-        self.customer_number = kwargs.get("customer_number", None)
-        self.customer_business_number = kwargs.get("customer_business_number", None)
-        self.payment_reference = kwargs.get("payment_reference", None)
-        self.bank_account_number = kwargs.get("bank_account_number", None)
-        self.supplier_vat = kwargs.get("supplier_vat", None)
-        self.customer_vat = kwargs.get("customer_vat", None)
-        self.bpay_biller_code = kwargs.get("bpay_biller_code", None)
-        self.bpay_reference = kwargs.get("bpay_reference", None)
-        self.bank_sort_code = kwargs.get("bank_sort_code", None)
-        self.bank_iban = kwargs.get("bank_iban", None)
-        self.bank_swift = kwargs.get("bank_swift", None)
-        self.bank_bsb = kwargs.get("bank_bsb", None)
-        self.customer_contact_name = kwargs.get("customer_contact_name", None)
-        self.customer_company_name = kwargs.get("customer_company_name", None)
-        self.supplier_company_name = kwargs.get("supplier_company_name", None)
-        self.customer_billing_address = kwargs.get("customer_billing_address", None)
-        self.customer_delivery_address = kwargs.get("customer_delivery_address", None)
-        self.supplier_address = kwargs.get("supplier_address", None)
-        self.customer_phone_number = kwargs.get("customer_phone_number", None)
-        self.supplier_phone_number = kwargs.get("supplier_phone_number", None)
-        self.supplier_fax = kwargs.get("supplier_fax", None)
-        self.customer_email = kwargs.get("customer_email", None)
-        self.supplier_email = kwargs.get("supplier_email", None)
-        self.supplier_website = kwargs.get("supplier_website", None)
-        self.currency_code = kwargs.get("currency_code", None)
-        self.custom_fields = kwargs.get("custom_fields", None)
+        self.tables = tables
+        self.invoice_date = invoice_date
+        self.invoice_order_date = invoice_order_date
+        self.payment_date_due = payment_date_due
+        self.payment_amount_base = payment_amount_base
+        self.payment_amount_tax = payment_amount_tax
+        self.payment_amount_total = payment_amount_total
+        self.payment_amount_paid = payment_amount_paid
+        self.payment_amount_due = payment_amount_due
+        self.invoice_number = invoice_number
+        self.invoice_purchase_order_number = invoice_purchase_order_number
+        self.supplier_business_number = supplier_business_number
+        self.customer_number = customer_number
+        self.customer_business_number = customer_business_number
+        self.payment_reference = payment_reference
+        self.bank_account_number = bank_account_number
+        self.supplier_vat = supplier_vat
+        self.customer_vat = customer_vat
+        self.bpay_biller_code = bpay_biller_code
+        self.bpay_reference = bpay_reference
+        self.bank_sort_code = bank_sort_code
+        self.bank_iban = bank_iban
+        self.bank_swift = bank_swift
+        self.bank_bsb = bank_bsb
+        self.customer_contact_name = customer_contact_name
+        self.customer_company_name = customer_company_name
+        self.supplier_company_name = supplier_company_name
+        self.customer_billing_address = customer_billing_address
+        self.customer_delivery_address = customer_delivery_address
+        self.supplier_address = supplier_address
+        self.customer_phone_number = customer_phone_number
+        self.supplier_phone_number = supplier_phone_number
+        self.supplier_fax = supplier_fax
+        self.customer_email = customer_email
+        self.supplier_email = supplier_email
+        self.supplier_website = supplier_website
+        self.currency_code = currency_code
+        self.custom_fields = custom_fields
 
 
 class TextAnnotation(Annotation):
@@ -2666,9 +2966,9 @@ class TextAnnotation(Annotation):
     :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
-    :vartype rectangle: ~affinda.models.Rectangle
+    :vartype rectangle: ~affinda_v2.models.Rectangle
     :ivar rectangles: Required.
-    :vartype rectangles: list[~affinda.models.Rectangle]
+    :vartype rectangles: list[~affinda_v2.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
     :ivar raw: Required.
@@ -2728,7 +3028,26 @@ class TextAnnotation(Annotation):
         "parsed": {"key": "parsed", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        id: int,
+        rectangle: "_models.Rectangle",
+        rectangles: List["_models.Rectangle"],
+        page_index: int,
+        raw: str,
+        confidence: float,
+        classification_confidence: float,
+        text_extraction_confidence: float,
+        is_verified: bool,
+        is_client_verified: bool,
+        is_auto_verified: bool,
+        content_type: str,
+        additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
+        parsed: Optional[str] = None,
+        **kwargs,
+    ):
         """
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
@@ -2736,9 +3055,9 @@ class TextAnnotation(Annotation):
         :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
-        :paramtype rectangle: ~affinda.models.Rectangle
+        :paramtype rectangle: ~affinda_v2.models.Rectangle
         :keyword rectangles: Required.
-        :paramtype rectangles: list[~affinda.models.Rectangle]
+        :paramtype rectangles: list[~affinda_v2.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
         :keyword raw: Required.
@@ -2764,8 +3083,24 @@ class TextAnnotation(Annotation):
         :keyword parsed:
         :paramtype parsed: str
         """
-        super(TextAnnotation, self).__init__(**kwargs)
-        self.parsed = kwargs.get("parsed", None)
+        super(TextAnnotation, self).__init__(
+            additional_properties=additional_properties,
+            id=id,
+            rectangle=rectangle,
+            rectangles=rectangles,
+            page_index=page_index,
+            raw=raw,
+            confidence=confidence,
+            classification_confidence=classification_confidence,
+            text_extraction_confidence=text_extraction_confidence,
+            is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
+            data_point=data_point,
+            content_type=content_type,
+            **kwargs,
+        )
+        self.parsed = parsed
 
 
 class InvoiceDataBankAccountNumber(
@@ -2781,9 +3116,9 @@ class InvoiceDataBankAccountNumber(
     :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
-    :vartype rectangle: ~affinda.models.Rectangle
+    :vartype rectangle: ~affinda_v2.models.Rectangle
     :ivar rectangles: Required.
-    :vartype rectangles: list[~affinda.models.Rectangle]
+    :vartype rectangles: list[~affinda_v2.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
     :ivar raw: Required.
@@ -2843,7 +3178,26 @@ class InvoiceDataBankAccountNumber(
         "parsed": {"key": "parsed", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        id: int,
+        rectangle: "_models.Rectangle",
+        rectangles: List["_models.Rectangle"],
+        page_index: int,
+        raw: str,
+        confidence: float,
+        classification_confidence: float,
+        text_extraction_confidence: float,
+        is_verified: bool,
+        is_client_verified: bool,
+        is_auto_verified: bool,
+        content_type: str,
+        additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
+        parsed: Optional[str] = None,
+        **kwargs,
+    ):
         """
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
@@ -2851,9 +3205,9 @@ class InvoiceDataBankAccountNumber(
         :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
-        :paramtype rectangle: ~affinda.models.Rectangle
+        :paramtype rectangle: ~affinda_v2.models.Rectangle
         :keyword rectangles: Required.
-        :paramtype rectangles: list[~affinda.models.Rectangle]
+        :paramtype rectangles: list[~affinda_v2.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
         :keyword raw: Required.
@@ -2879,22 +3233,39 @@ class InvoiceDataBankAccountNumber(
         :keyword parsed:
         :paramtype parsed: str
         """
-        super(InvoiceDataBankAccountNumber, self).__init__(**kwargs)
-        self.additional_properties = kwargs.get("additional_properties", None)
-        self.id = kwargs["id"]
-        self.rectangle = kwargs["rectangle"]
-        self.rectangles = kwargs["rectangles"]
-        self.page_index = kwargs["page_index"]
-        self.raw = kwargs["raw"]
-        self.confidence = kwargs["confidence"]
-        self.classification_confidence = kwargs["classification_confidence"]
-        self.text_extraction_confidence = kwargs["text_extraction_confidence"]
-        self.is_verified = kwargs["is_verified"]
-        self.is_client_verified = kwargs["is_client_verified"]
-        self.is_auto_verified = kwargs["is_auto_verified"]
-        self.data_point = kwargs.get("data_point", None)
-        self.content_type = kwargs["content_type"]
-        self.parsed = kwargs.get("parsed", None)
+        super(InvoiceDataBankAccountNumber, self).__init__(
+            additional_properties=additional_properties,
+            id=id,
+            rectangle=rectangle,
+            rectangles=rectangles,
+            page_index=page_index,
+            raw=raw,
+            confidence=confidence,
+            classification_confidence=classification_confidence,
+            text_extraction_confidence=text_extraction_confidence,
+            is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
+            data_point=data_point,
+            content_type=content_type,
+            parsed=parsed,
+            **kwargs,
+        )
+        self.additional_properties = additional_properties
+        self.id = id
+        self.rectangle = rectangle
+        self.rectangles = rectangles
+        self.page_index = page_index
+        self.raw = raw
+        self.confidence = confidence
+        self.classification_confidence = classification_confidence
+        self.text_extraction_confidence = text_extraction_confidence
+        self.is_verified = is_verified
+        self.is_client_verified = is_client_verified
+        self.is_auto_verified = is_auto_verified
+        self.data_point = data_point
+        self.content_type = content_type
+        self.parsed = parsed
 
 
 class InvoiceDataBankBsb(
@@ -2910,9 +3281,9 @@ class InvoiceDataBankBsb(
     :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
-    :vartype rectangle: ~affinda.models.Rectangle
+    :vartype rectangle: ~affinda_v2.models.Rectangle
     :ivar rectangles: Required.
-    :vartype rectangles: list[~affinda.models.Rectangle]
+    :vartype rectangles: list[~affinda_v2.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
     :ivar raw: Required.
@@ -2972,7 +3343,26 @@ class InvoiceDataBankBsb(
         "parsed": {"key": "parsed", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        id: int,
+        rectangle: "_models.Rectangle",
+        rectangles: List["_models.Rectangle"],
+        page_index: int,
+        raw: str,
+        confidence: float,
+        classification_confidence: float,
+        text_extraction_confidence: float,
+        is_verified: bool,
+        is_client_verified: bool,
+        is_auto_verified: bool,
+        content_type: str,
+        additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
+        parsed: Optional[str] = None,
+        **kwargs,
+    ):
         """
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
@@ -2980,9 +3370,9 @@ class InvoiceDataBankBsb(
         :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
-        :paramtype rectangle: ~affinda.models.Rectangle
+        :paramtype rectangle: ~affinda_v2.models.Rectangle
         :keyword rectangles: Required.
-        :paramtype rectangles: list[~affinda.models.Rectangle]
+        :paramtype rectangles: list[~affinda_v2.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
         :keyword raw: Required.
@@ -3008,22 +3398,39 @@ class InvoiceDataBankBsb(
         :keyword parsed:
         :paramtype parsed: str
         """
-        super(InvoiceDataBankBsb, self).__init__(**kwargs)
-        self.additional_properties = kwargs.get("additional_properties", None)
-        self.id = kwargs["id"]
-        self.rectangle = kwargs["rectangle"]
-        self.rectangles = kwargs["rectangles"]
-        self.page_index = kwargs["page_index"]
-        self.raw = kwargs["raw"]
-        self.confidence = kwargs["confidence"]
-        self.classification_confidence = kwargs["classification_confidence"]
-        self.text_extraction_confidence = kwargs["text_extraction_confidence"]
-        self.is_verified = kwargs["is_verified"]
-        self.is_client_verified = kwargs["is_client_verified"]
-        self.is_auto_verified = kwargs["is_auto_verified"]
-        self.data_point = kwargs.get("data_point", None)
-        self.content_type = kwargs["content_type"]
-        self.parsed = kwargs.get("parsed", None)
+        super(InvoiceDataBankBsb, self).__init__(
+            additional_properties=additional_properties,
+            id=id,
+            rectangle=rectangle,
+            rectangles=rectangles,
+            page_index=page_index,
+            raw=raw,
+            confidence=confidence,
+            classification_confidence=classification_confidence,
+            text_extraction_confidence=text_extraction_confidence,
+            is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
+            data_point=data_point,
+            content_type=content_type,
+            parsed=parsed,
+            **kwargs,
+        )
+        self.additional_properties = additional_properties
+        self.id = id
+        self.rectangle = rectangle
+        self.rectangles = rectangles
+        self.page_index = page_index
+        self.raw = raw
+        self.confidence = confidence
+        self.classification_confidence = classification_confidence
+        self.text_extraction_confidence = text_extraction_confidence
+        self.is_verified = is_verified
+        self.is_client_verified = is_client_verified
+        self.is_auto_verified = is_auto_verified
+        self.data_point = data_point
+        self.content_type = content_type
+        self.parsed = parsed
 
 
 class InvoiceDataBankIban(
@@ -3039,9 +3446,9 @@ class InvoiceDataBankIban(
     :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
-    :vartype rectangle: ~affinda.models.Rectangle
+    :vartype rectangle: ~affinda_v2.models.Rectangle
     :ivar rectangles: Required.
-    :vartype rectangles: list[~affinda.models.Rectangle]
+    :vartype rectangles: list[~affinda_v2.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
     :ivar raw: Required.
@@ -3101,7 +3508,26 @@ class InvoiceDataBankIban(
         "parsed": {"key": "parsed", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        id: int,
+        rectangle: "_models.Rectangle",
+        rectangles: List["_models.Rectangle"],
+        page_index: int,
+        raw: str,
+        confidence: float,
+        classification_confidence: float,
+        text_extraction_confidence: float,
+        is_verified: bool,
+        is_client_verified: bool,
+        is_auto_verified: bool,
+        content_type: str,
+        additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
+        parsed: Optional[str] = None,
+        **kwargs,
+    ):
         """
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
@@ -3109,9 +3535,9 @@ class InvoiceDataBankIban(
         :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
-        :paramtype rectangle: ~affinda.models.Rectangle
+        :paramtype rectangle: ~affinda_v2.models.Rectangle
         :keyword rectangles: Required.
-        :paramtype rectangles: list[~affinda.models.Rectangle]
+        :paramtype rectangles: list[~affinda_v2.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
         :keyword raw: Required.
@@ -3137,22 +3563,39 @@ class InvoiceDataBankIban(
         :keyword parsed:
         :paramtype parsed: str
         """
-        super(InvoiceDataBankIban, self).__init__(**kwargs)
-        self.additional_properties = kwargs.get("additional_properties", None)
-        self.id = kwargs["id"]
-        self.rectangle = kwargs["rectangle"]
-        self.rectangles = kwargs["rectangles"]
-        self.page_index = kwargs["page_index"]
-        self.raw = kwargs["raw"]
-        self.confidence = kwargs["confidence"]
-        self.classification_confidence = kwargs["classification_confidence"]
-        self.text_extraction_confidence = kwargs["text_extraction_confidence"]
-        self.is_verified = kwargs["is_verified"]
-        self.is_client_verified = kwargs["is_client_verified"]
-        self.is_auto_verified = kwargs["is_auto_verified"]
-        self.data_point = kwargs.get("data_point", None)
-        self.content_type = kwargs["content_type"]
-        self.parsed = kwargs.get("parsed", None)
+        super(InvoiceDataBankIban, self).__init__(
+            additional_properties=additional_properties,
+            id=id,
+            rectangle=rectangle,
+            rectangles=rectangles,
+            page_index=page_index,
+            raw=raw,
+            confidence=confidence,
+            classification_confidence=classification_confidence,
+            text_extraction_confidence=text_extraction_confidence,
+            is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
+            data_point=data_point,
+            content_type=content_type,
+            parsed=parsed,
+            **kwargs,
+        )
+        self.additional_properties = additional_properties
+        self.id = id
+        self.rectangle = rectangle
+        self.rectangles = rectangles
+        self.page_index = page_index
+        self.raw = raw
+        self.confidence = confidence
+        self.classification_confidence = classification_confidence
+        self.text_extraction_confidence = text_extraction_confidence
+        self.is_verified = is_verified
+        self.is_client_verified = is_client_verified
+        self.is_auto_verified = is_auto_verified
+        self.data_point = data_point
+        self.content_type = content_type
+        self.parsed = parsed
 
 
 class InvoiceDataBankSortCode(
@@ -3168,9 +3611,9 @@ class InvoiceDataBankSortCode(
     :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
-    :vartype rectangle: ~affinda.models.Rectangle
+    :vartype rectangle: ~affinda_v2.models.Rectangle
     :ivar rectangles: Required.
-    :vartype rectangles: list[~affinda.models.Rectangle]
+    :vartype rectangles: list[~affinda_v2.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
     :ivar raw: Required.
@@ -3230,7 +3673,26 @@ class InvoiceDataBankSortCode(
         "parsed": {"key": "parsed", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        id: int,
+        rectangle: "_models.Rectangle",
+        rectangles: List["_models.Rectangle"],
+        page_index: int,
+        raw: str,
+        confidence: float,
+        classification_confidence: float,
+        text_extraction_confidence: float,
+        is_verified: bool,
+        is_client_verified: bool,
+        is_auto_verified: bool,
+        content_type: str,
+        additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
+        parsed: Optional[str] = None,
+        **kwargs,
+    ):
         """
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
@@ -3238,9 +3700,9 @@ class InvoiceDataBankSortCode(
         :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
-        :paramtype rectangle: ~affinda.models.Rectangle
+        :paramtype rectangle: ~affinda_v2.models.Rectangle
         :keyword rectangles: Required.
-        :paramtype rectangles: list[~affinda.models.Rectangle]
+        :paramtype rectangles: list[~affinda_v2.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
         :keyword raw: Required.
@@ -3266,22 +3728,39 @@ class InvoiceDataBankSortCode(
         :keyword parsed:
         :paramtype parsed: str
         """
-        super(InvoiceDataBankSortCode, self).__init__(**kwargs)
-        self.additional_properties = kwargs.get("additional_properties", None)
-        self.id = kwargs["id"]
-        self.rectangle = kwargs["rectangle"]
-        self.rectangles = kwargs["rectangles"]
-        self.page_index = kwargs["page_index"]
-        self.raw = kwargs["raw"]
-        self.confidence = kwargs["confidence"]
-        self.classification_confidence = kwargs["classification_confidence"]
-        self.text_extraction_confidence = kwargs["text_extraction_confidence"]
-        self.is_verified = kwargs["is_verified"]
-        self.is_client_verified = kwargs["is_client_verified"]
-        self.is_auto_verified = kwargs["is_auto_verified"]
-        self.data_point = kwargs.get("data_point", None)
-        self.content_type = kwargs["content_type"]
-        self.parsed = kwargs.get("parsed", None)
+        super(InvoiceDataBankSortCode, self).__init__(
+            additional_properties=additional_properties,
+            id=id,
+            rectangle=rectangle,
+            rectangles=rectangles,
+            page_index=page_index,
+            raw=raw,
+            confidence=confidence,
+            classification_confidence=classification_confidence,
+            text_extraction_confidence=text_extraction_confidence,
+            is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
+            data_point=data_point,
+            content_type=content_type,
+            parsed=parsed,
+            **kwargs,
+        )
+        self.additional_properties = additional_properties
+        self.id = id
+        self.rectangle = rectangle
+        self.rectangles = rectangles
+        self.page_index = page_index
+        self.raw = raw
+        self.confidence = confidence
+        self.classification_confidence = classification_confidence
+        self.text_extraction_confidence = text_extraction_confidence
+        self.is_verified = is_verified
+        self.is_client_verified = is_client_verified
+        self.is_auto_verified = is_auto_verified
+        self.data_point = data_point
+        self.content_type = content_type
+        self.parsed = parsed
 
 
 class InvoiceDataBankSwift(
@@ -3297,9 +3776,9 @@ class InvoiceDataBankSwift(
     :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
-    :vartype rectangle: ~affinda.models.Rectangle
+    :vartype rectangle: ~affinda_v2.models.Rectangle
     :ivar rectangles: Required.
-    :vartype rectangles: list[~affinda.models.Rectangle]
+    :vartype rectangles: list[~affinda_v2.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
     :ivar raw: Required.
@@ -3359,7 +3838,26 @@ class InvoiceDataBankSwift(
         "parsed": {"key": "parsed", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        id: int,
+        rectangle: "_models.Rectangle",
+        rectangles: List["_models.Rectangle"],
+        page_index: int,
+        raw: str,
+        confidence: float,
+        classification_confidence: float,
+        text_extraction_confidence: float,
+        is_verified: bool,
+        is_client_verified: bool,
+        is_auto_verified: bool,
+        content_type: str,
+        additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
+        parsed: Optional[str] = None,
+        **kwargs,
+    ):
         """
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
@@ -3367,9 +3865,9 @@ class InvoiceDataBankSwift(
         :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
-        :paramtype rectangle: ~affinda.models.Rectangle
+        :paramtype rectangle: ~affinda_v2.models.Rectangle
         :keyword rectangles: Required.
-        :paramtype rectangles: list[~affinda.models.Rectangle]
+        :paramtype rectangles: list[~affinda_v2.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
         :keyword raw: Required.
@@ -3395,22 +3893,39 @@ class InvoiceDataBankSwift(
         :keyword parsed:
         :paramtype parsed: str
         """
-        super(InvoiceDataBankSwift, self).__init__(**kwargs)
-        self.additional_properties = kwargs.get("additional_properties", None)
-        self.id = kwargs["id"]
-        self.rectangle = kwargs["rectangle"]
-        self.rectangles = kwargs["rectangles"]
-        self.page_index = kwargs["page_index"]
-        self.raw = kwargs["raw"]
-        self.confidence = kwargs["confidence"]
-        self.classification_confidence = kwargs["classification_confidence"]
-        self.text_extraction_confidence = kwargs["text_extraction_confidence"]
-        self.is_verified = kwargs["is_verified"]
-        self.is_client_verified = kwargs["is_client_verified"]
-        self.is_auto_verified = kwargs["is_auto_verified"]
-        self.data_point = kwargs.get("data_point", None)
-        self.content_type = kwargs["content_type"]
-        self.parsed = kwargs.get("parsed", None)
+        super(InvoiceDataBankSwift, self).__init__(
+            additional_properties=additional_properties,
+            id=id,
+            rectangle=rectangle,
+            rectangles=rectangles,
+            page_index=page_index,
+            raw=raw,
+            confidence=confidence,
+            classification_confidence=classification_confidence,
+            text_extraction_confidence=text_extraction_confidence,
+            is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
+            data_point=data_point,
+            content_type=content_type,
+            parsed=parsed,
+            **kwargs,
+        )
+        self.additional_properties = additional_properties
+        self.id = id
+        self.rectangle = rectangle
+        self.rectangles = rectangles
+        self.page_index = page_index
+        self.raw = raw
+        self.confidence = confidence
+        self.classification_confidence = classification_confidence
+        self.text_extraction_confidence = text_extraction_confidence
+        self.is_verified = is_verified
+        self.is_client_verified = is_client_verified
+        self.is_auto_verified = is_auto_verified
+        self.data_point = data_point
+        self.content_type = content_type
+        self.parsed = parsed
 
 
 class InvoiceDataBpayBillerCode(
@@ -3426,9 +3941,9 @@ class InvoiceDataBpayBillerCode(
     :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
-    :vartype rectangle: ~affinda.models.Rectangle
+    :vartype rectangle: ~affinda_v2.models.Rectangle
     :ivar rectangles: Required.
-    :vartype rectangles: list[~affinda.models.Rectangle]
+    :vartype rectangles: list[~affinda_v2.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
     :ivar raw: Required.
@@ -3488,7 +4003,26 @@ class InvoiceDataBpayBillerCode(
         "parsed": {"key": "parsed", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        id: int,
+        rectangle: "_models.Rectangle",
+        rectangles: List["_models.Rectangle"],
+        page_index: int,
+        raw: str,
+        confidence: float,
+        classification_confidence: float,
+        text_extraction_confidence: float,
+        is_verified: bool,
+        is_client_verified: bool,
+        is_auto_verified: bool,
+        content_type: str,
+        additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
+        parsed: Optional[str] = None,
+        **kwargs,
+    ):
         """
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
@@ -3496,9 +4030,9 @@ class InvoiceDataBpayBillerCode(
         :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
-        :paramtype rectangle: ~affinda.models.Rectangle
+        :paramtype rectangle: ~affinda_v2.models.Rectangle
         :keyword rectangles: Required.
-        :paramtype rectangles: list[~affinda.models.Rectangle]
+        :paramtype rectangles: list[~affinda_v2.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
         :keyword raw: Required.
@@ -3524,22 +4058,39 @@ class InvoiceDataBpayBillerCode(
         :keyword parsed:
         :paramtype parsed: str
         """
-        super(InvoiceDataBpayBillerCode, self).__init__(**kwargs)
-        self.additional_properties = kwargs.get("additional_properties", None)
-        self.id = kwargs["id"]
-        self.rectangle = kwargs["rectangle"]
-        self.rectangles = kwargs["rectangles"]
-        self.page_index = kwargs["page_index"]
-        self.raw = kwargs["raw"]
-        self.confidence = kwargs["confidence"]
-        self.classification_confidence = kwargs["classification_confidence"]
-        self.text_extraction_confidence = kwargs["text_extraction_confidence"]
-        self.is_verified = kwargs["is_verified"]
-        self.is_client_verified = kwargs["is_client_verified"]
-        self.is_auto_verified = kwargs["is_auto_verified"]
-        self.data_point = kwargs.get("data_point", None)
-        self.content_type = kwargs["content_type"]
-        self.parsed = kwargs.get("parsed", None)
+        super(InvoiceDataBpayBillerCode, self).__init__(
+            additional_properties=additional_properties,
+            id=id,
+            rectangle=rectangle,
+            rectangles=rectangles,
+            page_index=page_index,
+            raw=raw,
+            confidence=confidence,
+            classification_confidence=classification_confidence,
+            text_extraction_confidence=text_extraction_confidence,
+            is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
+            data_point=data_point,
+            content_type=content_type,
+            parsed=parsed,
+            **kwargs,
+        )
+        self.additional_properties = additional_properties
+        self.id = id
+        self.rectangle = rectangle
+        self.rectangles = rectangles
+        self.page_index = page_index
+        self.raw = raw
+        self.confidence = confidence
+        self.classification_confidence = classification_confidence
+        self.text_extraction_confidence = text_extraction_confidence
+        self.is_verified = is_verified
+        self.is_client_verified = is_client_verified
+        self.is_auto_verified = is_auto_verified
+        self.data_point = data_point
+        self.content_type = content_type
+        self.parsed = parsed
 
 
 class InvoiceDataBpayReference(
@@ -3555,9 +4106,9 @@ class InvoiceDataBpayReference(
     :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
-    :vartype rectangle: ~affinda.models.Rectangle
+    :vartype rectangle: ~affinda_v2.models.Rectangle
     :ivar rectangles: Required.
-    :vartype rectangles: list[~affinda.models.Rectangle]
+    :vartype rectangles: list[~affinda_v2.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
     :ivar raw: Required.
@@ -3617,7 +4168,26 @@ class InvoiceDataBpayReference(
         "parsed": {"key": "parsed", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        id: int,
+        rectangle: "_models.Rectangle",
+        rectangles: List["_models.Rectangle"],
+        page_index: int,
+        raw: str,
+        confidence: float,
+        classification_confidence: float,
+        text_extraction_confidence: float,
+        is_verified: bool,
+        is_client_verified: bool,
+        is_auto_verified: bool,
+        content_type: str,
+        additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
+        parsed: Optional[str] = None,
+        **kwargs,
+    ):
         """
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
@@ -3625,9 +4195,9 @@ class InvoiceDataBpayReference(
         :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
-        :paramtype rectangle: ~affinda.models.Rectangle
+        :paramtype rectangle: ~affinda_v2.models.Rectangle
         :keyword rectangles: Required.
-        :paramtype rectangles: list[~affinda.models.Rectangle]
+        :paramtype rectangles: list[~affinda_v2.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
         :keyword raw: Required.
@@ -3653,22 +4223,39 @@ class InvoiceDataBpayReference(
         :keyword parsed:
         :paramtype parsed: str
         """
-        super(InvoiceDataBpayReference, self).__init__(**kwargs)
-        self.additional_properties = kwargs.get("additional_properties", None)
-        self.id = kwargs["id"]
-        self.rectangle = kwargs["rectangle"]
-        self.rectangles = kwargs["rectangles"]
-        self.page_index = kwargs["page_index"]
-        self.raw = kwargs["raw"]
-        self.confidence = kwargs["confidence"]
-        self.classification_confidence = kwargs["classification_confidence"]
-        self.text_extraction_confidence = kwargs["text_extraction_confidence"]
-        self.is_verified = kwargs["is_verified"]
-        self.is_client_verified = kwargs["is_client_verified"]
-        self.is_auto_verified = kwargs["is_auto_verified"]
-        self.data_point = kwargs.get("data_point", None)
-        self.content_type = kwargs["content_type"]
-        self.parsed = kwargs.get("parsed", None)
+        super(InvoiceDataBpayReference, self).__init__(
+            additional_properties=additional_properties,
+            id=id,
+            rectangle=rectangle,
+            rectangles=rectangles,
+            page_index=page_index,
+            raw=raw,
+            confidence=confidence,
+            classification_confidence=classification_confidence,
+            text_extraction_confidence=text_extraction_confidence,
+            is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
+            data_point=data_point,
+            content_type=content_type,
+            parsed=parsed,
+            **kwargs,
+        )
+        self.additional_properties = additional_properties
+        self.id = id
+        self.rectangle = rectangle
+        self.rectangles = rectangles
+        self.page_index = page_index
+        self.raw = raw
+        self.confidence = confidence
+        self.classification_confidence = classification_confidence
+        self.text_extraction_confidence = text_extraction_confidence
+        self.is_verified = is_verified
+        self.is_client_verified = is_client_verified
+        self.is_auto_verified = is_auto_verified
+        self.data_point = data_point
+        self.content_type = content_type
+        self.parsed = parsed
 
 
 class InvoiceDataCustomerBusinessNumber(
@@ -3684,9 +4271,9 @@ class InvoiceDataCustomerBusinessNumber(
     :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
-    :vartype rectangle: ~affinda.models.Rectangle
+    :vartype rectangle: ~affinda_v2.models.Rectangle
     :ivar rectangles: Required.
-    :vartype rectangles: list[~affinda.models.Rectangle]
+    :vartype rectangles: list[~affinda_v2.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
     :ivar raw: Required.
@@ -3746,7 +4333,26 @@ class InvoiceDataCustomerBusinessNumber(
         "parsed": {"key": "parsed", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        id: int,
+        rectangle: "_models.Rectangle",
+        rectangles: List["_models.Rectangle"],
+        page_index: int,
+        raw: str,
+        confidence: float,
+        classification_confidence: float,
+        text_extraction_confidence: float,
+        is_verified: bool,
+        is_client_verified: bool,
+        is_auto_verified: bool,
+        content_type: str,
+        additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
+        parsed: Optional[str] = None,
+        **kwargs,
+    ):
         """
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
@@ -3754,9 +4360,9 @@ class InvoiceDataCustomerBusinessNumber(
         :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
-        :paramtype rectangle: ~affinda.models.Rectangle
+        :paramtype rectangle: ~affinda_v2.models.Rectangle
         :keyword rectangles: Required.
-        :paramtype rectangles: list[~affinda.models.Rectangle]
+        :paramtype rectangles: list[~affinda_v2.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
         :keyword raw: Required.
@@ -3782,22 +4388,39 @@ class InvoiceDataCustomerBusinessNumber(
         :keyword parsed:
         :paramtype parsed: str
         """
-        super(InvoiceDataCustomerBusinessNumber, self).__init__(**kwargs)
-        self.additional_properties = kwargs.get("additional_properties", None)
-        self.id = kwargs["id"]
-        self.rectangle = kwargs["rectangle"]
-        self.rectangles = kwargs["rectangles"]
-        self.page_index = kwargs["page_index"]
-        self.raw = kwargs["raw"]
-        self.confidence = kwargs["confidence"]
-        self.classification_confidence = kwargs["classification_confidence"]
-        self.text_extraction_confidence = kwargs["text_extraction_confidence"]
-        self.is_verified = kwargs["is_verified"]
-        self.is_client_verified = kwargs["is_client_verified"]
-        self.is_auto_verified = kwargs["is_auto_verified"]
-        self.data_point = kwargs.get("data_point", None)
-        self.content_type = kwargs["content_type"]
-        self.parsed = kwargs.get("parsed", None)
+        super(InvoiceDataCustomerBusinessNumber, self).__init__(
+            additional_properties=additional_properties,
+            id=id,
+            rectangle=rectangle,
+            rectangles=rectangles,
+            page_index=page_index,
+            raw=raw,
+            confidence=confidence,
+            classification_confidence=classification_confidence,
+            text_extraction_confidence=text_extraction_confidence,
+            is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
+            data_point=data_point,
+            content_type=content_type,
+            parsed=parsed,
+            **kwargs,
+        )
+        self.additional_properties = additional_properties
+        self.id = id
+        self.rectangle = rectangle
+        self.rectangles = rectangles
+        self.page_index = page_index
+        self.raw = raw
+        self.confidence = confidence
+        self.classification_confidence = classification_confidence
+        self.text_extraction_confidence = text_extraction_confidence
+        self.is_verified = is_verified
+        self.is_client_verified = is_client_verified
+        self.is_auto_verified = is_auto_verified
+        self.data_point = data_point
+        self.content_type = content_type
+        self.parsed = parsed
 
 
 class InvoiceDataCustomerCompanyName(
@@ -3813,9 +4436,9 @@ class InvoiceDataCustomerCompanyName(
     :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
-    :vartype rectangle: ~affinda.models.Rectangle
+    :vartype rectangle: ~affinda_v2.models.Rectangle
     :ivar rectangles: Required.
-    :vartype rectangles: list[~affinda.models.Rectangle]
+    :vartype rectangles: list[~affinda_v2.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
     :ivar raw: Required.
@@ -3875,7 +4498,26 @@ class InvoiceDataCustomerCompanyName(
         "parsed": {"key": "parsed", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        id: int,
+        rectangle: "_models.Rectangle",
+        rectangles: List["_models.Rectangle"],
+        page_index: int,
+        raw: str,
+        confidence: float,
+        classification_confidence: float,
+        text_extraction_confidence: float,
+        is_verified: bool,
+        is_client_verified: bool,
+        is_auto_verified: bool,
+        content_type: str,
+        additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
+        parsed: Optional[str] = None,
+        **kwargs,
+    ):
         """
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
@@ -3883,9 +4525,9 @@ class InvoiceDataCustomerCompanyName(
         :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
-        :paramtype rectangle: ~affinda.models.Rectangle
+        :paramtype rectangle: ~affinda_v2.models.Rectangle
         :keyword rectangles: Required.
-        :paramtype rectangles: list[~affinda.models.Rectangle]
+        :paramtype rectangles: list[~affinda_v2.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
         :keyword raw: Required.
@@ -3911,22 +4553,39 @@ class InvoiceDataCustomerCompanyName(
         :keyword parsed:
         :paramtype parsed: str
         """
-        super(InvoiceDataCustomerCompanyName, self).__init__(**kwargs)
-        self.additional_properties = kwargs.get("additional_properties", None)
-        self.id = kwargs["id"]
-        self.rectangle = kwargs["rectangle"]
-        self.rectangles = kwargs["rectangles"]
-        self.page_index = kwargs["page_index"]
-        self.raw = kwargs["raw"]
-        self.confidence = kwargs["confidence"]
-        self.classification_confidence = kwargs["classification_confidence"]
-        self.text_extraction_confidence = kwargs["text_extraction_confidence"]
-        self.is_verified = kwargs["is_verified"]
-        self.is_client_verified = kwargs["is_client_verified"]
-        self.is_auto_verified = kwargs["is_auto_verified"]
-        self.data_point = kwargs.get("data_point", None)
-        self.content_type = kwargs["content_type"]
-        self.parsed = kwargs.get("parsed", None)
+        super(InvoiceDataCustomerCompanyName, self).__init__(
+            additional_properties=additional_properties,
+            id=id,
+            rectangle=rectangle,
+            rectangles=rectangles,
+            page_index=page_index,
+            raw=raw,
+            confidence=confidence,
+            classification_confidence=classification_confidence,
+            text_extraction_confidence=text_extraction_confidence,
+            is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
+            data_point=data_point,
+            content_type=content_type,
+            parsed=parsed,
+            **kwargs,
+        )
+        self.additional_properties = additional_properties
+        self.id = id
+        self.rectangle = rectangle
+        self.rectangles = rectangles
+        self.page_index = page_index
+        self.raw = raw
+        self.confidence = confidence
+        self.classification_confidence = classification_confidence
+        self.text_extraction_confidence = text_extraction_confidence
+        self.is_verified = is_verified
+        self.is_client_verified = is_client_verified
+        self.is_auto_verified = is_auto_verified
+        self.data_point = data_point
+        self.content_type = content_type
+        self.parsed = parsed
 
 
 class InvoiceDataCustomerContactName(
@@ -3942,9 +4601,9 @@ class InvoiceDataCustomerContactName(
     :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
-    :vartype rectangle: ~affinda.models.Rectangle
+    :vartype rectangle: ~affinda_v2.models.Rectangle
     :ivar rectangles: Required.
-    :vartype rectangles: list[~affinda.models.Rectangle]
+    :vartype rectangles: list[~affinda_v2.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
     :ivar raw: Required.
@@ -4004,7 +4663,26 @@ class InvoiceDataCustomerContactName(
         "parsed": {"key": "parsed", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        id: int,
+        rectangle: "_models.Rectangle",
+        rectangles: List["_models.Rectangle"],
+        page_index: int,
+        raw: str,
+        confidence: float,
+        classification_confidence: float,
+        text_extraction_confidence: float,
+        is_verified: bool,
+        is_client_verified: bool,
+        is_auto_verified: bool,
+        content_type: str,
+        additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
+        parsed: Optional[str] = None,
+        **kwargs,
+    ):
         """
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
@@ -4012,9 +4690,9 @@ class InvoiceDataCustomerContactName(
         :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
-        :paramtype rectangle: ~affinda.models.Rectangle
+        :paramtype rectangle: ~affinda_v2.models.Rectangle
         :keyword rectangles: Required.
-        :paramtype rectangles: list[~affinda.models.Rectangle]
+        :paramtype rectangles: list[~affinda_v2.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
         :keyword raw: Required.
@@ -4040,22 +4718,39 @@ class InvoiceDataCustomerContactName(
         :keyword parsed:
         :paramtype parsed: str
         """
-        super(InvoiceDataCustomerContactName, self).__init__(**kwargs)
-        self.additional_properties = kwargs.get("additional_properties", None)
-        self.id = kwargs["id"]
-        self.rectangle = kwargs["rectangle"]
-        self.rectangles = kwargs["rectangles"]
-        self.page_index = kwargs["page_index"]
-        self.raw = kwargs["raw"]
-        self.confidence = kwargs["confidence"]
-        self.classification_confidence = kwargs["classification_confidence"]
-        self.text_extraction_confidence = kwargs["text_extraction_confidence"]
-        self.is_verified = kwargs["is_verified"]
-        self.is_client_verified = kwargs["is_client_verified"]
-        self.is_auto_verified = kwargs["is_auto_verified"]
-        self.data_point = kwargs.get("data_point", None)
-        self.content_type = kwargs["content_type"]
-        self.parsed = kwargs.get("parsed", None)
+        super(InvoiceDataCustomerContactName, self).__init__(
+            additional_properties=additional_properties,
+            id=id,
+            rectangle=rectangle,
+            rectangles=rectangles,
+            page_index=page_index,
+            raw=raw,
+            confidence=confidence,
+            classification_confidence=classification_confidence,
+            text_extraction_confidence=text_extraction_confidence,
+            is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
+            data_point=data_point,
+            content_type=content_type,
+            parsed=parsed,
+            **kwargs,
+        )
+        self.additional_properties = additional_properties
+        self.id = id
+        self.rectangle = rectangle
+        self.rectangles = rectangles
+        self.page_index = page_index
+        self.raw = raw
+        self.confidence = confidence
+        self.classification_confidence = classification_confidence
+        self.text_extraction_confidence = text_extraction_confidence
+        self.is_verified = is_verified
+        self.is_client_verified = is_client_verified
+        self.is_auto_verified = is_auto_verified
+        self.data_point = data_point
+        self.content_type = content_type
+        self.parsed = parsed
 
 
 class InvoiceDataCustomerEmail(
@@ -4071,9 +4766,9 @@ class InvoiceDataCustomerEmail(
     :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
-    :vartype rectangle: ~affinda.models.Rectangle
+    :vartype rectangle: ~affinda_v2.models.Rectangle
     :ivar rectangles: Required.
-    :vartype rectangles: list[~affinda.models.Rectangle]
+    :vartype rectangles: list[~affinda_v2.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
     :ivar raw: Required.
@@ -4133,7 +4828,26 @@ class InvoiceDataCustomerEmail(
         "parsed": {"key": "parsed", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        id: int,
+        rectangle: "_models.Rectangle",
+        rectangles: List["_models.Rectangle"],
+        page_index: int,
+        raw: str,
+        confidence: float,
+        classification_confidence: float,
+        text_extraction_confidence: float,
+        is_verified: bool,
+        is_client_verified: bool,
+        is_auto_verified: bool,
+        content_type: str,
+        additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
+        parsed: Optional[str] = None,
+        **kwargs,
+    ):
         """
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
@@ -4141,9 +4855,9 @@ class InvoiceDataCustomerEmail(
         :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
-        :paramtype rectangle: ~affinda.models.Rectangle
+        :paramtype rectangle: ~affinda_v2.models.Rectangle
         :keyword rectangles: Required.
-        :paramtype rectangles: list[~affinda.models.Rectangle]
+        :paramtype rectangles: list[~affinda_v2.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
         :keyword raw: Required.
@@ -4169,22 +4883,39 @@ class InvoiceDataCustomerEmail(
         :keyword parsed:
         :paramtype parsed: str
         """
-        super(InvoiceDataCustomerEmail, self).__init__(**kwargs)
-        self.additional_properties = kwargs.get("additional_properties", None)
-        self.id = kwargs["id"]
-        self.rectangle = kwargs["rectangle"]
-        self.rectangles = kwargs["rectangles"]
-        self.page_index = kwargs["page_index"]
-        self.raw = kwargs["raw"]
-        self.confidence = kwargs["confidence"]
-        self.classification_confidence = kwargs["classification_confidence"]
-        self.text_extraction_confidence = kwargs["text_extraction_confidence"]
-        self.is_verified = kwargs["is_verified"]
-        self.is_client_verified = kwargs["is_client_verified"]
-        self.is_auto_verified = kwargs["is_auto_verified"]
-        self.data_point = kwargs.get("data_point", None)
-        self.content_type = kwargs["content_type"]
-        self.parsed = kwargs.get("parsed", None)
+        super(InvoiceDataCustomerEmail, self).__init__(
+            additional_properties=additional_properties,
+            id=id,
+            rectangle=rectangle,
+            rectangles=rectangles,
+            page_index=page_index,
+            raw=raw,
+            confidence=confidence,
+            classification_confidence=classification_confidence,
+            text_extraction_confidence=text_extraction_confidence,
+            is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
+            data_point=data_point,
+            content_type=content_type,
+            parsed=parsed,
+            **kwargs,
+        )
+        self.additional_properties = additional_properties
+        self.id = id
+        self.rectangle = rectangle
+        self.rectangles = rectangles
+        self.page_index = page_index
+        self.raw = raw
+        self.confidence = confidence
+        self.classification_confidence = classification_confidence
+        self.text_extraction_confidence = text_extraction_confidence
+        self.is_verified = is_verified
+        self.is_client_verified = is_client_verified
+        self.is_auto_verified = is_auto_verified
+        self.data_point = data_point
+        self.content_type = content_type
+        self.parsed = parsed
 
 
 class InvoiceDataCustomerNumber(
@@ -4200,9 +4931,9 @@ class InvoiceDataCustomerNumber(
     :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
-    :vartype rectangle: ~affinda.models.Rectangle
+    :vartype rectangle: ~affinda_v2.models.Rectangle
     :ivar rectangles: Required.
-    :vartype rectangles: list[~affinda.models.Rectangle]
+    :vartype rectangles: list[~affinda_v2.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
     :ivar raw: Required.
@@ -4262,7 +4993,26 @@ class InvoiceDataCustomerNumber(
         "parsed": {"key": "parsed", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        id: int,
+        rectangle: "_models.Rectangle",
+        rectangles: List["_models.Rectangle"],
+        page_index: int,
+        raw: str,
+        confidence: float,
+        classification_confidence: float,
+        text_extraction_confidence: float,
+        is_verified: bool,
+        is_client_verified: bool,
+        is_auto_verified: bool,
+        content_type: str,
+        additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
+        parsed: Optional[str] = None,
+        **kwargs,
+    ):
         """
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
@@ -4270,9 +5020,9 @@ class InvoiceDataCustomerNumber(
         :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
-        :paramtype rectangle: ~affinda.models.Rectangle
+        :paramtype rectangle: ~affinda_v2.models.Rectangle
         :keyword rectangles: Required.
-        :paramtype rectangles: list[~affinda.models.Rectangle]
+        :paramtype rectangles: list[~affinda_v2.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
         :keyword raw: Required.
@@ -4298,22 +5048,39 @@ class InvoiceDataCustomerNumber(
         :keyword parsed:
         :paramtype parsed: str
         """
-        super(InvoiceDataCustomerNumber, self).__init__(**kwargs)
-        self.additional_properties = kwargs.get("additional_properties", None)
-        self.id = kwargs["id"]
-        self.rectangle = kwargs["rectangle"]
-        self.rectangles = kwargs["rectangles"]
-        self.page_index = kwargs["page_index"]
-        self.raw = kwargs["raw"]
-        self.confidence = kwargs["confidence"]
-        self.classification_confidence = kwargs["classification_confidence"]
-        self.text_extraction_confidence = kwargs["text_extraction_confidence"]
-        self.is_verified = kwargs["is_verified"]
-        self.is_client_verified = kwargs["is_client_verified"]
-        self.is_auto_verified = kwargs["is_auto_verified"]
-        self.data_point = kwargs.get("data_point", None)
-        self.content_type = kwargs["content_type"]
-        self.parsed = kwargs.get("parsed", None)
+        super(InvoiceDataCustomerNumber, self).__init__(
+            additional_properties=additional_properties,
+            id=id,
+            rectangle=rectangle,
+            rectangles=rectangles,
+            page_index=page_index,
+            raw=raw,
+            confidence=confidence,
+            classification_confidence=classification_confidence,
+            text_extraction_confidence=text_extraction_confidence,
+            is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
+            data_point=data_point,
+            content_type=content_type,
+            parsed=parsed,
+            **kwargs,
+        )
+        self.additional_properties = additional_properties
+        self.id = id
+        self.rectangle = rectangle
+        self.rectangles = rectangles
+        self.page_index = page_index
+        self.raw = raw
+        self.confidence = confidence
+        self.classification_confidence = classification_confidence
+        self.text_extraction_confidence = text_extraction_confidence
+        self.is_verified = is_verified
+        self.is_client_verified = is_client_verified
+        self.is_auto_verified = is_auto_verified
+        self.data_point = data_point
+        self.content_type = content_type
+        self.parsed = parsed
 
 
 class InvoiceDataCustomerPhoneNumber(
@@ -4329,9 +5096,9 @@ class InvoiceDataCustomerPhoneNumber(
     :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
-    :vartype rectangle: ~affinda.models.Rectangle
+    :vartype rectangle: ~affinda_v2.models.Rectangle
     :ivar rectangles: Required.
-    :vartype rectangles: list[~affinda.models.Rectangle]
+    :vartype rectangles: list[~affinda_v2.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
     :ivar raw: Required.
@@ -4391,7 +5158,26 @@ class InvoiceDataCustomerPhoneNumber(
         "parsed": {"key": "parsed", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        id: int,
+        rectangle: "_models.Rectangle",
+        rectangles: List["_models.Rectangle"],
+        page_index: int,
+        raw: str,
+        confidence: float,
+        classification_confidence: float,
+        text_extraction_confidence: float,
+        is_verified: bool,
+        is_client_verified: bool,
+        is_auto_verified: bool,
+        content_type: str,
+        additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
+        parsed: Optional[str] = None,
+        **kwargs,
+    ):
         """
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
@@ -4399,9 +5185,9 @@ class InvoiceDataCustomerPhoneNumber(
         :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
-        :paramtype rectangle: ~affinda.models.Rectangle
+        :paramtype rectangle: ~affinda_v2.models.Rectangle
         :keyword rectangles: Required.
-        :paramtype rectangles: list[~affinda.models.Rectangle]
+        :paramtype rectangles: list[~affinda_v2.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
         :keyword raw: Required.
@@ -4427,22 +5213,39 @@ class InvoiceDataCustomerPhoneNumber(
         :keyword parsed:
         :paramtype parsed: str
         """
-        super(InvoiceDataCustomerPhoneNumber, self).__init__(**kwargs)
-        self.additional_properties = kwargs.get("additional_properties", None)
-        self.id = kwargs["id"]
-        self.rectangle = kwargs["rectangle"]
-        self.rectangles = kwargs["rectangles"]
-        self.page_index = kwargs["page_index"]
-        self.raw = kwargs["raw"]
-        self.confidence = kwargs["confidence"]
-        self.classification_confidence = kwargs["classification_confidence"]
-        self.text_extraction_confidence = kwargs["text_extraction_confidence"]
-        self.is_verified = kwargs["is_verified"]
-        self.is_client_verified = kwargs["is_client_verified"]
-        self.is_auto_verified = kwargs["is_auto_verified"]
-        self.data_point = kwargs.get("data_point", None)
-        self.content_type = kwargs["content_type"]
-        self.parsed = kwargs.get("parsed", None)
+        super(InvoiceDataCustomerPhoneNumber, self).__init__(
+            additional_properties=additional_properties,
+            id=id,
+            rectangle=rectangle,
+            rectangles=rectangles,
+            page_index=page_index,
+            raw=raw,
+            confidence=confidence,
+            classification_confidence=classification_confidence,
+            text_extraction_confidence=text_extraction_confidence,
+            is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
+            data_point=data_point,
+            content_type=content_type,
+            parsed=parsed,
+            **kwargs,
+        )
+        self.additional_properties = additional_properties
+        self.id = id
+        self.rectangle = rectangle
+        self.rectangles = rectangles
+        self.page_index = page_index
+        self.raw = raw
+        self.confidence = confidence
+        self.classification_confidence = classification_confidence
+        self.text_extraction_confidence = text_extraction_confidence
+        self.is_verified = is_verified
+        self.is_client_verified = is_client_verified
+        self.is_auto_verified = is_auto_verified
+        self.data_point = data_point
+        self.content_type = content_type
+        self.parsed = parsed
 
 
 class InvoiceDataCustomerVat(
@@ -4458,9 +5261,9 @@ class InvoiceDataCustomerVat(
     :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
-    :vartype rectangle: ~affinda.models.Rectangle
+    :vartype rectangle: ~affinda_v2.models.Rectangle
     :ivar rectangles: Required.
-    :vartype rectangles: list[~affinda.models.Rectangle]
+    :vartype rectangles: list[~affinda_v2.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
     :ivar raw: Required.
@@ -4520,7 +5323,26 @@ class InvoiceDataCustomerVat(
         "parsed": {"key": "parsed", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        id: int,
+        rectangle: "_models.Rectangle",
+        rectangles: List["_models.Rectangle"],
+        page_index: int,
+        raw: str,
+        confidence: float,
+        classification_confidence: float,
+        text_extraction_confidence: float,
+        is_verified: bool,
+        is_client_verified: bool,
+        is_auto_verified: bool,
+        content_type: str,
+        additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
+        parsed: Optional[str] = None,
+        **kwargs,
+    ):
         """
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
@@ -4528,9 +5350,9 @@ class InvoiceDataCustomerVat(
         :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
-        :paramtype rectangle: ~affinda.models.Rectangle
+        :paramtype rectangle: ~affinda_v2.models.Rectangle
         :keyword rectangles: Required.
-        :paramtype rectangles: list[~affinda.models.Rectangle]
+        :paramtype rectangles: list[~affinda_v2.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
         :keyword raw: Required.
@@ -4556,22 +5378,39 @@ class InvoiceDataCustomerVat(
         :keyword parsed:
         :paramtype parsed: str
         """
-        super(InvoiceDataCustomerVat, self).__init__(**kwargs)
-        self.additional_properties = kwargs.get("additional_properties", None)
-        self.id = kwargs["id"]
-        self.rectangle = kwargs["rectangle"]
-        self.rectangles = kwargs["rectangles"]
-        self.page_index = kwargs["page_index"]
-        self.raw = kwargs["raw"]
-        self.confidence = kwargs["confidence"]
-        self.classification_confidence = kwargs["classification_confidence"]
-        self.text_extraction_confidence = kwargs["text_extraction_confidence"]
-        self.is_verified = kwargs["is_verified"]
-        self.is_client_verified = kwargs["is_client_verified"]
-        self.is_auto_verified = kwargs["is_auto_verified"]
-        self.data_point = kwargs.get("data_point", None)
-        self.content_type = kwargs["content_type"]
-        self.parsed = kwargs.get("parsed", None)
+        super(InvoiceDataCustomerVat, self).__init__(
+            additional_properties=additional_properties,
+            id=id,
+            rectangle=rectangle,
+            rectangles=rectangles,
+            page_index=page_index,
+            raw=raw,
+            confidence=confidence,
+            classification_confidence=classification_confidence,
+            text_extraction_confidence=text_extraction_confidence,
+            is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
+            data_point=data_point,
+            content_type=content_type,
+            parsed=parsed,
+            **kwargs,
+        )
+        self.additional_properties = additional_properties
+        self.id = id
+        self.rectangle = rectangle
+        self.rectangles = rectangles
+        self.page_index = page_index
+        self.raw = raw
+        self.confidence = confidence
+        self.classification_confidence = classification_confidence
+        self.text_extraction_confidence = text_extraction_confidence
+        self.is_verified = is_verified
+        self.is_client_verified = is_client_verified
+        self.is_auto_verified = is_auto_verified
+        self.data_point = data_point
+        self.content_type = content_type
+        self.parsed = parsed
 
 
 class InvoiceDataInvoiceNumber(
@@ -4587,9 +5426,9 @@ class InvoiceDataInvoiceNumber(
     :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
-    :vartype rectangle: ~affinda.models.Rectangle
+    :vartype rectangle: ~affinda_v2.models.Rectangle
     :ivar rectangles: Required.
-    :vartype rectangles: list[~affinda.models.Rectangle]
+    :vartype rectangles: list[~affinda_v2.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
     :ivar raw: Required.
@@ -4649,7 +5488,26 @@ class InvoiceDataInvoiceNumber(
         "parsed": {"key": "parsed", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        id: int,
+        rectangle: "_models.Rectangle",
+        rectangles: List["_models.Rectangle"],
+        page_index: int,
+        raw: str,
+        confidence: float,
+        classification_confidence: float,
+        text_extraction_confidence: float,
+        is_verified: bool,
+        is_client_verified: bool,
+        is_auto_verified: bool,
+        content_type: str,
+        additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
+        parsed: Optional[str] = None,
+        **kwargs,
+    ):
         """
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
@@ -4657,9 +5515,9 @@ class InvoiceDataInvoiceNumber(
         :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
-        :paramtype rectangle: ~affinda.models.Rectangle
+        :paramtype rectangle: ~affinda_v2.models.Rectangle
         :keyword rectangles: Required.
-        :paramtype rectangles: list[~affinda.models.Rectangle]
+        :paramtype rectangles: list[~affinda_v2.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
         :keyword raw: Required.
@@ -4685,22 +5543,39 @@ class InvoiceDataInvoiceNumber(
         :keyword parsed:
         :paramtype parsed: str
         """
-        super(InvoiceDataInvoiceNumber, self).__init__(**kwargs)
-        self.additional_properties = kwargs.get("additional_properties", None)
-        self.id = kwargs["id"]
-        self.rectangle = kwargs["rectangle"]
-        self.rectangles = kwargs["rectangles"]
-        self.page_index = kwargs["page_index"]
-        self.raw = kwargs["raw"]
-        self.confidence = kwargs["confidence"]
-        self.classification_confidence = kwargs["classification_confidence"]
-        self.text_extraction_confidence = kwargs["text_extraction_confidence"]
-        self.is_verified = kwargs["is_verified"]
-        self.is_client_verified = kwargs["is_client_verified"]
-        self.is_auto_verified = kwargs["is_auto_verified"]
-        self.data_point = kwargs.get("data_point", None)
-        self.content_type = kwargs["content_type"]
-        self.parsed = kwargs.get("parsed", None)
+        super(InvoiceDataInvoiceNumber, self).__init__(
+            additional_properties=additional_properties,
+            id=id,
+            rectangle=rectangle,
+            rectangles=rectangles,
+            page_index=page_index,
+            raw=raw,
+            confidence=confidence,
+            classification_confidence=classification_confidence,
+            text_extraction_confidence=text_extraction_confidence,
+            is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
+            data_point=data_point,
+            content_type=content_type,
+            parsed=parsed,
+            **kwargs,
+        )
+        self.additional_properties = additional_properties
+        self.id = id
+        self.rectangle = rectangle
+        self.rectangles = rectangles
+        self.page_index = page_index
+        self.raw = raw
+        self.confidence = confidence
+        self.classification_confidence = classification_confidence
+        self.text_extraction_confidence = text_extraction_confidence
+        self.is_verified = is_verified
+        self.is_client_verified = is_client_verified
+        self.is_auto_verified = is_auto_verified
+        self.data_point = data_point
+        self.content_type = content_type
+        self.parsed = parsed
 
 
 class InvoiceDataInvoicePurchaseOrderNumber(
@@ -4716,9 +5591,9 @@ class InvoiceDataInvoicePurchaseOrderNumber(
     :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
-    :vartype rectangle: ~affinda.models.Rectangle
+    :vartype rectangle: ~affinda_v2.models.Rectangle
     :ivar rectangles: Required.
-    :vartype rectangles: list[~affinda.models.Rectangle]
+    :vartype rectangles: list[~affinda_v2.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
     :ivar raw: Required.
@@ -4778,7 +5653,26 @@ class InvoiceDataInvoicePurchaseOrderNumber(
         "parsed": {"key": "parsed", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        id: int,
+        rectangle: "_models.Rectangle",
+        rectangles: List["_models.Rectangle"],
+        page_index: int,
+        raw: str,
+        confidence: float,
+        classification_confidence: float,
+        text_extraction_confidence: float,
+        is_verified: bool,
+        is_client_verified: bool,
+        is_auto_verified: bool,
+        content_type: str,
+        additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
+        parsed: Optional[str] = None,
+        **kwargs,
+    ):
         """
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
@@ -4786,9 +5680,9 @@ class InvoiceDataInvoicePurchaseOrderNumber(
         :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
-        :paramtype rectangle: ~affinda.models.Rectangle
+        :paramtype rectangle: ~affinda_v2.models.Rectangle
         :keyword rectangles: Required.
-        :paramtype rectangles: list[~affinda.models.Rectangle]
+        :paramtype rectangles: list[~affinda_v2.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
         :keyword raw: Required.
@@ -4814,22 +5708,39 @@ class InvoiceDataInvoicePurchaseOrderNumber(
         :keyword parsed:
         :paramtype parsed: str
         """
-        super(InvoiceDataInvoicePurchaseOrderNumber, self).__init__(**kwargs)
-        self.additional_properties = kwargs.get("additional_properties", None)
-        self.id = kwargs["id"]
-        self.rectangle = kwargs["rectangle"]
-        self.rectangles = kwargs["rectangles"]
-        self.page_index = kwargs["page_index"]
-        self.raw = kwargs["raw"]
-        self.confidence = kwargs["confidence"]
-        self.classification_confidence = kwargs["classification_confidence"]
-        self.text_extraction_confidence = kwargs["text_extraction_confidence"]
-        self.is_verified = kwargs["is_verified"]
-        self.is_client_verified = kwargs["is_client_verified"]
-        self.is_auto_verified = kwargs["is_auto_verified"]
-        self.data_point = kwargs.get("data_point", None)
-        self.content_type = kwargs["content_type"]
-        self.parsed = kwargs.get("parsed", None)
+        super(InvoiceDataInvoicePurchaseOrderNumber, self).__init__(
+            additional_properties=additional_properties,
+            id=id,
+            rectangle=rectangle,
+            rectangles=rectangles,
+            page_index=page_index,
+            raw=raw,
+            confidence=confidence,
+            classification_confidence=classification_confidence,
+            text_extraction_confidence=text_extraction_confidence,
+            is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
+            data_point=data_point,
+            content_type=content_type,
+            parsed=parsed,
+            **kwargs,
+        )
+        self.additional_properties = additional_properties
+        self.id = id
+        self.rectangle = rectangle
+        self.rectangles = rectangles
+        self.page_index = page_index
+        self.raw = raw
+        self.confidence = confidence
+        self.classification_confidence = classification_confidence
+        self.text_extraction_confidence = text_extraction_confidence
+        self.is_verified = is_verified
+        self.is_client_verified = is_client_verified
+        self.is_auto_verified = is_auto_verified
+        self.data_point = data_point
+        self.content_type = content_type
+        self.parsed = parsed
 
 
 class InvoiceDataPaymentAmountBase(
@@ -4845,9 +5756,9 @@ class InvoiceDataPaymentAmountBase(
     :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
-    :vartype rectangle: ~affinda.models.Rectangle
+    :vartype rectangle: ~affinda_v2.models.Rectangle
     :ivar rectangles: Required.
-    :vartype rectangles: list[~affinda.models.Rectangle]
+    :vartype rectangles: list[~affinda_v2.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
     :ivar raw: Required.
@@ -4907,7 +5818,26 @@ class InvoiceDataPaymentAmountBase(
         "parsed": {"key": "parsed", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        id: int,
+        rectangle: "_models.Rectangle",
+        rectangles: List["_models.Rectangle"],
+        page_index: int,
+        raw: str,
+        confidence: float,
+        classification_confidence: float,
+        text_extraction_confidence: float,
+        is_verified: bool,
+        is_client_verified: bool,
+        is_auto_verified: bool,
+        content_type: str,
+        additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
+        parsed: Optional[str] = None,
+        **kwargs,
+    ):
         """
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
@@ -4915,9 +5845,9 @@ class InvoiceDataPaymentAmountBase(
         :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
-        :paramtype rectangle: ~affinda.models.Rectangle
+        :paramtype rectangle: ~affinda_v2.models.Rectangle
         :keyword rectangles: Required.
-        :paramtype rectangles: list[~affinda.models.Rectangle]
+        :paramtype rectangles: list[~affinda_v2.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
         :keyword raw: Required.
@@ -4943,22 +5873,39 @@ class InvoiceDataPaymentAmountBase(
         :keyword parsed:
         :paramtype parsed: str
         """
-        super(InvoiceDataPaymentAmountBase, self).__init__(**kwargs)
-        self.additional_properties = kwargs.get("additional_properties", None)
-        self.id = kwargs["id"]
-        self.rectangle = kwargs["rectangle"]
-        self.rectangles = kwargs["rectangles"]
-        self.page_index = kwargs["page_index"]
-        self.raw = kwargs["raw"]
-        self.confidence = kwargs["confidence"]
-        self.classification_confidence = kwargs["classification_confidence"]
-        self.text_extraction_confidence = kwargs["text_extraction_confidence"]
-        self.is_verified = kwargs["is_verified"]
-        self.is_client_verified = kwargs["is_client_verified"]
-        self.is_auto_verified = kwargs["is_auto_verified"]
-        self.data_point = kwargs.get("data_point", None)
-        self.content_type = kwargs["content_type"]
-        self.parsed = kwargs.get("parsed", None)
+        super(InvoiceDataPaymentAmountBase, self).__init__(
+            additional_properties=additional_properties,
+            id=id,
+            rectangle=rectangle,
+            rectangles=rectangles,
+            page_index=page_index,
+            raw=raw,
+            confidence=confidence,
+            classification_confidence=classification_confidence,
+            text_extraction_confidence=text_extraction_confidence,
+            is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
+            data_point=data_point,
+            content_type=content_type,
+            parsed=parsed,
+            **kwargs,
+        )
+        self.additional_properties = additional_properties
+        self.id = id
+        self.rectangle = rectangle
+        self.rectangles = rectangles
+        self.page_index = page_index
+        self.raw = raw
+        self.confidence = confidence
+        self.classification_confidence = classification_confidence
+        self.text_extraction_confidence = text_extraction_confidence
+        self.is_verified = is_verified
+        self.is_client_verified = is_client_verified
+        self.is_auto_verified = is_auto_verified
+        self.data_point = data_point
+        self.content_type = content_type
+        self.parsed = parsed
 
 
 class InvoiceDataPaymentAmountDue(
@@ -4974,9 +5921,9 @@ class InvoiceDataPaymentAmountDue(
     :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
-    :vartype rectangle: ~affinda.models.Rectangle
+    :vartype rectangle: ~affinda_v2.models.Rectangle
     :ivar rectangles: Required.
-    :vartype rectangles: list[~affinda.models.Rectangle]
+    :vartype rectangles: list[~affinda_v2.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
     :ivar raw: Required.
@@ -5036,7 +5983,26 @@ class InvoiceDataPaymentAmountDue(
         "parsed": {"key": "parsed", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        id: int,
+        rectangle: "_models.Rectangle",
+        rectangles: List["_models.Rectangle"],
+        page_index: int,
+        raw: str,
+        confidence: float,
+        classification_confidence: float,
+        text_extraction_confidence: float,
+        is_verified: bool,
+        is_client_verified: bool,
+        is_auto_verified: bool,
+        content_type: str,
+        additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
+        parsed: Optional[str] = None,
+        **kwargs,
+    ):
         """
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
@@ -5044,9 +6010,9 @@ class InvoiceDataPaymentAmountDue(
         :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
-        :paramtype rectangle: ~affinda.models.Rectangle
+        :paramtype rectangle: ~affinda_v2.models.Rectangle
         :keyword rectangles: Required.
-        :paramtype rectangles: list[~affinda.models.Rectangle]
+        :paramtype rectangles: list[~affinda_v2.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
         :keyword raw: Required.
@@ -5072,22 +6038,39 @@ class InvoiceDataPaymentAmountDue(
         :keyword parsed:
         :paramtype parsed: str
         """
-        super(InvoiceDataPaymentAmountDue, self).__init__(**kwargs)
-        self.additional_properties = kwargs.get("additional_properties", None)
-        self.id = kwargs["id"]
-        self.rectangle = kwargs["rectangle"]
-        self.rectangles = kwargs["rectangles"]
-        self.page_index = kwargs["page_index"]
-        self.raw = kwargs["raw"]
-        self.confidence = kwargs["confidence"]
-        self.classification_confidence = kwargs["classification_confidence"]
-        self.text_extraction_confidence = kwargs["text_extraction_confidence"]
-        self.is_verified = kwargs["is_verified"]
-        self.is_client_verified = kwargs["is_client_verified"]
-        self.is_auto_verified = kwargs["is_auto_verified"]
-        self.data_point = kwargs.get("data_point", None)
-        self.content_type = kwargs["content_type"]
-        self.parsed = kwargs.get("parsed", None)
+        super(InvoiceDataPaymentAmountDue, self).__init__(
+            additional_properties=additional_properties,
+            id=id,
+            rectangle=rectangle,
+            rectangles=rectangles,
+            page_index=page_index,
+            raw=raw,
+            confidence=confidence,
+            classification_confidence=classification_confidence,
+            text_extraction_confidence=text_extraction_confidence,
+            is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
+            data_point=data_point,
+            content_type=content_type,
+            parsed=parsed,
+            **kwargs,
+        )
+        self.additional_properties = additional_properties
+        self.id = id
+        self.rectangle = rectangle
+        self.rectangles = rectangles
+        self.page_index = page_index
+        self.raw = raw
+        self.confidence = confidence
+        self.classification_confidence = classification_confidence
+        self.text_extraction_confidence = text_extraction_confidence
+        self.is_verified = is_verified
+        self.is_client_verified = is_client_verified
+        self.is_auto_verified = is_auto_verified
+        self.data_point = data_point
+        self.content_type = content_type
+        self.parsed = parsed
 
 
 class InvoiceDataPaymentAmountPaid(
@@ -5103,9 +6086,9 @@ class InvoiceDataPaymentAmountPaid(
     :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
-    :vartype rectangle: ~affinda.models.Rectangle
+    :vartype rectangle: ~affinda_v2.models.Rectangle
     :ivar rectangles: Required.
-    :vartype rectangles: list[~affinda.models.Rectangle]
+    :vartype rectangles: list[~affinda_v2.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
     :ivar raw: Required.
@@ -5165,7 +6148,26 @@ class InvoiceDataPaymentAmountPaid(
         "parsed": {"key": "parsed", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        id: int,
+        rectangle: "_models.Rectangle",
+        rectangles: List["_models.Rectangle"],
+        page_index: int,
+        raw: str,
+        confidence: float,
+        classification_confidence: float,
+        text_extraction_confidence: float,
+        is_verified: bool,
+        is_client_verified: bool,
+        is_auto_verified: bool,
+        content_type: str,
+        additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
+        parsed: Optional[str] = None,
+        **kwargs,
+    ):
         """
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
@@ -5173,9 +6175,9 @@ class InvoiceDataPaymentAmountPaid(
         :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
-        :paramtype rectangle: ~affinda.models.Rectangle
+        :paramtype rectangle: ~affinda_v2.models.Rectangle
         :keyword rectangles: Required.
-        :paramtype rectangles: list[~affinda.models.Rectangle]
+        :paramtype rectangles: list[~affinda_v2.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
         :keyword raw: Required.
@@ -5201,22 +6203,39 @@ class InvoiceDataPaymentAmountPaid(
         :keyword parsed:
         :paramtype parsed: str
         """
-        super(InvoiceDataPaymentAmountPaid, self).__init__(**kwargs)
-        self.additional_properties = kwargs.get("additional_properties", None)
-        self.id = kwargs["id"]
-        self.rectangle = kwargs["rectangle"]
-        self.rectangles = kwargs["rectangles"]
-        self.page_index = kwargs["page_index"]
-        self.raw = kwargs["raw"]
-        self.confidence = kwargs["confidence"]
-        self.classification_confidence = kwargs["classification_confidence"]
-        self.text_extraction_confidence = kwargs["text_extraction_confidence"]
-        self.is_verified = kwargs["is_verified"]
-        self.is_client_verified = kwargs["is_client_verified"]
-        self.is_auto_verified = kwargs["is_auto_verified"]
-        self.data_point = kwargs.get("data_point", None)
-        self.content_type = kwargs["content_type"]
-        self.parsed = kwargs.get("parsed", None)
+        super(InvoiceDataPaymentAmountPaid, self).__init__(
+            additional_properties=additional_properties,
+            id=id,
+            rectangle=rectangle,
+            rectangles=rectangles,
+            page_index=page_index,
+            raw=raw,
+            confidence=confidence,
+            classification_confidence=classification_confidence,
+            text_extraction_confidence=text_extraction_confidence,
+            is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
+            data_point=data_point,
+            content_type=content_type,
+            parsed=parsed,
+            **kwargs,
+        )
+        self.additional_properties = additional_properties
+        self.id = id
+        self.rectangle = rectangle
+        self.rectangles = rectangles
+        self.page_index = page_index
+        self.raw = raw
+        self.confidence = confidence
+        self.classification_confidence = classification_confidence
+        self.text_extraction_confidence = text_extraction_confidence
+        self.is_verified = is_verified
+        self.is_client_verified = is_client_verified
+        self.is_auto_verified = is_auto_verified
+        self.data_point = data_point
+        self.content_type = content_type
+        self.parsed = parsed
 
 
 class InvoiceDataPaymentAmountTax(
@@ -5232,9 +6251,9 @@ class InvoiceDataPaymentAmountTax(
     :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
-    :vartype rectangle: ~affinda.models.Rectangle
+    :vartype rectangle: ~affinda_v2.models.Rectangle
     :ivar rectangles: Required.
-    :vartype rectangles: list[~affinda.models.Rectangle]
+    :vartype rectangles: list[~affinda_v2.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
     :ivar raw: Required.
@@ -5294,7 +6313,26 @@ class InvoiceDataPaymentAmountTax(
         "parsed": {"key": "parsed", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        id: int,
+        rectangle: "_models.Rectangle",
+        rectangles: List["_models.Rectangle"],
+        page_index: int,
+        raw: str,
+        confidence: float,
+        classification_confidence: float,
+        text_extraction_confidence: float,
+        is_verified: bool,
+        is_client_verified: bool,
+        is_auto_verified: bool,
+        content_type: str,
+        additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
+        parsed: Optional[str] = None,
+        **kwargs,
+    ):
         """
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
@@ -5302,9 +6340,9 @@ class InvoiceDataPaymentAmountTax(
         :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
-        :paramtype rectangle: ~affinda.models.Rectangle
+        :paramtype rectangle: ~affinda_v2.models.Rectangle
         :keyword rectangles: Required.
-        :paramtype rectangles: list[~affinda.models.Rectangle]
+        :paramtype rectangles: list[~affinda_v2.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
         :keyword raw: Required.
@@ -5330,22 +6368,39 @@ class InvoiceDataPaymentAmountTax(
         :keyword parsed:
         :paramtype parsed: str
         """
-        super(InvoiceDataPaymentAmountTax, self).__init__(**kwargs)
-        self.additional_properties = kwargs.get("additional_properties", None)
-        self.id = kwargs["id"]
-        self.rectangle = kwargs["rectangle"]
-        self.rectangles = kwargs["rectangles"]
-        self.page_index = kwargs["page_index"]
-        self.raw = kwargs["raw"]
-        self.confidence = kwargs["confidence"]
-        self.classification_confidence = kwargs["classification_confidence"]
-        self.text_extraction_confidence = kwargs["text_extraction_confidence"]
-        self.is_verified = kwargs["is_verified"]
-        self.is_client_verified = kwargs["is_client_verified"]
-        self.is_auto_verified = kwargs["is_auto_verified"]
-        self.data_point = kwargs.get("data_point", None)
-        self.content_type = kwargs["content_type"]
-        self.parsed = kwargs.get("parsed", None)
+        super(InvoiceDataPaymentAmountTax, self).__init__(
+            additional_properties=additional_properties,
+            id=id,
+            rectangle=rectangle,
+            rectangles=rectangles,
+            page_index=page_index,
+            raw=raw,
+            confidence=confidence,
+            classification_confidence=classification_confidence,
+            text_extraction_confidence=text_extraction_confidence,
+            is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
+            data_point=data_point,
+            content_type=content_type,
+            parsed=parsed,
+            **kwargs,
+        )
+        self.additional_properties = additional_properties
+        self.id = id
+        self.rectangle = rectangle
+        self.rectangles = rectangles
+        self.page_index = page_index
+        self.raw = raw
+        self.confidence = confidence
+        self.classification_confidence = classification_confidence
+        self.text_extraction_confidence = text_extraction_confidence
+        self.is_verified = is_verified
+        self.is_client_verified = is_client_verified
+        self.is_auto_verified = is_auto_verified
+        self.data_point = data_point
+        self.content_type = content_type
+        self.parsed = parsed
 
 
 class InvoiceDataPaymentAmountTotal(
@@ -5361,9 +6416,9 @@ class InvoiceDataPaymentAmountTotal(
     :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
-    :vartype rectangle: ~affinda.models.Rectangle
+    :vartype rectangle: ~affinda_v2.models.Rectangle
     :ivar rectangles: Required.
-    :vartype rectangles: list[~affinda.models.Rectangle]
+    :vartype rectangles: list[~affinda_v2.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
     :ivar raw: Required.
@@ -5423,7 +6478,26 @@ class InvoiceDataPaymentAmountTotal(
         "parsed": {"key": "parsed", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        id: int,
+        rectangle: "_models.Rectangle",
+        rectangles: List["_models.Rectangle"],
+        page_index: int,
+        raw: str,
+        confidence: float,
+        classification_confidence: float,
+        text_extraction_confidence: float,
+        is_verified: bool,
+        is_client_verified: bool,
+        is_auto_verified: bool,
+        content_type: str,
+        additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
+        parsed: Optional[str] = None,
+        **kwargs,
+    ):
         """
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
@@ -5431,9 +6505,9 @@ class InvoiceDataPaymentAmountTotal(
         :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
-        :paramtype rectangle: ~affinda.models.Rectangle
+        :paramtype rectangle: ~affinda_v2.models.Rectangle
         :keyword rectangles: Required.
-        :paramtype rectangles: list[~affinda.models.Rectangle]
+        :paramtype rectangles: list[~affinda_v2.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
         :keyword raw: Required.
@@ -5459,22 +6533,39 @@ class InvoiceDataPaymentAmountTotal(
         :keyword parsed:
         :paramtype parsed: str
         """
-        super(InvoiceDataPaymentAmountTotal, self).__init__(**kwargs)
-        self.additional_properties = kwargs.get("additional_properties", None)
-        self.id = kwargs["id"]
-        self.rectangle = kwargs["rectangle"]
-        self.rectangles = kwargs["rectangles"]
-        self.page_index = kwargs["page_index"]
-        self.raw = kwargs["raw"]
-        self.confidence = kwargs["confidence"]
-        self.classification_confidence = kwargs["classification_confidence"]
-        self.text_extraction_confidence = kwargs["text_extraction_confidence"]
-        self.is_verified = kwargs["is_verified"]
-        self.is_client_verified = kwargs["is_client_verified"]
-        self.is_auto_verified = kwargs["is_auto_verified"]
-        self.data_point = kwargs.get("data_point", None)
-        self.content_type = kwargs["content_type"]
-        self.parsed = kwargs.get("parsed", None)
+        super(InvoiceDataPaymentAmountTotal, self).__init__(
+            additional_properties=additional_properties,
+            id=id,
+            rectangle=rectangle,
+            rectangles=rectangles,
+            page_index=page_index,
+            raw=raw,
+            confidence=confidence,
+            classification_confidence=classification_confidence,
+            text_extraction_confidence=text_extraction_confidence,
+            is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
+            data_point=data_point,
+            content_type=content_type,
+            parsed=parsed,
+            **kwargs,
+        )
+        self.additional_properties = additional_properties
+        self.id = id
+        self.rectangle = rectangle
+        self.rectangles = rectangles
+        self.page_index = page_index
+        self.raw = raw
+        self.confidence = confidence
+        self.classification_confidence = classification_confidence
+        self.text_extraction_confidence = text_extraction_confidence
+        self.is_verified = is_verified
+        self.is_client_verified = is_client_verified
+        self.is_auto_verified = is_auto_verified
+        self.data_point = data_point
+        self.content_type = content_type
+        self.parsed = parsed
 
 
 class InvoiceDataPaymentReference(
@@ -5490,9 +6581,9 @@ class InvoiceDataPaymentReference(
     :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
-    :vartype rectangle: ~affinda.models.Rectangle
+    :vartype rectangle: ~affinda_v2.models.Rectangle
     :ivar rectangles: Required.
-    :vartype rectangles: list[~affinda.models.Rectangle]
+    :vartype rectangles: list[~affinda_v2.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
     :ivar raw: Required.
@@ -5552,7 +6643,26 @@ class InvoiceDataPaymentReference(
         "parsed": {"key": "parsed", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        id: int,
+        rectangle: "_models.Rectangle",
+        rectangles: List["_models.Rectangle"],
+        page_index: int,
+        raw: str,
+        confidence: float,
+        classification_confidence: float,
+        text_extraction_confidence: float,
+        is_verified: bool,
+        is_client_verified: bool,
+        is_auto_verified: bool,
+        content_type: str,
+        additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
+        parsed: Optional[str] = None,
+        **kwargs,
+    ):
         """
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
@@ -5560,9 +6670,9 @@ class InvoiceDataPaymentReference(
         :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
-        :paramtype rectangle: ~affinda.models.Rectangle
+        :paramtype rectangle: ~affinda_v2.models.Rectangle
         :keyword rectangles: Required.
-        :paramtype rectangles: list[~affinda.models.Rectangle]
+        :paramtype rectangles: list[~affinda_v2.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
         :keyword raw: Required.
@@ -5588,22 +6698,39 @@ class InvoiceDataPaymentReference(
         :keyword parsed:
         :paramtype parsed: str
         """
-        super(InvoiceDataPaymentReference, self).__init__(**kwargs)
-        self.additional_properties = kwargs.get("additional_properties", None)
-        self.id = kwargs["id"]
-        self.rectangle = kwargs["rectangle"]
-        self.rectangles = kwargs["rectangles"]
-        self.page_index = kwargs["page_index"]
-        self.raw = kwargs["raw"]
-        self.confidence = kwargs["confidence"]
-        self.classification_confidence = kwargs["classification_confidence"]
-        self.text_extraction_confidence = kwargs["text_extraction_confidence"]
-        self.is_verified = kwargs["is_verified"]
-        self.is_client_verified = kwargs["is_client_verified"]
-        self.is_auto_verified = kwargs["is_auto_verified"]
-        self.data_point = kwargs.get("data_point", None)
-        self.content_type = kwargs["content_type"]
-        self.parsed = kwargs.get("parsed", None)
+        super(InvoiceDataPaymentReference, self).__init__(
+            additional_properties=additional_properties,
+            id=id,
+            rectangle=rectangle,
+            rectangles=rectangles,
+            page_index=page_index,
+            raw=raw,
+            confidence=confidence,
+            classification_confidence=classification_confidence,
+            text_extraction_confidence=text_extraction_confidence,
+            is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
+            data_point=data_point,
+            content_type=content_type,
+            parsed=parsed,
+            **kwargs,
+        )
+        self.additional_properties = additional_properties
+        self.id = id
+        self.rectangle = rectangle
+        self.rectangles = rectangles
+        self.page_index = page_index
+        self.raw = raw
+        self.confidence = confidence
+        self.classification_confidence = classification_confidence
+        self.text_extraction_confidence = text_extraction_confidence
+        self.is_verified = is_verified
+        self.is_client_verified = is_client_verified
+        self.is_auto_verified = is_auto_verified
+        self.data_point = data_point
+        self.content_type = content_type
+        self.parsed = parsed
 
 
 class InvoiceDataSupplierBusinessNumber(
@@ -5619,9 +6746,9 @@ class InvoiceDataSupplierBusinessNumber(
     :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
-    :vartype rectangle: ~affinda.models.Rectangle
+    :vartype rectangle: ~affinda_v2.models.Rectangle
     :ivar rectangles: Required.
-    :vartype rectangles: list[~affinda.models.Rectangle]
+    :vartype rectangles: list[~affinda_v2.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
     :ivar raw: Required.
@@ -5681,7 +6808,26 @@ class InvoiceDataSupplierBusinessNumber(
         "parsed": {"key": "parsed", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        id: int,
+        rectangle: "_models.Rectangle",
+        rectangles: List["_models.Rectangle"],
+        page_index: int,
+        raw: str,
+        confidence: float,
+        classification_confidence: float,
+        text_extraction_confidence: float,
+        is_verified: bool,
+        is_client_verified: bool,
+        is_auto_verified: bool,
+        content_type: str,
+        additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
+        parsed: Optional[str] = None,
+        **kwargs,
+    ):
         """
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
@@ -5689,9 +6835,9 @@ class InvoiceDataSupplierBusinessNumber(
         :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
-        :paramtype rectangle: ~affinda.models.Rectangle
+        :paramtype rectangle: ~affinda_v2.models.Rectangle
         :keyword rectangles: Required.
-        :paramtype rectangles: list[~affinda.models.Rectangle]
+        :paramtype rectangles: list[~affinda_v2.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
         :keyword raw: Required.
@@ -5717,22 +6863,39 @@ class InvoiceDataSupplierBusinessNumber(
         :keyword parsed:
         :paramtype parsed: str
         """
-        super(InvoiceDataSupplierBusinessNumber, self).__init__(**kwargs)
-        self.additional_properties = kwargs.get("additional_properties", None)
-        self.id = kwargs["id"]
-        self.rectangle = kwargs["rectangle"]
-        self.rectangles = kwargs["rectangles"]
-        self.page_index = kwargs["page_index"]
-        self.raw = kwargs["raw"]
-        self.confidence = kwargs["confidence"]
-        self.classification_confidence = kwargs["classification_confidence"]
-        self.text_extraction_confidence = kwargs["text_extraction_confidence"]
-        self.is_verified = kwargs["is_verified"]
-        self.is_client_verified = kwargs["is_client_verified"]
-        self.is_auto_verified = kwargs["is_auto_verified"]
-        self.data_point = kwargs.get("data_point", None)
-        self.content_type = kwargs["content_type"]
-        self.parsed = kwargs.get("parsed", None)
+        super(InvoiceDataSupplierBusinessNumber, self).__init__(
+            additional_properties=additional_properties,
+            id=id,
+            rectangle=rectangle,
+            rectangles=rectangles,
+            page_index=page_index,
+            raw=raw,
+            confidence=confidence,
+            classification_confidence=classification_confidence,
+            text_extraction_confidence=text_extraction_confidence,
+            is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
+            data_point=data_point,
+            content_type=content_type,
+            parsed=parsed,
+            **kwargs,
+        )
+        self.additional_properties = additional_properties
+        self.id = id
+        self.rectangle = rectangle
+        self.rectangles = rectangles
+        self.page_index = page_index
+        self.raw = raw
+        self.confidence = confidence
+        self.classification_confidence = classification_confidence
+        self.text_extraction_confidence = text_extraction_confidence
+        self.is_verified = is_verified
+        self.is_client_verified = is_client_verified
+        self.is_auto_verified = is_auto_verified
+        self.data_point = data_point
+        self.content_type = content_type
+        self.parsed = parsed
 
 
 class InvoiceDataSupplierCompanyName(
@@ -5748,9 +6911,9 @@ class InvoiceDataSupplierCompanyName(
     :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
-    :vartype rectangle: ~affinda.models.Rectangle
+    :vartype rectangle: ~affinda_v2.models.Rectangle
     :ivar rectangles: Required.
-    :vartype rectangles: list[~affinda.models.Rectangle]
+    :vartype rectangles: list[~affinda_v2.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
     :ivar raw: Required.
@@ -5810,7 +6973,26 @@ class InvoiceDataSupplierCompanyName(
         "parsed": {"key": "parsed", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        id: int,
+        rectangle: "_models.Rectangle",
+        rectangles: List["_models.Rectangle"],
+        page_index: int,
+        raw: str,
+        confidence: float,
+        classification_confidence: float,
+        text_extraction_confidence: float,
+        is_verified: bool,
+        is_client_verified: bool,
+        is_auto_verified: bool,
+        content_type: str,
+        additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
+        parsed: Optional[str] = None,
+        **kwargs,
+    ):
         """
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
@@ -5818,9 +7000,9 @@ class InvoiceDataSupplierCompanyName(
         :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
-        :paramtype rectangle: ~affinda.models.Rectangle
+        :paramtype rectangle: ~affinda_v2.models.Rectangle
         :keyword rectangles: Required.
-        :paramtype rectangles: list[~affinda.models.Rectangle]
+        :paramtype rectangles: list[~affinda_v2.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
         :keyword raw: Required.
@@ -5846,22 +7028,39 @@ class InvoiceDataSupplierCompanyName(
         :keyword parsed:
         :paramtype parsed: str
         """
-        super(InvoiceDataSupplierCompanyName, self).__init__(**kwargs)
-        self.additional_properties = kwargs.get("additional_properties", None)
-        self.id = kwargs["id"]
-        self.rectangle = kwargs["rectangle"]
-        self.rectangles = kwargs["rectangles"]
-        self.page_index = kwargs["page_index"]
-        self.raw = kwargs["raw"]
-        self.confidence = kwargs["confidence"]
-        self.classification_confidence = kwargs["classification_confidence"]
-        self.text_extraction_confidence = kwargs["text_extraction_confidence"]
-        self.is_verified = kwargs["is_verified"]
-        self.is_client_verified = kwargs["is_client_verified"]
-        self.is_auto_verified = kwargs["is_auto_verified"]
-        self.data_point = kwargs.get("data_point", None)
-        self.content_type = kwargs["content_type"]
-        self.parsed = kwargs.get("parsed", None)
+        super(InvoiceDataSupplierCompanyName, self).__init__(
+            additional_properties=additional_properties,
+            id=id,
+            rectangle=rectangle,
+            rectangles=rectangles,
+            page_index=page_index,
+            raw=raw,
+            confidence=confidence,
+            classification_confidence=classification_confidence,
+            text_extraction_confidence=text_extraction_confidence,
+            is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
+            data_point=data_point,
+            content_type=content_type,
+            parsed=parsed,
+            **kwargs,
+        )
+        self.additional_properties = additional_properties
+        self.id = id
+        self.rectangle = rectangle
+        self.rectangles = rectangles
+        self.page_index = page_index
+        self.raw = raw
+        self.confidence = confidence
+        self.classification_confidence = classification_confidence
+        self.text_extraction_confidence = text_extraction_confidence
+        self.is_verified = is_verified
+        self.is_client_verified = is_client_verified
+        self.is_auto_verified = is_auto_verified
+        self.data_point = data_point
+        self.content_type = content_type
+        self.parsed = parsed
 
 
 class InvoiceDataSupplierEmail(
@@ -5877,9 +7076,9 @@ class InvoiceDataSupplierEmail(
     :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
-    :vartype rectangle: ~affinda.models.Rectangle
+    :vartype rectangle: ~affinda_v2.models.Rectangle
     :ivar rectangles: Required.
-    :vartype rectangles: list[~affinda.models.Rectangle]
+    :vartype rectangles: list[~affinda_v2.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
     :ivar raw: Required.
@@ -5939,7 +7138,26 @@ class InvoiceDataSupplierEmail(
         "parsed": {"key": "parsed", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        id: int,
+        rectangle: "_models.Rectangle",
+        rectangles: List["_models.Rectangle"],
+        page_index: int,
+        raw: str,
+        confidence: float,
+        classification_confidence: float,
+        text_extraction_confidence: float,
+        is_verified: bool,
+        is_client_verified: bool,
+        is_auto_verified: bool,
+        content_type: str,
+        additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
+        parsed: Optional[str] = None,
+        **kwargs,
+    ):
         """
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
@@ -5947,9 +7165,9 @@ class InvoiceDataSupplierEmail(
         :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
-        :paramtype rectangle: ~affinda.models.Rectangle
+        :paramtype rectangle: ~affinda_v2.models.Rectangle
         :keyword rectangles: Required.
-        :paramtype rectangles: list[~affinda.models.Rectangle]
+        :paramtype rectangles: list[~affinda_v2.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
         :keyword raw: Required.
@@ -5975,22 +7193,39 @@ class InvoiceDataSupplierEmail(
         :keyword parsed:
         :paramtype parsed: str
         """
-        super(InvoiceDataSupplierEmail, self).__init__(**kwargs)
-        self.additional_properties = kwargs.get("additional_properties", None)
-        self.id = kwargs["id"]
-        self.rectangle = kwargs["rectangle"]
-        self.rectangles = kwargs["rectangles"]
-        self.page_index = kwargs["page_index"]
-        self.raw = kwargs["raw"]
-        self.confidence = kwargs["confidence"]
-        self.classification_confidence = kwargs["classification_confidence"]
-        self.text_extraction_confidence = kwargs["text_extraction_confidence"]
-        self.is_verified = kwargs["is_verified"]
-        self.is_client_verified = kwargs["is_client_verified"]
-        self.is_auto_verified = kwargs["is_auto_verified"]
-        self.data_point = kwargs.get("data_point", None)
-        self.content_type = kwargs["content_type"]
-        self.parsed = kwargs.get("parsed", None)
+        super(InvoiceDataSupplierEmail, self).__init__(
+            additional_properties=additional_properties,
+            id=id,
+            rectangle=rectangle,
+            rectangles=rectangles,
+            page_index=page_index,
+            raw=raw,
+            confidence=confidence,
+            classification_confidence=classification_confidence,
+            text_extraction_confidence=text_extraction_confidence,
+            is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
+            data_point=data_point,
+            content_type=content_type,
+            parsed=parsed,
+            **kwargs,
+        )
+        self.additional_properties = additional_properties
+        self.id = id
+        self.rectangle = rectangle
+        self.rectangles = rectangles
+        self.page_index = page_index
+        self.raw = raw
+        self.confidence = confidence
+        self.classification_confidence = classification_confidence
+        self.text_extraction_confidence = text_extraction_confidence
+        self.is_verified = is_verified
+        self.is_client_verified = is_client_verified
+        self.is_auto_verified = is_auto_verified
+        self.data_point = data_point
+        self.content_type = content_type
+        self.parsed = parsed
 
 
 class InvoiceDataSupplierFax(
@@ -6006,9 +7241,9 @@ class InvoiceDataSupplierFax(
     :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
-    :vartype rectangle: ~affinda.models.Rectangle
+    :vartype rectangle: ~affinda_v2.models.Rectangle
     :ivar rectangles: Required.
-    :vartype rectangles: list[~affinda.models.Rectangle]
+    :vartype rectangles: list[~affinda_v2.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
     :ivar raw: Required.
@@ -6068,7 +7303,26 @@ class InvoiceDataSupplierFax(
         "parsed": {"key": "parsed", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        id: int,
+        rectangle: "_models.Rectangle",
+        rectangles: List["_models.Rectangle"],
+        page_index: int,
+        raw: str,
+        confidence: float,
+        classification_confidence: float,
+        text_extraction_confidence: float,
+        is_verified: bool,
+        is_client_verified: bool,
+        is_auto_verified: bool,
+        content_type: str,
+        additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
+        parsed: Optional[str] = None,
+        **kwargs,
+    ):
         """
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
@@ -6076,9 +7330,9 @@ class InvoiceDataSupplierFax(
         :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
-        :paramtype rectangle: ~affinda.models.Rectangle
+        :paramtype rectangle: ~affinda_v2.models.Rectangle
         :keyword rectangles: Required.
-        :paramtype rectangles: list[~affinda.models.Rectangle]
+        :paramtype rectangles: list[~affinda_v2.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
         :keyword raw: Required.
@@ -6104,22 +7358,39 @@ class InvoiceDataSupplierFax(
         :keyword parsed:
         :paramtype parsed: str
         """
-        super(InvoiceDataSupplierFax, self).__init__(**kwargs)
-        self.additional_properties = kwargs.get("additional_properties", None)
-        self.id = kwargs["id"]
-        self.rectangle = kwargs["rectangle"]
-        self.rectangles = kwargs["rectangles"]
-        self.page_index = kwargs["page_index"]
-        self.raw = kwargs["raw"]
-        self.confidence = kwargs["confidence"]
-        self.classification_confidence = kwargs["classification_confidence"]
-        self.text_extraction_confidence = kwargs["text_extraction_confidence"]
-        self.is_verified = kwargs["is_verified"]
-        self.is_client_verified = kwargs["is_client_verified"]
-        self.is_auto_verified = kwargs["is_auto_verified"]
-        self.data_point = kwargs.get("data_point", None)
-        self.content_type = kwargs["content_type"]
-        self.parsed = kwargs.get("parsed", None)
+        super(InvoiceDataSupplierFax, self).__init__(
+            additional_properties=additional_properties,
+            id=id,
+            rectangle=rectangle,
+            rectangles=rectangles,
+            page_index=page_index,
+            raw=raw,
+            confidence=confidence,
+            classification_confidence=classification_confidence,
+            text_extraction_confidence=text_extraction_confidence,
+            is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
+            data_point=data_point,
+            content_type=content_type,
+            parsed=parsed,
+            **kwargs,
+        )
+        self.additional_properties = additional_properties
+        self.id = id
+        self.rectangle = rectangle
+        self.rectangles = rectangles
+        self.page_index = page_index
+        self.raw = raw
+        self.confidence = confidence
+        self.classification_confidence = classification_confidence
+        self.text_extraction_confidence = text_extraction_confidence
+        self.is_verified = is_verified
+        self.is_client_verified = is_client_verified
+        self.is_auto_verified = is_auto_verified
+        self.data_point = data_point
+        self.content_type = content_type
+        self.parsed = parsed
 
 
 class InvoiceDataSupplierPhoneNumber(
@@ -6135,9 +7406,9 @@ class InvoiceDataSupplierPhoneNumber(
     :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
-    :vartype rectangle: ~affinda.models.Rectangle
+    :vartype rectangle: ~affinda_v2.models.Rectangle
     :ivar rectangles: Required.
-    :vartype rectangles: list[~affinda.models.Rectangle]
+    :vartype rectangles: list[~affinda_v2.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
     :ivar raw: Required.
@@ -6197,7 +7468,26 @@ class InvoiceDataSupplierPhoneNumber(
         "parsed": {"key": "parsed", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        id: int,
+        rectangle: "_models.Rectangle",
+        rectangles: List["_models.Rectangle"],
+        page_index: int,
+        raw: str,
+        confidence: float,
+        classification_confidence: float,
+        text_extraction_confidence: float,
+        is_verified: bool,
+        is_client_verified: bool,
+        is_auto_verified: bool,
+        content_type: str,
+        additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
+        parsed: Optional[str] = None,
+        **kwargs,
+    ):
         """
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
@@ -6205,9 +7495,9 @@ class InvoiceDataSupplierPhoneNumber(
         :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
-        :paramtype rectangle: ~affinda.models.Rectangle
+        :paramtype rectangle: ~affinda_v2.models.Rectangle
         :keyword rectangles: Required.
-        :paramtype rectangles: list[~affinda.models.Rectangle]
+        :paramtype rectangles: list[~affinda_v2.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
         :keyword raw: Required.
@@ -6233,22 +7523,39 @@ class InvoiceDataSupplierPhoneNumber(
         :keyword parsed:
         :paramtype parsed: str
         """
-        super(InvoiceDataSupplierPhoneNumber, self).__init__(**kwargs)
-        self.additional_properties = kwargs.get("additional_properties", None)
-        self.id = kwargs["id"]
-        self.rectangle = kwargs["rectangle"]
-        self.rectangles = kwargs["rectangles"]
-        self.page_index = kwargs["page_index"]
-        self.raw = kwargs["raw"]
-        self.confidence = kwargs["confidence"]
-        self.classification_confidence = kwargs["classification_confidence"]
-        self.text_extraction_confidence = kwargs["text_extraction_confidence"]
-        self.is_verified = kwargs["is_verified"]
-        self.is_client_verified = kwargs["is_client_verified"]
-        self.is_auto_verified = kwargs["is_auto_verified"]
-        self.data_point = kwargs.get("data_point", None)
-        self.content_type = kwargs["content_type"]
-        self.parsed = kwargs.get("parsed", None)
+        super(InvoiceDataSupplierPhoneNumber, self).__init__(
+            additional_properties=additional_properties,
+            id=id,
+            rectangle=rectangle,
+            rectangles=rectangles,
+            page_index=page_index,
+            raw=raw,
+            confidence=confidence,
+            classification_confidence=classification_confidence,
+            text_extraction_confidence=text_extraction_confidence,
+            is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
+            data_point=data_point,
+            content_type=content_type,
+            parsed=parsed,
+            **kwargs,
+        )
+        self.additional_properties = additional_properties
+        self.id = id
+        self.rectangle = rectangle
+        self.rectangles = rectangles
+        self.page_index = page_index
+        self.raw = raw
+        self.confidence = confidence
+        self.classification_confidence = classification_confidence
+        self.text_extraction_confidence = text_extraction_confidence
+        self.is_verified = is_verified
+        self.is_client_verified = is_client_verified
+        self.is_auto_verified = is_auto_verified
+        self.data_point = data_point
+        self.content_type = content_type
+        self.parsed = parsed
 
 
 class InvoiceDataSupplierVat(
@@ -6264,9 +7571,9 @@ class InvoiceDataSupplierVat(
     :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
-    :vartype rectangle: ~affinda.models.Rectangle
+    :vartype rectangle: ~affinda_v2.models.Rectangle
     :ivar rectangles: Required.
-    :vartype rectangles: list[~affinda.models.Rectangle]
+    :vartype rectangles: list[~affinda_v2.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
     :ivar raw: Required.
@@ -6326,7 +7633,26 @@ class InvoiceDataSupplierVat(
         "parsed": {"key": "parsed", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        id: int,
+        rectangle: "_models.Rectangle",
+        rectangles: List["_models.Rectangle"],
+        page_index: int,
+        raw: str,
+        confidence: float,
+        classification_confidence: float,
+        text_extraction_confidence: float,
+        is_verified: bool,
+        is_client_verified: bool,
+        is_auto_verified: bool,
+        content_type: str,
+        additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
+        parsed: Optional[str] = None,
+        **kwargs,
+    ):
         """
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
@@ -6334,9 +7660,9 @@ class InvoiceDataSupplierVat(
         :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
-        :paramtype rectangle: ~affinda.models.Rectangle
+        :paramtype rectangle: ~affinda_v2.models.Rectangle
         :keyword rectangles: Required.
-        :paramtype rectangles: list[~affinda.models.Rectangle]
+        :paramtype rectangles: list[~affinda_v2.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
         :keyword raw: Required.
@@ -6362,22 +7688,39 @@ class InvoiceDataSupplierVat(
         :keyword parsed:
         :paramtype parsed: str
         """
-        super(InvoiceDataSupplierVat, self).__init__(**kwargs)
-        self.additional_properties = kwargs.get("additional_properties", None)
-        self.id = kwargs["id"]
-        self.rectangle = kwargs["rectangle"]
-        self.rectangles = kwargs["rectangles"]
-        self.page_index = kwargs["page_index"]
-        self.raw = kwargs["raw"]
-        self.confidence = kwargs["confidence"]
-        self.classification_confidence = kwargs["classification_confidence"]
-        self.text_extraction_confidence = kwargs["text_extraction_confidence"]
-        self.is_verified = kwargs["is_verified"]
-        self.is_client_verified = kwargs["is_client_verified"]
-        self.is_auto_verified = kwargs["is_auto_verified"]
-        self.data_point = kwargs.get("data_point", None)
-        self.content_type = kwargs["content_type"]
-        self.parsed = kwargs.get("parsed", None)
+        super(InvoiceDataSupplierVat, self).__init__(
+            additional_properties=additional_properties,
+            id=id,
+            rectangle=rectangle,
+            rectangles=rectangles,
+            page_index=page_index,
+            raw=raw,
+            confidence=confidence,
+            classification_confidence=classification_confidence,
+            text_extraction_confidence=text_extraction_confidence,
+            is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
+            data_point=data_point,
+            content_type=content_type,
+            parsed=parsed,
+            **kwargs,
+        )
+        self.additional_properties = additional_properties
+        self.id = id
+        self.rectangle = rectangle
+        self.rectangles = rectangles
+        self.page_index = page_index
+        self.raw = raw
+        self.confidence = confidence
+        self.classification_confidence = classification_confidence
+        self.text_extraction_confidence = text_extraction_confidence
+        self.is_verified = is_verified
+        self.is_client_verified = is_client_verified
+        self.is_auto_verified = is_auto_verified
+        self.data_point = data_point
+        self.content_type = content_type
+        self.parsed = parsed
 
 
 class InvoiceDataSupplierWebsite(
@@ -6393,9 +7736,9 @@ class InvoiceDataSupplierWebsite(
     :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
-    :vartype rectangle: ~affinda.models.Rectangle
+    :vartype rectangle: ~affinda_v2.models.Rectangle
     :ivar rectangles: Required.
-    :vartype rectangles: list[~affinda.models.Rectangle]
+    :vartype rectangles: list[~affinda_v2.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
     :ivar raw: Required.
@@ -6455,7 +7798,26 @@ class InvoiceDataSupplierWebsite(
         "parsed": {"key": "parsed", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        id: int,
+        rectangle: "_models.Rectangle",
+        rectangles: List["_models.Rectangle"],
+        page_index: int,
+        raw: str,
+        confidence: float,
+        classification_confidence: float,
+        text_extraction_confidence: float,
+        is_verified: bool,
+        is_client_verified: bool,
+        is_auto_verified: bool,
+        content_type: str,
+        additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
+        parsed: Optional[str] = None,
+        **kwargs,
+    ):
         """
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
@@ -6463,9 +7825,9 @@ class InvoiceDataSupplierWebsite(
         :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
-        :paramtype rectangle: ~affinda.models.Rectangle
+        :paramtype rectangle: ~affinda_v2.models.Rectangle
         :keyword rectangles: Required.
-        :paramtype rectangles: list[~affinda.models.Rectangle]
+        :paramtype rectangles: list[~affinda_v2.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
         :keyword raw: Required.
@@ -6491,42 +7853,59 @@ class InvoiceDataSupplierWebsite(
         :keyword parsed:
         :paramtype parsed: str
         """
-        super(InvoiceDataSupplierWebsite, self).__init__(**kwargs)
-        self.additional_properties = kwargs.get("additional_properties", None)
-        self.id = kwargs["id"]
-        self.rectangle = kwargs["rectangle"]
-        self.rectangles = kwargs["rectangles"]
-        self.page_index = kwargs["page_index"]
-        self.raw = kwargs["raw"]
-        self.confidence = kwargs["confidence"]
-        self.classification_confidence = kwargs["classification_confidence"]
-        self.text_extraction_confidence = kwargs["text_extraction_confidence"]
-        self.is_verified = kwargs["is_verified"]
-        self.is_client_verified = kwargs["is_client_verified"]
-        self.is_auto_verified = kwargs["is_auto_verified"]
-        self.data_point = kwargs.get("data_point", None)
-        self.content_type = kwargs["content_type"]
-        self.parsed = kwargs.get("parsed", None)
+        super(InvoiceDataSupplierWebsite, self).__init__(
+            additional_properties=additional_properties,
+            id=id,
+            rectangle=rectangle,
+            rectangles=rectangles,
+            page_index=page_index,
+            raw=raw,
+            confidence=confidence,
+            classification_confidence=classification_confidence,
+            text_extraction_confidence=text_extraction_confidence,
+            is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
+            data_point=data_point,
+            content_type=content_type,
+            parsed=parsed,
+            **kwargs,
+        )
+        self.additional_properties = additional_properties
+        self.id = id
+        self.rectangle = rectangle
+        self.rectangles = rectangles
+        self.page_index = page_index
+        self.raw = raw
+        self.confidence = confidence
+        self.classification_confidence = classification_confidence
+        self.text_extraction_confidence = text_extraction_confidence
+        self.is_verified = is_verified
+        self.is_client_verified = is_client_verified
+        self.is_auto_verified = is_auto_verified
+        self.data_point = data_point
+        self.content_type = content_type
+        self.parsed = parsed
 
 
 class InvoiceDataTablesItem(msrest.serialization.Model):
     """InvoiceDataTablesItem.
 
     :ivar rows:
-    :vartype rows: list[~affinda.models.RowAnnotation]
+    :vartype rows: list[~affinda_v2.models.RowAnnotation]
     """
 
     _attribute_map = {
         "rows": {"key": "rows", "type": "[RowAnnotation]"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(self, *, rows: Optional[List["_models.RowAnnotation"]] = None, **kwargs):
         """
         :keyword rows:
-        :paramtype rows: list[~affinda.models.RowAnnotation]
+        :paramtype rows: list[~affinda_v2.models.RowAnnotation]
         """
         super(InvoiceDataTablesItem, self).__init__(**kwargs)
-        self.rows = kwargs.get("rows", None)
+        self.rows = rows
 
 
 class InvoiceRequestBody(msrest.serialization.Model):
@@ -6578,7 +7957,22 @@ class InvoiceRequestBody(msrest.serialization.Model):
         "low_priority": {"key": "lowPriority", "type": "bool"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        file: Optional[IO] = None,
+        url: Optional[str] = None,
+        identifier: Optional[str] = None,
+        custom_identifier: Optional[str] = None,
+        file_name: Optional[str] = None,
+        wait: Optional[bool] = True,
+        reject_duplicates: Optional[bool] = None,
+        language: Optional[str] = None,
+        expiry_time: Optional[datetime.datetime] = None,
+        region_bias: Optional[str] = None,
+        low_priority: Optional[bool] = None,
+        **kwargs,
+    ):
         """
         :keyword file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
          PNG, JPG, TIFF, ODT, XLS, XLSX, ZIP.
@@ -6612,17 +8006,17 @@ class InvoiceRequestBody(msrest.serialization.Model):
         :paramtype low_priority: bool
         """
         super(InvoiceRequestBody, self).__init__(**kwargs)
-        self.file = kwargs.get("file", None)
-        self.url = kwargs.get("url", None)
-        self.identifier = kwargs.get("identifier", None)
-        self.custom_identifier = kwargs.get("custom_identifier", None)
-        self.file_name = kwargs.get("file_name", None)
-        self.wait = kwargs.get("wait", True)
-        self.reject_duplicates = kwargs.get("reject_duplicates", None)
-        self.language = kwargs.get("language", None)
-        self.expiry_time = kwargs.get("expiry_time", None)
-        self.region_bias = kwargs.get("region_bias", None)
-        self.low_priority = kwargs.get("low_priority", None)
+        self.file = file
+        self.url = url
+        self.identifier = identifier
+        self.custom_identifier = custom_identifier
+        self.file_name = file_name
+        self.wait = wait
+        self.reject_duplicates = reject_duplicates
+        self.language = language
+        self.expiry_time = expiry_time
+        self.region_bias = region_bias
+        self.low_priority = low_priority
 
 
 class JobDescription(msrest.serialization.Model):
@@ -6631,11 +8025,11 @@ class JobDescription(msrest.serialization.Model):
     All required parameters must be populated in order to send to Azure.
 
     :ivar data: Required.
-    :vartype data: ~affinda.models.JobDescriptionData
+    :vartype data: ~affinda_v2.models.JobDescriptionData
     :ivar meta: Required.
-    :vartype meta: ~affinda.models.Meta
+    :vartype meta: ~affinda_v2.models.Meta
     :ivar error: Required.
-    :vartype error: ~affinda.models.Error
+    :vartype error: ~affinda_v2.models.Error
     """
 
     _validation = {
@@ -6650,19 +8044,26 @@ class JobDescription(msrest.serialization.Model):
         "error": {"key": "error", "type": "Error"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        data: "_models.JobDescriptionData",
+        meta: "_models.Meta",
+        error: "_models.Error",
+        **kwargs,
+    ):
         """
         :keyword data: Required.
-        :paramtype data: ~affinda.models.JobDescriptionData
+        :paramtype data: ~affinda_v2.models.JobDescriptionData
         :keyword meta: Required.
-        :paramtype meta: ~affinda.models.Meta
+        :paramtype meta: ~affinda_v2.models.Meta
         :keyword error: Required.
-        :paramtype error: ~affinda.models.Error
+        :paramtype error: ~affinda_v2.models.Error
         """
         super(JobDescription, self).__init__(**kwargs)
-        self.data = kwargs["data"]
-        self.meta = kwargs["meta"]
-        self.error = kwargs["error"]
+        self.data = data
+        self.meta = meta
+        self.error = error
 
 
 class JobDescriptionData(msrest.serialization.Model):
@@ -6672,39 +8073,39 @@ class JobDescriptionData(msrest.serialization.Model):
      collection.
     :vartype additional_properties: dict[str, any]
     :ivar job_title:
-    :vartype job_title: ~affinda.models.JobTitleAnnotation
+    :vartype job_title: ~affinda_v2.models.JobTitleAnnotation
     :ivar contact_email:
-    :vartype contact_email: ~affinda.models.TextAnnotation
+    :vartype contact_email: ~affinda_v2.models.TextAnnotation
     :ivar contact_name:
-    :vartype contact_name: ~affinda.models.TextAnnotation
+    :vartype contact_name: ~affinda_v2.models.TextAnnotation
     :ivar contact_phone:
-    :vartype contact_phone: ~affinda.models.TextAnnotation
+    :vartype contact_phone: ~affinda_v2.models.TextAnnotation
     :ivar start_date:
-    :vartype start_date: ~affinda.models.DateAnnotation
+    :vartype start_date: ~affinda_v2.models.DateAnnotation
     :ivar end_date:
-    :vartype end_date: ~affinda.models.DateAnnotation
+    :vartype end_date: ~affinda_v2.models.DateAnnotation
     :ivar job_type:
-    :vartype job_type: ~affinda.models.TextAnnotation
+    :vartype job_type: ~affinda_v2.models.TextAnnotation
     :ivar languages:
-    :vartype languages: list[~affinda.models.LanguageAnnotation]
+    :vartype languages: list[~affinda_v2.models.LanguageAnnotation]
     :ivar skills:
-    :vartype skills: list[~affinda.models.SkillAnnotation]
+    :vartype skills: list[~affinda_v2.models.SkillAnnotation]
     :ivar organization_name:
-    :vartype organization_name: ~affinda.models.TextAnnotation
+    :vartype organization_name: ~affinda_v2.models.TextAnnotation
     :ivar organization_website:
-    :vartype organization_website: ~affinda.models.TextAnnotation
+    :vartype organization_website: ~affinda_v2.models.TextAnnotation
     :ivar education_level:
-    :vartype education_level: ~affinda.models.TextAnnotation
+    :vartype education_level: ~affinda_v2.models.TextAnnotation
     :ivar education_accreditation:
-    :vartype education_accreditation: ~affinda.models.TextAnnotation
+    :vartype education_accreditation: ~affinda_v2.models.TextAnnotation
     :ivar expected_remuneration:
-    :vartype expected_remuneration: ~affinda.models.ExpectedRemunerationAnnotation
+    :vartype expected_remuneration: ~affinda_v2.models.ExpectedRemunerationAnnotation
     :ivar location:
-    :vartype location: ~affinda.models.LocationAnnotation
+    :vartype location: ~affinda_v2.models.LocationAnnotation
     :ivar certifications:
-    :vartype certifications: list[~affinda.models.TextAnnotation]
+    :vartype certifications: list[~affinda_v2.models.TextAnnotation]
     :ivar years_experience:
-    :vartype years_experience: ~affinda.models.YearsExperienceAnnotation
+    :vartype years_experience: ~affinda_v2.models.YearsExperienceAnnotation
     :ivar raw_text: All of the raw text of the parsed job description, example is shortened for
      readability.
     :vartype raw_text: str
@@ -6735,69 +8136,92 @@ class JobDescriptionData(msrest.serialization.Model):
         "raw_text": {"key": "rawText", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        additional_properties: Optional[Dict[str, Any]] = None,
+        job_title: Optional["_models.JobTitleAnnotation"] = None,
+        contact_email: Optional["_models.TextAnnotation"] = None,
+        contact_name: Optional["_models.TextAnnotation"] = None,
+        contact_phone: Optional["_models.TextAnnotation"] = None,
+        start_date: Optional["_models.DateAnnotation"] = None,
+        end_date: Optional["_models.DateAnnotation"] = None,
+        job_type: Optional["_models.TextAnnotation"] = None,
+        languages: Optional[List["_models.LanguageAnnotation"]] = None,
+        skills: Optional[List["_models.SkillAnnotation"]] = None,
+        organization_name: Optional["_models.TextAnnotation"] = None,
+        organization_website: Optional["_models.TextAnnotation"] = None,
+        education_level: Optional["_models.TextAnnotation"] = None,
+        education_accreditation: Optional["_models.TextAnnotation"] = None,
+        expected_remuneration: Optional["_models.ExpectedRemunerationAnnotation"] = None,
+        location: Optional["_models.LocationAnnotation"] = None,
+        certifications: Optional[List["_models.TextAnnotation"]] = None,
+        years_experience: Optional["_models.YearsExperienceAnnotation"] = None,
+        raw_text: Optional[str] = None,
+        **kwargs,
+    ):
         """
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
         :keyword job_title:
-        :paramtype job_title: ~affinda.models.JobTitleAnnotation
+        :paramtype job_title: ~affinda_v2.models.JobTitleAnnotation
         :keyword contact_email:
-        :paramtype contact_email: ~affinda.models.TextAnnotation
+        :paramtype contact_email: ~affinda_v2.models.TextAnnotation
         :keyword contact_name:
-        :paramtype contact_name: ~affinda.models.TextAnnotation
+        :paramtype contact_name: ~affinda_v2.models.TextAnnotation
         :keyword contact_phone:
-        :paramtype contact_phone: ~affinda.models.TextAnnotation
+        :paramtype contact_phone: ~affinda_v2.models.TextAnnotation
         :keyword start_date:
-        :paramtype start_date: ~affinda.models.DateAnnotation
+        :paramtype start_date: ~affinda_v2.models.DateAnnotation
         :keyword end_date:
-        :paramtype end_date: ~affinda.models.DateAnnotation
+        :paramtype end_date: ~affinda_v2.models.DateAnnotation
         :keyword job_type:
-        :paramtype job_type: ~affinda.models.TextAnnotation
+        :paramtype job_type: ~affinda_v2.models.TextAnnotation
         :keyword languages:
-        :paramtype languages: list[~affinda.models.LanguageAnnotation]
+        :paramtype languages: list[~affinda_v2.models.LanguageAnnotation]
         :keyword skills:
-        :paramtype skills: list[~affinda.models.SkillAnnotation]
+        :paramtype skills: list[~affinda_v2.models.SkillAnnotation]
         :keyword organization_name:
-        :paramtype organization_name: ~affinda.models.TextAnnotation
+        :paramtype organization_name: ~affinda_v2.models.TextAnnotation
         :keyword organization_website:
-        :paramtype organization_website: ~affinda.models.TextAnnotation
+        :paramtype organization_website: ~affinda_v2.models.TextAnnotation
         :keyword education_level:
-        :paramtype education_level: ~affinda.models.TextAnnotation
+        :paramtype education_level: ~affinda_v2.models.TextAnnotation
         :keyword education_accreditation:
-        :paramtype education_accreditation: ~affinda.models.TextAnnotation
+        :paramtype education_accreditation: ~affinda_v2.models.TextAnnotation
         :keyword expected_remuneration:
-        :paramtype expected_remuneration: ~affinda.models.ExpectedRemunerationAnnotation
+        :paramtype expected_remuneration: ~affinda_v2.models.ExpectedRemunerationAnnotation
         :keyword location:
-        :paramtype location: ~affinda.models.LocationAnnotation
+        :paramtype location: ~affinda_v2.models.LocationAnnotation
         :keyword certifications:
-        :paramtype certifications: list[~affinda.models.TextAnnotation]
+        :paramtype certifications: list[~affinda_v2.models.TextAnnotation]
         :keyword years_experience:
-        :paramtype years_experience: ~affinda.models.YearsExperienceAnnotation
+        :paramtype years_experience: ~affinda_v2.models.YearsExperienceAnnotation
         :keyword raw_text: All of the raw text of the parsed job description, example is shortened for
          readability.
         :paramtype raw_text: str
         """
         super(JobDescriptionData, self).__init__(**kwargs)
-        self.additional_properties = kwargs.get("additional_properties", None)
-        self.job_title = kwargs.get("job_title", None)
-        self.contact_email = kwargs.get("contact_email", None)
-        self.contact_name = kwargs.get("contact_name", None)
-        self.contact_phone = kwargs.get("contact_phone", None)
-        self.start_date = kwargs.get("start_date", None)
-        self.end_date = kwargs.get("end_date", None)
-        self.job_type = kwargs.get("job_type", None)
-        self.languages = kwargs.get("languages", None)
-        self.skills = kwargs.get("skills", None)
-        self.organization_name = kwargs.get("organization_name", None)
-        self.organization_website = kwargs.get("organization_website", None)
-        self.education_level = kwargs.get("education_level", None)
-        self.education_accreditation = kwargs.get("education_accreditation", None)
-        self.expected_remuneration = kwargs.get("expected_remuneration", None)
-        self.location = kwargs.get("location", None)
-        self.certifications = kwargs.get("certifications", None)
-        self.years_experience = kwargs.get("years_experience", None)
-        self.raw_text = kwargs.get("raw_text", None)
+        self.additional_properties = additional_properties
+        self.job_title = job_title
+        self.contact_email = contact_email
+        self.contact_name = contact_name
+        self.contact_phone = contact_phone
+        self.start_date = start_date
+        self.end_date = end_date
+        self.job_type = job_type
+        self.languages = languages
+        self.skills = skills
+        self.organization_name = organization_name
+        self.organization_website = organization_website
+        self.education_level = education_level
+        self.education_accreditation = education_accreditation
+        self.expected_remuneration = expected_remuneration
+        self.location = location
+        self.certifications = certifications
+        self.years_experience = years_experience
+        self.raw_text = raw_text
 
 
 class JobDescriptionDataUpdate(msrest.serialization.Model):
@@ -6807,39 +8231,39 @@ class JobDescriptionDataUpdate(msrest.serialization.Model):
      collection.
     :vartype additional_properties: dict[str, any]
     :ivar job_title:
-    :vartype job_title: ~affinda.models.JobTitleAnnotationUpdate
+    :vartype job_title: ~affinda_v2.models.JobTitleAnnotationUpdate
     :ivar contact_email:
-    :vartype contact_email: ~affinda.models.TextAnnotationV2Update
+    :vartype contact_email: ~affinda_v2.models.TextAnnotationV2Update
     :ivar contact_name:
-    :vartype contact_name: ~affinda.models.TextAnnotationV2Update
+    :vartype contact_name: ~affinda_v2.models.TextAnnotationV2Update
     :ivar contact_phone:
-    :vartype contact_phone: ~affinda.models.TextAnnotationV2Update
+    :vartype contact_phone: ~affinda_v2.models.TextAnnotationV2Update
     :ivar start_date:
-    :vartype start_date: ~affinda.models.DateAnnotationV2Update
+    :vartype start_date: ~affinda_v2.models.DateAnnotationV2Update
     :ivar end_date:
-    :vartype end_date: ~affinda.models.DateAnnotationV2Update
+    :vartype end_date: ~affinda_v2.models.DateAnnotationV2Update
     :ivar job_type:
-    :vartype job_type: ~affinda.models.TextAnnotationV2Update
+    :vartype job_type: ~affinda_v2.models.TextAnnotationV2Update
     :ivar languages:
-    :vartype languages: list[~affinda.models.LanguageAnnotationV2Update]
+    :vartype languages: list[~affinda_v2.models.LanguageAnnotationV2Update]
     :ivar skills:
-    :vartype skills: list[~affinda.models.SkillAnnotationV2Update]
+    :vartype skills: list[~affinda_v2.models.SkillAnnotationV2Update]
     :ivar organization_name:
-    :vartype organization_name: ~affinda.models.TextAnnotationV2Update
+    :vartype organization_name: ~affinda_v2.models.TextAnnotationV2Update
     :ivar organization_website:
-    :vartype organization_website: ~affinda.models.TextAnnotationV2Update
+    :vartype organization_website: ~affinda_v2.models.TextAnnotationV2Update
     :ivar education_level:
-    :vartype education_level: ~affinda.models.TextAnnotationV2Update
+    :vartype education_level: ~affinda_v2.models.TextAnnotationV2Update
     :ivar education_accreditation:
-    :vartype education_accreditation: ~affinda.models.TextAnnotationV2Update
+    :vartype education_accreditation: ~affinda_v2.models.TextAnnotationV2Update
     :ivar expected_remuneration:
-    :vartype expected_remuneration: ~affinda.models.ExpectedRemunerationAnnotationV2Update
+    :vartype expected_remuneration: ~affinda_v2.models.ExpectedRemunerationAnnotationV2Update
     :ivar location:
-    :vartype location: ~affinda.models.LocationAnnotationV2Update
+    :vartype location: ~affinda_v2.models.LocationAnnotationV2Update
     :ivar certifications:
-    :vartype certifications: list[~affinda.models.TextAnnotationV2Update]
+    :vartype certifications: list[~affinda_v2.models.TextAnnotationV2Update]
     :ivar years_experience:
-    :vartype years_experience: ~affinda.models.YearsExperienceAnnotationV2Update
+    :vartype years_experience: ~affinda_v2.models.YearsExperienceAnnotationV2Update
     """
 
     _attribute_map = {
@@ -6872,65 +8296,87 @@ class JobDescriptionDataUpdate(msrest.serialization.Model):
         },
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        additional_properties: Optional[Dict[str, Any]] = None,
+        job_title: Optional["_models.JobTitleAnnotationUpdate"] = None,
+        contact_email: Optional["_models.TextAnnotationV2Update"] = None,
+        contact_name: Optional["_models.TextAnnotationV2Update"] = None,
+        contact_phone: Optional["_models.TextAnnotationV2Update"] = None,
+        start_date: Optional["_models.DateAnnotationV2Update"] = None,
+        end_date: Optional["_models.DateAnnotationV2Update"] = None,
+        job_type: Optional["_models.TextAnnotationV2Update"] = None,
+        languages: Optional[List["_models.LanguageAnnotationV2Update"]] = None,
+        skills: Optional[List["_models.SkillAnnotationV2Update"]] = None,
+        organization_name: Optional["_models.TextAnnotationV2Update"] = None,
+        organization_website: Optional["_models.TextAnnotationV2Update"] = None,
+        education_level: Optional["_models.TextAnnotationV2Update"] = None,
+        education_accreditation: Optional["_models.TextAnnotationV2Update"] = None,
+        expected_remuneration: Optional["_models.ExpectedRemunerationAnnotationV2Update"] = None,
+        location: Optional["_models.LocationAnnotationV2Update"] = None,
+        certifications: Optional[List["_models.TextAnnotationV2Update"]] = None,
+        years_experience: Optional["_models.YearsExperienceAnnotationV2Update"] = None,
+        **kwargs,
+    ):
         """
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
         :keyword job_title:
-        :paramtype job_title: ~affinda.models.JobTitleAnnotationUpdate
+        :paramtype job_title: ~affinda_v2.models.JobTitleAnnotationUpdate
         :keyword contact_email:
-        :paramtype contact_email: ~affinda.models.TextAnnotationV2Update
+        :paramtype contact_email: ~affinda_v2.models.TextAnnotationV2Update
         :keyword contact_name:
-        :paramtype contact_name: ~affinda.models.TextAnnotationV2Update
+        :paramtype contact_name: ~affinda_v2.models.TextAnnotationV2Update
         :keyword contact_phone:
-        :paramtype contact_phone: ~affinda.models.TextAnnotationV2Update
+        :paramtype contact_phone: ~affinda_v2.models.TextAnnotationV2Update
         :keyword start_date:
-        :paramtype start_date: ~affinda.models.DateAnnotationV2Update
+        :paramtype start_date: ~affinda_v2.models.DateAnnotationV2Update
         :keyword end_date:
-        :paramtype end_date: ~affinda.models.DateAnnotationV2Update
+        :paramtype end_date: ~affinda_v2.models.DateAnnotationV2Update
         :keyword job_type:
-        :paramtype job_type: ~affinda.models.TextAnnotationV2Update
+        :paramtype job_type: ~affinda_v2.models.TextAnnotationV2Update
         :keyword languages:
-        :paramtype languages: list[~affinda.models.LanguageAnnotationV2Update]
+        :paramtype languages: list[~affinda_v2.models.LanguageAnnotationV2Update]
         :keyword skills:
-        :paramtype skills: list[~affinda.models.SkillAnnotationV2Update]
+        :paramtype skills: list[~affinda_v2.models.SkillAnnotationV2Update]
         :keyword organization_name:
-        :paramtype organization_name: ~affinda.models.TextAnnotationV2Update
+        :paramtype organization_name: ~affinda_v2.models.TextAnnotationV2Update
         :keyword organization_website:
-        :paramtype organization_website: ~affinda.models.TextAnnotationV2Update
+        :paramtype organization_website: ~affinda_v2.models.TextAnnotationV2Update
         :keyword education_level:
-        :paramtype education_level: ~affinda.models.TextAnnotationV2Update
+        :paramtype education_level: ~affinda_v2.models.TextAnnotationV2Update
         :keyword education_accreditation:
-        :paramtype education_accreditation: ~affinda.models.TextAnnotationV2Update
+        :paramtype education_accreditation: ~affinda_v2.models.TextAnnotationV2Update
         :keyword expected_remuneration:
-        :paramtype expected_remuneration: ~affinda.models.ExpectedRemunerationAnnotationV2Update
+        :paramtype expected_remuneration: ~affinda_v2.models.ExpectedRemunerationAnnotationV2Update
         :keyword location:
-        :paramtype location: ~affinda.models.LocationAnnotationV2Update
+        :paramtype location: ~affinda_v2.models.LocationAnnotationV2Update
         :keyword certifications:
-        :paramtype certifications: list[~affinda.models.TextAnnotationV2Update]
+        :paramtype certifications: list[~affinda_v2.models.TextAnnotationV2Update]
         :keyword years_experience:
-        :paramtype years_experience: ~affinda.models.YearsExperienceAnnotationV2Update
+        :paramtype years_experience: ~affinda_v2.models.YearsExperienceAnnotationV2Update
         """
         super(JobDescriptionDataUpdate, self).__init__(**kwargs)
-        self.additional_properties = kwargs.get("additional_properties", None)
-        self.job_title = kwargs.get("job_title", None)
-        self.contact_email = kwargs.get("contact_email", None)
-        self.contact_name = kwargs.get("contact_name", None)
-        self.contact_phone = kwargs.get("contact_phone", None)
-        self.start_date = kwargs.get("start_date", None)
-        self.end_date = kwargs.get("end_date", None)
-        self.job_type = kwargs.get("job_type", None)
-        self.languages = kwargs.get("languages", None)
-        self.skills = kwargs.get("skills", None)
-        self.organization_name = kwargs.get("organization_name", None)
-        self.organization_website = kwargs.get("organization_website", None)
-        self.education_level = kwargs.get("education_level", None)
-        self.education_accreditation = kwargs.get("education_accreditation", None)
-        self.expected_remuneration = kwargs.get("expected_remuneration", None)
-        self.location = kwargs.get("location", None)
-        self.certifications = kwargs.get("certifications", None)
-        self.years_experience = kwargs.get("years_experience", None)
+        self.additional_properties = additional_properties
+        self.job_title = job_title
+        self.contact_email = contact_email
+        self.contact_name = contact_name
+        self.contact_phone = contact_phone
+        self.start_date = start_date
+        self.end_date = end_date
+        self.job_type = job_type
+        self.languages = languages
+        self.skills = skills
+        self.organization_name = organization_name
+        self.organization_website = organization_website
+        self.education_level = education_level
+        self.education_accreditation = education_accreditation
+        self.expected_remuneration = expected_remuneration
+        self.location = location
+        self.certifications = certifications
+        self.years_experience = years_experience
 
 
 class JobDescriptionRequestBody(msrest.serialization.Model):
@@ -6942,7 +8388,7 @@ class JobDescriptionRequestBody(msrest.serialization.Model):
     :ivar url: URL to download the job description.
     :vartype url: str
     :ivar data: A JSON-encoded string of the ``JobDescriptionData`` object.
-    :vartype data: ~affinda.models.JobDescriptionDataUpdate
+    :vartype data: ~affinda_v2.models.JobDescriptionDataUpdate
     :ivar identifier: Deprecated in favor of ``customIdentifier``.
     :vartype identifier: str
     :ivar custom_identifier: Specify a custom identifier for the document if you need one, not
@@ -6985,7 +8431,23 @@ class JobDescriptionRequestBody(msrest.serialization.Model):
         "low_priority": {"key": "lowPriority", "type": "bool"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        file: Optional[IO] = None,
+        url: Optional[str] = None,
+        data: Optional["_models.JobDescriptionDataUpdate"] = None,
+        identifier: Optional[str] = None,
+        custom_identifier: Optional[str] = None,
+        file_name: Optional[str] = None,
+        wait: Optional[bool] = True,
+        reject_duplicates: Optional[bool] = None,
+        language: Optional[str] = None,
+        expiry_time: Optional[datetime.datetime] = None,
+        region_bias: Optional[str] = None,
+        low_priority: Optional[bool] = None,
+        **kwargs,
+    ):
         """
         :keyword file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
          PNG, JPG, TIFF, ODT, XLS, XLSX, ZIP.
@@ -6993,7 +8455,7 @@ class JobDescriptionRequestBody(msrest.serialization.Model):
         :keyword url: URL to download the job description.
         :paramtype url: str
         :keyword data: A JSON-encoded string of the ``JobDescriptionData`` object.
-        :paramtype data: ~affinda.models.JobDescriptionDataUpdate
+        :paramtype data: ~affinda_v2.models.JobDescriptionDataUpdate
         :keyword identifier: Deprecated in favor of ``customIdentifier``.
         :paramtype identifier: str
         :keyword custom_identifier: Specify a custom identifier for the document if you need one, not
@@ -7021,18 +8483,18 @@ class JobDescriptionRequestBody(msrest.serialization.Model):
         :paramtype low_priority: bool
         """
         super(JobDescriptionRequestBody, self).__init__(**kwargs)
-        self.file = kwargs.get("file", None)
-        self.url = kwargs.get("url", None)
-        self.data = kwargs.get("data", None)
-        self.identifier = kwargs.get("identifier", None)
-        self.custom_identifier = kwargs.get("custom_identifier", None)
-        self.file_name = kwargs.get("file_name", None)
-        self.wait = kwargs.get("wait", True)
-        self.reject_duplicates = kwargs.get("reject_duplicates", None)
-        self.language = kwargs.get("language", None)
-        self.expiry_time = kwargs.get("expiry_time", None)
-        self.region_bias = kwargs.get("region_bias", None)
-        self.low_priority = kwargs.get("low_priority", None)
+        self.file = file
+        self.url = url
+        self.data = data
+        self.identifier = identifier
+        self.custom_identifier = custom_identifier
+        self.file_name = file_name
+        self.wait = wait
+        self.reject_duplicates = reject_duplicates
+        self.language = language
+        self.expiry_time = expiry_time
+        self.region_bias = region_bias
+        self.low_priority = low_priority
 
 
 class JobDescriptionSearch(msrest.serialization.Model):
@@ -7045,9 +8507,9 @@ class JobDescriptionSearch(msrest.serialization.Model):
     :ivar previous: URL to request previous page of results.
     :vartype previous: str
     :ivar parameters:
-    :vartype parameters: ~affinda.models.JobDescriptionSearchParameters
+    :vartype parameters: ~affinda_v2.models.JobDescriptionSearchParameters
     :ivar results:
-    :vartype results: list[~affinda.models.JobDescriptionSearchResult]
+    :vartype results: list[~affinda_v2.models.JobDescriptionSearchResult]
     """
 
     _validation = {
@@ -7062,7 +8524,16 @@ class JobDescriptionSearch(msrest.serialization.Model):
         "results": {"key": "results", "type": "[JobDescriptionSearchResult]"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        count: Optional[int] = None,
+        next: Optional[str] = None,
+        previous: Optional[str] = None,
+        parameters: Optional["_models.JobDescriptionSearchParameters"] = None,
+        results: Optional[List["_models.JobDescriptionSearchResult"]] = None,
+        **kwargs,
+    ):
         """
         :keyword count: Total number of results.
         :paramtype count: int
@@ -7071,16 +8542,16 @@ class JobDescriptionSearch(msrest.serialization.Model):
         :keyword previous: URL to request previous page of results.
         :paramtype previous: str
         :keyword parameters:
-        :paramtype parameters: ~affinda.models.JobDescriptionSearchParameters
+        :paramtype parameters: ~affinda_v2.models.JobDescriptionSearchParameters
         :keyword results:
-        :paramtype results: list[~affinda.models.JobDescriptionSearchResult]
+        :paramtype results: list[~affinda_v2.models.JobDescriptionSearchResult]
         """
         super(JobDescriptionSearch, self).__init__(**kwargs)
-        self.count = kwargs.get("count", None)
-        self.next = kwargs.get("next", None)
-        self.previous = kwargs.get("previous", None)
-        self.parameters = kwargs.get("parameters", None)
-        self.results = kwargs.get("results", None)
+        self.count = count
+        self.next = next
+        self.previous = previous
+        self.parameters = parameters
+        self.results = results
 
 
 class JobDescriptionSearchConfig(msrest.serialization.Model):
@@ -7140,12 +8611,12 @@ class JobDescriptionSearchConfig(msrest.serialization.Model):
     :ivar username: Username of the logged in user.
     :vartype username: str
     :ivar actions: A list of actions to show in the dropdown in the embedded search tool.
-    :vartype actions: list[~affinda.models.JobDescriptionSearchConfigActionsItem]
+    :vartype actions: list[~affinda_v2.models.JobDescriptionSearchConfigActionsItem]
     :ivar custom_fields_config:
-    :vartype custom_fields_config: list[~affinda.models.CustomFieldConfig]
+    :vartype custom_fields_config: list[~affinda_v2.models.CustomFieldConfig]
     :ivar distance_unit: The unit of distance to use for location based searches. Known values are:
      "mi", "km".
-    :vartype distance_unit: str or ~affinda.models.JobDescriptionSearchConfigDistanceUnit
+    :vartype distance_unit: str or ~affinda_v2.models.JobDescriptionSearchConfigDistanceUnit
     """
 
     _validation = {
@@ -7185,7 +8656,39 @@ class JobDescriptionSearchConfig(msrest.serialization.Model):
         "distance_unit": {"key": "distanceUnit", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        allow_pdf_download: Optional[bool] = None,
+        max_results: Optional[int] = None,
+        display_job_title: Optional[bool] = None,
+        display_location: Optional[bool] = None,
+        display_years_experience: Optional[bool] = None,
+        display_occupation_group: Optional[bool] = None,
+        display_education: Optional[bool] = None,
+        display_skills: Optional[bool] = None,
+        display_languages: Optional[bool] = None,
+        display_management_level: Optional[bool] = None,
+        display_keywords: Optional[bool] = None,
+        weight_job_title: Optional[float] = None,
+        weight_location: Optional[float] = None,
+        weight_years_experience: Optional[float] = None,
+        weight_occupation_group: Optional[float] = None,
+        weight_education: Optional[float] = None,
+        weight_skills: Optional[float] = None,
+        weight_languages: Optional[float] = None,
+        weight_management_level: Optional[float] = None,
+        weight_keywords: Optional[float] = None,
+        indices: Optional[List[str]] = None,
+        show_index_dropdown: Optional[bool] = None,
+        search_tool_theme: Optional[Dict[str, Any]] = None,
+        actions: Optional[List["_models.JobDescriptionSearchConfigActionsItem"]] = None,
+        custom_fields_config: Optional[List["_models.CustomFieldConfig"]] = None,
+        distance_unit: Optional[
+            Union[str, "_models.JobDescriptionSearchConfigDistanceUnit"]
+        ] = None,
+        **kwargs,
+    ):
         """
         :keyword allow_pdf_download:
         :paramtype allow_pdf_download: bool
@@ -7236,42 +8739,42 @@ class JobDescriptionSearchConfig(msrest.serialization.Model):
         :keyword search_tool_theme: Customize the theme of the embeded search tool.
         :paramtype search_tool_theme: dict[str, any]
         :keyword actions: A list of actions to show in the dropdown in the embedded search tool.
-        :paramtype actions: list[~affinda.models.JobDescriptionSearchConfigActionsItem]
+        :paramtype actions: list[~affinda_v2.models.JobDescriptionSearchConfigActionsItem]
         :keyword custom_fields_config:
-        :paramtype custom_fields_config: list[~affinda.models.CustomFieldConfig]
+        :paramtype custom_fields_config: list[~affinda_v2.models.CustomFieldConfig]
         :keyword distance_unit: The unit of distance to use for location based searches. Known values
          are: "mi", "km".
-        :paramtype distance_unit: str or ~affinda.models.JobDescriptionSearchConfigDistanceUnit
+        :paramtype distance_unit: str or ~affinda_v2.models.JobDescriptionSearchConfigDistanceUnit
         """
         super(JobDescriptionSearchConfig, self).__init__(**kwargs)
-        self.allow_pdf_download = kwargs.get("allow_pdf_download", None)
-        self.max_results = kwargs.get("max_results", None)
-        self.display_job_title = kwargs.get("display_job_title", None)
-        self.display_location = kwargs.get("display_location", None)
-        self.display_years_experience = kwargs.get("display_years_experience", None)
-        self.display_occupation_group = kwargs.get("display_occupation_group", None)
-        self.display_education = kwargs.get("display_education", None)
-        self.display_skills = kwargs.get("display_skills", None)
-        self.display_languages = kwargs.get("display_languages", None)
-        self.display_management_level = kwargs.get("display_management_level", None)
-        self.display_keywords = kwargs.get("display_keywords", None)
-        self.weight_job_title = kwargs.get("weight_job_title", None)
-        self.weight_location = kwargs.get("weight_location", None)
-        self.weight_years_experience = kwargs.get("weight_years_experience", None)
-        self.weight_occupation_group = kwargs.get("weight_occupation_group", None)
-        self.weight_education = kwargs.get("weight_education", None)
-        self.weight_skills = kwargs.get("weight_skills", None)
-        self.weight_languages = kwargs.get("weight_languages", None)
-        self.weight_management_level = kwargs.get("weight_management_level", None)
-        self.weight_keywords = kwargs.get("weight_keywords", None)
-        self.indices = kwargs.get("indices", None)
-        self.show_index_dropdown = kwargs.get("show_index_dropdown", None)
-        self.search_tool_theme = kwargs.get("search_tool_theme", None)
+        self.allow_pdf_download = allow_pdf_download
+        self.max_results = max_results
+        self.display_job_title = display_job_title
+        self.display_location = display_location
+        self.display_years_experience = display_years_experience
+        self.display_occupation_group = display_occupation_group
+        self.display_education = display_education
+        self.display_skills = display_skills
+        self.display_languages = display_languages
+        self.display_management_level = display_management_level
+        self.display_keywords = display_keywords
+        self.weight_job_title = weight_job_title
+        self.weight_location = weight_location
+        self.weight_years_experience = weight_years_experience
+        self.weight_occupation_group = weight_occupation_group
+        self.weight_education = weight_education
+        self.weight_skills = weight_skills
+        self.weight_languages = weight_languages
+        self.weight_management_level = weight_management_level
+        self.weight_keywords = weight_keywords
+        self.indices = indices
+        self.show_index_dropdown = show_index_dropdown
+        self.search_tool_theme = search_tool_theme
         self.user_id = None
         self.username = None
-        self.actions = kwargs.get("actions", None)
-        self.custom_fields_config = kwargs.get("custom_fields_config", None)
-        self.distance_unit = kwargs.get("distance_unit", None)
+        self.actions = actions
+        self.custom_fields_config = custom_fields_config
+        self.distance_unit = distance_unit
 
 
 class JobDescriptionSearchConfigActionsItem(msrest.serialization.Model):
@@ -7288,7 +8791,7 @@ class JobDescriptionSearchConfigActionsItem(msrest.serialization.Model):
         "event_name": {"key": "eventName", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(self, *, label: Optional[str] = None, event_name: Optional[str] = None, **kwargs):
         """
         :keyword label: Human readable label to display in the UI.
         :paramtype label: str
@@ -7296,31 +8799,31 @@ class JobDescriptionSearchConfigActionsItem(msrest.serialization.Model):
         :paramtype event_name: str
         """
         super(JobDescriptionSearchConfigActionsItem, self).__init__(**kwargs)
-        self.label = kwargs.get("label", None)
-        self.event_name = kwargs.get("event_name", None)
+        self.label = label
+        self.event_name = event_name
 
 
 class JobDescriptionSearchDetail(msrest.serialization.Model):
     """JobDescriptionSearchDetail.
 
     :ivar job_title:
-    :vartype job_title: ~affinda.models.JobDescriptionSearchDetailJobTitle
+    :vartype job_title: ~affinda_v2.models.JobDescriptionSearchDetailJobTitle
     :ivar location:
-    :vartype location: ~affinda.models.JobDescriptionSearchDetailLocation
+    :vartype location: ~affinda_v2.models.JobDescriptionSearchDetailLocation
     :ivar education:
-    :vartype education: ~affinda.models.JobDescriptionSearchDetailEducation
+    :vartype education: ~affinda_v2.models.JobDescriptionSearchDetailEducation
     :ivar skills:
-    :vartype skills: ~affinda.models.JobDescriptionSearchDetailSkills
+    :vartype skills: ~affinda_v2.models.JobDescriptionSearchDetailSkills
     :ivar experience:
-    :vartype experience: ~affinda.models.JobDescriptionSearchDetailExperience
+    :vartype experience: ~affinda_v2.models.JobDescriptionSearchDetailExperience
     :ivar occupation_group:
-    :vartype occupation_group: ~affinda.models.JobDescriptionSearchDetailOccupationGroup
+    :vartype occupation_group: ~affinda_v2.models.JobDescriptionSearchDetailOccupationGroup
     :ivar languages:
-    :vartype languages: ~affinda.models.JobDescriptionSearchDetailLanguages
+    :vartype languages: ~affinda_v2.models.JobDescriptionSearchDetailLanguages
     :ivar management_level:
-    :vartype management_level: ~affinda.models.JobDescriptionSearchDetailManagementLevel
+    :vartype management_level: ~affinda_v2.models.JobDescriptionSearchDetailManagementLevel
     :ivar search_expression:
-    :vartype search_expression: ~affinda.models.JobDescriptionSearchDetailSearchExpression
+    :vartype search_expression: ~affinda_v2.models.JobDescriptionSearchDetailSearchExpression
     """
 
     _attribute_map = {
@@ -7344,46 +8847,59 @@ class JobDescriptionSearchDetail(msrest.serialization.Model):
         },
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        job_title: Optional["_models.JobDescriptionSearchDetailJobTitle"] = None,
+        location: Optional["_models.JobDescriptionSearchDetailLocation"] = None,
+        education: Optional["_models.JobDescriptionSearchDetailEducation"] = None,
+        skills: Optional["_models.JobDescriptionSearchDetailSkills"] = None,
+        experience: Optional["_models.JobDescriptionSearchDetailExperience"] = None,
+        occupation_group: Optional["_models.JobDescriptionSearchDetailOccupationGroup"] = None,
+        languages: Optional["_models.JobDescriptionSearchDetailLanguages"] = None,
+        management_level: Optional["_models.JobDescriptionSearchDetailManagementLevel"] = None,
+        search_expression: Optional["_models.JobDescriptionSearchDetailSearchExpression"] = None,
+        **kwargs,
+    ):
         """
         :keyword job_title:
-        :paramtype job_title: ~affinda.models.JobDescriptionSearchDetailJobTitle
+        :paramtype job_title: ~affinda_v2.models.JobDescriptionSearchDetailJobTitle
         :keyword location:
-        :paramtype location: ~affinda.models.JobDescriptionSearchDetailLocation
+        :paramtype location: ~affinda_v2.models.JobDescriptionSearchDetailLocation
         :keyword education:
-        :paramtype education: ~affinda.models.JobDescriptionSearchDetailEducation
+        :paramtype education: ~affinda_v2.models.JobDescriptionSearchDetailEducation
         :keyword skills:
-        :paramtype skills: ~affinda.models.JobDescriptionSearchDetailSkills
+        :paramtype skills: ~affinda_v2.models.JobDescriptionSearchDetailSkills
         :keyword experience:
-        :paramtype experience: ~affinda.models.JobDescriptionSearchDetailExperience
+        :paramtype experience: ~affinda_v2.models.JobDescriptionSearchDetailExperience
         :keyword occupation_group:
-        :paramtype occupation_group: ~affinda.models.JobDescriptionSearchDetailOccupationGroup
+        :paramtype occupation_group: ~affinda_v2.models.JobDescriptionSearchDetailOccupationGroup
         :keyword languages:
-        :paramtype languages: ~affinda.models.JobDescriptionSearchDetailLanguages
+        :paramtype languages: ~affinda_v2.models.JobDescriptionSearchDetailLanguages
         :keyword management_level:
-        :paramtype management_level: ~affinda.models.JobDescriptionSearchDetailManagementLevel
+        :paramtype management_level: ~affinda_v2.models.JobDescriptionSearchDetailManagementLevel
         :keyword search_expression:
-        :paramtype search_expression: ~affinda.models.JobDescriptionSearchDetailSearchExpression
+        :paramtype search_expression: ~affinda_v2.models.JobDescriptionSearchDetailSearchExpression
         """
         super(JobDescriptionSearchDetail, self).__init__(**kwargs)
-        self.job_title = kwargs.get("job_title", None)
-        self.location = kwargs.get("location", None)
-        self.education = kwargs.get("education", None)
-        self.skills = kwargs.get("skills", None)
-        self.experience = kwargs.get("experience", None)
-        self.occupation_group = kwargs.get("occupation_group", None)
-        self.languages = kwargs.get("languages", None)
-        self.management_level = kwargs.get("management_level", None)
-        self.search_expression = kwargs.get("search_expression", None)
+        self.job_title = job_title
+        self.location = location
+        self.education = education
+        self.skills = skills
+        self.experience = experience
+        self.occupation_group = occupation_group
+        self.languages = languages
+        self.management_level = management_level
+        self.search_expression = search_expression
 
 
 class JobDescriptionSearchDetailEducation(msrest.serialization.Model):
     """JobDescriptionSearchDetailEducation.
 
     :ivar missing:
-    :vartype missing: ~affinda.models.JobDescriptionSearchDetailEducationMissing
+    :vartype missing: ~affinda_v2.models.JobDescriptionSearchDetailEducationMissing
     :ivar value:
-    :vartype value: ~affinda.models.JobDescriptionSearchDetailEducationValue
+    :vartype value: ~affinda_v2.models.JobDescriptionSearchDetailEducationValue
     """
 
     _attribute_map = {
@@ -7391,16 +8907,22 @@ class JobDescriptionSearchDetailEducation(msrest.serialization.Model):
         "value": {"key": "value", "type": "JobDescriptionSearchDetailEducationValue"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        missing: Optional["_models.JobDescriptionSearchDetailEducationMissing"] = None,
+        value: Optional["_models.JobDescriptionSearchDetailEducationValue"] = None,
+        **kwargs,
+    ):
         """
         :keyword missing:
-        :paramtype missing: ~affinda.models.JobDescriptionSearchDetailEducationMissing
+        :paramtype missing: ~affinda_v2.models.JobDescriptionSearchDetailEducationMissing
         :keyword value:
-        :paramtype value: ~affinda.models.JobDescriptionSearchDetailEducationValue
+        :paramtype value: ~affinda_v2.models.JobDescriptionSearchDetailEducationValue
         """
         super(JobDescriptionSearchDetailEducation, self).__init__(**kwargs)
-        self.missing = kwargs.get("missing", None)
-        self.value = kwargs.get("value", None)
+        self.missing = missing
+        self.value = value
 
 
 class JobDescriptionSearchDetailEducationMissing(msrest.serialization.Model):
@@ -7417,7 +8939,13 @@ class JobDescriptionSearchDetailEducationMissing(msrest.serialization.Model):
         "degree_types": {"key": "degreeTypes", "type": "[str]"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        degrees: Optional[List[str]] = None,
+        degree_types: Optional[List[str]] = None,
+        **kwargs,
+    ):
         """
         :keyword degrees:
         :paramtype degrees: list[str]
@@ -7425,8 +8953,8 @@ class JobDescriptionSearchDetailEducationMissing(msrest.serialization.Model):
         :paramtype degree_types: list[str]
         """
         super(JobDescriptionSearchDetailEducationMissing, self).__init__(**kwargs)
-        self.degrees = kwargs.get("degrees", None)
-        self.degree_types = kwargs.get("degree_types", None)
+        self.degrees = degrees
+        self.degree_types = degree_types
 
 
 class JobDescriptionSearchDetailEducationValue(msrest.serialization.Model):
@@ -7446,7 +8974,14 @@ class JobDescriptionSearchDetailEducationValue(msrest.serialization.Model):
         "match": {"key": "match", "type": "bool"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        degrees: Optional[List[str]] = None,
+        degree_types: Optional[List[str]] = None,
+        match: Optional[bool] = None,
+        **kwargs,
+    ):
         """
         :keyword degrees:
         :paramtype degrees: list[str]
@@ -7456,9 +8991,9 @@ class JobDescriptionSearchDetailEducationValue(msrest.serialization.Model):
         :paramtype match: bool
         """
         super(JobDescriptionSearchDetailEducationValue, self).__init__(**kwargs)
-        self.degrees = kwargs.get("degrees", None)
-        self.degree_types = kwargs.get("degree_types", None)
-        self.match = kwargs.get("match", None)
+        self.degrees = degrees
+        self.degree_types = degree_types
+        self.match = match
 
 
 class JobDescriptionSearchDetailExperience(msrest.serialization.Model):
@@ -7483,7 +9018,14 @@ class JobDescriptionSearchDetailExperience(msrest.serialization.Model):
         "match": {"key": "match", "type": "bool"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        minimum_experience: Optional[int] = None,
+        maximum_experience: Optional[int] = None,
+        match: Optional[bool] = None,
+        **kwargs,
+    ):
         """
         :keyword minimum_experience:
         :paramtype minimum_experience: int
@@ -7493,9 +9035,9 @@ class JobDescriptionSearchDetailExperience(msrest.serialization.Model):
         :paramtype match: bool
         """
         super(JobDescriptionSearchDetailExperience, self).__init__(**kwargs)
-        self.minimum_experience = kwargs.get("minimum_experience", None)
-        self.maximum_experience = kwargs.get("maximum_experience", None)
-        self.match = kwargs.get("match", None)
+        self.minimum_experience = minimum_experience
+        self.maximum_experience = maximum_experience
+        self.match = match
 
 
 class JobDescriptionSearchDetailJobTitle(msrest.serialization.Model):
@@ -7504,7 +9046,7 @@ class JobDescriptionSearchDetailJobTitle(msrest.serialization.Model):
     :ivar missing:
     :vartype missing: list[str]
     :ivar value:
-    :vartype value: ~affinda.models.JobDescriptionSearchDetailJobTitleValue
+    :vartype value: ~affinda_v2.models.JobDescriptionSearchDetailJobTitleValue
     """
 
     _attribute_map = {
@@ -7512,16 +9054,22 @@ class JobDescriptionSearchDetailJobTitle(msrest.serialization.Model):
         "value": {"key": "value", "type": "JobDescriptionSearchDetailJobTitleValue"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        missing: Optional[List[str]] = None,
+        value: Optional["_models.JobDescriptionSearchDetailJobTitleValue"] = None,
+        **kwargs,
+    ):
         """
         :keyword missing:
         :paramtype missing: list[str]
         :keyword value:
-        :paramtype value: ~affinda.models.JobDescriptionSearchDetailJobTitleValue
+        :paramtype value: ~affinda_v2.models.JobDescriptionSearchDetailJobTitleValue
         """
         super(JobDescriptionSearchDetailJobTitle, self).__init__(**kwargs)
-        self.missing = kwargs.get("missing", None)
-        self.value = kwargs.get("value", None)
+        self.missing = missing
+        self.value = value
 
 
 class JobDescriptionSearchDetailJobTitleValue(msrest.serialization.Model):
@@ -7541,7 +9089,14 @@ class JobDescriptionSearchDetailJobTitleValue(msrest.serialization.Model):
         "match": {"key": "match", "type": "bool"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        name: Optional[str] = None,
+        company_name: Optional[str] = None,
+        match: Optional[bool] = None,
+        **kwargs,
+    ):
         """
         :keyword name:
         :paramtype name: str
@@ -7551,18 +9106,18 @@ class JobDescriptionSearchDetailJobTitleValue(msrest.serialization.Model):
         :paramtype match: bool
         """
         super(JobDescriptionSearchDetailJobTitleValue, self).__init__(**kwargs)
-        self.name = kwargs.get("name", None)
-        self.company_name = kwargs.get("company_name", None)
-        self.match = kwargs.get("match", None)
+        self.name = name
+        self.company_name = company_name
+        self.match = match
 
 
 class JobDescriptionSearchDetailLanguages(msrest.serialization.Model):
     """JobDescriptionSearchDetailLanguages.
 
     :ivar missing:
-    :vartype missing: list[~affinda.models.ResumeSearchParametersSkill]
+    :vartype missing: list[~affinda_v2.models.ResumeSearchParametersSkill]
     :ivar value:
-    :vartype value: list[~affinda.models.JobDescriptionSearchDetailLanguagesValueItem]
+    :vartype value: list[~affinda_v2.models.JobDescriptionSearchDetailLanguagesValueItem]
     """
 
     _attribute_map = {
@@ -7570,16 +9125,22 @@ class JobDescriptionSearchDetailLanguages(msrest.serialization.Model):
         "value": {"key": "value", "type": "[JobDescriptionSearchDetailLanguagesValueItem]"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        missing: Optional[List["_models.ResumeSearchParametersSkill"]] = None,
+        value: Optional[List["_models.JobDescriptionSearchDetailLanguagesValueItem"]] = None,
+        **kwargs,
+    ):
         """
         :keyword missing:
-        :paramtype missing: list[~affinda.models.ResumeSearchParametersSkill]
+        :paramtype missing: list[~affinda_v2.models.ResumeSearchParametersSkill]
         :keyword value:
-        :paramtype value: list[~affinda.models.JobDescriptionSearchDetailLanguagesValueItem]
+        :paramtype value: list[~affinda_v2.models.JobDescriptionSearchDetailLanguagesValueItem]
         """
         super(JobDescriptionSearchDetailLanguages, self).__init__(**kwargs)
-        self.missing = kwargs.get("missing", None)
-        self.value = kwargs.get("value", None)
+        self.missing = missing
+        self.value = value
 
 
 class JobDescriptionSearchDetailLanguagesValueItem(msrest.serialization.Model):
@@ -7596,7 +9157,7 @@ class JobDescriptionSearchDetailLanguagesValueItem(msrest.serialization.Model):
         "match": {"key": "match", "type": "bool"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(self, *, name: Optional[str] = None, match: Optional[bool] = None, **kwargs):
         """
         :keyword name:
         :paramtype name: str
@@ -7604,17 +9165,17 @@ class JobDescriptionSearchDetailLanguagesValueItem(msrest.serialization.Model):
         :paramtype match: bool
         """
         super(JobDescriptionSearchDetailLanguagesValueItem, self).__init__(**kwargs)
-        self.name = kwargs.get("name", None)
-        self.match = kwargs.get("match", None)
+        self.name = name
+        self.match = match
 
 
 class JobDescriptionSearchDetailLocation(msrest.serialization.Model):
     """JobDescriptionSearchDetailLocation.
 
     :ivar missing:
-    :vartype missing: list[~affinda.models.ResumeSearchParametersLocation]
+    :vartype missing: list[~affinda_v2.models.ResumeSearchParametersLocation]
     :ivar value:
-    :vartype value: ~affinda.models.JobDescriptionSearchDetailLocationValue
+    :vartype value: ~affinda_v2.models.JobDescriptionSearchDetailLocationValue
     """
 
     _attribute_map = {
@@ -7622,16 +9183,22 @@ class JobDescriptionSearchDetailLocation(msrest.serialization.Model):
         "value": {"key": "value", "type": "JobDescriptionSearchDetailLocationValue"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        missing: Optional[List["_models.ResumeSearchParametersLocation"]] = None,
+        value: Optional["_models.JobDescriptionSearchDetailLocationValue"] = None,
+        **kwargs,
+    ):
         """
         :keyword missing:
-        :paramtype missing: list[~affinda.models.ResumeSearchParametersLocation]
+        :paramtype missing: list[~affinda_v2.models.ResumeSearchParametersLocation]
         :keyword value:
-        :paramtype value: ~affinda.models.JobDescriptionSearchDetailLocationValue
+        :paramtype value: ~affinda_v2.models.JobDescriptionSearchDetailLocationValue
         """
         super(JobDescriptionSearchDetailLocation, self).__init__(**kwargs)
-        self.missing = kwargs.get("missing", None)
-        self.value = kwargs.get("value", None)
+        self.missing = missing
+        self.value = value
 
 
 class Location(msrest.serialization.Model):
@@ -7705,7 +9272,7 @@ class Location(msrest.serialization.Model):
         "po_box": {"key": "poBox", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(self, *, raw_input: str, **kwargs):
         """
         :keyword raw_input: Required.
         :paramtype raw_input: str
@@ -7717,7 +9284,7 @@ class Location(msrest.serialization.Model):
         self.state_code = None
         self.country = None
         self.country_code = None
-        self.raw_input = kwargs["raw_input"]
+        self.raw_input = raw_input
         self.street_number = None
         self.street = None
         self.apartment_number = None
@@ -7804,22 +9371,24 @@ class JobDescriptionSearchDetailLocationValue(
         "po_box": {"key": "poBox", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(self, *, raw_input: str, match: Optional[bool] = None, **kwargs):
         """
         :keyword match:
         :paramtype match: bool
         :keyword raw_input: Required.
         :paramtype raw_input: str
         """
-        super(JobDescriptionSearchDetailLocationValue, self).__init__(**kwargs)
-        self.match = kwargs.get("match", None)
+        super(JobDescriptionSearchDetailLocationValue, self).__init__(
+            raw_input=raw_input, match=match, **kwargs
+        )
+        self.match = match
         self.formatted = None
         self.postal_code = None
         self.state = None
         self.state_code = None
         self.country = None
         self.country_code = None
-        self.raw_input = kwargs["raw_input"]
+        self.raw_input = raw_input
         self.street_number = None
         self.street = None
         self.apartment_number = None
@@ -7833,7 +9402,7 @@ class JobDescriptionSearchDetailManagementLevel(msrest.serialization.Model):
     """JobDescriptionSearchDetailManagementLevel.
 
     :ivar level: Known values are: "None", "Low", "Mid", "Upper".
-    :vartype level: str or ~affinda.models.ManagementLevel
+    :vartype level: str or ~affinda_v2.models.ManagementLevel
     :ivar match:
     :vartype match: bool
     """
@@ -7843,16 +9412,22 @@ class JobDescriptionSearchDetailManagementLevel(msrest.serialization.Model):
         "match": {"key": "match", "type": "bool"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        level: Optional[Union[str, "_models.ManagementLevel"]] = None,
+        match: Optional[bool] = None,
+        **kwargs,
+    ):
         """
         :keyword level: Known values are: "None", "Low", "Mid", "Upper".
-        :paramtype level: str or ~affinda.models.ManagementLevel
+        :paramtype level: str or ~affinda_v2.models.ManagementLevel
         :keyword match:
         :paramtype match: bool
         """
         super(JobDescriptionSearchDetailManagementLevel, self).__init__(**kwargs)
-        self.level = kwargs.get("level", None)
-        self.match = kwargs.get("match", None)
+        self.level = level
+        self.match = match
 
 
 class JobDescriptionSearchDetailOccupationGroup(msrest.serialization.Model):
@@ -7861,7 +9436,7 @@ class JobDescriptionSearchDetailOccupationGroup(msrest.serialization.Model):
     :ivar missing:
     :vartype missing: list[int]
     :ivar value:
-    :vartype value: ~affinda.models.JobDescriptionSearchDetailOccupationGroupValue
+    :vartype value: ~affinda_v2.models.JobDescriptionSearchDetailOccupationGroupValue
     """
 
     _attribute_map = {
@@ -7869,16 +9444,22 @@ class JobDescriptionSearchDetailOccupationGroup(msrest.serialization.Model):
         "value": {"key": "value", "type": "JobDescriptionSearchDetailOccupationGroupValue"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        missing: Optional[List[int]] = None,
+        value: Optional["_models.JobDescriptionSearchDetailOccupationGroupValue"] = None,
+        **kwargs,
+    ):
         """
         :keyword missing:
         :paramtype missing: list[int]
         :keyword value:
-        :paramtype value: ~affinda.models.JobDescriptionSearchDetailOccupationGroupValue
+        :paramtype value: ~affinda_v2.models.JobDescriptionSearchDetailOccupationGroupValue
         """
         super(JobDescriptionSearchDetailOccupationGroup, self).__init__(**kwargs)
-        self.missing = kwargs.get("missing", None)
-        self.value = kwargs.get("value", None)
+        self.missing = missing
+        self.value = value
 
 
 class OccupationGroup(msrest.serialization.Model):
@@ -7891,9 +9472,9 @@ class OccupationGroup(msrest.serialization.Model):
     :ivar name: Required.
     :vartype name: str
     :ivar children: Required.
-    :vartype children: list[~affinda.models.OccupationGroup]
+    :vartype children: list[~affinda_v2.models.OccupationGroup]
     :ivar parents:
-    :vartype parents: list[~affinda.models.OccupationGroup]
+    :vartype parents: list[~affinda_v2.models.OccupationGroup]
     """
 
     _validation = {
@@ -7909,22 +9490,30 @@ class OccupationGroup(msrest.serialization.Model):
         "parents": {"key": "parents", "type": "[OccupationGroup]"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        code: int,
+        name: str,
+        children: List["_models.OccupationGroup"],
+        parents: Optional[List["_models.OccupationGroup"]] = None,
+        **kwargs,
+    ):
         """
         :keyword code: Required.
         :paramtype code: int
         :keyword name: Required.
         :paramtype name: str
         :keyword children: Required.
-        :paramtype children: list[~affinda.models.OccupationGroup]
+        :paramtype children: list[~affinda_v2.models.OccupationGroup]
         :keyword parents:
-        :paramtype parents: list[~affinda.models.OccupationGroup]
+        :paramtype parents: list[~affinda_v2.models.OccupationGroup]
         """
         super(OccupationGroup, self).__init__(**kwargs)
-        self.code = kwargs["code"]
-        self.name = kwargs["name"]
-        self.children = kwargs["children"]
-        self.parents = kwargs.get("parents", None)
+        self.code = code
+        self.name = name
+        self.children = children
+        self.parents = parents
 
 
 class JobDescriptionSearchDetailOccupationGroupValue(
@@ -7942,9 +9531,9 @@ class JobDescriptionSearchDetailOccupationGroupValue(
     :ivar name: Required.
     :vartype name: str
     :ivar children: Required.
-    :vartype children: list[~affinda.models.OccupationGroup]
+    :vartype children: list[~affinda_v2.models.OccupationGroup]
     :ivar parents:
-    :vartype parents: list[~affinda.models.OccupationGroup]
+    :vartype parents: list[~affinda_v2.models.OccupationGroup]
     """
 
     _validation = {
@@ -7961,7 +9550,16 @@ class JobDescriptionSearchDetailOccupationGroupValue(
         "parents": {"key": "parents", "type": "[OccupationGroup]"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        code: int,
+        name: str,
+        children: List["_models.OccupationGroup"],
+        match: Optional[bool] = None,
+        parents: Optional[List["_models.OccupationGroup"]] = None,
+        **kwargs,
+    ):
         """
         :keyword match:
         :paramtype match: bool
@@ -7970,16 +9568,18 @@ class JobDescriptionSearchDetailOccupationGroupValue(
         :keyword name: Required.
         :paramtype name: str
         :keyword children: Required.
-        :paramtype children: list[~affinda.models.OccupationGroup]
+        :paramtype children: list[~affinda_v2.models.OccupationGroup]
         :keyword parents:
-        :paramtype parents: list[~affinda.models.OccupationGroup]
+        :paramtype parents: list[~affinda_v2.models.OccupationGroup]
         """
-        super(JobDescriptionSearchDetailOccupationGroupValue, self).__init__(**kwargs)
-        self.match = kwargs.get("match", None)
-        self.code = kwargs["code"]
-        self.name = kwargs["name"]
-        self.children = kwargs["children"]
-        self.parents = kwargs.get("parents", None)
+        super(JobDescriptionSearchDetailOccupationGroupValue, self).__init__(
+            code=code, name=name, children=children, parents=parents, match=match, **kwargs
+        )
+        self.match = match
+        self.code = code
+        self.name = name
+        self.children = children
+        self.parents = parents
 
 
 class JobDescriptionSearchDetailSearchExpression(msrest.serialization.Model):
@@ -7996,7 +9596,9 @@ class JobDescriptionSearchDetailSearchExpression(msrest.serialization.Model):
         "value": {"key": "value", "type": "[str]"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self, *, missing: Optional[List[str]] = None, value: Optional[List[str]] = None, **kwargs
+    ):
         """
         :keyword missing:
         :paramtype missing: list[str]
@@ -8004,17 +9606,17 @@ class JobDescriptionSearchDetailSearchExpression(msrest.serialization.Model):
         :paramtype value: list[str]
         """
         super(JobDescriptionSearchDetailSearchExpression, self).__init__(**kwargs)
-        self.missing = kwargs.get("missing", None)
-        self.value = kwargs.get("value", None)
+        self.missing = missing
+        self.value = value
 
 
 class JobDescriptionSearchDetailSkills(msrest.serialization.Model):
     """JobDescriptionSearchDetailSkills.
 
     :ivar missing:
-    :vartype missing: list[~affinda.models.ResumeSearchParametersSkill]
+    :vartype missing: list[~affinda_v2.models.ResumeSearchParametersSkill]
     :ivar value:
-    :vartype value: list[~affinda.models.JobDescriptionSearchDetailSkillsValueItem]
+    :vartype value: list[~affinda_v2.models.JobDescriptionSearchDetailSkillsValueItem]
     """
 
     _attribute_map = {
@@ -8022,16 +9624,22 @@ class JobDescriptionSearchDetailSkills(msrest.serialization.Model):
         "value": {"key": "value", "type": "[JobDescriptionSearchDetailSkillsValueItem]"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        missing: Optional[List["_models.ResumeSearchParametersSkill"]] = None,
+        value: Optional[List["_models.JobDescriptionSearchDetailSkillsValueItem"]] = None,
+        **kwargs,
+    ):
         """
         :keyword missing:
-        :paramtype missing: list[~affinda.models.ResumeSearchParametersSkill]
+        :paramtype missing: list[~affinda_v2.models.ResumeSearchParametersSkill]
         :keyword value:
-        :paramtype value: list[~affinda.models.JobDescriptionSearchDetailSkillsValueItem]
+        :paramtype value: list[~affinda_v2.models.JobDescriptionSearchDetailSkillsValueItem]
         """
         super(JobDescriptionSearchDetailSkills, self).__init__(**kwargs)
-        self.missing = kwargs.get("missing", None)
-        self.value = kwargs.get("value", None)
+        self.missing = missing
+        self.value = value
 
 
 class JobDescriptionSearchDetailSkillsValueItem(msrest.serialization.Model):
@@ -8048,7 +9656,7 @@ class JobDescriptionSearchDetailSkillsValueItem(msrest.serialization.Model):
         "match": {"key": "match", "type": "bool"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(self, *, name: Optional[str] = None, match: Optional[bool] = None, **kwargs):
         """
         :keyword name:
         :paramtype name: str
@@ -8056,8 +9664,8 @@ class JobDescriptionSearchDetailSkillsValueItem(msrest.serialization.Model):
         :paramtype match: bool
         """
         super(JobDescriptionSearchDetailSkillsValueItem, self).__init__(**kwargs)
-        self.name = kwargs.get("name", None)
-        self.match = kwargs.get("match", None)
+        self.name = name
+        self.match = match
 
 
 class JobDescriptionSearchEmbed(msrest.serialization.Model):
@@ -8071,13 +9679,13 @@ class JobDescriptionSearchEmbed(msrest.serialization.Model):
         "url": {"key": "url", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(self, *, url: Optional[str] = None, **kwargs):
         """
         :keyword url: The signed URL for the embedable search tool.
         :paramtype url: str
         """
         super(JobDescriptionSearchEmbed, self).__init__(**kwargs)
-        self.url = kwargs.get("url", None)
+        self.url = url
 
 
 class JobDescriptionSearchParameters(msrest.serialization.Model):
@@ -8102,17 +9710,17 @@ class JobDescriptionSearchParameters(msrest.serialization.Model):
     :ivar years_experience_weight:
     :vartype years_experience_weight: float
     :ivar locations:
-    :vartype locations: list[~affinda.models.ResumeSearchParametersLocation]
+    :vartype locations: list[~affinda_v2.models.ResumeSearchParametersLocation]
     :ivar locations_weight:
     :vartype locations_weight: float
     :ivar locations_required:
     :vartype locations_required: bool
     :ivar skills:
-    :vartype skills: list[~affinda.models.ResumeSearchParametersSkill]
+    :vartype skills: list[~affinda_v2.models.ResumeSearchParametersSkill]
     :ivar skills_weight:
     :vartype skills_weight: float
     :ivar languages:
-    :vartype languages: list[~affinda.models.ResumeSearchParametersSkill]
+    :vartype languages: list[~affinda_v2.models.ResumeSearchParametersSkill]
     :ivar languages_weight:
     :vartype languages_weight: float
     :ivar degrees:
@@ -8120,7 +9728,7 @@ class JobDescriptionSearchParameters(msrest.serialization.Model):
     :ivar degrees_required:
     :vartype degrees_required: bool
     :ivar degree_types:
-    :vartype degree_types: list[str or ~affinda.models.EducationLevel]
+    :vartype degree_types: list[str or ~affinda_v2.models.EducationLevel]
     :ivar degree_types_required:
     :vartype degree_types_required: bool
     :ivar education_weight:
@@ -8138,13 +9746,13 @@ class JobDescriptionSearchParameters(msrest.serialization.Model):
     :ivar soc_codes_required:
     :vartype soc_codes_required: bool
     :ivar management_level: Known values are: "None", "Low", "Mid", "Upper".
-    :vartype management_level: str or ~affinda.models.ManagementLevel
+    :vartype management_level: str or ~affinda_v2.models.ManagementLevel
     :ivar management_level_required:
     :vartype management_level_required: bool
     :ivar management_level_weight:
     :vartype management_level_weight: float
     :ivar custom_data:
-    :vartype custom_data: list[~affinda.models.SearchParametersCustomData]
+    :vartype custom_data: list[~affinda_v2.models.SearchParametersCustomData]
     """
 
     _validation = {
@@ -8194,7 +9802,41 @@ class JobDescriptionSearchParameters(msrest.serialization.Model):
         "custom_data": {"key": "customData", "type": "[SearchParametersCustomData]"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        indices: List[str],
+        resume: Optional[str] = None,
+        job_titles: Optional[List[str]] = None,
+        job_titles_required: Optional[bool] = None,
+        job_titles_weight: Optional[float] = None,
+        total_years_experience: Optional[float] = None,
+        years_experience_required: Optional[bool] = None,
+        years_experience_weight: Optional[float] = None,
+        locations: Optional[List["_models.ResumeSearchParametersLocation"]] = None,
+        locations_weight: Optional[float] = None,
+        locations_required: Optional[bool] = None,
+        skills: Optional[List["_models.ResumeSearchParametersSkill"]] = None,
+        skills_weight: Optional[float] = None,
+        languages: Optional[List["_models.ResumeSearchParametersSkill"]] = None,
+        languages_weight: Optional[float] = None,
+        degrees: Optional[List[str]] = None,
+        degrees_required: Optional[bool] = None,
+        degree_types: Optional[List[Union[str, "_models.EducationLevel"]]] = None,
+        degree_types_required: Optional[bool] = None,
+        education_weight: Optional[float] = None,
+        search_expression: Optional[str] = None,
+        search_expression_required: Optional[bool] = None,
+        search_expression_weight: Optional[float] = None,
+        soc_codes: Optional[List[int]] = None,
+        soc_codes_weight: Optional[float] = None,
+        soc_codes_required: Optional[bool] = None,
+        management_level: Optional[Union[str, "_models.ManagementLevel"]] = None,
+        management_level_required: Optional[bool] = None,
+        management_level_weight: Optional[float] = None,
+        custom_data: Optional[List["_models.SearchParametersCustomData"]] = None,
+        **kwargs,
+    ):
         """
         :keyword indices: Required.
         :paramtype indices: list[str]
@@ -8213,17 +9855,17 @@ class JobDescriptionSearchParameters(msrest.serialization.Model):
         :keyword years_experience_weight:
         :paramtype years_experience_weight: float
         :keyword locations:
-        :paramtype locations: list[~affinda.models.ResumeSearchParametersLocation]
+        :paramtype locations: list[~affinda_v2.models.ResumeSearchParametersLocation]
         :keyword locations_weight:
         :paramtype locations_weight: float
         :keyword locations_required:
         :paramtype locations_required: bool
         :keyword skills:
-        :paramtype skills: list[~affinda.models.ResumeSearchParametersSkill]
+        :paramtype skills: list[~affinda_v2.models.ResumeSearchParametersSkill]
         :keyword skills_weight:
         :paramtype skills_weight: float
         :keyword languages:
-        :paramtype languages: list[~affinda.models.ResumeSearchParametersSkill]
+        :paramtype languages: list[~affinda_v2.models.ResumeSearchParametersSkill]
         :keyword languages_weight:
         :paramtype languages_weight: float
         :keyword degrees:
@@ -8231,7 +9873,7 @@ class JobDescriptionSearchParameters(msrest.serialization.Model):
         :keyword degrees_required:
         :paramtype degrees_required: bool
         :keyword degree_types:
-        :paramtype degree_types: list[str or ~affinda.models.EducationLevel]
+        :paramtype degree_types: list[str or ~affinda_v2.models.EducationLevel]
         :keyword degree_types_required:
         :paramtype degree_types_required: bool
         :keyword education_weight:
@@ -8249,45 +9891,45 @@ class JobDescriptionSearchParameters(msrest.serialization.Model):
         :keyword soc_codes_required:
         :paramtype soc_codes_required: bool
         :keyword management_level: Known values are: "None", "Low", "Mid", "Upper".
-        :paramtype management_level: str or ~affinda.models.ManagementLevel
+        :paramtype management_level: str or ~affinda_v2.models.ManagementLevel
         :keyword management_level_required:
         :paramtype management_level_required: bool
         :keyword management_level_weight:
         :paramtype management_level_weight: float
         :keyword custom_data:
-        :paramtype custom_data: list[~affinda.models.SearchParametersCustomData]
+        :paramtype custom_data: list[~affinda_v2.models.SearchParametersCustomData]
         """
         super(JobDescriptionSearchParameters, self).__init__(**kwargs)
-        self.indices = kwargs["indices"]
-        self.resume = kwargs.get("resume", None)
-        self.job_titles = kwargs.get("job_titles", None)
-        self.job_titles_required = kwargs.get("job_titles_required", None)
-        self.job_titles_weight = kwargs.get("job_titles_weight", None)
-        self.total_years_experience = kwargs.get("total_years_experience", None)
-        self.years_experience_required = kwargs.get("years_experience_required", None)
-        self.years_experience_weight = kwargs.get("years_experience_weight", None)
-        self.locations = kwargs.get("locations", None)
-        self.locations_weight = kwargs.get("locations_weight", None)
-        self.locations_required = kwargs.get("locations_required", None)
-        self.skills = kwargs.get("skills", None)
-        self.skills_weight = kwargs.get("skills_weight", None)
-        self.languages = kwargs.get("languages", None)
-        self.languages_weight = kwargs.get("languages_weight", None)
-        self.degrees = kwargs.get("degrees", None)
-        self.degrees_required = kwargs.get("degrees_required", None)
-        self.degree_types = kwargs.get("degree_types", None)
-        self.degree_types_required = kwargs.get("degree_types_required", None)
-        self.education_weight = kwargs.get("education_weight", None)
-        self.search_expression = kwargs.get("search_expression", None)
-        self.search_expression_required = kwargs.get("search_expression_required", None)
-        self.search_expression_weight = kwargs.get("search_expression_weight", None)
-        self.soc_codes = kwargs.get("soc_codes", None)
-        self.soc_codes_weight = kwargs.get("soc_codes_weight", None)
-        self.soc_codes_required = kwargs.get("soc_codes_required", None)
-        self.management_level = kwargs.get("management_level", None)
-        self.management_level_required = kwargs.get("management_level_required", None)
-        self.management_level_weight = kwargs.get("management_level_weight", None)
-        self.custom_data = kwargs.get("custom_data", None)
+        self.indices = indices
+        self.resume = resume
+        self.job_titles = job_titles
+        self.job_titles_required = job_titles_required
+        self.job_titles_weight = job_titles_weight
+        self.total_years_experience = total_years_experience
+        self.years_experience_required = years_experience_required
+        self.years_experience_weight = years_experience_weight
+        self.locations = locations
+        self.locations_weight = locations_weight
+        self.locations_required = locations_required
+        self.skills = skills
+        self.skills_weight = skills_weight
+        self.languages = languages
+        self.languages_weight = languages_weight
+        self.degrees = degrees
+        self.degrees_required = degrees_required
+        self.degree_types = degree_types
+        self.degree_types_required = degree_types_required
+        self.education_weight = education_weight
+        self.search_expression = search_expression
+        self.search_expression_required = search_expression_required
+        self.search_expression_weight = search_expression_weight
+        self.soc_codes = soc_codes
+        self.soc_codes_weight = soc_codes_weight
+        self.soc_codes_required = soc_codes_required
+        self.management_level = management_level
+        self.management_level_required = management_level_required
+        self.management_level_weight = management_level_weight
+        self.custom_data = custom_data
 
 
 class JobDescriptionSearchResult(msrest.serialization.Model):
@@ -8302,29 +9944,29 @@ class JobDescriptionSearchResult(msrest.serialization.Model):
     :ivar pdf: Required.
     :vartype pdf: str
     :ivar job_title: Required.
-    :vartype job_title: ~affinda.models.JobTitleSearchScoreComponent
+    :vartype job_title: ~affinda_v2.models.JobTitleSearchScoreComponent
     :ivar management_level: Required.
-    :vartype management_level: ~affinda.models.ManagementLevelSearchScoreComponent
+    :vartype management_level: ~affinda_v2.models.ManagementLevelSearchScoreComponent
     :ivar experience: Required.
-    :vartype experience: ~affinda.models.ExperienceSearchScoreComponent
+    :vartype experience: ~affinda_v2.models.ExperienceSearchScoreComponent
     :ivar skills: Required.
-    :vartype skills: ~affinda.models.SkillsSearchScoreComponent
+    :vartype skills: ~affinda_v2.models.SkillsSearchScoreComponent
     :ivar languages: Required.
-    :vartype languages: ~affinda.models.LanguagesSearchScoreComponent
+    :vartype languages: ~affinda_v2.models.LanguagesSearchScoreComponent
     :ivar location: Required.
-    :vartype location: ~affinda.models.LocationSearchScoreComponent
+    :vartype location: ~affinda_v2.models.LocationSearchScoreComponent
     :ivar education: Required.
-    :vartype education: ~affinda.models.EducationSearchScoreComponent
+    :vartype education: ~affinda_v2.models.EducationSearchScoreComponent
     :ivar occupation_group:
-    :vartype occupation_group: ~affinda.models.OccupationGroupSearchScoreComponent
+    :vartype occupation_group: ~affinda_v2.models.OccupationGroupSearchScoreComponent
     :ivar search_expression: Required.
-    :vartype search_expression: ~affinda.models.SearchExpressionSearchScoreComponent
+    :vartype search_expression: ~affinda_v2.models.SearchExpressionSearchScoreComponent
     :ivar organization_name: Required.
     :vartype organization_name: str
     :ivar custom_data: Required. Dictionary of
      <components·nqbw24·schemas·customdatasearchscorecomponent·additionalproperties>.
     :vartype custom_data: dict[str,
-     ~affinda.models.ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties]
+     ~affinda_v2.models.ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties]
     """
 
     _validation = {
@@ -8372,7 +10014,28 @@ class JobDescriptionSearchResult(msrest.serialization.Model):
         },
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        identifier: str,
+        score: float,
+        pdf: str,
+        job_title: "_models.JobTitleSearchScoreComponent",
+        management_level: "_models.ManagementLevelSearchScoreComponent",
+        experience: "_models.ExperienceSearchScoreComponent",
+        skills: "_models.SkillsSearchScoreComponent",
+        languages: "_models.LanguagesSearchScoreComponent",
+        location: "_models.LocationSearchScoreComponent",
+        education: "_models.EducationSearchScoreComponent",
+        search_expression: "_models.SearchExpressionSearchScoreComponent",
+        organization_name: str,
+        custom_data: Dict[
+            str,
+            "_models.ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties",
+        ],
+        occupation_group: Optional["_models.OccupationGroupSearchScoreComponent"] = None,
+        **kwargs,
+    ):
         """
         :keyword identifier: Required. A random string that uniquely identify the resource.
         :paramtype identifier: str
@@ -8381,45 +10044,45 @@ class JobDescriptionSearchResult(msrest.serialization.Model):
         :keyword pdf: Required.
         :paramtype pdf: str
         :keyword job_title: Required.
-        :paramtype job_title: ~affinda.models.JobTitleSearchScoreComponent
+        :paramtype job_title: ~affinda_v2.models.JobTitleSearchScoreComponent
         :keyword management_level: Required.
-        :paramtype management_level: ~affinda.models.ManagementLevelSearchScoreComponent
+        :paramtype management_level: ~affinda_v2.models.ManagementLevelSearchScoreComponent
         :keyword experience: Required.
-        :paramtype experience: ~affinda.models.ExperienceSearchScoreComponent
+        :paramtype experience: ~affinda_v2.models.ExperienceSearchScoreComponent
         :keyword skills: Required.
-        :paramtype skills: ~affinda.models.SkillsSearchScoreComponent
+        :paramtype skills: ~affinda_v2.models.SkillsSearchScoreComponent
         :keyword languages: Required.
-        :paramtype languages: ~affinda.models.LanguagesSearchScoreComponent
+        :paramtype languages: ~affinda_v2.models.LanguagesSearchScoreComponent
         :keyword location: Required.
-        :paramtype location: ~affinda.models.LocationSearchScoreComponent
+        :paramtype location: ~affinda_v2.models.LocationSearchScoreComponent
         :keyword education: Required.
-        :paramtype education: ~affinda.models.EducationSearchScoreComponent
+        :paramtype education: ~affinda_v2.models.EducationSearchScoreComponent
         :keyword occupation_group:
-        :paramtype occupation_group: ~affinda.models.OccupationGroupSearchScoreComponent
+        :paramtype occupation_group: ~affinda_v2.models.OccupationGroupSearchScoreComponent
         :keyword search_expression: Required.
-        :paramtype search_expression: ~affinda.models.SearchExpressionSearchScoreComponent
+        :paramtype search_expression: ~affinda_v2.models.SearchExpressionSearchScoreComponent
         :keyword organization_name: Required.
         :paramtype organization_name: str
         :keyword custom_data: Required. Dictionary of
          <components·nqbw24·schemas·customdatasearchscorecomponent·additionalproperties>.
         :paramtype custom_data: dict[str,
-         ~affinda.models.ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties]
+         ~affinda_v2.models.ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties]
         """
         super(JobDescriptionSearchResult, self).__init__(**kwargs)
-        self.identifier = kwargs["identifier"]
-        self.score = kwargs["score"]
-        self.pdf = kwargs["pdf"]
-        self.job_title = kwargs["job_title"]
-        self.management_level = kwargs["management_level"]
-        self.experience = kwargs["experience"]
-        self.skills = kwargs["skills"]
-        self.languages = kwargs["languages"]
-        self.location = kwargs["location"]
-        self.education = kwargs["education"]
-        self.occupation_group = kwargs.get("occupation_group", None)
-        self.search_expression = kwargs["search_expression"]
-        self.organization_name = kwargs["organization_name"]
-        self.custom_data = kwargs["custom_data"]
+        self.identifier = identifier
+        self.score = score
+        self.pdf = pdf
+        self.job_title = job_title
+        self.management_level = management_level
+        self.experience = experience
+        self.skills = skills
+        self.languages = languages
+        self.location = location
+        self.education = education
+        self.occupation_group = occupation_group
+        self.search_expression = search_expression
+        self.organization_name = organization_name
+        self.custom_data = custom_data
 
 
 class JobTitleParsed(msrest.serialization.Model):
@@ -8428,7 +10091,7 @@ class JobTitleParsed(msrest.serialization.Model):
     Variables are only populated by the server, and will be ignored when sending a request.
 
     :ivar parsed: Matching job title to extracted text.
-    :vartype parsed: ~affinda.models.JobTitleParsedParsed
+    :vartype parsed: ~affinda_v2.models.JobTitleParsedParsed
     """
 
     _validation = {
@@ -8453,16 +10116,16 @@ class JobTitleAnnotation(Annotation, JobTitleParsed):
     All required parameters must be populated in order to send to Azure.
 
     :ivar parsed: Matching job title to extracted text.
-    :vartype parsed: ~affinda.models.JobTitleParsedParsed
+    :vartype parsed: ~affinda_v2.models.JobTitleParsedParsed
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
     :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
-    :vartype rectangle: ~affinda.models.Rectangle
+    :vartype rectangle: ~affinda_v2.models.Rectangle
     :ivar rectangles: Required.
-    :vartype rectangles: list[~affinda.models.Rectangle]
+    :vartype rectangles: list[~affinda_v2.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
     :ivar raw: Required.
@@ -8521,7 +10184,25 @@ class JobTitleAnnotation(Annotation, JobTitleParsed):
         "content_type": {"key": "contentType", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        id: int,
+        rectangle: "_models.Rectangle",
+        rectangles: List["_models.Rectangle"],
+        page_index: int,
+        raw: str,
+        confidence: float,
+        classification_confidence: float,
+        text_extraction_confidence: float,
+        is_verified: bool,
+        is_client_verified: bool,
+        is_auto_verified: bool,
+        content_type: str,
+        additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
+        **kwargs,
+    ):
         """
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
@@ -8529,9 +10210,9 @@ class JobTitleAnnotation(Annotation, JobTitleParsed):
         :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
-        :paramtype rectangle: ~affinda.models.Rectangle
+        :paramtype rectangle: ~affinda_v2.models.Rectangle
         :keyword rectangles: Required.
-        :paramtype rectangles: list[~affinda.models.Rectangle]
+        :paramtype rectangles: list[~affinda_v2.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
         :keyword raw: Required.
@@ -8555,22 +10236,38 @@ class JobTitleAnnotation(Annotation, JobTitleParsed):
         :keyword content_type: Required.
         :paramtype content_type: str
         """
-        super(JobTitleAnnotation, self).__init__(**kwargs)
+        super(JobTitleAnnotation, self).__init__(
+            additional_properties=additional_properties,
+            id=id,
+            rectangle=rectangle,
+            rectangles=rectangles,
+            page_index=page_index,
+            raw=raw,
+            confidence=confidence,
+            classification_confidence=classification_confidence,
+            text_extraction_confidence=text_extraction_confidence,
+            is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
+            data_point=data_point,
+            content_type=content_type,
+            **kwargs,
+        )
         self.parsed = None
-        self.additional_properties = kwargs.get("additional_properties", None)
-        self.id = kwargs["id"]
-        self.rectangle = kwargs["rectangle"]
-        self.rectangles = kwargs["rectangles"]
-        self.page_index = kwargs["page_index"]
-        self.raw = kwargs["raw"]
-        self.confidence = kwargs["confidence"]
-        self.classification_confidence = kwargs["classification_confidence"]
-        self.text_extraction_confidence = kwargs["text_extraction_confidence"]
-        self.is_verified = kwargs["is_verified"]
-        self.is_client_verified = kwargs["is_client_verified"]
-        self.is_auto_verified = kwargs["is_auto_verified"]
-        self.data_point = kwargs.get("data_point", None)
-        self.content_type = kwargs["content_type"]
+        self.additional_properties = additional_properties
+        self.id = id
+        self.rectangle = rectangle
+        self.rectangles = rectangles
+        self.page_index = page_index
+        self.raw = raw
+        self.confidence = confidence
+        self.classification_confidence = classification_confidence
+        self.text_extraction_confidence = text_extraction_confidence
+        self.is_verified = is_verified
+        self.is_client_verified = is_client_verified
+        self.is_auto_verified = is_auto_verified
+        self.data_point = data_point
+        self.content_type = content_type
 
 
 class JobTitleAnnotationUpdate(AnnotationV2Base, JobTitleParsed):
@@ -8579,16 +10276,16 @@ class JobTitleAnnotationUpdate(AnnotationV2Base, JobTitleParsed):
     Variables are only populated by the server, and will be ignored when sending a request.
 
     :ivar parsed: Matching job title to extracted text.
-    :vartype parsed: ~affinda.models.JobTitleParsedParsed
+    :vartype parsed: ~affinda_v2.models.JobTitleParsedParsed
     :ivar additional_properties: Unmatched properties from the message are deserialized to this
      collection.
     :vartype additional_properties: dict[str, any]
     :ivar id:
     :vartype id: int
     :ivar rectangle:
-    :vartype rectangle: ~affinda.models.Rectangle
+    :vartype rectangle: ~affinda_v2.models.Rectangle
     :ivar rectangles:
-    :vartype rectangles: list[~affinda.models.Rectangle]
+    :vartype rectangles: list[~affinda_v2.models.Rectangle]
     :ivar page_index:
     :vartype page_index: int
     :ivar raw:
@@ -8638,7 +10335,24 @@ class JobTitleAnnotationUpdate(AnnotationV2Base, JobTitleParsed):
         "content_type": {"key": "contentType", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        additional_properties: Optional[Dict[str, Any]] = None,
+        id: Optional[int] = None,
+        rectangle: Optional["_models.Rectangle"] = None,
+        page_index: Optional[int] = None,
+        raw: Optional[str] = None,
+        confidence: Optional[float] = None,
+        classification_confidence: Optional[float] = None,
+        text_extraction_confidence: Optional[float] = None,
+        is_verified: Optional[bool] = None,
+        is_client_verified: Optional[bool] = None,
+        is_auto_verified: Optional[bool] = None,
+        data_point: Optional[str] = None,
+        content_type: Optional[str] = None,
+        **kwargs,
+    ):
         """
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
@@ -8646,7 +10360,7 @@ class JobTitleAnnotationUpdate(AnnotationV2Base, JobTitleParsed):
         :keyword id:
         :paramtype id: int
         :keyword rectangle:
-        :paramtype rectangle: ~affinda.models.Rectangle
+        :paramtype rectangle: ~affinda_v2.models.Rectangle
         :keyword page_index:
         :paramtype page_index: int
         :keyword raw:
@@ -8670,22 +10384,37 @@ class JobTitleAnnotationUpdate(AnnotationV2Base, JobTitleParsed):
         :keyword content_type:
         :paramtype content_type: str
         """
-        super(JobTitleAnnotationUpdate, self).__init__(**kwargs)
+        super(JobTitleAnnotationUpdate, self).__init__(
+            additional_properties=additional_properties,
+            id=id,
+            rectangle=rectangle,
+            page_index=page_index,
+            raw=raw,
+            confidence=confidence,
+            classification_confidence=classification_confidence,
+            text_extraction_confidence=text_extraction_confidence,
+            is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
+            data_point=data_point,
+            content_type=content_type,
+            **kwargs,
+        )
         self.parsed = None
-        self.additional_properties = kwargs.get("additional_properties", None)
-        self.id = kwargs.get("id", None)
-        self.rectangle = kwargs.get("rectangle", None)
+        self.additional_properties = additional_properties
+        self.id = id
+        self.rectangle = rectangle
         self.rectangles = None
-        self.page_index = kwargs.get("page_index", None)
-        self.raw = kwargs.get("raw", None)
-        self.confidence = kwargs.get("confidence", None)
-        self.classification_confidence = kwargs.get("classification_confidence", None)
-        self.text_extraction_confidence = kwargs.get("text_extraction_confidence", None)
-        self.is_verified = kwargs.get("is_verified", None)
-        self.is_client_verified = kwargs.get("is_client_verified", None)
-        self.is_auto_verified = kwargs.get("is_auto_verified", None)
-        self.data_point = kwargs.get("data_point", None)
-        self.content_type = kwargs.get("content_type", None)
+        self.page_index = page_index
+        self.raw = raw
+        self.confidence = confidence
+        self.classification_confidence = classification_confidence
+        self.text_extraction_confidence = text_extraction_confidence
+        self.is_verified = is_verified
+        self.is_client_verified = is_client_verified
+        self.is_auto_verified = is_auto_verified
+        self.data_point = data_point
+        self.content_type = content_type
 
 
 class JobTitleParsedClassification(msrest.serialization.Model):
@@ -8729,7 +10458,19 @@ class JobTitleParsedClassification(msrest.serialization.Model):
         "major_group_code": {"key": "majorGroupCode", "type": "int"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        soc_code: Optional[float] = None,
+        title: Optional[str] = None,
+        minor_group: Optional[str] = None,
+        sub_major_group: Optional[str] = None,
+        major_group: Optional[str] = None,
+        minor_group_code: Optional[int] = None,
+        sub_major_group_code: Optional[int] = None,
+        major_group_code: Optional[int] = None,
+        **kwargs,
+    ):
         """
         :keyword soc_code:
         :paramtype soc_code: float
@@ -8752,14 +10493,14 @@ class JobTitleParsedClassification(msrest.serialization.Model):
         :paramtype major_group_code: int
         """
         super(JobTitleParsedClassification, self).__init__(**kwargs)
-        self.soc_code = kwargs.get("soc_code", None)
-        self.title = kwargs.get("title", None)
-        self.minor_group = kwargs.get("minor_group", None)
-        self.sub_major_group = kwargs.get("sub_major_group", None)
-        self.major_group = kwargs.get("major_group", None)
-        self.minor_group_code = kwargs.get("minor_group_code", None)
-        self.sub_major_group_code = kwargs.get("sub_major_group_code", None)
-        self.major_group_code = kwargs.get("major_group_code", None)
+        self.soc_code = soc_code
+        self.title = title
+        self.minor_group = minor_group
+        self.sub_major_group = sub_major_group
+        self.major_group = major_group
+        self.minor_group_code = minor_group_code
+        self.sub_major_group_code = sub_major_group_code
+        self.major_group_code = major_group_code
 
 
 class JobTitleParsedParsed(msrest.serialization.Model):
@@ -8772,7 +10513,7 @@ class JobTitleParsedParsed(msrest.serialization.Model):
     :ivar management_level:
     :vartype management_level: str
     :ivar classification:
-    :vartype classification: ~affinda.models.JobTitleParsedClassification
+    :vartype classification: ~affinda_v2.models.JobTitleParsedClassification
     """
 
     _attribute_map = {
@@ -8782,7 +10523,15 @@ class JobTitleParsedParsed(msrest.serialization.Model):
         "classification": {"key": "classification", "type": "JobTitleParsedClassification"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        name: Optional[str] = None,
+        emsi_id: Optional[str] = None,
+        management_level: Optional[str] = None,
+        classification: Optional["_models.JobTitleParsedClassification"] = None,
+        **kwargs,
+    ):
         """
         :keyword name:
         :paramtype name: str
@@ -8791,13 +10540,13 @@ class JobTitleParsedParsed(msrest.serialization.Model):
         :keyword management_level:
         :paramtype management_level: str
         :keyword classification:
-        :paramtype classification: ~affinda.models.JobTitleParsedClassification
+        :paramtype classification: ~affinda_v2.models.JobTitleParsedClassification
         """
         super(JobTitleParsedParsed, self).__init__(**kwargs)
-        self.name = kwargs.get("name", None)
-        self.emsi_id = kwargs.get("emsi_id", None)
-        self.management_level = kwargs.get("management_level", None)
-        self.classification = kwargs.get("classification", None)
+        self.name = name
+        self.emsi_id = emsi_id
+        self.management_level = management_level
+        self.classification = classification
 
 
 class JobTitleSearchScoreComponent(msrest.serialization.Model):
@@ -8823,7 +10572,9 @@ class JobTitleSearchScoreComponent(msrest.serialization.Model):
         "score": {"key": "score", "type": "float"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self, *, label: str, value: Optional[str] = None, score: Optional[float] = None, **kwargs
+    ):
         """
         :keyword value:
         :paramtype value: str
@@ -8833,9 +10584,9 @@ class JobTitleSearchScoreComponent(msrest.serialization.Model):
         :paramtype score: float
         """
         super(JobTitleSearchScoreComponent, self).__init__(**kwargs)
-        self.value = kwargs.get("value", None)
-        self.label = kwargs["label"]
-        self.score = kwargs.get("score", None)
+        self.value = value
+        self.label = label
+        self.score = score
 
 
 class LanguageAnnotation(Annotation):
@@ -8849,9 +10600,9 @@ class LanguageAnnotation(Annotation):
     :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
-    :vartype rectangle: ~affinda.models.Rectangle
+    :vartype rectangle: ~affinda_v2.models.Rectangle
     :ivar rectangles: Required.
-    :vartype rectangles: list[~affinda.models.Rectangle]
+    :vartype rectangles: list[~affinda_v2.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
     :ivar raw: Required.
@@ -8911,7 +10662,26 @@ class LanguageAnnotation(Annotation):
         "parsed": {"key": "parsed", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        id: int,
+        rectangle: "_models.Rectangle",
+        rectangles: List["_models.Rectangle"],
+        page_index: int,
+        raw: str,
+        confidence: float,
+        classification_confidence: float,
+        text_extraction_confidence: float,
+        is_verified: bool,
+        is_client_verified: bool,
+        is_auto_verified: bool,
+        content_type: str,
+        additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
+        parsed: Optional[str] = None,
+        **kwargs,
+    ):
         """
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
@@ -8919,9 +10689,9 @@ class LanguageAnnotation(Annotation):
         :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
-        :paramtype rectangle: ~affinda.models.Rectangle
+        :paramtype rectangle: ~affinda_v2.models.Rectangle
         :keyword rectangles: Required.
-        :paramtype rectangles: list[~affinda.models.Rectangle]
+        :paramtype rectangles: list[~affinda_v2.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
         :keyword raw: Required.
@@ -8947,8 +10717,24 @@ class LanguageAnnotation(Annotation):
         :keyword parsed:
         :paramtype parsed: str
         """
-        super(LanguageAnnotation, self).__init__(**kwargs)
-        self.parsed = kwargs.get("parsed", None)
+        super(LanguageAnnotation, self).__init__(
+            additional_properties=additional_properties,
+            id=id,
+            rectangle=rectangle,
+            rectangles=rectangles,
+            page_index=page_index,
+            raw=raw,
+            confidence=confidence,
+            classification_confidence=classification_confidence,
+            text_extraction_confidence=text_extraction_confidence,
+            is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
+            data_point=data_point,
+            content_type=content_type,
+            **kwargs,
+        )
+        self.parsed = parsed
 
 
 class LanguageAnnotationV2Update(AnnotationV2Base):
@@ -8962,9 +10748,9 @@ class LanguageAnnotationV2Update(AnnotationV2Base):
     :ivar id:
     :vartype id: int
     :ivar rectangle:
-    :vartype rectangle: ~affinda.models.Rectangle
+    :vartype rectangle: ~affinda_v2.models.Rectangle
     :ivar rectangles:
-    :vartype rectangles: list[~affinda.models.Rectangle]
+    :vartype rectangles: list[~affinda_v2.models.Rectangle]
     :ivar page_index:
     :vartype page_index: int
     :ivar raw:
@@ -9016,7 +10802,24 @@ class LanguageAnnotationV2Update(AnnotationV2Base):
         "parsed": {"key": "parsed", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        additional_properties: Optional[Dict[str, Any]] = None,
+        id: Optional[int] = None,
+        rectangle: Optional["_models.Rectangle"] = None,
+        page_index: Optional[int] = None,
+        raw: Optional[str] = None,
+        confidence: Optional[float] = None,
+        classification_confidence: Optional[float] = None,
+        text_extraction_confidence: Optional[float] = None,
+        is_verified: Optional[bool] = None,
+        is_client_verified: Optional[bool] = None,
+        is_auto_verified: Optional[bool] = None,
+        data_point: Optional[str] = None,
+        content_type: Optional[str] = None,
+        **kwargs,
+    ):
         """
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
@@ -9024,7 +10827,7 @@ class LanguageAnnotationV2Update(AnnotationV2Base):
         :keyword id:
         :paramtype id: int
         :keyword rectangle:
-        :paramtype rectangle: ~affinda.models.Rectangle
+        :paramtype rectangle: ~affinda_v2.models.Rectangle
         :keyword page_index:
         :paramtype page_index: int
         :keyword raw:
@@ -9048,7 +10851,22 @@ class LanguageAnnotationV2Update(AnnotationV2Base):
         :keyword content_type:
         :paramtype content_type: str
         """
-        super(LanguageAnnotationV2Update, self).__init__(**kwargs)
+        super(LanguageAnnotationV2Update, self).__init__(
+            additional_properties=additional_properties,
+            id=id,
+            rectangle=rectangle,
+            page_index=page_index,
+            raw=raw,
+            confidence=confidence,
+            classification_confidence=classification_confidence,
+            text_extraction_confidence=text_extraction_confidence,
+            is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
+            data_point=data_point,
+            content_type=content_type,
+            **kwargs,
+        )
         self.parsed = None
 
 
@@ -9075,7 +10893,9 @@ class LanguagesSearchScoreComponent(msrest.serialization.Model):
         "score": {"key": "score", "type": "float"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self, *, label: str, value: Optional[str] = None, score: Optional[float] = None, **kwargs
+    ):
         """
         :keyword value:
         :paramtype value: str
@@ -9085,9 +10905,9 @@ class LanguagesSearchScoreComponent(msrest.serialization.Model):
         :paramtype score: float
         """
         super(LanguagesSearchScoreComponent, self).__init__(**kwargs)
-        self.value = kwargs.get("value", None)
-        self.label = kwargs["label"]
-        self.score = kwargs.get("score", None)
+        self.value = value
+        self.label = label
+        self.score = score
 
 
 class LocationAnnotation(Annotation):
@@ -9101,9 +10921,9 @@ class LocationAnnotation(Annotation):
     :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
-    :vartype rectangle: ~affinda.models.Rectangle
+    :vartype rectangle: ~affinda_v2.models.Rectangle
     :ivar rectangles: Required.
-    :vartype rectangles: list[~affinda.models.Rectangle]
+    :vartype rectangles: list[~affinda_v2.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
     :ivar raw: Required.
@@ -9127,7 +10947,7 @@ class LocationAnnotation(Annotation):
     :ivar content_type: Required.
     :vartype content_type: str
     :ivar parsed:
-    :vartype parsed: ~affinda.models.Location
+    :vartype parsed: ~affinda_v2.models.Location
     """
 
     _validation = {
@@ -9163,7 +10983,26 @@ class LocationAnnotation(Annotation):
         "parsed": {"key": "parsed", "type": "Location"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        id: int,
+        rectangle: "_models.Rectangle",
+        rectangles: List["_models.Rectangle"],
+        page_index: int,
+        raw: str,
+        confidence: float,
+        classification_confidence: float,
+        text_extraction_confidence: float,
+        is_verified: bool,
+        is_client_verified: bool,
+        is_auto_verified: bool,
+        content_type: str,
+        additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
+        parsed: Optional["_models.Location"] = None,
+        **kwargs,
+    ):
         """
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
@@ -9171,9 +11010,9 @@ class LocationAnnotation(Annotation):
         :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
-        :paramtype rectangle: ~affinda.models.Rectangle
+        :paramtype rectangle: ~affinda_v2.models.Rectangle
         :keyword rectangles: Required.
-        :paramtype rectangles: list[~affinda.models.Rectangle]
+        :paramtype rectangles: list[~affinda_v2.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
         :keyword raw: Required.
@@ -9197,10 +11036,26 @@ class LocationAnnotation(Annotation):
         :keyword content_type: Required.
         :paramtype content_type: str
         :keyword parsed:
-        :paramtype parsed: ~affinda.models.Location
+        :paramtype parsed: ~affinda_v2.models.Location
         """
-        super(LocationAnnotation, self).__init__(**kwargs)
-        self.parsed = kwargs.get("parsed", None)
+        super(LocationAnnotation, self).__init__(
+            additional_properties=additional_properties,
+            id=id,
+            rectangle=rectangle,
+            rectangles=rectangles,
+            page_index=page_index,
+            raw=raw,
+            confidence=confidence,
+            classification_confidence=classification_confidence,
+            text_extraction_confidence=text_extraction_confidence,
+            is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
+            data_point=data_point,
+            content_type=content_type,
+            **kwargs,
+        )
+        self.parsed = parsed
 
 
 class LocationAnnotationV2Update(AnnotationV2Base):
@@ -9214,9 +11069,9 @@ class LocationAnnotationV2Update(AnnotationV2Base):
     :ivar id:
     :vartype id: int
     :ivar rectangle:
-    :vartype rectangle: ~affinda.models.Rectangle
+    :vartype rectangle: ~affinda_v2.models.Rectangle
     :ivar rectangles:
-    :vartype rectangles: list[~affinda.models.Rectangle]
+    :vartype rectangles: list[~affinda_v2.models.Rectangle]
     :ivar page_index:
     :vartype page_index: int
     :ivar raw:
@@ -9240,7 +11095,7 @@ class LocationAnnotationV2Update(AnnotationV2Base):
     :ivar content_type:
     :vartype content_type: str
     :ivar parsed:
-    :vartype parsed: ~affinda.models.LocationAnnotationV2UpdateParsed
+    :vartype parsed: ~affinda_v2.models.LocationAnnotationV2UpdateParsed
     """
 
     _validation = {
@@ -9268,7 +11123,24 @@ class LocationAnnotationV2Update(AnnotationV2Base):
         "parsed": {"key": "parsed", "type": "LocationAnnotationV2UpdateParsed"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        additional_properties: Optional[Dict[str, Any]] = None,
+        id: Optional[int] = None,
+        rectangle: Optional["_models.Rectangle"] = None,
+        page_index: Optional[int] = None,
+        raw: Optional[str] = None,
+        confidence: Optional[float] = None,
+        classification_confidence: Optional[float] = None,
+        text_extraction_confidence: Optional[float] = None,
+        is_verified: Optional[bool] = None,
+        is_client_verified: Optional[bool] = None,
+        is_auto_verified: Optional[bool] = None,
+        data_point: Optional[str] = None,
+        content_type: Optional[str] = None,
+        **kwargs,
+    ):
         """
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
@@ -9276,7 +11148,7 @@ class LocationAnnotationV2Update(AnnotationV2Base):
         :keyword id:
         :paramtype id: int
         :keyword rectangle:
-        :paramtype rectangle: ~affinda.models.Rectangle
+        :paramtype rectangle: ~affinda_v2.models.Rectangle
         :keyword page_index:
         :paramtype page_index: int
         :keyword raw:
@@ -9300,7 +11172,22 @@ class LocationAnnotationV2Update(AnnotationV2Base):
         :keyword content_type:
         :paramtype content_type: str
         """
-        super(LocationAnnotationV2Update, self).__init__(**kwargs)
+        super(LocationAnnotationV2Update, self).__init__(
+            additional_properties=additional_properties,
+            id=id,
+            rectangle=rectangle,
+            page_index=page_index,
+            raw=raw,
+            confidence=confidence,
+            classification_confidence=classification_confidence,
+            text_extraction_confidence=text_extraction_confidence,
+            is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
+            data_point=data_point,
+            content_type=content_type,
+            **kwargs,
+        )
         self.parsed = None
 
 
@@ -9375,12 +11262,12 @@ class LocationAnnotationV2UpdateParsed(Location):
         "po_box": {"key": "poBox", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(self, *, raw_input: str, **kwargs):
         """
         :keyword raw_input: Required.
         :paramtype raw_input: str
         """
-        super(LocationAnnotationV2UpdateParsed, self).__init__(**kwargs)
+        super(LocationAnnotationV2UpdateParsed, self).__init__(raw_input=raw_input, **kwargs)
 
 
 class LocationSearchScoreComponent(msrest.serialization.Model):
@@ -9406,7 +11293,9 @@ class LocationSearchScoreComponent(msrest.serialization.Model):
         "score": {"key": "score", "type": "float"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self, *, label: str, value: Optional[str] = None, score: Optional[float] = None, **kwargs
+    ):
         """
         :keyword value:
         :paramtype value: str
@@ -9416,9 +11305,9 @@ class LocationSearchScoreComponent(msrest.serialization.Model):
         :paramtype score: float
         """
         super(LocationSearchScoreComponent, self).__init__(**kwargs)
-        self.value = kwargs.get("value", None)
-        self.label = kwargs["label"]
-        self.score = kwargs.get("score", None)
+        self.value = value
+        self.label = label
+        self.score = score
 
 
 class ManagementLevelSearchScoreComponent(msrest.serialization.Model):
@@ -9444,7 +11333,9 @@ class ManagementLevelSearchScoreComponent(msrest.serialization.Model):
         "score": {"key": "score", "type": "float"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self, *, label: str, value: Optional[str] = None, score: Optional[float] = None, **kwargs
+    ):
         """
         :keyword value:
         :paramtype value: str
@@ -9454,9 +11345,9 @@ class ManagementLevelSearchScoreComponent(msrest.serialization.Model):
         :paramtype score: float
         """
         super(ManagementLevelSearchScoreComponent, self).__init__(**kwargs)
-        self.value = kwargs.get("value", None)
-        self.label = kwargs["label"]
-        self.score = kwargs.get("score", None)
+        self.value = value
+        self.label = label
+        self.score = score
 
 
 class Meta(msrest.serialization.Model):
@@ -9487,12 +11378,12 @@ class Meta(msrest.serialization.Model):
     :vartype pdf: str
     :ivar parent_document: If this document is part of a splitted document, this attribute points
      to the original document that this document is splitted from.
-    :vartype parent_document: ~affinda.models.MetaParentDocument
+    :vartype parent_document: ~affinda_v2.models.MetaParentDocument
     :ivar child_documents: If this document has been splitted into a number of child documents,
      this attribute points to those child documents.
-    :vartype child_documents: list[~affinda.models.MetaChildDocumentsItem]
+    :vartype child_documents: list[~affinda_v2.models.MetaChildDocumentsItem]
     :ivar pages: The document's pages.
-    :vartype pages: list[~affinda.models.PageMeta]
+    :vartype pages: list[~affinda_v2.models.PageMeta]
     :ivar is_verified: This is true if the 'confirm' button has been clicked in the Affinda
      validation tool.
     :vartype is_verified: bool
@@ -9507,7 +11398,7 @@ class Meta(msrest.serialization.Model):
     :ivar document_type:
     :vartype document_type: str
     :ivar region_bias:
-    :vartype region_bias: ~affinda.models.RegionBias
+    :vartype region_bias: ~affinda_v2.models.RegionBias
     :ivar is_ocrd:
     :vartype is_ocrd: bool
     """
@@ -9534,7 +11425,30 @@ class Meta(msrest.serialization.Model):
         "is_ocrd": {"key": "isOcrd", "type": "bool"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        identifier: Optional[str] = None,
+        custom_identifier: Optional[str] = None,
+        file_name: Optional[str] = None,
+        ready: Optional[bool] = None,
+        ready_dt: Optional[datetime.datetime] = None,
+        failed: Optional[bool] = None,
+        expiry_time: Optional[datetime.datetime] = None,
+        language: Optional[str] = None,
+        pdf: Optional[str] = None,
+        parent_document: Optional["_models.MetaParentDocument"] = None,
+        child_documents: Optional[List["_models.MetaChildDocumentsItem"]] = None,
+        pages: Optional[List["_models.PageMeta"]] = None,
+        is_verified: Optional[bool] = None,
+        review_url: Optional[str] = None,
+        ocr_confidence: Optional[float] = None,
+        created_dt: Optional[datetime.datetime] = None,
+        document_type: Optional[str] = None,
+        region_bias: Optional["_models.RegionBias"] = None,
+        is_ocrd: Optional[bool] = None,
+        **kwargs,
+    ):
         """
         :keyword identifier: Unique identifier for the document.
         :paramtype identifier: str
@@ -9562,12 +11476,12 @@ class Meta(msrest.serialization.Model):
         :paramtype pdf: str
         :keyword parent_document: If this document is part of a splitted document, this attribute
          points to the original document that this document is splitted from.
-        :paramtype parent_document: ~affinda.models.MetaParentDocument
+        :paramtype parent_document: ~affinda_v2.models.MetaParentDocument
         :keyword child_documents: If this document has been splitted into a number of child documents,
          this attribute points to those child documents.
-        :paramtype child_documents: list[~affinda.models.MetaChildDocumentsItem]
+        :paramtype child_documents: list[~affinda_v2.models.MetaChildDocumentsItem]
         :keyword pages: The document's pages.
-        :paramtype pages: list[~affinda.models.PageMeta]
+        :paramtype pages: list[~affinda_v2.models.PageMeta]
         :keyword is_verified: This is true if the 'confirm' button has been clicked in the Affinda
          validation tool.
         :paramtype is_verified: bool
@@ -9582,30 +11496,30 @@ class Meta(msrest.serialization.Model):
         :keyword document_type:
         :paramtype document_type: str
         :keyword region_bias:
-        :paramtype region_bias: ~affinda.models.RegionBias
+        :paramtype region_bias: ~affinda_v2.models.RegionBias
         :keyword is_ocrd:
         :paramtype is_ocrd: bool
         """
         super(Meta, self).__init__(**kwargs)
-        self.identifier = kwargs.get("identifier", None)
-        self.custom_identifier = kwargs.get("custom_identifier", None)
-        self.file_name = kwargs.get("file_name", None)
-        self.ready = kwargs.get("ready", None)
-        self.ready_dt = kwargs.get("ready_dt", None)
-        self.failed = kwargs.get("failed", None)
-        self.expiry_time = kwargs.get("expiry_time", None)
-        self.language = kwargs.get("language", None)
-        self.pdf = kwargs.get("pdf", None)
-        self.parent_document = kwargs.get("parent_document", None)
-        self.child_documents = kwargs.get("child_documents", None)
-        self.pages = kwargs.get("pages", None)
-        self.is_verified = kwargs.get("is_verified", None)
-        self.review_url = kwargs.get("review_url", None)
-        self.ocr_confidence = kwargs.get("ocr_confidence", None)
-        self.created_dt = kwargs.get("created_dt", None)
-        self.document_type = kwargs.get("document_type", None)
-        self.region_bias = kwargs.get("region_bias", None)
-        self.is_ocrd = kwargs.get("is_ocrd", None)
+        self.identifier = identifier
+        self.custom_identifier = custom_identifier
+        self.file_name = file_name
+        self.ready = ready
+        self.ready_dt = ready_dt
+        self.failed = failed
+        self.expiry_time = expiry_time
+        self.language = language
+        self.pdf = pdf
+        self.parent_document = parent_document
+        self.child_documents = child_documents
+        self.pages = pages
+        self.is_verified = is_verified
+        self.review_url = review_url
+        self.ocr_confidence = ocr_confidence
+        self.created_dt = created_dt
+        self.document_type = document_type
+        self.region_bias = region_bias
+        self.is_ocrd = is_ocrd
 
 
 class MetaChildDocumentsItem(msrest.serialization.Model):
@@ -9619,13 +11533,13 @@ class MetaChildDocumentsItem(msrest.serialization.Model):
         "identifier": {"key": "identifier", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(self, *, identifier: Optional[str] = None, **kwargs):
         """
         :keyword identifier: Unique identifier for the document.
         :paramtype identifier: str
         """
         super(MetaChildDocumentsItem, self).__init__(**kwargs)
-        self.identifier = kwargs.get("identifier", None)
+        self.identifier = identifier
 
 
 class MetaParentDocument(msrest.serialization.Model):
@@ -9639,13 +11553,13 @@ class MetaParentDocument(msrest.serialization.Model):
         "identifier": {"key": "identifier", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(self, *, identifier: Optional[str] = None, **kwargs):
         """
         :keyword identifier: Unique identifier for the document.
         :paramtype identifier: str
         """
         super(MetaParentDocument, self).__init__(**kwargs)
-        self.identifier = kwargs.get("identifier", None)
+        self.identifier = identifier
 
 
 class OccupationGroupSearchResult(msrest.serialization.Model):
@@ -9660,9 +11574,9 @@ class OccupationGroupSearchResult(msrest.serialization.Model):
     :ivar name: Required.
     :vartype name: str
     :ivar children: Required.
-    :vartype children: list[~affinda.models.OccupationGroup]
+    :vartype children: list[~affinda_v2.models.OccupationGroup]
     :ivar parents:
-    :vartype parents: list[~affinda.models.OccupationGroup]
+    :vartype parents: list[~affinda_v2.models.OccupationGroup]
     """
 
     _validation = {
@@ -9679,7 +11593,16 @@ class OccupationGroupSearchResult(msrest.serialization.Model):
         "parents": {"key": "parents", "type": "[OccupationGroup]"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        code: int,
+        name: str,
+        children: List["_models.OccupationGroup"],
+        match: Optional[bool] = None,
+        parents: Optional[List["_models.OccupationGroup"]] = None,
+        **kwargs,
+    ):
         """
         :keyword match:
         :paramtype match: bool
@@ -9688,16 +11611,16 @@ class OccupationGroupSearchResult(msrest.serialization.Model):
         :keyword name: Required.
         :paramtype name: str
         :keyword children: Required.
-        :paramtype children: list[~affinda.models.OccupationGroup]
+        :paramtype children: list[~affinda_v2.models.OccupationGroup]
         :keyword parents:
-        :paramtype parents: list[~affinda.models.OccupationGroup]
+        :paramtype parents: list[~affinda_v2.models.OccupationGroup]
         """
         super(OccupationGroupSearchResult, self).__init__(**kwargs)
-        self.match = kwargs.get("match", None)
-        self.code = kwargs["code"]
-        self.name = kwargs["name"]
-        self.children = kwargs["children"]
-        self.parents = kwargs.get("parents", None)
+        self.match = match
+        self.code = code
+        self.name = name
+        self.children = children
+        self.parents = parents
 
 
 class OccupationGroupSearchScoreComponent(msrest.serialization.Model):
@@ -9723,7 +11646,9 @@ class OccupationGroupSearchScoreComponent(msrest.serialization.Model):
         "score": {"key": "score", "type": "float"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self, *, label: str, value: Optional[str] = None, score: Optional[float] = None, **kwargs
+    ):
         """
         :keyword value:
         :paramtype value: str
@@ -9733,9 +11658,9 @@ class OccupationGroupSearchScoreComponent(msrest.serialization.Model):
         :paramtype score: float
         """
         super(OccupationGroupSearchScoreComponent, self).__init__(**kwargs)
-        self.value = kwargs.get("value", None)
-        self.label = kwargs["label"]
-        self.score = kwargs.get("score", None)
+        self.value = value
+        self.label = label
+        self.score = score
 
 
 class PageMeta(msrest.serialization.Model):
@@ -9779,7 +11704,18 @@ class PageMeta(msrest.serialization.Model):
         "rotation": {"key": "rotation", "type": "int"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        id: int,
+        page_index: int,
+        image: str,
+        height: float,
+        width: float,
+        rotation: int,
+        image_translated: Optional[str] = None,
+        **kwargs,
+    ):
         """
         :keyword id: Required.
         :paramtype id: int
@@ -9798,13 +11734,13 @@ class PageMeta(msrest.serialization.Model):
         :paramtype rotation: int
         """
         super(PageMeta, self).__init__(**kwargs)
-        self.id = kwargs["id"]
-        self.page_index = kwargs["page_index"]
-        self.image = kwargs["image"]
-        self.image_translated = kwargs.get("image_translated", None)
-        self.height = kwargs["height"]
-        self.width = kwargs["width"]
-        self.rotation = kwargs["rotation"]
+        self.id = id
+        self.page_index = page_index
+        self.image = image
+        self.image_translated = image_translated
+        self.height = height
+        self.width = width
+        self.rotation = rotation
 
 
 class PaginatedResponse(msrest.serialization.Model):
@@ -9830,7 +11766,9 @@ class PaginatedResponse(msrest.serialization.Model):
         "previous": {"key": "previous", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self, *, count: int, next: Optional[str] = None, previous: Optional[str] = None, **kwargs
+    ):
         """
         :keyword count: Required. Number of items in results.
         :paramtype count: int
@@ -9840,9 +11778,9 @@ class PaginatedResponse(msrest.serialization.Model):
         :paramtype previous: str
         """
         super(PaginatedResponse, self).__init__(**kwargs)
-        self.count = kwargs["count"]
-        self.next = kwargs.get("next", None)
-        self.previous = kwargs.get("previous", None)
+        self.count = count
+        self.next = next
+        self.previous = previous
 
 
 class Paths14R8PdgV2IndexNameDocumentsPostResponses201ContentApplicationJsonSchema(
@@ -9858,7 +11796,7 @@ class Paths14R8PdgV2IndexNameDocumentsPostResponses201ContentApplicationJsonSche
         "document": {"key": "document", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(self, *, document: Optional[str] = None, **kwargs):
         """
         :keyword document: Unique identifier for the document.
         :paramtype document: str
@@ -9866,7 +11804,7 @@ class Paths14R8PdgV2IndexNameDocumentsPostResponses201ContentApplicationJsonSche
         super(
             Paths14R8PdgV2IndexNameDocumentsPostResponses201ContentApplicationJsonSchema, self
         ).__init__(**kwargs)
-        self.document = kwargs.get("document", None)
+        self.document = document
 
 
 class PathsX4VofmV2ResumesGetResponses200ContentApplicationJsonSchemaAllof1(
@@ -9875,22 +11813,22 @@ class PathsX4VofmV2ResumesGetResponses200ContentApplicationJsonSchemaAllof1(
     """PathsX4VofmV2ResumesGetResponses200ContentApplicationJsonSchemaAllof1.
 
     :ivar results:
-    :vartype results: list[~affinda.models.Meta]
+    :vartype results: list[~affinda_v2.models.Meta]
     """
 
     _attribute_map = {
         "results": {"key": "results", "type": "[Meta]"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(self, *, results: Optional[List["_models.Meta"]] = None, **kwargs):
         """
         :keyword results:
-        :paramtype results: list[~affinda.models.Meta]
+        :paramtype results: list[~affinda_v2.models.Meta]
         """
         super(
             PathsX4VofmV2ResumesGetResponses200ContentApplicationJsonSchemaAllof1, self
         ).__init__(**kwargs)
-        self.results = kwargs.get("results", None)
+        self.results = results
 
 
 class Paths14VxierV2ResumesGetResponses200ContentApplicationJsonSchema(
@@ -9901,7 +11839,7 @@ class Paths14VxierV2ResumesGetResponses200ContentApplicationJsonSchema(
     All required parameters must be populated in order to send to Azure.
 
     :ivar results:
-    :vartype results: list[~affinda.models.Meta]
+    :vartype results: list[~affinda_v2.models.Meta]
     :ivar count: Required. Number of items in results.
     :vartype count: int
     :ivar next: URL to request next page of results.
@@ -9921,10 +11859,18 @@ class Paths14VxierV2ResumesGetResponses200ContentApplicationJsonSchema(
         "previous": {"key": "previous", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        count: int,
+        results: Optional[List["_models.Meta"]] = None,
+        next: Optional[str] = None,
+        previous: Optional[str] = None,
+        **kwargs,
+    ):
         """
         :keyword results:
-        :paramtype results: list[~affinda.models.Meta]
+        :paramtype results: list[~affinda_v2.models.Meta]
         :keyword count: Required. Number of items in results.
         :paramtype count: int
         :keyword next: URL to request next page of results.
@@ -9933,12 +11879,12 @@ class Paths14VxierV2ResumesGetResponses200ContentApplicationJsonSchema(
         :paramtype previous: str
         """
         super(Paths14VxierV2ResumesGetResponses200ContentApplicationJsonSchema, self).__init__(
-            **kwargs
+            count=count, next=next, previous=previous, results=results, **kwargs
         )
-        self.results = kwargs.get("results", None)
-        self.count = kwargs["count"]
-        self.next = kwargs.get("next", None)
-        self.previous = kwargs.get("previous", None)
+        self.results = results
+        self.count = count
+        self.next = next
+        self.previous = previous
 
 
 class Paths15O3Zn5V2JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema(
@@ -9947,23 +11893,25 @@ class Paths15O3Zn5V2JobDescriptionSearchEmbedPostRequestbodyContentApplicationJs
     """Paths15O3Zn5V2JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema.
 
     :ivar config_override:
-    :vartype config_override: ~affinda.models.JobDescriptionSearchConfig
+    :vartype config_override: ~affinda_v2.models.JobDescriptionSearchConfig
     """
 
     _attribute_map = {
         "config_override": {"key": "configOverride", "type": "JobDescriptionSearchConfig"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self, *, config_override: Optional["_models.JobDescriptionSearchConfig"] = None, **kwargs
+    ):
         """
         :keyword config_override:
-        :paramtype config_override: ~affinda.models.JobDescriptionSearchConfig
+        :paramtype config_override: ~affinda_v2.models.JobDescriptionSearchConfig
         """
         super(
             Paths15O3Zn5V2JobDescriptionSearchEmbedPostRequestbodyContentApplicationJsonSchema,
             self,
         ).__init__(**kwargs)
-        self.config_override = kwargs.get("config_override", None)
+        self.config_override = config_override
 
 
 class Paths1BqdurzV2IndexGetResponses200ContentApplicationJsonSchemaAllof1(
@@ -9972,22 +11920,22 @@ class Paths1BqdurzV2IndexGetResponses200ContentApplicationJsonSchemaAllof1(
     """Paths1BqdurzV2IndexGetResponses200ContentApplicationJsonSchemaAllof1.
 
     :ivar results:
-    :vartype results: list[~affinda.models.Index]
+    :vartype results: list[~affinda_v2.models.Index]
     """
 
     _attribute_map = {
         "results": {"key": "results", "type": "[Index]"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(self, *, results: Optional[List["_models.Index"]] = None, **kwargs):
         """
         :keyword results:
-        :paramtype results: list[~affinda.models.Index]
+        :paramtype results: list[~affinda_v2.models.Index]
         """
         super(Paths1BqdurzV2IndexGetResponses200ContentApplicationJsonSchemaAllof1, self).__init__(
             **kwargs
         )
-        self.results = kwargs.get("results", None)
+        self.results = results
 
 
 class Paths18Iqsr4V2IndexGetResponses200ContentApplicationJsonSchema(
@@ -9998,7 +11946,7 @@ class Paths18Iqsr4V2IndexGetResponses200ContentApplicationJsonSchema(
     All required parameters must be populated in order to send to Azure.
 
     :ivar results:
-    :vartype results: list[~affinda.models.Index]
+    :vartype results: list[~affinda_v2.models.Index]
     :ivar count: Required. Number of items in results.
     :vartype count: int
     :ivar next: URL to request next page of results.
@@ -10018,10 +11966,18 @@ class Paths18Iqsr4V2IndexGetResponses200ContentApplicationJsonSchema(
         "previous": {"key": "previous", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        count: int,
+        results: Optional[List["_models.Index"]] = None,
+        next: Optional[str] = None,
+        previous: Optional[str] = None,
+        **kwargs,
+    ):
         """
         :keyword results:
-        :paramtype results: list[~affinda.models.Index]
+        :paramtype results: list[~affinda_v2.models.Index]
         :keyword count: Required. Number of items in results.
         :paramtype count: int
         :keyword next: URL to request next page of results.
@@ -10030,12 +11986,12 @@ class Paths18Iqsr4V2IndexGetResponses200ContentApplicationJsonSchema(
         :paramtype previous: str
         """
         super(Paths18Iqsr4V2IndexGetResponses200ContentApplicationJsonSchema, self).__init__(
-            **kwargs
+            count=count, next=next, previous=previous, results=results, **kwargs
         )
-        self.results = kwargs.get("results", None)
-        self.count = kwargs["count"]
-        self.next = kwargs.get("next", None)
-        self.previous = kwargs.get("previous", None)
+        self.results = results
+        self.count = count
+        self.next = next
+        self.previous = previous
 
 
 class Paths18ZzckpV2InvoicesGetResponses200ContentApplicationJsonSchemaAllof1(
@@ -10044,22 +12000,22 @@ class Paths18ZzckpV2InvoicesGetResponses200ContentApplicationJsonSchemaAllof1(
     """Paths18ZzckpV2InvoicesGetResponses200ContentApplicationJsonSchemaAllof1.
 
     :ivar results:
-    :vartype results: list[~affinda.models.Meta]
+    :vartype results: list[~affinda_v2.models.Meta]
     """
 
     _attribute_map = {
         "results": {"key": "results", "type": "[Meta]"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(self, *, results: Optional[List["_models.Meta"]] = None, **kwargs):
         """
         :keyword results:
-        :paramtype results: list[~affinda.models.Meta]
+        :paramtype results: list[~affinda_v2.models.Meta]
         """
         super(
             Paths18ZzckpV2InvoicesGetResponses200ContentApplicationJsonSchemaAllof1, self
         ).__init__(**kwargs)
-        self.results = kwargs.get("results", None)
+        self.results = results
 
 
 class Paths1Q5Zfv5V2RedactedResumesGetResponses200ContentApplicationJsonSchemaAllof1(
@@ -10068,22 +12024,22 @@ class Paths1Q5Zfv5V2RedactedResumesGetResponses200ContentApplicationJsonSchemaAl
     """Paths1Q5Zfv5V2RedactedResumesGetResponses200ContentApplicationJsonSchemaAllof1.
 
     :ivar results:
-    :vartype results: list[~affinda.models.Meta]
+    :vartype results: list[~affinda_v2.models.Meta]
     """
 
     _attribute_map = {
         "results": {"key": "results", "type": "[Meta]"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(self, *, results: Optional[List["_models.Meta"]] = None, **kwargs):
         """
         :keyword results:
-        :paramtype results: list[~affinda.models.Meta]
+        :paramtype results: list[~affinda_v2.models.Meta]
         """
         super(
             Paths1Q5Zfv5V2RedactedResumesGetResponses200ContentApplicationJsonSchemaAllof1, self
         ).__init__(**kwargs)
-        self.results = kwargs.get("results", None)
+        self.results = results
 
 
 class Paths1D957B5V2RedactedResumesGetResponses200ContentApplicationJsonSchema(
@@ -10095,7 +12051,7 @@ class Paths1D957B5V2RedactedResumesGetResponses200ContentApplicationJsonSchema(
     All required parameters must be populated in order to send to Azure.
 
     :ivar results:
-    :vartype results: list[~affinda.models.Meta]
+    :vartype results: list[~affinda_v2.models.Meta]
     :ivar count: Required. Number of items in results.
     :vartype count: int
     :ivar next: URL to request next page of results.
@@ -10115,10 +12071,18 @@ class Paths1D957B5V2RedactedResumesGetResponses200ContentApplicationJsonSchema(
         "previous": {"key": "previous", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        count: int,
+        results: Optional[List["_models.Meta"]] = None,
+        next: Optional[str] = None,
+        previous: Optional[str] = None,
+        **kwargs,
+    ):
         """
         :keyword results:
-        :paramtype results: list[~affinda.models.Meta]
+        :paramtype results: list[~affinda_v2.models.Meta]
         :keyword count: Required. Number of items in results.
         :paramtype count: int
         :keyword next: URL to request next page of results.
@@ -10128,11 +12092,11 @@ class Paths1D957B5V2RedactedResumesGetResponses200ContentApplicationJsonSchema(
         """
         super(
             Paths1D957B5V2RedactedResumesGetResponses200ContentApplicationJsonSchema, self
-        ).__init__(**kwargs)
-        self.results = kwargs.get("results", None)
-        self.count = kwargs["count"]
-        self.next = kwargs.get("next", None)
-        self.previous = kwargs.get("previous", None)
+        ).__init__(count=count, next=next, previous=previous, results=results, **kwargs)
+        self.results = results
+        self.count = count
+        self.next = next
+        self.previous = previous
 
 
 class Paths23Ubd8V2ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema(
@@ -10141,22 +12105,24 @@ class Paths23Ubd8V2ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema(
     """Paths23Ubd8V2ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema.
 
     :ivar config_override:
-    :vartype config_override: ~affinda.models.ResumeSearchConfig
+    :vartype config_override: ~affinda_v2.models.ResumeSearchConfig
     """
 
     _attribute_map = {
         "config_override": {"key": "configOverride", "type": "ResumeSearchConfig"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self, *, config_override: Optional["_models.ResumeSearchConfig"] = None, **kwargs
+    ):
         """
         :keyword config_override:
-        :paramtype config_override: ~affinda.models.ResumeSearchConfig
+        :paramtype config_override: ~affinda_v2.models.ResumeSearchConfig
         """
         super(
             Paths23Ubd8V2ResumeSearchEmbedPostRequestbodyContentApplicationJsonSchema, self
         ).__init__(**kwargs)
-        self.config_override = kwargs.get("config_override", None)
+        self.config_override = config_override
 
 
 class PathsAf7Nd4V2IndexNameDocumentsGetResponses200ContentApplicationJsonSchema(
@@ -10171,7 +12137,7 @@ class PathsAf7Nd4V2IndexNameDocumentsGetResponses200ContentApplicationJsonSchema
     :ivar previous: URL to request previous page of results.
     :vartype previous: str
     :ivar results:
-    :vartype results: list[~affinda.models.Get200ApplicationJsonPropertiesItemsItem]
+    :vartype results: list[~affinda_v2.models.Get200ApplicationJsonPropertiesItemsItem]
     """
 
     _validation = {
@@ -10185,7 +12151,15 @@ class PathsAf7Nd4V2IndexNameDocumentsGetResponses200ContentApplicationJsonSchema
         "results": {"key": "results", "type": "[Get200ApplicationJsonPropertiesItemsItem]"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        count: Optional[int] = None,
+        next: Optional[str] = None,
+        previous: Optional[str] = None,
+        results: Optional[List["_models.Get200ApplicationJsonPropertiesItemsItem"]] = None,
+        **kwargs,
+    ):
         """
         :keyword count: Number of indexed documents in result.
         :paramtype count: int
@@ -10194,15 +12168,15 @@ class PathsAf7Nd4V2IndexNameDocumentsGetResponses200ContentApplicationJsonSchema
         :keyword previous: URL to request previous page of results.
         :paramtype previous: str
         :keyword results:
-        :paramtype results: list[~affinda.models.Get200ApplicationJsonPropertiesItemsItem]
+        :paramtype results: list[~affinda_v2.models.Get200ApplicationJsonPropertiesItemsItem]
         """
         super(
             PathsAf7Nd4V2IndexNameDocumentsGetResponses200ContentApplicationJsonSchema, self
         ).__init__(**kwargs)
-        self.count = kwargs.get("count", None)
-        self.next = kwargs.get("next", None)
-        self.previous = kwargs.get("previous", None)
-        self.results = kwargs.get("results", None)
+        self.count = count
+        self.next = next
+        self.previous = previous
+        self.results = results
 
 
 class PathsV2IwngV2JobDescriptionsGetResponses200ContentApplicationJsonSchemaAllof1(
@@ -10211,22 +12185,22 @@ class PathsV2IwngV2JobDescriptionsGetResponses200ContentApplicationJsonSchemaAll
     """PathsV2IwngV2JobDescriptionsGetResponses200ContentApplicationJsonSchemaAllof1.
 
     :ivar results:
-    :vartype results: list[~affinda.models.Meta]
+    :vartype results: list[~affinda_v2.models.Meta]
     """
 
     _attribute_map = {
         "results": {"key": "results", "type": "[Meta]"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(self, *, results: Optional[List["_models.Meta"]] = None, **kwargs):
         """
         :keyword results:
-        :paramtype results: list[~affinda.models.Meta]
+        :paramtype results: list[~affinda_v2.models.Meta]
         """
         super(
             PathsV2IwngV2JobDescriptionsGetResponses200ContentApplicationJsonSchemaAllof1, self
         ).__init__(**kwargs)
-        self.results = kwargs.get("results", None)
+        self.results = results
 
 
 class PathsChbpqfV2JobDescriptionsGetResponses200ContentApplicationJsonSchema(
@@ -10238,7 +12212,7 @@ class PathsChbpqfV2JobDescriptionsGetResponses200ContentApplicationJsonSchema(
     All required parameters must be populated in order to send to Azure.
 
     :ivar results:
-    :vartype results: list[~affinda.models.Meta]
+    :vartype results: list[~affinda_v2.models.Meta]
     :ivar count: Required. Number of items in results.
     :vartype count: int
     :ivar next: URL to request next page of results.
@@ -10258,10 +12232,18 @@ class PathsChbpqfV2JobDescriptionsGetResponses200ContentApplicationJsonSchema(
         "previous": {"key": "previous", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        count: int,
+        results: Optional[List["_models.Meta"]] = None,
+        next: Optional[str] = None,
+        previous: Optional[str] = None,
+        **kwargs,
+    ):
         """
         :keyword results:
-        :paramtype results: list[~affinda.models.Meta]
+        :paramtype results: list[~affinda_v2.models.Meta]
         :keyword count: Required. Number of items in results.
         :paramtype count: int
         :keyword next: URL to request next page of results.
@@ -10271,11 +12253,11 @@ class PathsChbpqfV2JobDescriptionsGetResponses200ContentApplicationJsonSchema(
         """
         super(
             PathsChbpqfV2JobDescriptionsGetResponses200ContentApplicationJsonSchema, self
-        ).__init__(**kwargs)
-        self.results = kwargs.get("results", None)
-        self.count = kwargs["count"]
-        self.next = kwargs.get("next", None)
-        self.previous = kwargs.get("previous", None)
+        ).__init__(count=count, next=next, previous=previous, results=results, **kwargs)
+        self.results = results
+        self.count = count
+        self.next = next
+        self.previous = previous
 
 
 class PathsDd1FapV2ResthookSubscriptionsGetResponses200ContentApplicationJsonSchemaAllof1(
@@ -10284,23 +12266,25 @@ class PathsDd1FapV2ResthookSubscriptionsGetResponses200ContentApplicationJsonSch
     """PathsDd1FapV2ResthookSubscriptionsGetResponses200ContentApplicationJsonSchemaAllof1.
 
     :ivar results:
-    :vartype results: list[~affinda.models.ResthookSubscription]
+    :vartype results: list[~affinda_v2.models.ResthookSubscription]
     """
 
     _attribute_map = {
         "results": {"key": "results", "type": "[ResthookSubscription]"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self, *, results: Optional[List["_models.ResthookSubscription"]] = None, **kwargs
+    ):
         """
         :keyword results:
-        :paramtype results: list[~affinda.models.ResthookSubscription]
+        :paramtype results: list[~affinda_v2.models.ResthookSubscription]
         """
         super(
             PathsDd1FapV2ResthookSubscriptionsGetResponses200ContentApplicationJsonSchemaAllof1,
             self,
         ).__init__(**kwargs)
-        self.results = kwargs.get("results", None)
+        self.results = results
 
 
 class PathsGfm23QV2InvoicesGetResponses200ContentApplicationJsonSchema(
@@ -10311,7 +12295,7 @@ class PathsGfm23QV2InvoicesGetResponses200ContentApplicationJsonSchema(
     All required parameters must be populated in order to send to Azure.
 
     :ivar results:
-    :vartype results: list[~affinda.models.Meta]
+    :vartype results: list[~affinda_v2.models.Meta]
     :ivar count: Required. Number of items in results.
     :vartype count: int
     :ivar next: URL to request next page of results.
@@ -10331,10 +12315,18 @@ class PathsGfm23QV2InvoicesGetResponses200ContentApplicationJsonSchema(
         "previous": {"key": "previous", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        count: int,
+        results: Optional[List["_models.Meta"]] = None,
+        next: Optional[str] = None,
+        previous: Optional[str] = None,
+        **kwargs,
+    ):
         """
         :keyword results:
-        :paramtype results: list[~affinda.models.Meta]
+        :paramtype results: list[~affinda_v2.models.Meta]
         :keyword count: Required. Number of items in results.
         :paramtype count: int
         :keyword next: URL to request next page of results.
@@ -10343,12 +12335,12 @@ class PathsGfm23QV2InvoicesGetResponses200ContentApplicationJsonSchema(
         :paramtype previous: str
         """
         super(PathsGfm23QV2InvoicesGetResponses200ContentApplicationJsonSchema, self).__init__(
-            **kwargs
+            count=count, next=next, previous=previous, results=results, **kwargs
         )
-        self.results = kwargs.get("results", None)
-        self.count = kwargs["count"]
-        self.next = kwargs.get("next", None)
-        self.previous = kwargs.get("previous", None)
+        self.results = results
+        self.count = count
+        self.next = next
+        self.previous = previous
 
 
 class PathsMda0LlV2ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema(
@@ -10360,7 +12352,7 @@ class PathsMda0LlV2ResthookSubscriptionsGetResponses200ContentApplicationJsonSch
     All required parameters must be populated in order to send to Azure.
 
     :ivar results:
-    :vartype results: list[~affinda.models.ResthookSubscription]
+    :vartype results: list[~affinda_v2.models.ResthookSubscription]
     :ivar count: Required. Number of items in results.
     :vartype count: int
     :ivar next: URL to request next page of results.
@@ -10380,10 +12372,18 @@ class PathsMda0LlV2ResthookSubscriptionsGetResponses200ContentApplicationJsonSch
         "previous": {"key": "previous", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        count: int,
+        results: Optional[List["_models.ResthookSubscription"]] = None,
+        next: Optional[str] = None,
+        previous: Optional[str] = None,
+        **kwargs,
+    ):
         """
         :keyword results:
-        :paramtype results: list[~affinda.models.ResthookSubscription]
+        :paramtype results: list[~affinda_v2.models.ResthookSubscription]
         :keyword count: Required. Number of items in results.
         :paramtype count: int
         :keyword next: URL to request next page of results.
@@ -10393,11 +12393,11 @@ class PathsMda0LlV2ResthookSubscriptionsGetResponses200ContentApplicationJsonSch
         """
         super(
             PathsMda0LlV2ResthookSubscriptionsGetResponses200ContentApplicationJsonSchema, self
-        ).__init__(**kwargs)
-        self.results = kwargs.get("results", None)
-        self.count = kwargs["count"]
-        self.next = kwargs.get("next", None)
-        self.previous = kwargs.get("previous", None)
+        ).__init__(count=count, next=next, previous=previous, results=results, **kwargs)
+        self.results = results
+        self.count = count
+        self.next = next
+        self.previous = previous
 
 
 class PathsYg099PV2IndexNameDocumentsPostRequestbodyContentApplicationJsonSchema(
@@ -10413,7 +12413,7 @@ class PathsYg099PV2IndexNameDocumentsPostRequestbodyContentApplicationJsonSchema
         "document": {"key": "document", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(self, *, document: Optional[str] = None, **kwargs):
         """
         :keyword document:
         :paramtype document: str
@@ -10421,7 +12421,7 @@ class PathsYg099PV2IndexNameDocumentsPostRequestbodyContentApplicationJsonSchema
         super(
             PathsYg099PV2IndexNameDocumentsPostRequestbodyContentApplicationJsonSchema, self
         ).__init__(**kwargs)
-        self.document = kwargs.get("document", None)
+        self.document = document
 
 
 class Rectangle(msrest.serialization.Model):
@@ -10457,7 +12457,16 @@ class Rectangle(msrest.serialization.Model):
         "y1": {"key": "y1", "type": "float"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        x0: float,
+        y0: float,
+        x1: float,
+        y1: float,
+        page_index: Optional[int] = None,
+        **kwargs,
+    ):
         """
         :keyword page_index:
         :paramtype page_index: int
@@ -10471,11 +12480,11 @@ class Rectangle(msrest.serialization.Model):
         :paramtype y1: float
         """
         super(Rectangle, self).__init__(**kwargs)
-        self.page_index = kwargs.get("page_index", None)
-        self.x0 = kwargs["x0"]
-        self.y0 = kwargs["y0"]
-        self.x1 = kwargs["x1"]
-        self.y1 = kwargs["y1"]
+        self.page_index = page_index
+        self.x0 = x0
+        self.y0 = y0
+        self.x1 = x1
+        self.y1 = y1
 
 
 class RedactedResume(msrest.serialization.Model):
@@ -10484,11 +12493,11 @@ class RedactedResume(msrest.serialization.Model):
     All required parameters must be populated in order to send to Azure.
 
     :ivar data: Required.
-    :vartype data: ~affinda.models.RedactedResumeData
+    :vartype data: ~affinda_v2.models.RedactedResumeData
     :ivar meta: Required.
-    :vartype meta: ~affinda.models.Meta
+    :vartype meta: ~affinda_v2.models.Meta
     :ivar error: Required.
-    :vartype error: ~affinda.models.Error
+    :vartype error: ~affinda_v2.models.Error
     """
 
     _validation = {
@@ -10503,19 +12512,26 @@ class RedactedResume(msrest.serialization.Model):
         "error": {"key": "error", "type": "Error"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        data: "_models.RedactedResumeData",
+        meta: "_models.Meta",
+        error: "_models.Error",
+        **kwargs,
+    ):
         """
         :keyword data: Required.
-        :paramtype data: ~affinda.models.RedactedResumeData
+        :paramtype data: ~affinda_v2.models.RedactedResumeData
         :keyword meta: Required.
-        :paramtype meta: ~affinda.models.Meta
+        :paramtype meta: ~affinda_v2.models.Meta
         :keyword error: Required.
-        :paramtype error: ~affinda.models.Error
+        :paramtype error: ~affinda_v2.models.Error
         """
         super(RedactedResume, self).__init__(**kwargs)
-        self.data = kwargs["data"]
-        self.meta = kwargs["meta"]
-        self.error = kwargs["error"]
+        self.data = data
+        self.meta = meta
+        self.error = error
 
 
 class RedactedResumeData(msrest.serialization.Model):
@@ -10529,13 +12545,13 @@ class RedactedResumeData(msrest.serialization.Model):
         "redacted_pdf": {"key": "redactedPdf", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(self, *, redacted_pdf: Optional[str] = None, **kwargs):
         """
         :keyword redacted_pdf: URL to redacted PDF.
         :paramtype redacted_pdf: str
         """
         super(RedactedResumeData, self).__init__(**kwargs)
-        self.redacted_pdf = kwargs.get("redacted_pdf", None)
+        self.redacted_pdf = redacted_pdf
 
 
 class RedactedResumeRequestBody(msrest.serialization.Model):
@@ -10602,7 +12618,28 @@ class RedactedResumeRequestBody(msrest.serialization.Model):
         "expiry_time": {"key": "expiryTime", "type": "iso-8601"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        file: Optional[IO] = None,
+        identifier: Optional[str] = None,
+        custom_identifier: Optional[str] = None,
+        file_name: Optional[str] = None,
+        url: Optional[str] = None,
+        language: Optional[str] = None,
+        wait: Optional[bool] = True,
+        redact_headshot: Optional[str] = "true",
+        redact_personal_details: Optional[str] = "true",
+        redact_work_details: Optional[str] = "true",
+        redact_education_details: Optional[str] = "true",
+        redact_referees: Optional[str] = "true",
+        redact_locations: Optional[str] = "true",
+        redact_dates: Optional[str] = "true",
+        redact_gender: Optional[str] = "true",
+        redact_pdf_metadata: Optional[str] = "true",
+        expiry_time: Optional[datetime.datetime] = None,
+        **kwargs,
+    ):
         """
         :keyword file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
          PNG, JPG, TIFF, ODT, XLS, XLSX, ZIP.
@@ -10645,23 +12682,23 @@ class RedactedResumeRequestBody(msrest.serialization.Model):
         :paramtype expiry_time: ~datetime.datetime
         """
         super(RedactedResumeRequestBody, self).__init__(**kwargs)
-        self.file = kwargs.get("file", None)
-        self.identifier = kwargs.get("identifier", None)
-        self.custom_identifier = kwargs.get("custom_identifier", None)
-        self.file_name = kwargs.get("file_name", None)
-        self.url = kwargs.get("url", None)
-        self.language = kwargs.get("language", None)
-        self.wait = kwargs.get("wait", True)
-        self.redact_headshot = kwargs.get("redact_headshot", "true")
-        self.redact_personal_details = kwargs.get("redact_personal_details", "true")
-        self.redact_work_details = kwargs.get("redact_work_details", "true")
-        self.redact_education_details = kwargs.get("redact_education_details", "true")
-        self.redact_referees = kwargs.get("redact_referees", "true")
-        self.redact_locations = kwargs.get("redact_locations", "true")
-        self.redact_dates = kwargs.get("redact_dates", "true")
-        self.redact_gender = kwargs.get("redact_gender", "true")
-        self.redact_pdf_metadata = kwargs.get("redact_pdf_metadata", "true")
-        self.expiry_time = kwargs.get("expiry_time", None)
+        self.file = file
+        self.identifier = identifier
+        self.custom_identifier = custom_identifier
+        self.file_name = file_name
+        self.url = url
+        self.language = language
+        self.wait = wait
+        self.redact_headshot = redact_headshot
+        self.redact_personal_details = redact_personal_details
+        self.redact_work_details = redact_work_details
+        self.redact_education_details = redact_education_details
+        self.redact_referees = redact_referees
+        self.redact_locations = redact_locations
+        self.redact_dates = redact_dates
+        self.redact_gender = redact_gender
+        self.redact_pdf_metadata = redact_pdf_metadata
+        self.expiry_time = expiry_time
 
 
 class RegionBias(msrest.serialization.Model):
@@ -10687,7 +12724,15 @@ class RegionBias(msrest.serialization.Model):
         "strict": {"key": "strict", "type": "bool"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        country: Optional[str] = None,
+        countries: Optional[List[str]] = None,
+        square_coordinates: Optional[List[float]] = None,
+        strict: Optional[bool] = None,
+        **kwargs,
+    ):
         """
         :keyword country: A single alpha-2 country code (e.g. AU) used by google geocoding service.
         :paramtype country: str
@@ -10702,10 +12747,10 @@ class RegionBias(msrest.serialization.Model):
         :paramtype strict: bool
         """
         super(RegionBias, self).__init__(**kwargs)
-        self.country = kwargs.get("country", None)
-        self.countries = kwargs.get("countries", None)
-        self.square_coordinates = kwargs.get("square_coordinates", None)
-        self.strict = kwargs.get("strict", None)
+        self.country = country
+        self.countries = countries
+        self.square_coordinates = square_coordinates
+        self.strict = strict
 
 
 class RequestError(msrest.serialization.Model):
@@ -10716,7 +12761,7 @@ class RequestError(msrest.serialization.Model):
     :ivar type: Required.
     :vartype type: str
     :ivar errors: Required.
-    :vartype errors: list[~affinda.models.RequestErrorErrorsItem]
+    :vartype errors: list[~affinda_v2.models.RequestErrorErrorsItem]
     """
 
     _validation = {
@@ -10729,16 +12774,16 @@ class RequestError(msrest.serialization.Model):
         "errors": {"key": "errors", "type": "[RequestErrorErrorsItem]"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(self, *, type: str, errors: List["_models.RequestErrorErrorsItem"], **kwargs):
         """
         :keyword type: Required.
         :paramtype type: str
         :keyword errors: Required.
-        :paramtype errors: list[~affinda.models.RequestErrorErrorsItem]
+        :paramtype errors: list[~affinda_v2.models.RequestErrorErrorsItem]
         """
         super(RequestError, self).__init__(**kwargs)
-        self.type = kwargs["type"]
-        self.errors = kwargs["errors"]
+        self.type = type
+        self.errors = errors
 
 
 class RequestErrorErrorsItem(msrest.serialization.Model):
@@ -10766,7 +12811,7 @@ class RequestErrorErrorsItem(msrest.serialization.Model):
         "detail": {"key": "detail", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(self, *, attr: str, code: str, detail: str, **kwargs):
         """
         :keyword attr: Required.
         :paramtype attr: str
@@ -10776,9 +12821,9 @@ class RequestErrorErrorsItem(msrest.serialization.Model):
         :paramtype detail: str
         """
         super(RequestErrorErrorsItem, self).__init__(**kwargs)
-        self.attr = kwargs["attr"]
-        self.code = kwargs["code"]
-        self.detail = kwargs["detail"]
+        self.attr = attr
+        self.code = code
+        self.detail = detail
 
 
 class ResthookSubscription(msrest.serialization.Model):
@@ -10795,7 +12840,7 @@ class ResthookSubscription(msrest.serialization.Model):
      "document.parse.completed", "document.validate.completed", "document.classify.succeeded",
      "document.classify.failed", "document.classify.completed", "document.rejected",
      "annotation.validated".
-    :vartype event: str or ~affinda.models.ResthookEvent
+    :vartype event: str or ~affinda_v2.models.ResthookEvent
     :ivar target_url: Required. URL of the resthook's receiver.
     :vartype target_url: str
     :ivar active: Required. Resthooks only fire for active subscriptions.
@@ -10808,7 +12853,7 @@ class ResthookSubscription(msrest.serialization.Model):
     :vartype auto_deactivate_reason: str
     :ivar version: Required. Version of the resthook subscription. Determines the resthook body
      being fired. Known values are: "v1", "v2", "v3".
-    :vartype version: str or ~affinda.models.ResthookSubscriptionVersion
+    :vartype version: str or ~affinda_v2.models.ResthookSubscriptionVersion
     """
 
     _validation = {
@@ -10831,7 +12876,18 @@ class ResthookSubscription(msrest.serialization.Model):
         "version": {"key": "version", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        id: int,
+        event: Union[str, "_models.ResthookEvent"],
+        target_url: str,
+        active: bool,
+        auto_deactivated: bool,
+        auto_deactivate_reason: str,
+        version: Union[str, "_models.ResthookSubscriptionVersion"],
+        **kwargs,
+    ):
         """
         :keyword id: Required. Resthook subscription's ID.
         :paramtype id: int
@@ -10842,7 +12898,7 @@ class ResthookSubscription(msrest.serialization.Model):
          "document.parse.completed", "document.validate.completed", "document.classify.succeeded",
          "document.classify.failed", "document.classify.completed", "document.rejected",
          "annotation.validated".
-        :paramtype event: str or ~affinda.models.ResthookEvent
+        :paramtype event: str or ~affinda_v2.models.ResthookEvent
         :keyword target_url: Required. URL of the resthook's receiver.
         :paramtype target_url: str
         :keyword active: Required. Resthooks only fire for active subscriptions.
@@ -10855,16 +12911,16 @@ class ResthookSubscription(msrest.serialization.Model):
         :paramtype auto_deactivate_reason: str
         :keyword version: Required. Version of the resthook subscription. Determines the resthook body
          being fired. Known values are: "v1", "v2", "v3".
-        :paramtype version: str or ~affinda.models.ResthookSubscriptionVersion
+        :paramtype version: str or ~affinda_v2.models.ResthookSubscriptionVersion
         """
         super(ResthookSubscription, self).__init__(**kwargs)
-        self.id = kwargs["id"]
-        self.event = kwargs["event"]
-        self.target_url = kwargs["target_url"]
-        self.active = kwargs["active"]
-        self.auto_deactivated = kwargs["auto_deactivated"]
-        self.auto_deactivate_reason = kwargs["auto_deactivate_reason"]
-        self.version = kwargs["version"]
+        self.id = id
+        self.event = event
+        self.target_url = target_url
+        self.active = active
+        self.auto_deactivated = auto_deactivated
+        self.auto_deactivate_reason = auto_deactivate_reason
+        self.version = version
 
 
 class ResthookSubscriptionCreate(msrest.serialization.Model):
@@ -10881,10 +12937,10 @@ class ResthookSubscriptionCreate(msrest.serialization.Model):
      "document.parse.completed", "document.validate.completed", "document.classify.succeeded",
      "document.classify.failed", "document.classify.completed", "document.rejected",
      "annotation.validated".
-    :vartype event: str or ~affinda.models.ResthookEvent
+    :vartype event: str or ~affinda_v2.models.ResthookEvent
     :ivar version: Version of the resthook subscription. Determines the resthook body being fired.
      Known values are: "v1", "v2", "v3".
-    :vartype version: str or ~affinda.models.Version
+    :vartype version: str or ~affinda_v2.models.Version
     """
 
     _validation = {
@@ -10898,7 +12954,14 @@ class ResthookSubscriptionCreate(msrest.serialization.Model):
         "version": {"key": "version", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        target_url: str,
+        event: Union[str, "_models.ResthookEvent"],
+        version: Optional[Union[str, "_models.Version"]] = None,
+        **kwargs,
+    ):
         """
         :keyword target_url: Required. URL of the resthook's receiver.
         :paramtype target_url: str
@@ -10909,15 +12972,15 @@ class ResthookSubscriptionCreate(msrest.serialization.Model):
          "document.parse.completed", "document.validate.completed", "document.classify.succeeded",
          "document.classify.failed", "document.classify.completed", "document.rejected",
          "annotation.validated".
-        :paramtype event: str or ~affinda.models.ResthookEvent
+        :paramtype event: str or ~affinda_v2.models.ResthookEvent
         :keyword version: Version of the resthook subscription. Determines the resthook body being
          fired. Known values are: "v1", "v2", "v3".
-        :paramtype version: str or ~affinda.models.Version
+        :paramtype version: str or ~affinda_v2.models.Version
         """
         super(ResthookSubscriptionCreate, self).__init__(**kwargs)
-        self.target_url = kwargs["target_url"]
-        self.event = kwargs["event"]
-        self.version = kwargs.get("version", None)
+        self.target_url = target_url
+        self.event = event
+        self.version = version
 
 
 class ResthookSubscriptionUpdate(msrest.serialization.Model):
@@ -10929,10 +12992,10 @@ class ResthookSubscriptionUpdate(msrest.serialization.Model):
      "document.parse.succeeded", "document.parse.failed", "document.parse.completed",
      "document.validate.completed", "document.classify.succeeded", "document.classify.failed",
      "document.classify.completed", "document.rejected", "annotation.validated".
-    :vartype event: str or ~affinda.models.ResthookEvent
+    :vartype event: str or ~affinda_v2.models.ResthookEvent
     :ivar version: Version of the resthook subscription. Determines the resthook body being fired.
      Known values are: "v1", "v2", "v3".
-    :vartype version: str or ~affinda.models.Version
+    :vartype version: str or ~affinda_v2.models.Version
     """
 
     _attribute_map = {
@@ -10940,7 +13003,13 @@ class ResthookSubscriptionUpdate(msrest.serialization.Model):
         "version": {"key": "version", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        event: Optional[Union[str, "_models.ResthookEvent"]] = None,
+        version: Optional[Union[str, "_models.Version"]] = None,
+        **kwargs,
+    ):
         """
         :keyword event: The event name to subscribe to. Known values are: "resume.parse.succeeded",
          "resume.parse.failed", "resume.parse.completed", "invoice.parse.succeeded",
@@ -10948,14 +13017,14 @@ class ResthookSubscriptionUpdate(msrest.serialization.Model):
          "document.parse.succeeded", "document.parse.failed", "document.parse.completed",
          "document.validate.completed", "document.classify.succeeded", "document.classify.failed",
          "document.classify.completed", "document.rejected", "annotation.validated".
-        :paramtype event: str or ~affinda.models.ResthookEvent
+        :paramtype event: str or ~affinda_v2.models.ResthookEvent
         :keyword version: Version of the resthook subscription. Determines the resthook body being
          fired. Known values are: "v1", "v2", "v3".
-        :paramtype version: str or ~affinda.models.Version
+        :paramtype version: str or ~affinda_v2.models.Version
         """
         super(ResthookSubscriptionUpdate, self).__init__(**kwargs)
-        self.event = kwargs.get("event", None)
-        self.version = kwargs.get("version", None)
+        self.event = event
+        self.version = version
 
 
 class Resume(msrest.serialization.Model):
@@ -10964,11 +13033,11 @@ class Resume(msrest.serialization.Model):
     All required parameters must be populated in order to send to Azure.
 
     :ivar data: Required. A JSON-encoded string of the ``ResumeData`` object.
-    :vartype data: ~affinda.models.ResumeData
+    :vartype data: ~affinda_v2.models.ResumeData
     :ivar meta: Required.
-    :vartype meta: ~affinda.models.Meta
+    :vartype meta: ~affinda_v2.models.Meta
     :ivar error: Required.
-    :vartype error: ~affinda.models.Error
+    :vartype error: ~affinda_v2.models.Error
     """
 
     _validation = {
@@ -10983,19 +13052,21 @@ class Resume(msrest.serialization.Model):
         "error": {"key": "error", "type": "Error"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self, *, data: "_models.ResumeData", meta: "_models.Meta", error: "_models.Error", **kwargs
+    ):
         """
         :keyword data: Required. A JSON-encoded string of the ``ResumeData`` object.
-        :paramtype data: ~affinda.models.ResumeData
+        :paramtype data: ~affinda_v2.models.ResumeData
         :keyword meta: Required.
-        :paramtype meta: ~affinda.models.Meta
+        :paramtype meta: ~affinda_v2.models.Meta
         :keyword error: Required.
-        :paramtype error: ~affinda.models.Error
+        :paramtype error: ~affinda_v2.models.Error
         """
         super(Resume, self).__init__(**kwargs)
-        self.data = kwargs["data"]
-        self.meta = kwargs["meta"]
-        self.error = kwargs["error"]
+        self.data = data
+        self.meta = meta
+        self.error = error
 
 
 class ResumeData(msrest.serialization.Model):
@@ -11007,11 +13078,11 @@ class ResumeData(msrest.serialization.Model):
      collection.
     :vartype additional_properties: dict[str, any]
     :ivar name:
-    :vartype name: ~affinda.models.ResumeDataName
+    :vartype name: ~affinda_v2.models.ResumeDataName
     :ivar phone_numbers:
     :vartype phone_numbers: list[str]
     :ivar phone_number_details:
-    :vartype phone_number_details: list[~affinda.models.ResumeDataPhoneNumberDetailsItem]
+    :vartype phone_number_details: list[~affinda_v2.models.ResumeDataPhoneNumberDetailsItem]
     :ivar websites:
     :vartype websites: list[str]
     :ivar emails:
@@ -11019,11 +13090,11 @@ class ResumeData(msrest.serialization.Model):
     :ivar date_of_birth:
     :vartype date_of_birth: str
     :ivar location:
-    :vartype location: ~affinda.models.Location
+    :vartype location: ~affinda_v2.models.Location
     :ivar objective:
     :vartype objective: str
     :ivar languages:
-    :vartype languages: list[str or ~affinda.models.ResumeDataLanguagesItem]
+    :vartype languages: list[str or ~affinda_v2.models.ResumeDataLanguagesItem]
     :ivar language_codes:
     :vartype language_codes: list[str]
     :ivar summary:
@@ -11033,23 +13104,23 @@ class ResumeData(msrest.serialization.Model):
     :ivar head_shot: base64 encoded string.
     :vartype head_shot: bytearray
     :ivar education:
-    :vartype education: list[~affinda.models.Education]
+    :vartype education: list[~affinda_v2.models.Education]
     :ivar profession: Prediction of the candidate's profession based on recent work experience.
     :vartype profession: str
     :ivar linkedin: Linkedin account associated with the candidate.
     :vartype linkedin: str
     :ivar work_experience:
-    :vartype work_experience: list[~affinda.models.ResumeDataWorkExperienceItem]
+    :vartype work_experience: list[~affinda_v2.models.ResumeDataWorkExperienceItem]
     :ivar skills:
-    :vartype skills: list[~affinda.models.ResumeDataSkillsItem]
+    :vartype skills: list[~affinda_v2.models.ResumeDataSkillsItem]
     :ivar certifications:
     :vartype certifications: list[str]
     :ivar publications:
     :vartype publications: list[str]
     :ivar referees:
-    :vartype referees: list[~affinda.models.ResumeDataRefereesItem]
+    :vartype referees: list[~affinda_v2.models.ResumeDataRefereesItem]
     :ivar sections:
-    :vartype sections: list[~affinda.models.ResumeDataSectionsItem]
+    :vartype sections: list[~affinda_v2.models.ResumeDataSectionsItem]
     :ivar is_resume_probability: Probability that the given document is a resume. Values below 30
      suggest that the document is not a resume.
     :vartype is_resume_probability: int
@@ -11101,17 +13172,41 @@ class ResumeData(msrest.serialization.Model):
         "redacted_text": {"key": "redactedText", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        additional_properties: Optional[Dict[str, Any]] = None,
+        name: Optional["_models.ResumeDataName"] = None,
+        phone_numbers: Optional[List[str]] = None,
+        phone_number_details: Optional[List["_models.ResumeDataPhoneNumberDetailsItem"]] = None,
+        websites: Optional[List[str]] = None,
+        emails: Optional[List[str]] = None,
+        date_of_birth: Optional[str] = None,
+        location: Optional["_models.Location"] = None,
+        objective: Optional[str] = "",
+        languages: Optional[List[Union[str, "_models.ResumeDataLanguagesItem"]]] = None,
+        summary: Optional[str] = "",
+        total_years_experience: Optional[int] = None,
+        education: Optional[List["_models.Education"]] = None,
+        work_experience: Optional[List["_models.ResumeDataWorkExperienceItem"]] = None,
+        skills: Optional[List["_models.ResumeDataSkillsItem"]] = None,
+        certifications: Optional[List[str]] = None,
+        publications: Optional[List[str]] = None,
+        referees: Optional[List["_models.ResumeDataRefereesItem"]] = None,
+        raw_text: Optional[str] = None,
+        redacted_text: Optional[str] = None,
+        **kwargs,
+    ):
         """
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
         :paramtype additional_properties: dict[str, any]
         :keyword name:
-        :paramtype name: ~affinda.models.ResumeDataName
+        :paramtype name: ~affinda_v2.models.ResumeDataName
         :keyword phone_numbers:
         :paramtype phone_numbers: list[str]
         :keyword phone_number_details:
-        :paramtype phone_number_details: list[~affinda.models.ResumeDataPhoneNumberDetailsItem]
+        :paramtype phone_number_details: list[~affinda_v2.models.ResumeDataPhoneNumberDetailsItem]
         :keyword websites:
         :paramtype websites: list[str]
         :keyword emails:
@@ -11119,27 +13214,27 @@ class ResumeData(msrest.serialization.Model):
         :keyword date_of_birth:
         :paramtype date_of_birth: str
         :keyword location:
-        :paramtype location: ~affinda.models.Location
+        :paramtype location: ~affinda_v2.models.Location
         :keyword objective:
         :paramtype objective: str
         :keyword languages:
-        :paramtype languages: list[str or ~affinda.models.ResumeDataLanguagesItem]
+        :paramtype languages: list[str or ~affinda_v2.models.ResumeDataLanguagesItem]
         :keyword summary:
         :paramtype summary: str
         :keyword total_years_experience:
         :paramtype total_years_experience: int
         :keyword education:
-        :paramtype education: list[~affinda.models.Education]
+        :paramtype education: list[~affinda_v2.models.Education]
         :keyword work_experience:
-        :paramtype work_experience: list[~affinda.models.ResumeDataWorkExperienceItem]
+        :paramtype work_experience: list[~affinda_v2.models.ResumeDataWorkExperienceItem]
         :keyword skills:
-        :paramtype skills: list[~affinda.models.ResumeDataSkillsItem]
+        :paramtype skills: list[~affinda_v2.models.ResumeDataSkillsItem]
         :keyword certifications:
         :paramtype certifications: list[str]
         :keyword publications:
         :paramtype publications: list[str]
         :keyword referees:
-        :paramtype referees: list[~affinda.models.ResumeDataRefereesItem]
+        :paramtype referees: list[~affinda_v2.models.ResumeDataRefereesItem]
         :keyword raw_text: All of the raw text of the parsed resume, example is shortened for
          readability.
         :paramtype raw_text: str
@@ -11147,32 +13242,32 @@ class ResumeData(msrest.serialization.Model):
         :paramtype redacted_text: str
         """
         super(ResumeData, self).__init__(**kwargs)
-        self.additional_properties = kwargs.get("additional_properties", None)
-        self.name = kwargs.get("name", None)
-        self.phone_numbers = kwargs.get("phone_numbers", None)
-        self.phone_number_details = kwargs.get("phone_number_details", None)
-        self.websites = kwargs.get("websites", None)
-        self.emails = kwargs.get("emails", None)
-        self.date_of_birth = kwargs.get("date_of_birth", None)
-        self.location = kwargs.get("location", None)
-        self.objective = kwargs.get("objective", "")
-        self.languages = kwargs.get("languages", None)
+        self.additional_properties = additional_properties
+        self.name = name
+        self.phone_numbers = phone_numbers
+        self.phone_number_details = phone_number_details
+        self.websites = websites
+        self.emails = emails
+        self.date_of_birth = date_of_birth
+        self.location = location
+        self.objective = objective
+        self.languages = languages
         self.language_codes = None
-        self.summary = kwargs.get("summary", "")
-        self.total_years_experience = kwargs.get("total_years_experience", None)
+        self.summary = summary
+        self.total_years_experience = total_years_experience
         self.head_shot = None
-        self.education = kwargs.get("education", None)
+        self.education = education
         self.profession = None
         self.linkedin = None
-        self.work_experience = kwargs.get("work_experience", None)
-        self.skills = kwargs.get("skills", None)
-        self.certifications = kwargs.get("certifications", None)
-        self.publications = kwargs.get("publications", None)
-        self.referees = kwargs.get("referees", None)
+        self.work_experience = work_experience
+        self.skills = skills
+        self.certifications = certifications
+        self.publications = publications
+        self.referees = referees
         self.sections = None
         self.is_resume_probability = None
-        self.raw_text = kwargs.get("raw_text", None)
-        self.redacted_text = kwargs.get("redacted_text", None)
+        self.raw_text = raw_text
+        self.redacted_text = redacted_text
 
 
 class ResumeDataName(msrest.serialization.Model):
@@ -11198,7 +13293,16 @@ class ResumeDataName(msrest.serialization.Model):
         "title": {"key": "title", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        raw: Optional[str] = None,
+        first: Optional[str] = None,
+        last: Optional[str] = None,
+        middle: Optional[str] = None,
+        title: Optional[str] = None,
+        **kwargs,
+    ):
         """
         :keyword raw:
         :paramtype raw: str
@@ -11212,11 +13316,11 @@ class ResumeDataName(msrest.serialization.Model):
         :paramtype title: str
         """
         super(ResumeDataName, self).__init__(**kwargs)
-        self.raw = kwargs.get("raw", None)
-        self.first = kwargs.get("first", None)
-        self.last = kwargs.get("last", None)
-        self.middle = kwargs.get("middle", None)
-        self.title = kwargs.get("title", None)
+        self.raw = raw
+        self.first = first
+        self.last = last
+        self.middle = middle
+        self.title = title
 
 
 class ResumeDataPhoneNumberDetailsItem(msrest.serialization.Model):
@@ -11246,7 +13350,16 @@ class ResumeDataPhoneNumberDetailsItem(msrest.serialization.Model):
         "national_number": {"key": "nationalNumber", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        raw_text: Optional[str] = None,
+        formatted_number: Optional[str] = None,
+        country_code: Optional[str] = None,
+        international_country_code: Optional[int] = None,
+        national_number: Optional[str] = None,
+        **kwargs,
+    ):
         """
         :keyword raw_text:
         :paramtype raw_text: str
@@ -11260,11 +13373,11 @@ class ResumeDataPhoneNumberDetailsItem(msrest.serialization.Model):
         :paramtype national_number: str
         """
         super(ResumeDataPhoneNumberDetailsItem, self).__init__(**kwargs)
-        self.raw_text = kwargs.get("raw_text", None)
-        self.formatted_number = kwargs.get("formatted_number", None)
-        self.country_code = kwargs.get("country_code", None)
-        self.international_country_code = kwargs.get("international_country_code", None)
-        self.national_number = kwargs.get("national_number", None)
+        self.raw_text = raw_text
+        self.formatted_number = formatted_number
+        self.country_code = country_code
+        self.international_country_code = international_country_code
+        self.national_number = national_number
 
 
 class ResumeDataRefereesItem(msrest.serialization.Model):
@@ -11294,7 +13407,17 @@ class ResumeDataRefereesItem(msrest.serialization.Model):
         "position": {"key": "position", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        additional_properties: Optional[Dict[str, Any]] = None,
+        name: Optional[str] = None,
+        text: Optional[str] = None,
+        email: Optional[str] = None,
+        number: Optional[str] = None,
+        position: Optional[str] = None,
+        **kwargs,
+    ):
         """
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
@@ -11311,12 +13434,12 @@ class ResumeDataRefereesItem(msrest.serialization.Model):
         :paramtype position: str
         """
         super(ResumeDataRefereesItem, self).__init__(**kwargs)
-        self.additional_properties = kwargs.get("additional_properties", None)
-        self.name = kwargs.get("name", None)
-        self.text = kwargs.get("text", None)
-        self.email = kwargs.get("email", None)
-        self.number = kwargs.get("number", None)
-        self.position = kwargs.get("position", None)
+        self.additional_properties = additional_properties
+        self.name = name
+        self.text = text
+        self.email = email
+        self.number = number
+        self.position = position
 
 
 class ResumeDataSectionsItem(msrest.serialization.Model):
@@ -11344,7 +13467,15 @@ class ResumeDataSectionsItem(msrest.serialization.Model):
         "text": {"key": "text", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        section_type: Optional[str] = None,
+        bbox: Optional[List[float]] = None,
+        page_index: Optional[int] = None,
+        text: Optional[str] = None,
+        **kwargs,
+    ):
         """
         :keyword section_type:
         :paramtype section_type: str
@@ -11356,10 +13487,10 @@ class ResumeDataSectionsItem(msrest.serialization.Model):
         :paramtype text: str
         """
         super(ResumeDataSectionsItem, self).__init__(**kwargs)
-        self.section_type = kwargs.get("section_type", None)
-        self.bbox = kwargs.get("bbox", None)
-        self.page_index = kwargs.get("page_index", None)
-        self.text = kwargs.get("text", None)
+        self.section_type = section_type
+        self.bbox = bbox
+        self.page_index = page_index
+        self.text = text
 
 
 class ResumeDataSkillsItem(msrest.serialization.Model):
@@ -11384,7 +13515,7 @@ class ResumeDataSkillsItem(msrest.serialization.Model):
     :ivar weighting:
     :vartype weighting: float
     :ivar sources:
-    :vartype sources: list[~affinda.models.ResumeDataSkillsPropertiesItemsItem]
+    :vartype sources: list[~affinda_v2.models.ResumeDataSkillsPropertiesItemsItem]
     """
 
     _validation = {
@@ -11409,7 +13540,15 @@ class ResumeDataSkillsItem(msrest.serialization.Model):
         "sources": {"key": "sources", "type": "[ResumeDataSkillsPropertiesItemsItem]"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        id: Optional[int] = None,
+        name: Optional[str] = None,
+        last_used: Optional[str] = None,
+        number_of_months: Optional[int] = None,
+        **kwargs,
+    ):
         """
         :keyword id:
         :paramtype id: int
@@ -11421,11 +13560,11 @@ class ResumeDataSkillsItem(msrest.serialization.Model):
         :paramtype number_of_months: int
         """
         super(ResumeDataSkillsItem, self).__init__(**kwargs)
-        self.id = kwargs.get("id", None)
+        self.id = id
         self.emsi_id = None
-        self.name = kwargs.get("name", None)
-        self.last_used = kwargs.get("last_used", None)
-        self.number_of_months = kwargs.get("number_of_months", None)
+        self.name = name
+        self.last_used = last_used
+        self.number_of_months = number_of_months
         self.type = None
         self.count = None
         self.weighting = None
@@ -11457,7 +13596,14 @@ class ResumeDataSkillsPropertiesItemsItem(msrest.serialization.Model):
         "work_experience_id": {"key": "workExperienceId", "type": "int"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        section: Optional[str] = None,
+        position: Optional[int] = None,
+        work_experience_id: Optional[int] = None,
+        **kwargs,
+    ):
         """
         :keyword section:
         :paramtype section: str
@@ -11470,9 +13616,9 @@ class ResumeDataSkillsPropertiesItemsItem(msrest.serialization.Model):
         :paramtype work_experience_id: int
         """
         super(ResumeDataSkillsPropertiesItemsItem, self).__init__(**kwargs)
-        self.section = kwargs.get("section", None)
-        self.position = kwargs.get("position", None)
-        self.work_experience_id = kwargs.get("work_experience_id", None)
+        self.section = section
+        self.position = position
+        self.work_experience_id = work_experience_id
 
 
 class ResumeDataWorkExperienceItem(msrest.serialization.Model):
@@ -11493,13 +13639,13 @@ class ResumeDataWorkExperienceItem(msrest.serialization.Model):
     :ivar industry:
     :vartype industry: str
     :ivar location:
-    :vartype location: ~affinda.models.Location
+    :vartype location: ~affinda_v2.models.Location
     :ivar job_description:
     :vartype job_description: str
     :ivar dates:
-    :vartype dates: ~affinda.models.ResumeDataWorkExperienceItemDates
+    :vartype dates: ~affinda_v2.models.ResumeDataWorkExperienceItemDates
     :ivar occupation:
-    :vartype occupation: ~affinda.models.ResumeDataWorkExperienceItemOccupation
+    :vartype occupation: ~affinda_v2.models.ResumeDataWorkExperienceItemOccupation
     """
 
     _validation = {
@@ -11523,7 +13669,17 @@ class ResumeDataWorkExperienceItem(msrest.serialization.Model):
         "occupation": {"key": "occupation", "type": "ResumeDataWorkExperienceItemOccupation"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        id: Optional[int] = None,
+        job_title: Optional[str] = None,
+        organization: Optional[str] = None,
+        location: Optional["_models.Location"] = None,
+        job_description: Optional[str] = None,
+        dates: Optional["_models.ResumeDataWorkExperienceItemDates"] = None,
+        **kwargs,
+    ):
         """
         :keyword id:
         :paramtype id: int
@@ -11532,22 +13688,22 @@ class ResumeDataWorkExperienceItem(msrest.serialization.Model):
         :keyword organization:
         :paramtype organization: str
         :keyword location:
-        :paramtype location: ~affinda.models.Location
+        :paramtype location: ~affinda_v2.models.Location
         :keyword job_description:
         :paramtype job_description: str
         :keyword dates:
-        :paramtype dates: ~affinda.models.ResumeDataWorkExperienceItemDates
+        :paramtype dates: ~affinda_v2.models.ResumeDataWorkExperienceItemDates
         """
         super(ResumeDataWorkExperienceItem, self).__init__(**kwargs)
-        self.id = kwargs.get("id", None)
-        self.job_title = kwargs.get("job_title", None)
+        self.id = id
+        self.job_title = job_title
         self.soc_code = None
         self.soc_name = None
-        self.organization = kwargs.get("organization", None)
+        self.organization = organization
         self.industry = None
-        self.location = kwargs.get("location", None)
-        self.job_description = kwargs.get("job_description", None)
-        self.dates = kwargs.get("dates", None)
+        self.location = location
+        self.job_description = job_description
+        self.dates = dates
         self.occupation = None
 
 
@@ -11578,7 +13734,16 @@ class ResumeDataWorkExperienceItemDates(msrest.serialization.Model):
         "raw_text": {"key": "rawText", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        start_date: Optional[datetime.date] = None,
+        end_date: Optional[datetime.date] = None,
+        months_in_position: Optional[int] = None,
+        is_current: Optional[bool] = None,
+        raw_text: Optional[str] = None,
+        **kwargs,
+    ):
         """
         :keyword start_date:
         :paramtype start_date: ~datetime.date
@@ -11592,11 +13757,11 @@ class ResumeDataWorkExperienceItemDates(msrest.serialization.Model):
         :paramtype raw_text: str
         """
         super(ResumeDataWorkExperienceItemDates, self).__init__(**kwargs)
-        self.start_date = kwargs.get("start_date", None)
-        self.end_date = kwargs.get("end_date", None)
-        self.months_in_position = kwargs.get("months_in_position", None)
-        self.is_current = kwargs.get("is_current", None)
-        self.raw_text = kwargs.get("raw_text", None)
+        self.start_date = start_date
+        self.end_date = end_date
+        self.months_in_position = months_in_position
+        self.is_current = is_current
+        self.raw_text = raw_text
 
 
 class ResumeDataWorkExperienceItemOccupation(msrest.serialization.Model):
@@ -11610,10 +13775,10 @@ class ResumeDataWorkExperienceItemOccupation(msrest.serialization.Model):
     :ivar emsi_id: EMSI id of the normalised job title.
     :vartype emsi_id: str
     :ivar management_level: Known values are: "None", "Low", "Mid", "Upper".
-    :vartype management_level: str or ~affinda.models.ManagementLevel
+    :vartype management_level: str or ~affinda_v2.models.ManagementLevel
     :ivar classification:
     :vartype classification:
-     ~affinda.models.Components1TryetgSchemasResumedataPropertiesWorkexperienceItemsPropertiesOccupationPropertiesClassification
+     ~affinda_v2.models.Components1TryetgSchemasResumedataPropertiesWorkexperienceItemsPropertiesOccupationPropertiesClassification
     """
 
     _attribute_map = {
@@ -11627,7 +13792,18 @@ class ResumeDataWorkExperienceItemOccupation(msrest.serialization.Model):
         },
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        job_title: Optional[str] = None,
+        job_title_normalized: Optional[str] = None,
+        emsi_id: Optional[str] = None,
+        management_level: Optional[Union[str, "_models.ManagementLevel"]] = None,
+        classification: Optional[
+            "_models.Components1TryetgSchemasResumedataPropertiesWorkexperienceItemsPropertiesOccupationPropertiesClassification"
+        ] = None,
+        **kwargs,
+    ):
         """
         :keyword job_title: The raw (not normalized) job title pulled from the work experience entry.
         :paramtype job_title: str
@@ -11637,17 +13813,17 @@ class ResumeDataWorkExperienceItemOccupation(msrest.serialization.Model):
         :keyword emsi_id: EMSI id of the normalised job title.
         :paramtype emsi_id: str
         :keyword management_level: Known values are: "None", "Low", "Mid", "Upper".
-        :paramtype management_level: str or ~affinda.models.ManagementLevel
+        :paramtype management_level: str or ~affinda_v2.models.ManagementLevel
         :keyword classification:
         :paramtype classification:
-         ~affinda.models.Components1TryetgSchemasResumedataPropertiesWorkexperienceItemsPropertiesOccupationPropertiesClassification
+         ~affinda_v2.models.Components1TryetgSchemasResumedataPropertiesWorkexperienceItemsPropertiesOccupationPropertiesClassification
         """
         super(ResumeDataWorkExperienceItemOccupation, self).__init__(**kwargs)
-        self.job_title = kwargs.get("job_title", None)
-        self.job_title_normalized = kwargs.get("job_title_normalized", None)
-        self.emsi_id = kwargs.get("emsi_id", None)
-        self.management_level = kwargs.get("management_level", None)
-        self.classification = kwargs.get("classification", None)
+        self.job_title = job_title
+        self.job_title_normalized = job_title_normalized
+        self.emsi_id = emsi_id
+        self.management_level = management_level
+        self.classification = classification
 
 
 class ResumeRequestBody(msrest.serialization.Model):
@@ -11659,7 +13835,7 @@ class ResumeRequestBody(msrest.serialization.Model):
     :ivar url: URL to download the resume.
     :vartype url: str
     :ivar data: A JSON-encoded string of the ``ResumeData`` object.
-    :vartype data: ~affinda.models.ResumeData
+    :vartype data: ~affinda_v2.models.ResumeData
     :ivar identifier: Deprecated in favor of ``customIdentifier``.
     :vartype identifier: str
     :ivar custom_identifier: Specify a custom identifier for the document if you need one, not
@@ -11702,7 +13878,23 @@ class ResumeRequestBody(msrest.serialization.Model):
         "low_priority": {"key": "lowPriority", "type": "bool"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        file: Optional[IO] = None,
+        url: Optional[str] = None,
+        data: Optional["_models.ResumeData"] = None,
+        identifier: Optional[str] = None,
+        custom_identifier: Optional[str] = None,
+        file_name: Optional[str] = None,
+        wait: Optional[bool] = True,
+        reject_duplicates: Optional[bool] = None,
+        language: Optional[str] = None,
+        expiry_time: Optional[datetime.datetime] = None,
+        region_bias: Optional[str] = None,
+        low_priority: Optional[bool] = None,
+        **kwargs,
+    ):
         """
         :keyword file: File as binary data blob. Supported formats: PDF, DOC, DOCX, TXT, RTF, HTML,
          PNG, JPG, TIFF, ODT, XLS, XLSX, ZIP.
@@ -11710,7 +13902,7 @@ class ResumeRequestBody(msrest.serialization.Model):
         :keyword url: URL to download the resume.
         :paramtype url: str
         :keyword data: A JSON-encoded string of the ``ResumeData`` object.
-        :paramtype data: ~affinda.models.ResumeData
+        :paramtype data: ~affinda_v2.models.ResumeData
         :keyword identifier: Deprecated in favor of ``customIdentifier``.
         :paramtype identifier: str
         :keyword custom_identifier: Specify a custom identifier for the document if you need one, not
@@ -11738,18 +13930,18 @@ class ResumeRequestBody(msrest.serialization.Model):
         :paramtype low_priority: bool
         """
         super(ResumeRequestBody, self).__init__(**kwargs)
-        self.file = kwargs.get("file", None)
-        self.url = kwargs.get("url", None)
-        self.data = kwargs.get("data", None)
-        self.identifier = kwargs.get("identifier", None)
-        self.custom_identifier = kwargs.get("custom_identifier", None)
-        self.file_name = kwargs.get("file_name", None)
-        self.wait = kwargs.get("wait", True)
-        self.reject_duplicates = kwargs.get("reject_duplicates", None)
-        self.language = kwargs.get("language", None)
-        self.expiry_time = kwargs.get("expiry_time", None)
-        self.region_bias = kwargs.get("region_bias", None)
-        self.low_priority = kwargs.get("low_priority", None)
+        self.file = file
+        self.url = url
+        self.data = data
+        self.identifier = identifier
+        self.custom_identifier = custom_identifier
+        self.file_name = file_name
+        self.wait = wait
+        self.reject_duplicates = reject_duplicates
+        self.language = language
+        self.expiry_time = expiry_time
+        self.region_bias = region_bias
+        self.low_priority = low_priority
 
 
 class ResumeSearch(msrest.serialization.Model):
@@ -11762,9 +13954,9 @@ class ResumeSearch(msrest.serialization.Model):
     :ivar previous: URL to request previous page of results.
     :vartype previous: str
     :ivar parameters:
-    :vartype parameters: ~affinda.models.ResumeSearchParameters
+    :vartype parameters: ~affinda_v2.models.ResumeSearchParameters
     :ivar results:
-    :vartype results: list[~affinda.models.ResumeSearchResult]
+    :vartype results: list[~affinda_v2.models.ResumeSearchResult]
     """
 
     _validation = {
@@ -11779,7 +13971,16 @@ class ResumeSearch(msrest.serialization.Model):
         "results": {"key": "results", "type": "[ResumeSearchResult]"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        count: Optional[int] = None,
+        next: Optional[str] = None,
+        previous: Optional[str] = None,
+        parameters: Optional["_models.ResumeSearchParameters"] = None,
+        results: Optional[List["_models.ResumeSearchResult"]] = None,
+        **kwargs,
+    ):
         """
         :keyword count: Total number of results.
         :paramtype count: int
@@ -11788,16 +13989,16 @@ class ResumeSearch(msrest.serialization.Model):
         :keyword previous: URL to request previous page of results.
         :paramtype previous: str
         :keyword parameters:
-        :paramtype parameters: ~affinda.models.ResumeSearchParameters
+        :paramtype parameters: ~affinda_v2.models.ResumeSearchParameters
         :keyword results:
-        :paramtype results: list[~affinda.models.ResumeSearchResult]
+        :paramtype results: list[~affinda_v2.models.ResumeSearchResult]
         """
         super(ResumeSearch, self).__init__(**kwargs)
-        self.count = kwargs.get("count", None)
-        self.next = kwargs.get("next", None)
-        self.previous = kwargs.get("previous", None)
-        self.parameters = kwargs.get("parameters", None)
-        self.results = kwargs.get("results", None)
+        self.count = count
+        self.next = next
+        self.previous = previous
+        self.parameters = parameters
+        self.results = results
 
 
 class ResumeSearchConfig(msrest.serialization.Model):
@@ -11857,12 +14058,12 @@ class ResumeSearchConfig(msrest.serialization.Model):
     :ivar username: Username of the logged in user.
     :vartype username: str
     :ivar actions: A list of actions to show in the dropdown in the embedded search tool.
-    :vartype actions: list[~affinda.models.ResumeSearchConfigActionsItem]
+    :vartype actions: list[~affinda_v2.models.ResumeSearchConfigActionsItem]
     :ivar custom_fields_config:
-    :vartype custom_fields_config: list[~affinda.models.CustomFieldConfig]
+    :vartype custom_fields_config: list[~affinda_v2.models.CustomFieldConfig]
     :ivar distance_unit: The unit of distance to use for location based searches. Known values are:
      "mi", "km".
-    :vartype distance_unit: str or ~affinda.models.ResumeSearchConfigDistanceUnit
+    :vartype distance_unit: str or ~affinda_v2.models.ResumeSearchConfigDistanceUnit
     """
 
     _validation = {
@@ -11902,7 +14103,37 @@ class ResumeSearchConfig(msrest.serialization.Model):
         "distance_unit": {"key": "distanceUnit", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        allow_pdf_download: Optional[bool] = None,
+        max_results: Optional[int] = None,
+        display_job_title: Optional[bool] = None,
+        display_location: Optional[bool] = None,
+        display_years_experience: Optional[bool] = None,
+        display_occupation_group: Optional[bool] = None,
+        display_education: Optional[bool] = None,
+        display_skills: Optional[bool] = None,
+        display_languages: Optional[bool] = None,
+        display_management_level: Optional[bool] = None,
+        display_keywords: Optional[bool] = None,
+        weight_job_title: Optional[float] = None,
+        weight_location: Optional[float] = None,
+        weight_years_experience: Optional[float] = None,
+        weight_occupation_group: Optional[float] = None,
+        weight_education: Optional[float] = None,
+        weight_skills: Optional[float] = None,
+        weight_languages: Optional[float] = None,
+        weight_management_level: Optional[float] = None,
+        weight_keywords: Optional[float] = None,
+        indices: Optional[List[str]] = None,
+        show_index_dropdown: Optional[bool] = None,
+        search_tool_theme: Optional[Dict[str, Any]] = None,
+        actions: Optional[List["_models.ResumeSearchConfigActionsItem"]] = None,
+        custom_fields_config: Optional[List["_models.CustomFieldConfig"]] = None,
+        distance_unit: Optional[Union[str, "_models.ResumeSearchConfigDistanceUnit"]] = None,
+        **kwargs,
+    ):
         """
         :keyword allow_pdf_download:
         :paramtype allow_pdf_download: bool
@@ -11953,42 +14184,42 @@ class ResumeSearchConfig(msrest.serialization.Model):
         :keyword search_tool_theme: Customize the theme of the embeded search tool.
         :paramtype search_tool_theme: dict[str, any]
         :keyword actions: A list of actions to show in the dropdown in the embedded search tool.
-        :paramtype actions: list[~affinda.models.ResumeSearchConfigActionsItem]
+        :paramtype actions: list[~affinda_v2.models.ResumeSearchConfigActionsItem]
         :keyword custom_fields_config:
-        :paramtype custom_fields_config: list[~affinda.models.CustomFieldConfig]
+        :paramtype custom_fields_config: list[~affinda_v2.models.CustomFieldConfig]
         :keyword distance_unit: The unit of distance to use for location based searches. Known values
          are: "mi", "km".
-        :paramtype distance_unit: str or ~affinda.models.ResumeSearchConfigDistanceUnit
+        :paramtype distance_unit: str or ~affinda_v2.models.ResumeSearchConfigDistanceUnit
         """
         super(ResumeSearchConfig, self).__init__(**kwargs)
-        self.allow_pdf_download = kwargs.get("allow_pdf_download", None)
-        self.max_results = kwargs.get("max_results", None)
-        self.display_job_title = kwargs.get("display_job_title", None)
-        self.display_location = kwargs.get("display_location", None)
-        self.display_years_experience = kwargs.get("display_years_experience", None)
-        self.display_occupation_group = kwargs.get("display_occupation_group", None)
-        self.display_education = kwargs.get("display_education", None)
-        self.display_skills = kwargs.get("display_skills", None)
-        self.display_languages = kwargs.get("display_languages", None)
-        self.display_management_level = kwargs.get("display_management_level", None)
-        self.display_keywords = kwargs.get("display_keywords", None)
-        self.weight_job_title = kwargs.get("weight_job_title", None)
-        self.weight_location = kwargs.get("weight_location", None)
-        self.weight_years_experience = kwargs.get("weight_years_experience", None)
-        self.weight_occupation_group = kwargs.get("weight_occupation_group", None)
-        self.weight_education = kwargs.get("weight_education", None)
-        self.weight_skills = kwargs.get("weight_skills", None)
-        self.weight_languages = kwargs.get("weight_languages", None)
-        self.weight_management_level = kwargs.get("weight_management_level", None)
-        self.weight_keywords = kwargs.get("weight_keywords", None)
-        self.indices = kwargs.get("indices", None)
-        self.show_index_dropdown = kwargs.get("show_index_dropdown", None)
-        self.search_tool_theme = kwargs.get("search_tool_theme", None)
+        self.allow_pdf_download = allow_pdf_download
+        self.max_results = max_results
+        self.display_job_title = display_job_title
+        self.display_location = display_location
+        self.display_years_experience = display_years_experience
+        self.display_occupation_group = display_occupation_group
+        self.display_education = display_education
+        self.display_skills = display_skills
+        self.display_languages = display_languages
+        self.display_management_level = display_management_level
+        self.display_keywords = display_keywords
+        self.weight_job_title = weight_job_title
+        self.weight_location = weight_location
+        self.weight_years_experience = weight_years_experience
+        self.weight_occupation_group = weight_occupation_group
+        self.weight_education = weight_education
+        self.weight_skills = weight_skills
+        self.weight_languages = weight_languages
+        self.weight_management_level = weight_management_level
+        self.weight_keywords = weight_keywords
+        self.indices = indices
+        self.show_index_dropdown = show_index_dropdown
+        self.search_tool_theme = search_tool_theme
         self.user_id = None
         self.username = None
-        self.actions = kwargs.get("actions", None)
-        self.custom_fields_config = kwargs.get("custom_fields_config", None)
-        self.distance_unit = kwargs.get("distance_unit", None)
+        self.actions = actions
+        self.custom_fields_config = custom_fields_config
+        self.distance_unit = distance_unit
 
 
 class ResumeSearchConfigActionsItem(msrest.serialization.Model):
@@ -12005,7 +14236,7 @@ class ResumeSearchConfigActionsItem(msrest.serialization.Model):
         "event_name": {"key": "eventName", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(self, *, label: Optional[str] = None, event_name: Optional[str] = None, **kwargs):
         """
         :keyword label: Human readable label to display in the UI.
         :paramtype label: str
@@ -12013,31 +14244,31 @@ class ResumeSearchConfigActionsItem(msrest.serialization.Model):
         :paramtype event_name: str
         """
         super(ResumeSearchConfigActionsItem, self).__init__(**kwargs)
-        self.label = kwargs.get("label", None)
-        self.event_name = kwargs.get("event_name", None)
+        self.label = label
+        self.event_name = event_name
 
 
 class ResumeSearchDetail(msrest.serialization.Model):
     """ResumeSearchDetail.
 
     :ivar job_title:
-    :vartype job_title: ~affinda.models.ResumeSearchDetailJobTitle
+    :vartype job_title: ~affinda_v2.models.ResumeSearchDetailJobTitle
     :ivar location:
-    :vartype location: ~affinda.models.ResumeSearchDetailLocation
+    :vartype location: ~affinda_v2.models.ResumeSearchDetailLocation
     :ivar education:
-    :vartype education: ~affinda.models.ResumeSearchDetailEducation
+    :vartype education: ~affinda_v2.models.ResumeSearchDetailEducation
     :ivar skills:
-    :vartype skills: ~affinda.models.ResumeSearchDetailSkills
+    :vartype skills: ~affinda_v2.models.ResumeSearchDetailSkills
     :ivar experience:
-    :vartype experience: ~affinda.models.ResumeSearchDetailExperience
+    :vartype experience: ~affinda_v2.models.ResumeSearchDetailExperience
     :ivar occupation_group:
-    :vartype occupation_group: ~affinda.models.ResumeSearchDetailOccupationGroup
+    :vartype occupation_group: ~affinda_v2.models.ResumeSearchDetailOccupationGroup
     :ivar languages:
-    :vartype languages: ~affinda.models.ResumeSearchDetailLanguages
+    :vartype languages: ~affinda_v2.models.ResumeSearchDetailLanguages
     :ivar management_level:
-    :vartype management_level: ~affinda.models.ResumeSearchDetailManagementLevel
+    :vartype management_level: ~affinda_v2.models.ResumeSearchDetailManagementLevel
     :ivar search_expression:
-    :vartype search_expression: ~affinda.models.ResumeSearchDetailSearchExpression
+    :vartype search_expression: ~affinda_v2.models.ResumeSearchDetailSearchExpression
     """
 
     _attribute_map = {
@@ -12061,46 +14292,59 @@ class ResumeSearchDetail(msrest.serialization.Model):
         },
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        job_title: Optional["_models.ResumeSearchDetailJobTitle"] = None,
+        location: Optional["_models.ResumeSearchDetailLocation"] = None,
+        education: Optional["_models.ResumeSearchDetailEducation"] = None,
+        skills: Optional["_models.ResumeSearchDetailSkills"] = None,
+        experience: Optional["_models.ResumeSearchDetailExperience"] = None,
+        occupation_group: Optional["_models.ResumeSearchDetailOccupationGroup"] = None,
+        languages: Optional["_models.ResumeSearchDetailLanguages"] = None,
+        management_level: Optional["_models.ResumeSearchDetailManagementLevel"] = None,
+        search_expression: Optional["_models.ResumeSearchDetailSearchExpression"] = None,
+        **kwargs,
+    ):
         """
         :keyword job_title:
-        :paramtype job_title: ~affinda.models.ResumeSearchDetailJobTitle
+        :paramtype job_title: ~affinda_v2.models.ResumeSearchDetailJobTitle
         :keyword location:
-        :paramtype location: ~affinda.models.ResumeSearchDetailLocation
+        :paramtype location: ~affinda_v2.models.ResumeSearchDetailLocation
         :keyword education:
-        :paramtype education: ~affinda.models.ResumeSearchDetailEducation
+        :paramtype education: ~affinda_v2.models.ResumeSearchDetailEducation
         :keyword skills:
-        :paramtype skills: ~affinda.models.ResumeSearchDetailSkills
+        :paramtype skills: ~affinda_v2.models.ResumeSearchDetailSkills
         :keyword experience:
-        :paramtype experience: ~affinda.models.ResumeSearchDetailExperience
+        :paramtype experience: ~affinda_v2.models.ResumeSearchDetailExperience
         :keyword occupation_group:
-        :paramtype occupation_group: ~affinda.models.ResumeSearchDetailOccupationGroup
+        :paramtype occupation_group: ~affinda_v2.models.ResumeSearchDetailOccupationGroup
         :keyword languages:
-        :paramtype languages: ~affinda.models.ResumeSearchDetailLanguages
+        :paramtype languages: ~affinda_v2.models.ResumeSearchDetailLanguages
         :keyword management_level:
-        :paramtype management_level: ~affinda.models.ResumeSearchDetailManagementLevel
+        :paramtype management_level: ~affinda_v2.models.ResumeSearchDetailManagementLevel
         :keyword search_expression:
-        :paramtype search_expression: ~affinda.models.ResumeSearchDetailSearchExpression
+        :paramtype search_expression: ~affinda_v2.models.ResumeSearchDetailSearchExpression
         """
         super(ResumeSearchDetail, self).__init__(**kwargs)
-        self.job_title = kwargs.get("job_title", None)
-        self.location = kwargs.get("location", None)
-        self.education = kwargs.get("education", None)
-        self.skills = kwargs.get("skills", None)
-        self.experience = kwargs.get("experience", None)
-        self.occupation_group = kwargs.get("occupation_group", None)
-        self.languages = kwargs.get("languages", None)
-        self.management_level = kwargs.get("management_level", None)
-        self.search_expression = kwargs.get("search_expression", None)
+        self.job_title = job_title
+        self.location = location
+        self.education = education
+        self.skills = skills
+        self.experience = experience
+        self.occupation_group = occupation_group
+        self.languages = languages
+        self.management_level = management_level
+        self.search_expression = search_expression
 
 
 class ResumeSearchDetailEducation(msrest.serialization.Model):
     """ResumeSearchDetailEducation.
 
     :ivar missing:
-    :vartype missing: ~affinda.models.ResumeSearchDetailEducationMissing
+    :vartype missing: ~affinda_v2.models.ResumeSearchDetailEducationMissing
     :ivar value:
-    :vartype value: list[~affinda.models.ResumeSearchDetailEducationValueItem]
+    :vartype value: list[~affinda_v2.models.ResumeSearchDetailEducationValueItem]
     """
 
     _attribute_map = {
@@ -12108,16 +14352,22 @@ class ResumeSearchDetailEducation(msrest.serialization.Model):
         "value": {"key": "value", "type": "[ResumeSearchDetailEducationValueItem]"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        missing: Optional["_models.ResumeSearchDetailEducationMissing"] = None,
+        value: Optional[List["_models.ResumeSearchDetailEducationValueItem"]] = None,
+        **kwargs,
+    ):
         """
         :keyword missing:
-        :paramtype missing: ~affinda.models.ResumeSearchDetailEducationMissing
+        :paramtype missing: ~affinda_v2.models.ResumeSearchDetailEducationMissing
         :keyword value:
-        :paramtype value: list[~affinda.models.ResumeSearchDetailEducationValueItem]
+        :paramtype value: list[~affinda_v2.models.ResumeSearchDetailEducationValueItem]
         """
         super(ResumeSearchDetailEducation, self).__init__(**kwargs)
-        self.missing = kwargs.get("missing", None)
-        self.value = kwargs.get("value", None)
+        self.missing = missing
+        self.value = value
 
 
 class ResumeSearchDetailEducationMissing(msrest.serialization.Model):
@@ -12143,7 +14393,16 @@ class ResumeSearchDetailEducationMissing(msrest.serialization.Model):
         "recent_graduate": {"key": "recentGraduate", "type": "bool"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        degrees: Optional[List[str]] = None,
+        highest_degree_types: Optional[List[str]] = None,
+        institutions: Optional[List[str]] = None,
+        current_student: Optional[bool] = None,
+        recent_graduate: Optional[bool] = None,
+        **kwargs,
+    ):
         """
         :keyword degrees:
         :paramtype degrees: list[str]
@@ -12157,11 +14416,11 @@ class ResumeSearchDetailEducationMissing(msrest.serialization.Model):
         :paramtype recent_graduate: bool
         """
         super(ResumeSearchDetailEducationMissing, self).__init__(**kwargs)
-        self.degrees = kwargs.get("degrees", None)
-        self.highest_degree_types = kwargs.get("highest_degree_types", None)
-        self.institutions = kwargs.get("institutions", None)
-        self.current_student = kwargs.get("current_student", None)
-        self.recent_graduate = kwargs.get("recent_graduate", None)
+        self.degrees = degrees
+        self.highest_degree_types = highest_degree_types
+        self.institutions = institutions
+        self.current_student = current_student
+        self.recent_graduate = recent_graduate
 
 
 class ResumeSearchDetailEducationValueItem(
@@ -12177,13 +14436,13 @@ class ResumeSearchDetailEducationValueItem(
     :ivar organization:
     :vartype organization: str
     :ivar accreditation:
-    :vartype accreditation: ~affinda.models.Accreditation
+    :vartype accreditation: ~affinda_v2.models.Accreditation
     :ivar grade:
-    :vartype grade: ~affinda.models.EducationGrade
+    :vartype grade: ~affinda_v2.models.EducationGrade
     :ivar location:
-    :vartype location: ~affinda.models.Location
+    :vartype location: ~affinda_v2.models.Location
     :ivar dates:
-    :vartype dates: ~affinda.models.EducationDates
+    :vartype dates: ~affinda_v2.models.EducationDates
     """
 
     _validation = {
@@ -12200,7 +14459,18 @@ class ResumeSearchDetailEducationValueItem(
         "dates": {"key": "dates", "type": "EducationDates"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        match: Optional[bool] = None,
+        id: Optional[int] = None,
+        organization: Optional[str] = None,
+        accreditation: Optional["_models.Accreditation"] = None,
+        grade: Optional["_models.EducationGrade"] = None,
+        location: Optional["_models.Location"] = None,
+        dates: Optional["_models.EducationDates"] = None,
+        **kwargs,
+    ):
         """
         :keyword match:
         :paramtype match: bool
@@ -12209,22 +14479,31 @@ class ResumeSearchDetailEducationValueItem(
         :keyword organization:
         :paramtype organization: str
         :keyword accreditation:
-        :paramtype accreditation: ~affinda.models.Accreditation
+        :paramtype accreditation: ~affinda_v2.models.Accreditation
         :keyword grade:
-        :paramtype grade: ~affinda.models.EducationGrade
+        :paramtype grade: ~affinda_v2.models.EducationGrade
         :keyword location:
-        :paramtype location: ~affinda.models.Location
+        :paramtype location: ~affinda_v2.models.Location
         :keyword dates:
-        :paramtype dates: ~affinda.models.EducationDates
+        :paramtype dates: ~affinda_v2.models.EducationDates
         """
-        super(ResumeSearchDetailEducationValueItem, self).__init__(**kwargs)
-        self.match = kwargs.get("match", None)
-        self.id = kwargs.get("id", None)
-        self.organization = kwargs.get("organization", None)
-        self.accreditation = kwargs.get("accreditation", None)
-        self.grade = kwargs.get("grade", None)
-        self.location = kwargs.get("location", None)
-        self.dates = kwargs.get("dates", None)
+        super(ResumeSearchDetailEducationValueItem, self).__init__(
+            id=id,
+            organization=organization,
+            accreditation=accreditation,
+            grade=grade,
+            location=location,
+            dates=dates,
+            match=match,
+            **kwargs,
+        )
+        self.match = match
+        self.id = id
+        self.organization = organization
+        self.accreditation = accreditation
+        self.grade = grade
+        self.location = location
+        self.dates = dates
 
 
 class ResumeSearchDetailExperience(msrest.serialization.Model):
@@ -12245,7 +14524,7 @@ class ResumeSearchDetailExperience(msrest.serialization.Model):
         "match": {"key": "match", "type": "bool"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(self, *, years: Optional[int] = None, match: Optional[bool] = None, **kwargs):
         """
         :keyword years:
         :paramtype years: int
@@ -12253,8 +14532,8 @@ class ResumeSearchDetailExperience(msrest.serialization.Model):
         :paramtype match: bool
         """
         super(ResumeSearchDetailExperience, self).__init__(**kwargs)
-        self.years = kwargs.get("years", None)
-        self.match = kwargs.get("match", None)
+        self.years = years
+        self.match = match
 
 
 class ResumeSearchDetailJobTitle(msrest.serialization.Model):
@@ -12263,7 +14542,7 @@ class ResumeSearchDetailJobTitle(msrest.serialization.Model):
     :ivar missing:
     :vartype missing: list[str]
     :ivar value:
-    :vartype value: list[~affinda.models.ResumeSearchDetailJobTitleValueItem]
+    :vartype value: list[~affinda_v2.models.ResumeSearchDetailJobTitleValueItem]
     """
 
     _attribute_map = {
@@ -12271,16 +14550,22 @@ class ResumeSearchDetailJobTitle(msrest.serialization.Model):
         "value": {"key": "value", "type": "[ResumeSearchDetailJobTitleValueItem]"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        missing: Optional[List[str]] = None,
+        value: Optional[List["_models.ResumeSearchDetailJobTitleValueItem"]] = None,
+        **kwargs,
+    ):
         """
         :keyword missing:
         :paramtype missing: list[str]
         :keyword value:
-        :paramtype value: list[~affinda.models.ResumeSearchDetailJobTitleValueItem]
+        :paramtype value: list[~affinda_v2.models.ResumeSearchDetailJobTitleValueItem]
         """
         super(ResumeSearchDetailJobTitle, self).__init__(**kwargs)
-        self.missing = kwargs.get("missing", None)
-        self.value = kwargs.get("value", None)
+        self.missing = missing
+        self.value = value
 
 
 class ResumeSearchDetailJobTitleValueItem(msrest.serialization.Model):
@@ -12306,7 +14591,16 @@ class ResumeSearchDetailJobTitleValueItem(msrest.serialization.Model):
         "match": {"key": "match", "type": "bool"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        name: Optional[str] = None,
+        start_date: Optional[str] = None,
+        end_date: Optional[str] = None,
+        company_name: Optional[str] = None,
+        match: Optional[bool] = None,
+        **kwargs,
+    ):
         """
         :keyword name:
         :paramtype name: str
@@ -12320,20 +14614,20 @@ class ResumeSearchDetailJobTitleValueItem(msrest.serialization.Model):
         :paramtype match: bool
         """
         super(ResumeSearchDetailJobTitleValueItem, self).__init__(**kwargs)
-        self.name = kwargs.get("name", None)
-        self.start_date = kwargs.get("start_date", None)
-        self.end_date = kwargs.get("end_date", None)
-        self.company_name = kwargs.get("company_name", None)
-        self.match = kwargs.get("match", None)
+        self.name = name
+        self.start_date = start_date
+        self.end_date = end_date
+        self.company_name = company_name
+        self.match = match
 
 
 class ResumeSearchDetailLanguages(msrest.serialization.Model):
     """ResumeSearchDetailLanguages.
 
     :ivar missing:
-    :vartype missing: list[~affinda.models.ResumeSearchParametersSkill]
+    :vartype missing: list[~affinda_v2.models.ResumeSearchParametersSkill]
     :ivar value:
-    :vartype value: list[~affinda.models.ResumeSearchDetailLanguagesValueItem]
+    :vartype value: list[~affinda_v2.models.ResumeSearchDetailLanguagesValueItem]
     """
 
     _attribute_map = {
@@ -12341,16 +14635,22 @@ class ResumeSearchDetailLanguages(msrest.serialization.Model):
         "value": {"key": "value", "type": "[ResumeSearchDetailLanguagesValueItem]"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        missing: Optional[List["_models.ResumeSearchParametersSkill"]] = None,
+        value: Optional[List["_models.ResumeSearchDetailLanguagesValueItem"]] = None,
+        **kwargs,
+    ):
         """
         :keyword missing:
-        :paramtype missing: list[~affinda.models.ResumeSearchParametersSkill]
+        :paramtype missing: list[~affinda_v2.models.ResumeSearchParametersSkill]
         :keyword value:
-        :paramtype value: list[~affinda.models.ResumeSearchDetailLanguagesValueItem]
+        :paramtype value: list[~affinda_v2.models.ResumeSearchDetailLanguagesValueItem]
         """
         super(ResumeSearchDetailLanguages, self).__init__(**kwargs)
-        self.missing = kwargs.get("missing", None)
-        self.value = kwargs.get("value", None)
+        self.missing = missing
+        self.value = value
 
 
 class ResumeSkill(msrest.serialization.Model):
@@ -12365,7 +14665,7 @@ class ResumeSkill(msrest.serialization.Model):
     :ivar type:
     :vartype type: str
     :ivar sources:
-    :vartype sources: list[~affinda.models.ResumeSkillSourcesItem]
+    :vartype sources: list[~affinda_v2.models.ResumeSkillSourcesItem]
     """
 
     _validation = {
@@ -12380,7 +14680,16 @@ class ResumeSkill(msrest.serialization.Model):
         "sources": {"key": "sources", "type": "[ResumeSkillSourcesItem]"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        name: Optional[str] = None,
+        last_used: Optional[str] = None,
+        number_of_months: Optional[int] = None,
+        type: Optional[str] = None,
+        sources: Optional[List["_models.ResumeSkillSourcesItem"]] = None,
+        **kwargs,
+    ):
         """
         :keyword name:
         :paramtype name: str
@@ -12391,14 +14700,14 @@ class ResumeSkill(msrest.serialization.Model):
         :keyword type:
         :paramtype type: str
         :keyword sources:
-        :paramtype sources: list[~affinda.models.ResumeSkillSourcesItem]
+        :paramtype sources: list[~affinda_v2.models.ResumeSkillSourcesItem]
         """
         super(ResumeSkill, self).__init__(**kwargs)
-        self.name = kwargs.get("name", None)
-        self.last_used = kwargs.get("last_used", None)
-        self.number_of_months = kwargs.get("number_of_months", None)
-        self.type = kwargs.get("type", None)
-        self.sources = kwargs.get("sources", None)
+        self.name = name
+        self.last_used = last_used
+        self.number_of_months = number_of_months
+        self.type = type
+        self.sources = sources
 
 
 class ResumeSearchDetailLanguagesValueItem(
@@ -12418,7 +14727,7 @@ class ResumeSearchDetailLanguagesValueItem(
     :ivar type:
     :vartype type: str
     :ivar sources:
-    :vartype sources: list[~affinda.models.ResumeSkillSourcesItem]
+    :vartype sources: list[~affinda_v2.models.ResumeSkillSourcesItem]
     """
 
     _validation = {
@@ -12434,7 +14743,17 @@ class ResumeSearchDetailLanguagesValueItem(
         "sources": {"key": "sources", "type": "[ResumeSkillSourcesItem]"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        match: Optional[bool] = None,
+        name: Optional[str] = None,
+        last_used: Optional[str] = None,
+        number_of_months: Optional[int] = None,
+        type: Optional[str] = None,
+        sources: Optional[List["_models.ResumeSkillSourcesItem"]] = None,
+        **kwargs,
+    ):
         """
         :keyword match:
         :paramtype match: bool
@@ -12447,24 +14766,32 @@ class ResumeSearchDetailLanguagesValueItem(
         :keyword type:
         :paramtype type: str
         :keyword sources:
-        :paramtype sources: list[~affinda.models.ResumeSkillSourcesItem]
+        :paramtype sources: list[~affinda_v2.models.ResumeSkillSourcesItem]
         """
-        super(ResumeSearchDetailLanguagesValueItem, self).__init__(**kwargs)
-        self.match = kwargs.get("match", None)
-        self.name = kwargs.get("name", None)
-        self.last_used = kwargs.get("last_used", None)
-        self.number_of_months = kwargs.get("number_of_months", None)
-        self.type = kwargs.get("type", None)
-        self.sources = kwargs.get("sources", None)
+        super(ResumeSearchDetailLanguagesValueItem, self).__init__(
+            name=name,
+            last_used=last_used,
+            number_of_months=number_of_months,
+            type=type,
+            sources=sources,
+            match=match,
+            **kwargs,
+        )
+        self.match = match
+        self.name = name
+        self.last_used = last_used
+        self.number_of_months = number_of_months
+        self.type = type
+        self.sources = sources
 
 
 class ResumeSearchDetailLocation(msrest.serialization.Model):
     """ResumeSearchDetailLocation.
 
     :ivar missing:
-    :vartype missing: list[~affinda.models.ResumeSearchParametersLocation]
+    :vartype missing: list[~affinda_v2.models.ResumeSearchParametersLocation]
     :ivar value:
-    :vartype value: ~affinda.models.ResumeSearchDetailLocationValue
+    :vartype value: ~affinda_v2.models.ResumeSearchDetailLocationValue
     """
 
     _attribute_map = {
@@ -12472,16 +14799,22 @@ class ResumeSearchDetailLocation(msrest.serialization.Model):
         "value": {"key": "value", "type": "ResumeSearchDetailLocationValue"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        missing: Optional[List["_models.ResumeSearchParametersLocation"]] = None,
+        value: Optional["_models.ResumeSearchDetailLocationValue"] = None,
+        **kwargs,
+    ):
         """
         :keyword missing:
-        :paramtype missing: list[~affinda.models.ResumeSearchParametersLocation]
+        :paramtype missing: list[~affinda_v2.models.ResumeSearchParametersLocation]
         :keyword value:
-        :paramtype value: ~affinda.models.ResumeSearchDetailLocationValue
+        :paramtype value: ~affinda_v2.models.ResumeSearchDetailLocationValue
         """
         super(ResumeSearchDetailLocation, self).__init__(**kwargs)
-        self.missing = kwargs.get("missing", None)
-        self.value = kwargs.get("value", None)
+        self.missing = missing
+        self.value = value
 
 
 class ResumeSearchDetailLocationValue(
@@ -12560,22 +14893,24 @@ class ResumeSearchDetailLocationValue(
         "po_box": {"key": "poBox", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(self, *, raw_input: str, match: Optional[bool] = None, **kwargs):
         """
         :keyword match:
         :paramtype match: bool
         :keyword raw_input: Required.
         :paramtype raw_input: str
         """
-        super(ResumeSearchDetailLocationValue, self).__init__(**kwargs)
-        self.match = kwargs.get("match", None)
+        super(ResumeSearchDetailLocationValue, self).__init__(
+            raw_input=raw_input, match=match, **kwargs
+        )
+        self.match = match
         self.formatted = None
         self.postal_code = None
         self.state = None
         self.state_code = None
         self.country = None
         self.country_code = None
-        self.raw_input = kwargs["raw_input"]
+        self.raw_input = raw_input
         self.street_number = None
         self.street = None
         self.apartment_number = None
@@ -12589,7 +14924,7 @@ class ResumeSearchDetailManagementLevel(msrest.serialization.Model):
     """ResumeSearchDetailManagementLevel.
 
     :ivar level: Known values are: "None", "Low", "Mid", "Upper".
-    :vartype level: str or ~affinda.models.ManagementLevel
+    :vartype level: str or ~affinda_v2.models.ManagementLevel
     :ivar match:
     :vartype match: bool
     """
@@ -12599,16 +14934,22 @@ class ResumeSearchDetailManagementLevel(msrest.serialization.Model):
         "match": {"key": "match", "type": "bool"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        level: Optional[Union[str, "_models.ManagementLevel"]] = None,
+        match: Optional[bool] = None,
+        **kwargs,
+    ):
         """
         :keyword level: Known values are: "None", "Low", "Mid", "Upper".
-        :paramtype level: str or ~affinda.models.ManagementLevel
+        :paramtype level: str or ~affinda_v2.models.ManagementLevel
         :keyword match:
         :paramtype match: bool
         """
         super(ResumeSearchDetailManagementLevel, self).__init__(**kwargs)
-        self.level = kwargs.get("level", None)
-        self.match = kwargs.get("match", None)
+        self.level = level
+        self.match = match
 
 
 class ResumeSearchDetailOccupationGroup(msrest.serialization.Model):
@@ -12617,7 +14958,7 @@ class ResumeSearchDetailOccupationGroup(msrest.serialization.Model):
     :ivar missing:
     :vartype missing: list[int]
     :ivar value:
-    :vartype value: list[~affinda.models.OccupationGroupSearchResult]
+    :vartype value: list[~affinda_v2.models.OccupationGroupSearchResult]
     """
 
     _attribute_map = {
@@ -12625,16 +14966,22 @@ class ResumeSearchDetailOccupationGroup(msrest.serialization.Model):
         "value": {"key": "value", "type": "[OccupationGroupSearchResult]"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        missing: Optional[List[int]] = None,
+        value: Optional[List["_models.OccupationGroupSearchResult"]] = None,
+        **kwargs,
+    ):
         """
         :keyword missing:
         :paramtype missing: list[int]
         :keyword value:
-        :paramtype value: list[~affinda.models.OccupationGroupSearchResult]
+        :paramtype value: list[~affinda_v2.models.OccupationGroupSearchResult]
         """
         super(ResumeSearchDetailOccupationGroup, self).__init__(**kwargs)
-        self.missing = kwargs.get("missing", None)
-        self.value = kwargs.get("value", None)
+        self.missing = missing
+        self.value = value
 
 
 class ResumeSearchDetailSearchExpression(msrest.serialization.Model):
@@ -12651,7 +14998,9 @@ class ResumeSearchDetailSearchExpression(msrest.serialization.Model):
         "value": {"key": "value", "type": "[str]"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self, *, missing: Optional[List[str]] = None, value: Optional[List[str]] = None, **kwargs
+    ):
         """
         :keyword missing:
         :paramtype missing: list[str]
@@ -12659,17 +15008,17 @@ class ResumeSearchDetailSearchExpression(msrest.serialization.Model):
         :paramtype value: list[str]
         """
         super(ResumeSearchDetailSearchExpression, self).__init__(**kwargs)
-        self.missing = kwargs.get("missing", None)
-        self.value = kwargs.get("value", None)
+        self.missing = missing
+        self.value = value
 
 
 class ResumeSearchDetailSkills(msrest.serialization.Model):
     """ResumeSearchDetailSkills.
 
     :ivar missing:
-    :vartype missing: list[~affinda.models.ResumeSearchParametersSkill]
+    :vartype missing: list[~affinda_v2.models.ResumeSearchParametersSkill]
     :ivar value:
-    :vartype value: list[~affinda.models.ResumeSearchDetailSkillsValueItem]
+    :vartype value: list[~affinda_v2.models.ResumeSearchDetailSkillsValueItem]
     """
 
     _attribute_map = {
@@ -12677,16 +15026,22 @@ class ResumeSearchDetailSkills(msrest.serialization.Model):
         "value": {"key": "value", "type": "[ResumeSearchDetailSkillsValueItem]"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        missing: Optional[List["_models.ResumeSearchParametersSkill"]] = None,
+        value: Optional[List["_models.ResumeSearchDetailSkillsValueItem"]] = None,
+        **kwargs,
+    ):
         """
         :keyword missing:
-        :paramtype missing: list[~affinda.models.ResumeSearchParametersSkill]
+        :paramtype missing: list[~affinda_v2.models.ResumeSearchParametersSkill]
         :keyword value:
-        :paramtype value: list[~affinda.models.ResumeSearchDetailSkillsValueItem]
+        :paramtype value: list[~affinda_v2.models.ResumeSearchDetailSkillsValueItem]
         """
         super(ResumeSearchDetailSkills, self).__init__(**kwargs)
-        self.missing = kwargs.get("missing", None)
-        self.value = kwargs.get("value", None)
+        self.missing = missing
+        self.value = value
 
 
 class ResumeSearchDetailSkillsValueItem(
@@ -12706,7 +15061,7 @@ class ResumeSearchDetailSkillsValueItem(
     :ivar type:
     :vartype type: str
     :ivar sources:
-    :vartype sources: list[~affinda.models.ResumeSkillSourcesItem]
+    :vartype sources: list[~affinda_v2.models.ResumeSkillSourcesItem]
     """
 
     _validation = {
@@ -12722,7 +15077,17 @@ class ResumeSearchDetailSkillsValueItem(
         "sources": {"key": "sources", "type": "[ResumeSkillSourcesItem]"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        match: Optional[bool] = None,
+        name: Optional[str] = None,
+        last_used: Optional[str] = None,
+        number_of_months: Optional[int] = None,
+        type: Optional[str] = None,
+        sources: Optional[List["_models.ResumeSkillSourcesItem"]] = None,
+        **kwargs,
+    ):
         """
         :keyword match:
         :paramtype match: bool
@@ -12735,15 +15100,23 @@ class ResumeSearchDetailSkillsValueItem(
         :keyword type:
         :paramtype type: str
         :keyword sources:
-        :paramtype sources: list[~affinda.models.ResumeSkillSourcesItem]
+        :paramtype sources: list[~affinda_v2.models.ResumeSkillSourcesItem]
         """
-        super(ResumeSearchDetailSkillsValueItem, self).__init__(**kwargs)
-        self.match = kwargs.get("match", None)
-        self.name = kwargs.get("name", None)
-        self.last_used = kwargs.get("last_used", None)
-        self.number_of_months = kwargs.get("number_of_months", None)
-        self.type = kwargs.get("type", None)
-        self.sources = kwargs.get("sources", None)
+        super(ResumeSearchDetailSkillsValueItem, self).__init__(
+            name=name,
+            last_used=last_used,
+            number_of_months=number_of_months,
+            type=type,
+            sources=sources,
+            match=match,
+            **kwargs,
+        )
+        self.match = match
+        self.name = name
+        self.last_used = last_used
+        self.number_of_months = number_of_months
+        self.type = type
+        self.sources = sources
 
 
 class ResumeSearchEmbed(msrest.serialization.Model):
@@ -12757,13 +15130,13 @@ class ResumeSearchEmbed(msrest.serialization.Model):
         "url": {"key": "url", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(self, *, url: Optional[str] = None, **kwargs):
         """
         :keyword url: The signed URL for the embedable search tool.
         :paramtype url: str
         """
         super(ResumeSearchEmbed, self).__init__(**kwargs)
-        self.url = kwargs.get("url", None)
+        self.url = url
 
 
 class ResumeSearchMatch(msrest.serialization.Model):
@@ -12772,7 +15145,7 @@ class ResumeSearchMatch(msrest.serialization.Model):
     :ivar score: The matching score between the provided resume and job description.
     :vartype score: float
     :ivar details:
-    :vartype details: ~affinda.models.ResumeSearchMatchDetails
+    :vartype details: ~affinda_v2.models.ResumeSearchMatchDetails
     """
 
     _validation = {
@@ -12784,39 +15157,45 @@ class ResumeSearchMatch(msrest.serialization.Model):
         "details": {"key": "details", "type": "ResumeSearchMatchDetails"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        score: Optional[float] = None,
+        details: Optional["_models.ResumeSearchMatchDetails"] = None,
+        **kwargs,
+    ):
         """
         :keyword score: The matching score between the provided resume and job description.
         :paramtype score: float
         :keyword details:
-        :paramtype details: ~affinda.models.ResumeSearchMatchDetails
+        :paramtype details: ~affinda_v2.models.ResumeSearchMatchDetails
         """
         super(ResumeSearchMatch, self).__init__(**kwargs)
-        self.score = kwargs.get("score", None)
-        self.details = kwargs.get("details", None)
+        self.score = score
+        self.details = details
 
 
 class ResumeSearchMatchDetails(msrest.serialization.Model):
     """ResumeSearchMatchDetails.
 
     :ivar job_title:
-    :vartype job_title: ~affinda.models.JobTitleSearchScoreComponent
+    :vartype job_title: ~affinda_v2.models.JobTitleSearchScoreComponent
     :ivar management_level:
-    :vartype management_level: ~affinda.models.ManagementLevelSearchScoreComponent
+    :vartype management_level: ~affinda_v2.models.ManagementLevelSearchScoreComponent
     :ivar experience:
-    :vartype experience: ~affinda.models.ExperienceSearchScoreComponent
+    :vartype experience: ~affinda_v2.models.ExperienceSearchScoreComponent
     :ivar skills:
-    :vartype skills: ~affinda.models.SkillsSearchScoreComponent
+    :vartype skills: ~affinda_v2.models.SkillsSearchScoreComponent
     :ivar languages:
-    :vartype languages: ~affinda.models.LanguagesSearchScoreComponent
+    :vartype languages: ~affinda_v2.models.LanguagesSearchScoreComponent
     :ivar location:
-    :vartype location: ~affinda.models.LocationSearchScoreComponent
+    :vartype location: ~affinda_v2.models.LocationSearchScoreComponent
     :ivar education:
-    :vartype education: ~affinda.models.EducationSearchScoreComponent
+    :vartype education: ~affinda_v2.models.EducationSearchScoreComponent
     :ivar occupation_group:
-    :vartype occupation_group: ~affinda.models.OccupationGroupSearchScoreComponent
+    :vartype occupation_group: ~affinda_v2.models.OccupationGroupSearchScoreComponent
     :ivar search_expression:
-    :vartype search_expression: ~affinda.models.SearchExpressionSearchScoreComponent
+    :vartype search_expression: ~affinda_v2.models.SearchExpressionSearchScoreComponent
     """
 
     _attribute_map = {
@@ -12840,37 +15219,50 @@ class ResumeSearchMatchDetails(msrest.serialization.Model):
         },
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        job_title: Optional["_models.JobTitleSearchScoreComponent"] = None,
+        management_level: Optional["_models.ManagementLevelSearchScoreComponent"] = None,
+        experience: Optional["_models.ExperienceSearchScoreComponent"] = None,
+        skills: Optional["_models.SkillsSearchScoreComponent"] = None,
+        languages: Optional["_models.LanguagesSearchScoreComponent"] = None,
+        location: Optional["_models.LocationSearchScoreComponent"] = None,
+        education: Optional["_models.EducationSearchScoreComponent"] = None,
+        occupation_group: Optional["_models.OccupationGroupSearchScoreComponent"] = None,
+        search_expression: Optional["_models.SearchExpressionSearchScoreComponent"] = None,
+        **kwargs,
+    ):
         """
         :keyword job_title:
-        :paramtype job_title: ~affinda.models.JobTitleSearchScoreComponent
+        :paramtype job_title: ~affinda_v2.models.JobTitleSearchScoreComponent
         :keyword management_level:
-        :paramtype management_level: ~affinda.models.ManagementLevelSearchScoreComponent
+        :paramtype management_level: ~affinda_v2.models.ManagementLevelSearchScoreComponent
         :keyword experience:
-        :paramtype experience: ~affinda.models.ExperienceSearchScoreComponent
+        :paramtype experience: ~affinda_v2.models.ExperienceSearchScoreComponent
         :keyword skills:
-        :paramtype skills: ~affinda.models.SkillsSearchScoreComponent
+        :paramtype skills: ~affinda_v2.models.SkillsSearchScoreComponent
         :keyword languages:
-        :paramtype languages: ~affinda.models.LanguagesSearchScoreComponent
+        :paramtype languages: ~affinda_v2.models.LanguagesSearchScoreComponent
         :keyword location:
-        :paramtype location: ~affinda.models.LocationSearchScoreComponent
+        :paramtype location: ~affinda_v2.models.LocationSearchScoreComponent
         :keyword education:
-        :paramtype education: ~affinda.models.EducationSearchScoreComponent
+        :paramtype education: ~affinda_v2.models.EducationSearchScoreComponent
         :keyword occupation_group:
-        :paramtype occupation_group: ~affinda.models.OccupationGroupSearchScoreComponent
+        :paramtype occupation_group: ~affinda_v2.models.OccupationGroupSearchScoreComponent
         :keyword search_expression:
-        :paramtype search_expression: ~affinda.models.SearchExpressionSearchScoreComponent
+        :paramtype search_expression: ~affinda_v2.models.SearchExpressionSearchScoreComponent
         """
         super(ResumeSearchMatchDetails, self).__init__(**kwargs)
-        self.job_title = kwargs.get("job_title", None)
-        self.management_level = kwargs.get("management_level", None)
-        self.experience = kwargs.get("experience", None)
-        self.skills = kwargs.get("skills", None)
-        self.languages = kwargs.get("languages", None)
-        self.location = kwargs.get("location", None)
-        self.education = kwargs.get("education", None)
-        self.occupation_group = kwargs.get("occupation_group", None)
-        self.search_expression = kwargs.get("search_expression", None)
+        self.job_title = job_title
+        self.management_level = management_level
+        self.experience = experience
+        self.skills = skills
+        self.languages = languages
+        self.location = location
+        self.education = education
+        self.occupation_group = occupation_group
+        self.search_expression = search_expression
 
 
 class ResumeSearchParameters(msrest.serialization.Model):
@@ -12901,17 +15293,17 @@ class ResumeSearchParameters(msrest.serialization.Model):
     :ivar years_experience_weight:
     :vartype years_experience_weight: float
     :ivar locations: Search by location name or by coordinates.
-    :vartype locations: list[~affinda.models.ResumeSearchParametersLocation]
+    :vartype locations: list[~affinda_v2.models.ResumeSearchParametersLocation]
     :ivar locations_weight:
     :vartype locations_weight: float
     :ivar locations_required:
     :vartype locations_required: bool
     :ivar skills:
-    :vartype skills: list[~affinda.models.ResumeSearchParametersSkill]
+    :vartype skills: list[~affinda_v2.models.ResumeSearchParametersSkill]
     :ivar skills_weight:
     :vartype skills_weight: float
     :ivar languages:
-    :vartype languages: list[~affinda.models.ResumeSearchParametersSkill]
+    :vartype languages: list[~affinda_v2.models.ResumeSearchParametersSkill]
     :ivar languages_weight:
     :vartype languages_weight: float
     :ivar institutions:
@@ -12923,7 +15315,7 @@ class ResumeSearchParameters(msrest.serialization.Model):
     :ivar degrees_required:
     :vartype degrees_required: bool
     :ivar highest_degree_types:
-    :vartype highest_degree_types: list[str or ~affinda.models.EducationLevel]
+    :vartype highest_degree_types: list[str or ~affinda_v2.models.EducationLevel]
     :ivar highest_degree_types_required:
     :vartype highest_degree_types_required: bool
     :ivar is_current_student: Search for student canditates.
@@ -12949,13 +15341,13 @@ class ResumeSearchParameters(msrest.serialization.Model):
     :ivar soc_codes_required:
     :vartype soc_codes_required: bool
     :ivar management_level: Known values are: "None", "Low", "Mid", "Upper".
-    :vartype management_level: str or ~affinda.models.ManagementLevel
+    :vartype management_level: str or ~affinda_v2.models.ManagementLevel
     :ivar management_level_required:
     :vartype management_level_required: bool
     :ivar management_level_weight:
     :vartype management_level_weight: float
     :ivar custom_data:
-    :vartype custom_data: list[~affinda.models.ResumeSearchParametersCustomData]
+    :vartype custom_data: list[~affinda_v2.models.ResumeSearchParametersCustomData]
     """
 
     _validation = {
@@ -13016,7 +15408,50 @@ class ResumeSearchParameters(msrest.serialization.Model):
         "custom_data": {"key": "customData", "type": "[ResumeSearchParametersCustomData]"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        indices: List[str],
+        job_description: Optional[str] = None,
+        resume: Optional[str] = None,
+        job_titles: Optional[List[str]] = None,
+        job_titles_current_only: Optional[bool] = None,
+        job_titles_required: Optional[bool] = None,
+        job_titles_weight: Optional[float] = None,
+        years_experience_min: Optional[int] = None,
+        years_experience_max: Optional[int] = None,
+        years_experience_required: Optional[bool] = None,
+        years_experience_weight: Optional[float] = None,
+        locations: Optional[List["_models.ResumeSearchParametersLocation"]] = None,
+        locations_weight: Optional[float] = None,
+        locations_required: Optional[bool] = None,
+        skills: Optional[List["_models.ResumeSearchParametersSkill"]] = None,
+        skills_weight: Optional[float] = None,
+        languages: Optional[List["_models.ResumeSearchParametersSkill"]] = None,
+        languages_weight: Optional[float] = None,
+        institutions: Optional[List[str]] = None,
+        institutions_required: Optional[bool] = None,
+        degrees: Optional[List[str]] = None,
+        degrees_required: Optional[bool] = None,
+        highest_degree_types: Optional[List[Union[str, "_models.EducationLevel"]]] = None,
+        highest_degree_types_required: Optional[bool] = None,
+        is_current_student: Optional[bool] = None,
+        is_current_student_required: Optional[bool] = None,
+        is_recent_graduate: Optional[bool] = None,
+        is_recent_graduate_required: Optional[bool] = None,
+        education_weight: Optional[float] = None,
+        search_expression: Optional[str] = None,
+        search_expression_required: Optional[bool] = None,
+        search_expression_weight: Optional[float] = None,
+        soc_codes: Optional[List[int]] = None,
+        soc_codes_weight: Optional[float] = None,
+        soc_codes_required: Optional[bool] = None,
+        management_level: Optional[Union[str, "_models.ManagementLevel"]] = None,
+        management_level_required: Optional[bool] = None,
+        management_level_weight: Optional[float] = None,
+        custom_data: Optional[List["_models.ResumeSearchParametersCustomData"]] = None,
+        **kwargs,
+    ):
         """
         :keyword indices: Required.
         :paramtype indices: list[str]
@@ -13041,17 +15476,17 @@ class ResumeSearchParameters(msrest.serialization.Model):
         :keyword years_experience_weight:
         :paramtype years_experience_weight: float
         :keyword locations: Search by location name or by coordinates.
-        :paramtype locations: list[~affinda.models.ResumeSearchParametersLocation]
+        :paramtype locations: list[~affinda_v2.models.ResumeSearchParametersLocation]
         :keyword locations_weight:
         :paramtype locations_weight: float
         :keyword locations_required:
         :paramtype locations_required: bool
         :keyword skills:
-        :paramtype skills: list[~affinda.models.ResumeSearchParametersSkill]
+        :paramtype skills: list[~affinda_v2.models.ResumeSearchParametersSkill]
         :keyword skills_weight:
         :paramtype skills_weight: float
         :keyword languages:
-        :paramtype languages: list[~affinda.models.ResumeSearchParametersSkill]
+        :paramtype languages: list[~affinda_v2.models.ResumeSearchParametersSkill]
         :keyword languages_weight:
         :paramtype languages_weight: float
         :keyword institutions:
@@ -13063,7 +15498,7 @@ class ResumeSearchParameters(msrest.serialization.Model):
         :keyword degrees_required:
         :paramtype degrees_required: bool
         :keyword highest_degree_types:
-        :paramtype highest_degree_types: list[str or ~affinda.models.EducationLevel]
+        :paramtype highest_degree_types: list[str or ~affinda_v2.models.EducationLevel]
         :keyword highest_degree_types_required:
         :paramtype highest_degree_types_required: bool
         :keyword is_current_student: Search for student canditates.
@@ -13089,54 +15524,54 @@ class ResumeSearchParameters(msrest.serialization.Model):
         :keyword soc_codes_required:
         :paramtype soc_codes_required: bool
         :keyword management_level: Known values are: "None", "Low", "Mid", "Upper".
-        :paramtype management_level: str or ~affinda.models.ManagementLevel
+        :paramtype management_level: str or ~affinda_v2.models.ManagementLevel
         :keyword management_level_required:
         :paramtype management_level_required: bool
         :keyword management_level_weight:
         :paramtype management_level_weight: float
         :keyword custom_data:
-        :paramtype custom_data: list[~affinda.models.ResumeSearchParametersCustomData]
+        :paramtype custom_data: list[~affinda_v2.models.ResumeSearchParametersCustomData]
         """
         super(ResumeSearchParameters, self).__init__(**kwargs)
-        self.indices = kwargs["indices"]
-        self.job_description = kwargs.get("job_description", None)
-        self.resume = kwargs.get("resume", None)
-        self.job_titles = kwargs.get("job_titles", None)
-        self.job_titles_current_only = kwargs.get("job_titles_current_only", None)
-        self.job_titles_required = kwargs.get("job_titles_required", None)
-        self.job_titles_weight = kwargs.get("job_titles_weight", None)
-        self.years_experience_min = kwargs.get("years_experience_min", None)
-        self.years_experience_max = kwargs.get("years_experience_max", None)
-        self.years_experience_required = kwargs.get("years_experience_required", None)
-        self.years_experience_weight = kwargs.get("years_experience_weight", None)
-        self.locations = kwargs.get("locations", None)
-        self.locations_weight = kwargs.get("locations_weight", None)
-        self.locations_required = kwargs.get("locations_required", None)
-        self.skills = kwargs.get("skills", None)
-        self.skills_weight = kwargs.get("skills_weight", None)
-        self.languages = kwargs.get("languages", None)
-        self.languages_weight = kwargs.get("languages_weight", None)
-        self.institutions = kwargs.get("institutions", None)
-        self.institutions_required = kwargs.get("institutions_required", None)
-        self.degrees = kwargs.get("degrees", None)
-        self.degrees_required = kwargs.get("degrees_required", None)
-        self.highest_degree_types = kwargs.get("highest_degree_types", None)
-        self.highest_degree_types_required = kwargs.get("highest_degree_types_required", None)
-        self.is_current_student = kwargs.get("is_current_student", None)
-        self.is_current_student_required = kwargs.get("is_current_student_required", None)
-        self.is_recent_graduate = kwargs.get("is_recent_graduate", None)
-        self.is_recent_graduate_required = kwargs.get("is_recent_graduate_required", None)
-        self.education_weight = kwargs.get("education_weight", None)
-        self.search_expression = kwargs.get("search_expression", None)
-        self.search_expression_required = kwargs.get("search_expression_required", None)
-        self.search_expression_weight = kwargs.get("search_expression_weight", None)
-        self.soc_codes = kwargs.get("soc_codes", None)
-        self.soc_codes_weight = kwargs.get("soc_codes_weight", None)
-        self.soc_codes_required = kwargs.get("soc_codes_required", None)
-        self.management_level = kwargs.get("management_level", None)
-        self.management_level_required = kwargs.get("management_level_required", None)
-        self.management_level_weight = kwargs.get("management_level_weight", None)
-        self.custom_data = kwargs.get("custom_data", None)
+        self.indices = indices
+        self.job_description = job_description
+        self.resume = resume
+        self.job_titles = job_titles
+        self.job_titles_current_only = job_titles_current_only
+        self.job_titles_required = job_titles_required
+        self.job_titles_weight = job_titles_weight
+        self.years_experience_min = years_experience_min
+        self.years_experience_max = years_experience_max
+        self.years_experience_required = years_experience_required
+        self.years_experience_weight = years_experience_weight
+        self.locations = locations
+        self.locations_weight = locations_weight
+        self.locations_required = locations_required
+        self.skills = skills
+        self.skills_weight = skills_weight
+        self.languages = languages
+        self.languages_weight = languages_weight
+        self.institutions = institutions
+        self.institutions_required = institutions_required
+        self.degrees = degrees
+        self.degrees_required = degrees_required
+        self.highest_degree_types = highest_degree_types
+        self.highest_degree_types_required = highest_degree_types_required
+        self.is_current_student = is_current_student
+        self.is_current_student_required = is_current_student_required
+        self.is_recent_graduate = is_recent_graduate
+        self.is_recent_graduate_required = is_recent_graduate_required
+        self.education_weight = education_weight
+        self.search_expression = search_expression
+        self.search_expression_required = search_expression_required
+        self.search_expression_weight = search_expression_weight
+        self.soc_codes = soc_codes
+        self.soc_codes_weight = soc_codes_weight
+        self.soc_codes_required = soc_codes_required
+        self.management_level = management_level
+        self.management_level_required = management_level_required
+        self.management_level_weight = management_level_weight
+        self.custom_data = custom_data
 
 
 class SearchParametersCustomData(msrest.serialization.Model):
@@ -13146,7 +15581,7 @@ class SearchParametersCustomData(msrest.serialization.Model):
 
     :ivar filter_type: Required. Data points of "text" type support only "equals" filterType,
      others support both "equals" and "range". Known values are: "equals", "range".
-    :vartype filter_type: str or ~affinda.models.SearchParametersCustomDataFilterType
+    :vartype filter_type: str or ~affinda_v2.models.SearchParametersCustomDataFilterType
     :ivar data_point: Required. The data point's slug.
     :vartype data_point: str
     :ivar query: Required. "equals" searches require the "value" key inside the query, and "range"
@@ -13173,11 +15608,20 @@ class SearchParametersCustomData(msrest.serialization.Model):
         "weight": {"key": "weight", "type": "float"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        filter_type: Union[str, "_models.SearchParametersCustomDataFilterType"],
+        data_point: str,
+        query: Any,
+        required: Optional[bool] = None,
+        weight: Optional[float] = None,
+        **kwargs,
+    ):
         """
         :keyword filter_type: Required. Data points of "text" type support only "equals" filterType,
          others support both "equals" and "range". Known values are: "equals", "range".
-        :paramtype filter_type: str or ~affinda.models.SearchParametersCustomDataFilterType
+        :paramtype filter_type: str or ~affinda_v2.models.SearchParametersCustomDataFilterType
         :keyword data_point: Required. The data point's slug.
         :paramtype data_point: str
         :keyword query: Required. "equals" searches require the "value" key inside the query, and
@@ -13190,11 +15634,11 @@ class SearchParametersCustomData(msrest.serialization.Model):
         :paramtype weight: float
         """
         super(SearchParametersCustomData, self).__init__(**kwargs)
-        self.filter_type = kwargs["filter_type"]
-        self.data_point = kwargs["data_point"]
-        self.query = kwargs["query"]
-        self.required = kwargs.get("required", None)
-        self.weight = kwargs.get("weight", None)
+        self.filter_type = filter_type
+        self.data_point = data_point
+        self.query = query
+        self.required = required
+        self.weight = weight
 
 
 class ResumeSearchParametersCustomData(SearchParametersCustomData):
@@ -13204,7 +15648,7 @@ class ResumeSearchParametersCustomData(SearchParametersCustomData):
 
     :ivar filter_type: Required. Data points of "text" type support only "equals" filterType,
      others support both "equals" and "range". Known values are: "equals", "range".
-    :vartype filter_type: str or ~affinda.models.SearchParametersCustomDataFilterType
+    :vartype filter_type: str or ~affinda_v2.models.SearchParametersCustomDataFilterType
     :ivar data_point: Required. The data point's slug.
     :vartype data_point: str
     :ivar query: Required. "equals" searches require the "value" key inside the query, and "range"
@@ -13231,11 +15675,20 @@ class ResumeSearchParametersCustomData(SearchParametersCustomData):
         "weight": {"key": "weight", "type": "float"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        filter_type: Union[str, "_models.SearchParametersCustomDataFilterType"],
+        data_point: str,
+        query: Any,
+        required: Optional[bool] = None,
+        weight: Optional[float] = None,
+        **kwargs,
+    ):
         """
         :keyword filter_type: Required. Data points of "text" type support only "equals" filterType,
          others support both "equals" and "range". Known values are: "equals", "range".
-        :paramtype filter_type: str or ~affinda.models.SearchParametersCustomDataFilterType
+        :paramtype filter_type: str or ~affinda_v2.models.SearchParametersCustomDataFilterType
         :keyword data_point: Required. The data point's slug.
         :paramtype data_point: str
         :keyword query: Required. "equals" searches require the "value" key inside the query, and
@@ -13247,7 +15700,14 @@ class ResumeSearchParametersCustomData(SearchParametersCustomData):
         :keyword weight:
         :paramtype weight: float
         """
-        super(ResumeSearchParametersCustomData, self).__init__(**kwargs)
+        super(ResumeSearchParametersCustomData, self).__init__(
+            filter_type=filter_type,
+            data_point=data_point,
+            query=query,
+            required=required,
+            weight=weight,
+            **kwargs,
+        )
 
 
 class ResumeSearchParametersLocation(msrest.serialization.Model):
@@ -13256,11 +15716,11 @@ class ResumeSearchParametersLocation(msrest.serialization.Model):
     :ivar name:
     :vartype name: str
     :ivar coordinates:
-    :vartype coordinates: ~affinda.models.ResumeSearchParametersLocationCoordinates
+    :vartype coordinates: ~affinda_v2.models.ResumeSearchParametersLocationCoordinates
     :ivar distance:
     :vartype distance: int
     :ivar unit: Known values are: "km", "mi". Default value: "km".
-    :vartype unit: str or ~affinda.models.SearchLocationUnit
+    :vartype unit: str or ~affinda_v2.models.SearchLocationUnit
     """
 
     _validation = {
@@ -13274,22 +15734,30 @@ class ResumeSearchParametersLocation(msrest.serialization.Model):
         "unit": {"key": "unit", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        name: Optional[str] = "",
+        coordinates: Optional["_models.ResumeSearchParametersLocationCoordinates"] = None,
+        distance: Optional[int] = 100,
+        unit: Optional[Union[str, "_models.SearchLocationUnit"]] = "km",
+        **kwargs,
+    ):
         """
         :keyword name:
         :paramtype name: str
         :keyword coordinates:
-        :paramtype coordinates: ~affinda.models.ResumeSearchParametersLocationCoordinates
+        :paramtype coordinates: ~affinda_v2.models.ResumeSearchParametersLocationCoordinates
         :keyword distance:
         :paramtype distance: int
         :keyword unit: Known values are: "km", "mi". Default value: "km".
-        :paramtype unit: str or ~affinda.models.SearchLocationUnit
+        :paramtype unit: str or ~affinda_v2.models.SearchLocationUnit
         """
         super(ResumeSearchParametersLocation, self).__init__(**kwargs)
-        self.name = kwargs.get("name", "")
-        self.coordinates = kwargs.get("coordinates", None)
-        self.distance = kwargs.get("distance", 100)
-        self.unit = kwargs.get("unit", "km")
+        self.name = name
+        self.coordinates = coordinates
+        self.distance = distance
+        self.unit = unit
 
 
 class ResumeSearchParametersLocationCoordinates(msrest.serialization.Model):
@@ -13306,7 +15774,9 @@ class ResumeSearchParametersLocationCoordinates(msrest.serialization.Model):
         "longitude": {"key": "longitude", "type": "float"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self, *, latitude: Optional[float] = None, longitude: Optional[float] = None, **kwargs
+    ):
         """
         :keyword latitude:
         :paramtype latitude: float
@@ -13314,8 +15784,8 @@ class ResumeSearchParametersLocationCoordinates(msrest.serialization.Model):
         :paramtype longitude: float
         """
         super(ResumeSearchParametersLocationCoordinates, self).__init__(**kwargs)
-        self.latitude = kwargs.get("latitude", None)
-        self.longitude = kwargs.get("longitude", None)
+        self.latitude = latitude
+        self.longitude = longitude
 
 
 class ResumeSearchParametersSkill(msrest.serialization.Model):
@@ -13332,7 +15802,7 @@ class ResumeSearchParametersSkill(msrest.serialization.Model):
         "required": {"key": "required", "type": "bool"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(self, *, name: Optional[str] = None, required: Optional[bool] = None, **kwargs):
         """
         :keyword name:
         :paramtype name: str
@@ -13340,8 +15810,8 @@ class ResumeSearchParametersSkill(msrest.serialization.Model):
         :paramtype required: bool
         """
         super(ResumeSearchParametersSkill, self).__init__(**kwargs)
-        self.name = kwargs.get("name", None)
-        self.required = kwargs.get("required", None)
+        self.name = name
+        self.required = required
 
 
 class ResumeSearchResult(msrest.serialization.Model):
@@ -13358,27 +15828,27 @@ class ResumeSearchResult(msrest.serialization.Model):
     :ivar name:
     :vartype name: str
     :ivar job_title: Required.
-    :vartype job_title: ~affinda.models.JobTitleSearchScoreComponent
+    :vartype job_title: ~affinda_v2.models.JobTitleSearchScoreComponent
     :ivar management_level: Required.
-    :vartype management_level: ~affinda.models.ManagementLevelSearchScoreComponent
+    :vartype management_level: ~affinda_v2.models.ManagementLevelSearchScoreComponent
     :ivar experience: Required.
-    :vartype experience: ~affinda.models.ExperienceSearchScoreComponent
+    :vartype experience: ~affinda_v2.models.ExperienceSearchScoreComponent
     :ivar skills: Required.
-    :vartype skills: ~affinda.models.SkillsSearchScoreComponent
+    :vartype skills: ~affinda_v2.models.SkillsSearchScoreComponent
     :ivar languages: Required.
-    :vartype languages: ~affinda.models.LanguagesSearchScoreComponent
+    :vartype languages: ~affinda_v2.models.LanguagesSearchScoreComponent
     :ivar location: Required.
-    :vartype location: ~affinda.models.LocationSearchScoreComponent
+    :vartype location: ~affinda_v2.models.LocationSearchScoreComponent
     :ivar education: Required.
-    :vartype education: ~affinda.models.EducationSearchScoreComponent
+    :vartype education: ~affinda_v2.models.EducationSearchScoreComponent
     :ivar occupation_group: Required.
-    :vartype occupation_group: ~affinda.models.OccupationGroupSearchScoreComponent
+    :vartype occupation_group: ~affinda_v2.models.OccupationGroupSearchScoreComponent
     :ivar search_expression: Required.
-    :vartype search_expression: ~affinda.models.SearchExpressionSearchScoreComponent
+    :vartype search_expression: ~affinda_v2.models.SearchExpressionSearchScoreComponent
     :ivar custom_data: Required. Dictionary of
      <components·nqbw24·schemas·customdatasearchscorecomponent·additionalproperties>.
     :vartype custom_data: dict[str,
-     ~affinda.models.ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties]
+     ~affinda_v2.models.ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties]
     """
 
     _validation = {
@@ -13426,7 +15896,28 @@ class ResumeSearchResult(msrest.serialization.Model):
         },
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        identifier: str,
+        score: float,
+        pdf: str,
+        job_title: "_models.JobTitleSearchScoreComponent",
+        management_level: "_models.ManagementLevelSearchScoreComponent",
+        experience: "_models.ExperienceSearchScoreComponent",
+        skills: "_models.SkillsSearchScoreComponent",
+        languages: "_models.LanguagesSearchScoreComponent",
+        location: "_models.LocationSearchScoreComponent",
+        education: "_models.EducationSearchScoreComponent",
+        occupation_group: "_models.OccupationGroupSearchScoreComponent",
+        search_expression: "_models.SearchExpressionSearchScoreComponent",
+        custom_data: Dict[
+            str,
+            "_models.ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties",
+        ],
+        name: Optional[str] = None,
+        **kwargs,
+    ):
         """
         :keyword identifier: Required. A random string that uniquely identify the resource.
         :paramtype identifier: str
@@ -13437,43 +15928,43 @@ class ResumeSearchResult(msrest.serialization.Model):
         :keyword name:
         :paramtype name: str
         :keyword job_title: Required.
-        :paramtype job_title: ~affinda.models.JobTitleSearchScoreComponent
+        :paramtype job_title: ~affinda_v2.models.JobTitleSearchScoreComponent
         :keyword management_level: Required.
-        :paramtype management_level: ~affinda.models.ManagementLevelSearchScoreComponent
+        :paramtype management_level: ~affinda_v2.models.ManagementLevelSearchScoreComponent
         :keyword experience: Required.
-        :paramtype experience: ~affinda.models.ExperienceSearchScoreComponent
+        :paramtype experience: ~affinda_v2.models.ExperienceSearchScoreComponent
         :keyword skills: Required.
-        :paramtype skills: ~affinda.models.SkillsSearchScoreComponent
+        :paramtype skills: ~affinda_v2.models.SkillsSearchScoreComponent
         :keyword languages: Required.
-        :paramtype languages: ~affinda.models.LanguagesSearchScoreComponent
+        :paramtype languages: ~affinda_v2.models.LanguagesSearchScoreComponent
         :keyword location: Required.
-        :paramtype location: ~affinda.models.LocationSearchScoreComponent
+        :paramtype location: ~affinda_v2.models.LocationSearchScoreComponent
         :keyword education: Required.
-        :paramtype education: ~affinda.models.EducationSearchScoreComponent
+        :paramtype education: ~affinda_v2.models.EducationSearchScoreComponent
         :keyword occupation_group: Required.
-        :paramtype occupation_group: ~affinda.models.OccupationGroupSearchScoreComponent
+        :paramtype occupation_group: ~affinda_v2.models.OccupationGroupSearchScoreComponent
         :keyword search_expression: Required.
-        :paramtype search_expression: ~affinda.models.SearchExpressionSearchScoreComponent
+        :paramtype search_expression: ~affinda_v2.models.SearchExpressionSearchScoreComponent
         :keyword custom_data: Required. Dictionary of
          <components·nqbw24·schemas·customdatasearchscorecomponent·additionalproperties>.
         :paramtype custom_data: dict[str,
-         ~affinda.models.ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties]
+         ~affinda_v2.models.ComponentsNqbw24SchemasCustomdatasearchscorecomponentAdditionalproperties]
         """
         super(ResumeSearchResult, self).__init__(**kwargs)
-        self.identifier = kwargs["identifier"]
-        self.score = kwargs["score"]
-        self.pdf = kwargs["pdf"]
-        self.name = kwargs.get("name", None)
-        self.job_title = kwargs["job_title"]
-        self.management_level = kwargs["management_level"]
-        self.experience = kwargs["experience"]
-        self.skills = kwargs["skills"]
-        self.languages = kwargs["languages"]
-        self.location = kwargs["location"]
-        self.education = kwargs["education"]
-        self.occupation_group = kwargs["occupation_group"]
-        self.search_expression = kwargs["search_expression"]
-        self.custom_data = kwargs["custom_data"]
+        self.identifier = identifier
+        self.score = score
+        self.pdf = pdf
+        self.name = name
+        self.job_title = job_title
+        self.management_level = management_level
+        self.experience = experience
+        self.skills = skills
+        self.languages = languages
+        self.location = location
+        self.education = education
+        self.occupation_group = occupation_group
+        self.search_expression = search_expression
+        self.custom_data = custom_data
 
 
 class ResumeSkillSourcesItem(msrest.serialization.Model):
@@ -13484,7 +15975,7 @@ class ResumeSkillSourcesItem(msrest.serialization.Model):
      "Referees", "Skills", "Summary", "Training", "WorkExperience", "NotPopulated", "Header",
      "Footer", "Skills/Interests/Languages", "Training/Certifications",
      "Extracurriculars/Leadership".
-    :vartype section: str or ~affinda.models.ResumeSkillSourcesItemSection
+    :vartype section: str or ~affinda_v2.models.ResumeSkillSourcesItemSection
     :ivar position:
     :vartype position: int
     """
@@ -13498,20 +15989,26 @@ class ResumeSkillSourcesItem(msrest.serialization.Model):
         "position": {"key": "position", "type": "int"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        section: Optional[Union[str, "_models.ResumeSkillSourcesItemSection"]] = None,
+        position: Optional[int] = None,
+        **kwargs,
+    ):
         """
         :keyword section: Known values are: "Achievements", "AdditionalInformation", "Education",
          "Extracurriculars", "Organisations", "Other", "PersonalDetails", "Projects", "Publications",
          "Referees", "Skills", "Summary", "Training", "WorkExperience", "NotPopulated", "Header",
          "Footer", "Skills/Interests/Languages", "Training/Certifications",
          "Extracurriculars/Leadership".
-        :paramtype section: str or ~affinda.models.ResumeSkillSourcesItemSection
+        :paramtype section: str or ~affinda_v2.models.ResumeSkillSourcesItemSection
         :keyword position:
         :paramtype position: int
         """
         super(ResumeSkillSourcesItem, self).__init__(**kwargs)
-        self.section = kwargs.get("section", None)
-        self.position = kwargs.get("position", None)
+        self.section = section
+        self.position = position
 
 
 class RowAnnotation(msrest.serialization.Model):
@@ -13561,7 +16058,24 @@ class RowAnnotation(msrest.serialization.Model):
         "custom_fields": {"key": "customFields", "type": "{object}"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        code: Optional[str] = None,
+        date: Optional[str] = None,
+        description: Optional[str] = None,
+        unit: Optional[str] = None,
+        unit_price: Optional[float] = None,
+        quantity: Optional[float] = None,
+        discount: Optional[str] = None,
+        base_total: Optional[float] = None,
+        tax_rate: Optional[str] = None,
+        tax_total: Optional[float] = None,
+        total: Optional[float] = None,
+        other: Optional[str] = None,
+        custom_fields: Optional[Dict[str, Any]] = None,
+        **kwargs,
+    ):
         """
         :keyword code:
         :paramtype code: str
@@ -13591,19 +16105,19 @@ class RowAnnotation(msrest.serialization.Model):
         :paramtype custom_fields: dict[str, any]
         """
         super(RowAnnotation, self).__init__(**kwargs)
-        self.code = kwargs.get("code", None)
-        self.date = kwargs.get("date", None)
-        self.description = kwargs.get("description", None)
-        self.unit = kwargs.get("unit", None)
-        self.unit_price = kwargs.get("unit_price", None)
-        self.quantity = kwargs.get("quantity", None)
-        self.discount = kwargs.get("discount", None)
-        self.base_total = kwargs.get("base_total", None)
-        self.tax_rate = kwargs.get("tax_rate", None)
-        self.tax_total = kwargs.get("tax_total", None)
-        self.total = kwargs.get("total", None)
-        self.other = kwargs.get("other", None)
-        self.custom_fields = kwargs.get("custom_fields", None)
+        self.code = code
+        self.date = date
+        self.description = description
+        self.unit = unit
+        self.unit_price = unit_price
+        self.quantity = quantity
+        self.discount = discount
+        self.base_total = base_total
+        self.tax_rate = tax_rate
+        self.tax_total = tax_total
+        self.total = total
+        self.other = other
+        self.custom_fields = custom_fields
 
 
 class SearchExpressionSearchScoreComponent(msrest.serialization.Model):
@@ -13629,7 +16143,9 @@ class SearchExpressionSearchScoreComponent(msrest.serialization.Model):
         "score": {"key": "score", "type": "float"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self, *, label: str, value: Optional[str] = None, score: Optional[float] = None, **kwargs
+    ):
         """
         :keyword label: Required.
         :paramtype label: str
@@ -13639,9 +16155,9 @@ class SearchExpressionSearchScoreComponent(msrest.serialization.Model):
         :paramtype score: float
         """
         super(SearchExpressionSearchScoreComponent, self).__init__(**kwargs)
-        self.label = kwargs["label"]
-        self.value = kwargs.get("value", None)
-        self.score = kwargs.get("score", None)
+        self.label = label
+        self.value = value
+        self.score = score
 
 
 class SkillAnnotation(Annotation):
@@ -13655,9 +16171,9 @@ class SkillAnnotation(Annotation):
     :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
-    :vartype rectangle: ~affinda.models.Rectangle
+    :vartype rectangle: ~affinda_v2.models.Rectangle
     :ivar rectangles: Required.
-    :vartype rectangles: list[~affinda.models.Rectangle]
+    :vartype rectangles: list[~affinda_v2.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
     :ivar raw: Required.
@@ -13717,7 +16233,26 @@ class SkillAnnotation(Annotation):
         "parsed": {"key": "parsed", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        id: int,
+        rectangle: "_models.Rectangle",
+        rectangles: List["_models.Rectangle"],
+        page_index: int,
+        raw: str,
+        confidence: float,
+        classification_confidence: float,
+        text_extraction_confidence: float,
+        is_verified: bool,
+        is_client_verified: bool,
+        is_auto_verified: bool,
+        content_type: str,
+        additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
+        parsed: Optional[str] = None,
+        **kwargs,
+    ):
         """
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
@@ -13725,9 +16260,9 @@ class SkillAnnotation(Annotation):
         :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
-        :paramtype rectangle: ~affinda.models.Rectangle
+        :paramtype rectangle: ~affinda_v2.models.Rectangle
         :keyword rectangles: Required.
-        :paramtype rectangles: list[~affinda.models.Rectangle]
+        :paramtype rectangles: list[~affinda_v2.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
         :keyword raw: Required.
@@ -13753,8 +16288,24 @@ class SkillAnnotation(Annotation):
         :keyword parsed:
         :paramtype parsed: str
         """
-        super(SkillAnnotation, self).__init__(**kwargs)
-        self.parsed = kwargs.get("parsed", None)
+        super(SkillAnnotation, self).__init__(
+            additional_properties=additional_properties,
+            id=id,
+            rectangle=rectangle,
+            rectangles=rectangles,
+            page_index=page_index,
+            raw=raw,
+            confidence=confidence,
+            classification_confidence=classification_confidence,
+            text_extraction_confidence=text_extraction_confidence,
+            is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
+            data_point=data_point,
+            content_type=content_type,
+            **kwargs,
+        )
+        self.parsed = parsed
 
 
 class SkillAnnotationV2Update(AnnotationV2Base):
@@ -13768,9 +16319,9 @@ class SkillAnnotationV2Update(AnnotationV2Base):
     :ivar id:
     :vartype id: int
     :ivar rectangle:
-    :vartype rectangle: ~affinda.models.Rectangle
+    :vartype rectangle: ~affinda_v2.models.Rectangle
     :ivar rectangles:
-    :vartype rectangles: list[~affinda.models.Rectangle]
+    :vartype rectangles: list[~affinda_v2.models.Rectangle]
     :ivar page_index:
     :vartype page_index: int
     :ivar raw:
@@ -13822,7 +16373,24 @@ class SkillAnnotationV2Update(AnnotationV2Base):
         "parsed": {"key": "parsed", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        additional_properties: Optional[Dict[str, Any]] = None,
+        id: Optional[int] = None,
+        rectangle: Optional["_models.Rectangle"] = None,
+        page_index: Optional[int] = None,
+        raw: Optional[str] = None,
+        confidence: Optional[float] = None,
+        classification_confidence: Optional[float] = None,
+        text_extraction_confidence: Optional[float] = None,
+        is_verified: Optional[bool] = None,
+        is_client_verified: Optional[bool] = None,
+        is_auto_verified: Optional[bool] = None,
+        data_point: Optional[str] = None,
+        content_type: Optional[str] = None,
+        **kwargs,
+    ):
         """
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
@@ -13830,7 +16398,7 @@ class SkillAnnotationV2Update(AnnotationV2Base):
         :keyword id:
         :paramtype id: int
         :keyword rectangle:
-        :paramtype rectangle: ~affinda.models.Rectangle
+        :paramtype rectangle: ~affinda_v2.models.Rectangle
         :keyword page_index:
         :paramtype page_index: int
         :keyword raw:
@@ -13854,7 +16422,22 @@ class SkillAnnotationV2Update(AnnotationV2Base):
         :keyword content_type:
         :paramtype content_type: str
         """
-        super(SkillAnnotationV2Update, self).__init__(**kwargs)
+        super(SkillAnnotationV2Update, self).__init__(
+            additional_properties=additional_properties,
+            id=id,
+            rectangle=rectangle,
+            page_index=page_index,
+            raw=raw,
+            confidence=confidence,
+            classification_confidence=classification_confidence,
+            text_extraction_confidence=text_extraction_confidence,
+            is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
+            data_point=data_point,
+            content_type=content_type,
+            **kwargs,
+        )
         self.parsed = None
 
 
@@ -13881,7 +16464,9 @@ class SkillsSearchScoreComponent(msrest.serialization.Model):
         "score": {"key": "score", "type": "float"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self, *, label: str, value: Optional[str] = None, score: Optional[float] = None, **kwargs
+    ):
         """
         :keyword value:
         :paramtype value: str
@@ -13891,9 +16476,9 @@ class SkillsSearchScoreComponent(msrest.serialization.Model):
         :paramtype score: float
         """
         super(SkillsSearchScoreComponent, self).__init__(**kwargs)
-        self.value = kwargs.get("value", None)
-        self.label = kwargs["label"]
-        self.score = kwargs.get("score", None)
+        self.value = value
+        self.label = label
+        self.score = score
 
 
 class TextAnnotationV2Update(AnnotationV2Base):
@@ -13907,9 +16492,9 @@ class TextAnnotationV2Update(AnnotationV2Base):
     :ivar id:
     :vartype id: int
     :ivar rectangle:
-    :vartype rectangle: ~affinda.models.Rectangle
+    :vartype rectangle: ~affinda_v2.models.Rectangle
     :ivar rectangles:
-    :vartype rectangles: list[~affinda.models.Rectangle]
+    :vartype rectangles: list[~affinda_v2.models.Rectangle]
     :ivar page_index:
     :vartype page_index: int
     :ivar raw:
@@ -13960,7 +16545,25 @@ class TextAnnotationV2Update(AnnotationV2Base):
         "parsed": {"key": "parsed", "type": "str"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        additional_properties: Optional[Dict[str, Any]] = None,
+        id: Optional[int] = None,
+        rectangle: Optional["_models.Rectangle"] = None,
+        page_index: Optional[int] = None,
+        raw: Optional[str] = None,
+        confidence: Optional[float] = None,
+        classification_confidence: Optional[float] = None,
+        text_extraction_confidence: Optional[float] = None,
+        is_verified: Optional[bool] = None,
+        is_client_verified: Optional[bool] = None,
+        is_auto_verified: Optional[bool] = None,
+        data_point: Optional[str] = None,
+        content_type: Optional[str] = None,
+        parsed: Optional[str] = None,
+        **kwargs,
+    ):
         """
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
@@ -13968,7 +16571,7 @@ class TextAnnotationV2Update(AnnotationV2Base):
         :keyword id:
         :paramtype id: int
         :keyword rectangle:
-        :paramtype rectangle: ~affinda.models.Rectangle
+        :paramtype rectangle: ~affinda_v2.models.Rectangle
         :keyword page_index:
         :paramtype page_index: int
         :keyword raw:
@@ -13994,8 +16597,23 @@ class TextAnnotationV2Update(AnnotationV2Base):
         :keyword parsed:
         :paramtype parsed: str
         """
-        super(TextAnnotationV2Update, self).__init__(**kwargs)
-        self.parsed = kwargs.get("parsed", None)
+        super(TextAnnotationV2Update, self).__init__(
+            additional_properties=additional_properties,
+            id=id,
+            rectangle=rectangle,
+            page_index=page_index,
+            raw=raw,
+            confidence=confidence,
+            classification_confidence=classification_confidence,
+            text_extraction_confidence=text_extraction_confidence,
+            is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
+            data_point=data_point,
+            content_type=content_type,
+            **kwargs,
+        )
+        self.parsed = parsed
 
 
 class YearsExperienceAnnotation(Annotation):
@@ -14009,9 +16627,9 @@ class YearsExperienceAnnotation(Annotation):
     :ivar id: Required.
     :vartype id: int
     :ivar rectangle: Required.
-    :vartype rectangle: ~affinda.models.Rectangle
+    :vartype rectangle: ~affinda_v2.models.Rectangle
     :ivar rectangles: Required.
-    :vartype rectangles: list[~affinda.models.Rectangle]
+    :vartype rectangles: list[~affinda_v2.models.Rectangle]
     :ivar page_index: Required.
     :vartype page_index: int
     :ivar raw: Required.
@@ -14035,7 +16653,7 @@ class YearsExperienceAnnotation(Annotation):
     :ivar content_type: Required.
     :vartype content_type: str
     :ivar parsed: Years of experience range.
-    :vartype parsed: ~affinda.models.YearsExperienceAnnotationParsed
+    :vartype parsed: ~affinda_v2.models.YearsExperienceAnnotationParsed
     """
 
     _validation = {
@@ -14071,7 +16689,26 @@ class YearsExperienceAnnotation(Annotation):
         "parsed": {"key": "parsed", "type": "YearsExperienceAnnotationParsed"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        id: int,
+        rectangle: "_models.Rectangle",
+        rectangles: List["_models.Rectangle"],
+        page_index: int,
+        raw: str,
+        confidence: float,
+        classification_confidence: float,
+        text_extraction_confidence: float,
+        is_verified: bool,
+        is_client_verified: bool,
+        is_auto_verified: bool,
+        content_type: str,
+        additional_properties: Optional[Dict[str, Any]] = None,
+        data_point: Optional[str] = None,
+        parsed: Optional["_models.YearsExperienceAnnotationParsed"] = None,
+        **kwargs,
+    ):
         """
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
@@ -14079,9 +16716,9 @@ class YearsExperienceAnnotation(Annotation):
         :keyword id: Required.
         :paramtype id: int
         :keyword rectangle: Required.
-        :paramtype rectangle: ~affinda.models.Rectangle
+        :paramtype rectangle: ~affinda_v2.models.Rectangle
         :keyword rectangles: Required.
-        :paramtype rectangles: list[~affinda.models.Rectangle]
+        :paramtype rectangles: list[~affinda_v2.models.Rectangle]
         :keyword page_index: Required.
         :paramtype page_index: int
         :keyword raw: Required.
@@ -14105,10 +16742,26 @@ class YearsExperienceAnnotation(Annotation):
         :keyword content_type: Required.
         :paramtype content_type: str
         :keyword parsed: Years of experience range.
-        :paramtype parsed: ~affinda.models.YearsExperienceAnnotationParsed
+        :paramtype parsed: ~affinda_v2.models.YearsExperienceAnnotationParsed
         """
-        super(YearsExperienceAnnotation, self).__init__(**kwargs)
-        self.parsed = kwargs.get("parsed", None)
+        super(YearsExperienceAnnotation, self).__init__(
+            additional_properties=additional_properties,
+            id=id,
+            rectangle=rectangle,
+            rectangles=rectangles,
+            page_index=page_index,
+            raw=raw,
+            confidence=confidence,
+            classification_confidence=classification_confidence,
+            text_extraction_confidence=text_extraction_confidence,
+            is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
+            data_point=data_point,
+            content_type=content_type,
+            **kwargs,
+        )
+        self.parsed = parsed
 
 
 class YearsExperienceAnnotationParsed(msrest.serialization.Model):
@@ -14125,7 +16778,9 @@ class YearsExperienceAnnotationParsed(msrest.serialization.Model):
         "maximum": {"key": "maximum", "type": "float"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self, *, minimum: Optional[float] = None, maximum: Optional[float] = None, **kwargs
+    ):
         """
         :keyword minimum: Minimum years of experience.
         :paramtype minimum: float
@@ -14133,8 +16788,8 @@ class YearsExperienceAnnotationParsed(msrest.serialization.Model):
         :paramtype maximum: float
         """
         super(YearsExperienceAnnotationParsed, self).__init__(**kwargs)
-        self.minimum = kwargs.get("minimum", None)
-        self.maximum = kwargs.get("maximum", None)
+        self.minimum = minimum
+        self.maximum = maximum
 
 
 class YearsExperienceAnnotationV2Update(AnnotationV2Base):
@@ -14148,9 +16803,9 @@ class YearsExperienceAnnotationV2Update(AnnotationV2Base):
     :ivar id:
     :vartype id: int
     :ivar rectangle:
-    :vartype rectangle: ~affinda.models.Rectangle
+    :vartype rectangle: ~affinda_v2.models.Rectangle
     :ivar rectangles:
-    :vartype rectangles: list[~affinda.models.Rectangle]
+    :vartype rectangles: list[~affinda_v2.models.Rectangle]
     :ivar page_index:
     :vartype page_index: int
     :ivar raw:
@@ -14174,7 +16829,7 @@ class YearsExperienceAnnotationV2Update(AnnotationV2Base):
     :ivar content_type:
     :vartype content_type: str
     :ivar parsed: Years of experience range.
-    :vartype parsed: ~affinda.models.YearsExperienceAnnotationV2UpdateParsed
+    :vartype parsed: ~affinda_v2.models.YearsExperienceAnnotationV2UpdateParsed
     """
 
     _validation = {
@@ -14201,7 +16856,25 @@ class YearsExperienceAnnotationV2Update(AnnotationV2Base):
         "parsed": {"key": "parsed", "type": "YearsExperienceAnnotationV2UpdateParsed"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        *,
+        additional_properties: Optional[Dict[str, Any]] = None,
+        id: Optional[int] = None,
+        rectangle: Optional["_models.Rectangle"] = None,
+        page_index: Optional[int] = None,
+        raw: Optional[str] = None,
+        confidence: Optional[float] = None,
+        classification_confidence: Optional[float] = None,
+        text_extraction_confidence: Optional[float] = None,
+        is_verified: Optional[bool] = None,
+        is_client_verified: Optional[bool] = None,
+        is_auto_verified: Optional[bool] = None,
+        data_point: Optional[str] = None,
+        content_type: Optional[str] = None,
+        parsed: Optional["_models.YearsExperienceAnnotationV2UpdateParsed"] = None,
+        **kwargs,
+    ):
         """
         :keyword additional_properties: Unmatched properties from the message are deserialized to this
          collection.
@@ -14209,7 +16882,7 @@ class YearsExperienceAnnotationV2Update(AnnotationV2Base):
         :keyword id:
         :paramtype id: int
         :keyword rectangle:
-        :paramtype rectangle: ~affinda.models.Rectangle
+        :paramtype rectangle: ~affinda_v2.models.Rectangle
         :keyword page_index:
         :paramtype page_index: int
         :keyword raw:
@@ -14233,10 +16906,25 @@ class YearsExperienceAnnotationV2Update(AnnotationV2Base):
         :keyword content_type:
         :paramtype content_type: str
         :keyword parsed: Years of experience range.
-        :paramtype parsed: ~affinda.models.YearsExperienceAnnotationV2UpdateParsed
+        :paramtype parsed: ~affinda_v2.models.YearsExperienceAnnotationV2UpdateParsed
         """
-        super(YearsExperienceAnnotationV2Update, self).__init__(**kwargs)
-        self.parsed = kwargs.get("parsed", None)
+        super(YearsExperienceAnnotationV2Update, self).__init__(
+            additional_properties=additional_properties,
+            id=id,
+            rectangle=rectangle,
+            page_index=page_index,
+            raw=raw,
+            confidence=confidence,
+            classification_confidence=classification_confidence,
+            text_extraction_confidence=text_extraction_confidence,
+            is_verified=is_verified,
+            is_client_verified=is_client_verified,
+            is_auto_verified=is_auto_verified,
+            data_point=data_point,
+            content_type=content_type,
+            **kwargs,
+        )
+        self.parsed = parsed
 
 
 class YearsExperienceAnnotationV2UpdateParsed(msrest.serialization.Model):
@@ -14253,7 +16941,9 @@ class YearsExperienceAnnotationV2UpdateParsed(msrest.serialization.Model):
         "maximum": {"key": "maximum", "type": "float"},
     }
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self, *, minimum: Optional[float] = None, maximum: Optional[float] = None, **kwargs
+    ):
         """
         :keyword minimum: Minimum years of experience.
         :paramtype minimum: float
@@ -14261,5 +16951,5 @@ class YearsExperienceAnnotationV2UpdateParsed(msrest.serialization.Model):
         :paramtype maximum: float
         """
         super(YearsExperienceAnnotationV2UpdateParsed, self).__init__(**kwargs)
-        self.minimum = kwargs.get("minimum", None)
-        self.maximum = kwargs.get("maximum", None)
+        self.minimum = minimum
+        self.maximum = maximum
